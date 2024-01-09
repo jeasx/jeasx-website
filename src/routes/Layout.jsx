@@ -26,7 +26,7 @@ export default function Layout({
           />
           <script src={`/index.js?${process.env.BUILD_TIME}`} defer></script>
         </head>
-        <body class="is-preload">
+        <body>
           <div id="wrapper">
             <div id="main">
               <div class="inner">

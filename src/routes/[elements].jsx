@@ -655,7 +655,7 @@ export default function Elements({}) {
             <h4>Left &amp; Right</h4>
             <p>
               <span class="image left">
-                <img src="images/pic01.jpg" alt="" />
+                <img src="/images/placeholder.webp" alt="" />
               </span>
               Lorem ipsum dolor sit accumsan interdum nisi, quis tincidunt felis
               sagittis eget. tempus euismod. Vestibulum ante ipsum primis in
@@ -669,7 +669,7 @@ export default function Elements({}) {
             </p>
             <p>
               <span class="image right">
-                <img src="images/pic01.jpg" alt="" />
+                <img src="/images/placeholder.webp" alt="" />
               </span>
               Lorem ipsum dolor sit accumsan interdum nisi, quis tincidunt felis
               sagittis eget. tempus euismod. Vestibulum ante ipsum primis in

@@ -5,11 +5,10 @@
     "start": "jeasx start",
     "build": "jeasx build",
     "dev": "jeasx dev ecosystem.config.cjs",
-    "scss": "sass src/browser/scss/main.scss:src/browser/css/editorial.css --no-source-map"
+    "scss": "sass src/browser/scss/main.scss:src/browser/scss/main.css --no-source-map"
   },
   "dependencies": {
     "jeasx": "0.0.7",
-    "jquery": "3.7.1",
     "prismjs": "1.29.0",
     "sass": "1.69.7"
   }

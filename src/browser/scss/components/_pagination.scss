@@ -17,13 +17,13 @@ ul.pagination {
     padding-left: 0;
 
     > .page {
-      @include vendor(
-        "transition",
-        (
-          "background-color #{_duration(transition)} ease-in-out",
-          "color #{_duration(transition)} ease-in-out"
-        )
-      );
+      // @include vendor(
+      //   "transition",
+      //   (
+      //     "background-color #{_duration(transition)} ease-in-out",
+      //     "color #{_duration(transition)} ease-in-out"
+      //   )
+      // );
       display: inline-block;
       margin: 0 0.125em;
       border-bottom: 0;

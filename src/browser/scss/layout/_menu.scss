@@ -30,46 +30,6 @@
       &:hover {
         color: _palette(accent);
       }
-
-      &.opener {
-        @include vendor(
-          "transition",
-          "color #{_duration(transition)} ease-in-out"
-        );
-        @include icon(false, solid);
-        -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-        position: relative;
-
-        &:before {
-          @include vendor(
-            "transition",
-            (
-              "color #{_duration(transition)} ease-in-out",
-              "transform #{_duration(transition)} ease-in-out"
-            )
-          );
-          position: absolute;
-          right: 0;
-          content: "\f078";
-          color: _palette(fg-light);
-        }
-
-        &:hover {
-          &:before {
-            color: _palette(accent);
-          }
-        }
-
-        &.active {
-          & + ul {
-            display: block;
-          }
-
-          &:before {
-            @include vendor("transform", "rotate(-180deg)");
-          }
-        }
-      }
     }
   }
 
@@ -80,7 +40,6 @@
       padding: 0.5em 0 0 0;
 
       > ul {
-        display: none;
         margin: 0.5em 0 1.5em 0;
         padding-left: 1em;
         color: _palette(fg-light);
