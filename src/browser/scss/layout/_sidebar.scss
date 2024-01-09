@@ -60,7 +60,7 @@
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
     display: none;
     position: absolute;
-    top: 0;
+    top: 0.75em;
     left: _size(sidebar-width);
     z-index: _misc(z-index-base);
     outline: 0;
@@ -180,8 +180,9 @@
         top: 1em;
         left: 1em;
         border-radius: _size(border-radius);
-        width: 5em;
-        height: 3.5em;
+        background: transparentize(lighten(_palette(fg), 35), 0.25);
+        width: 4.25em;
+        height: 3.25em;
         content: "";
       }
     }

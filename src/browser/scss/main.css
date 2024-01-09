@@ -316,13 +316,13 @@
 @font-face {
   font-style: normal;
   font-weight: 900;
-  src: url(/fonts/fa-solid-900.woff2) format("woff2");
-  font-family: "Font Awesome 5 Free";
+  src: url(/fonts/FontAwesome.woff2) format("woff2");
+  font-family: "Font Awesome";
   font-display: swap;
 }
 .fa {
   font-weight: 900;
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome";
 }
 
 /*
@@ -1968,7 +1968,7 @@ input[type=radio] + label:before {
   font-variant: normal;
   font-weight: 900;
   line-height: 1;
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome";
   text-rendering: auto;
   text-transform: none !important;
 }
@@ -2061,7 +2061,7 @@ input[type=radio] + label:before {
   font-variant: normal;
   font-weight: 900;
   line-height: 1;
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome";
   text-rendering: auto;
   text-transform: none !important;
 }
@@ -2281,7 +2281,7 @@ ul.contact li:before {
   font-variant: normal;
   font-weight: 900;
   line-height: 1;
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome";
   text-rendering: auto;
   text-transform: none !important;
 }
@@ -2961,7 +2961,7 @@ button:disabled,
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   display: none;
   position: absolute;
-  top: 0;
+  top: 0.75em;
   left: 26em;
   z-index: 10000;
   outline: 0;
@@ -2982,7 +2982,7 @@ button:disabled,
   font-variant: normal;
   font-weight: 900;
   line-height: 1;
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome";
   text-rendering: auto;
   text-transform: none !important;
 }
@@ -3079,8 +3079,9 @@ button:disabled,
     top: 1em;
     left: 1em;
     border-radius: 0.375em;
-    width: 5em;
-    height: 3.5em;
+    background: rgba(222, 225, 226, 0.75);
+    width: 4.25em;
+    height: 3.25em;
     content: "";
   }
 }
@@ -3105,7 +3106,7 @@ button:disabled,
 #header .logo {
   border-bottom: 0;
   color: inherit;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-family: "Roboto Slab", serif;
 }
 #header .icons {
@@ -3122,11 +3123,11 @@ button:disabled,
     padding-left: 3em;
   }
   #header .logo {
-    margin: 0;
+    margin: 0 0.5em;
   }
   #header .icons {
     position: absolute;
-    top: 0;
+    top: 1em;
     right: -0.5em;
     height: 5em;
     line-height: 5em;

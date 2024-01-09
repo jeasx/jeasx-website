@@ -20,7 +20,7 @@
   .logo {
     border-bottom: 0;
     color: inherit;
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-family: _font(family-heading);
   }
 
@@ -37,13 +37,13 @@
     padding-left: 3em;
 
     .logo {
-      margin: 0;
+      margin: 0 0.5em;
       //font-size: 1.25em;
     }
 
     .icons {
       position: absolute;
-      top: 0;
+      top: 1em;
       right: calc(-0.625em / 1.25);
       height: calc(6.25em / 1.25);
       line-height: calc(6.25em / 1.25);
