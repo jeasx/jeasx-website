@@ -1,8 +1,59 @@
+@font-face {
+  font-style: italic;
+  font-weight: 400;
+  font-stretch: 100%;
+  src: url(/fonts/OpenSansItalic.woff2) format("woff2");
+  font-family: "Open Sans";
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-style: italic;
+  font-weight: 600;
+  font-stretch: 100%;
+  src: url(/fonts/OpenSansItalic.woff2) format("woff2");
+  font-family: "Open Sans";
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  src: url(/fonts/OpenSansRegular.woff2) format("woff2");
+  font-family: "Open Sans";
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  src: url(/fonts/OpenSansRegular.woff2) format("woff2");
+  font-family: "Open Sans";
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+  src: url(/fonts/RobotoSlab.woff2) format("woff2");
+  font-family: "Roboto Slab";
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-style: normal;
+  font-weight: 700;
+  src: url(/fonts/RobotoSlab.woff2) format("woff2");
+  font-family: "Roboto Slab";
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 /*!
  * Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,600italic|Roboto+Slab:400,700&display=swap");
 .fa {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
