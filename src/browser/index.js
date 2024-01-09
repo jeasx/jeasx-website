@@ -1,3 +1,3 @@
 import "prismjs";
 
-import "js/editorial.js";
+import "./js/editorial.js";
