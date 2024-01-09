@@ -4,14 +4,14 @@ export default function Sidebar() {
       <div class="inner">
         <nav id="menu">
           <header class="major">
-            <h2>Menu</h2>
+            <h2>jeasx</h2>
           </header>
           <ul>
             <li>
               <a href="/">Homepage</a>
             </li>
             <li>
-              <a href="/generic">Generic</a>
+              <a href="/generic">Get started</a>
             </li>
             <li>
               <a href="/elements">Elements</a>

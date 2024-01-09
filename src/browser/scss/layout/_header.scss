@@ -20,7 +20,7 @@
   .logo {
     border-bottom: 0;
     color: inherit;
-    font-size: 1.125em;
+    font-size: 1rem;
     font-family: _font(family-heading);
   }
 
@@ -29,15 +29,16 @@
   }
 
   @include breakpoint("<=xlarge") {
-    padding-top: 5em;
+    padding-top: 2em;
   }
 
   @include breakpoint("<=small") {
-    padding-top: 6.5em;
+    padding-top: 1.5em;
+    padding-left: 3em;
 
     .logo {
       margin: 0;
-      font-size: 1.25em;
+      //font-size: 1.25em;
     }
 
     .icons {

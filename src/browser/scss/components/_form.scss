@@ -100,7 +100,7 @@ input[type="radio"] {
   width: 1em;
 
   & + label {
-    @include icon(false, solid);
+    @include icon();
     display: inline-block;
     position: relative;
     cursor: pointer;

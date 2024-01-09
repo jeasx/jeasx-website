@@ -1,5 +1,5 @@
 import { escapeEntities } from "jsx-async-runtime";
-import Layout from "./Layout";
+import Layout from "../components/Layout";
 /**
  * @param {import("./types").RouteProps} props
  */

@@ -1,4 +1,4 @@
-import Layout from "./Layout";
+import Layout from "../components/Layout";
 
 /**
  * @param {import("./types").RouteProps} props
@@ -9,12 +9,8 @@ export default function Homepage({}) {
       <section id="banner">
         <div class="content">
           <header>
-            <h1>
-              Hi, I’m Editorial
-              <br />
-              by HTML5 UP
-            </h1>
-            <p>A free and fully responsive site template</p>
+            <h1>jeasx</h1>
+            <p>The power of server side rendering with the Ease of JSX</p>
           </header>
           <p>
             Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin

@@ -6,10 +6,8 @@ export default function Header() {
       </a>
       <ul class="icons">
         <li>
-          <a
-            href="https://github.com/jeasx/jeasx"
-            class="icon brands fa-github"
-          >
+          <a href="https://github.com/jeasx/jeasx" class="icon">
+            <img src="/images/github.svg" width="20" height="20" alt="GitHub" />
             <span class="label">GitHub</span>
           </a>
         </li>

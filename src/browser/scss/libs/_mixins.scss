@@ -1,33 +1,18 @@
 /// Makes an element's :before pseudoelement a FontAwesome icon.
-/// @param {string} $content Optional content value to use.
-/// @param {string} $category Optional category to use.
-/// @param {string} $where Optional pseudoelement to target (before or after).
-@mixin icon($content: false, $category: regular, $where: before) {
+@mixin icon() {
   text-decoration: none;
 
-  &:#{$where} {
-    @if $content {
-      content: $content;
-    }
-
+  &:before {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     display: inline-block;
     font-style: normal;
     font-variant: normal;
+    font-weight: 900;
     line-height: 1;
+    font-family: "Font Awesome 5 Free";
     text-rendering: auto;
     text-transform: none !important;
-
-    @if ($category == brands) {
-      font-family: "Font Awesome 5 Brands";
-    } @else if ($category == solid) {
-      font-weight: 900;
-      font-family: "Font Awesome 5 Free";
-    } @else {
-      font-weight: 400;
-      font-family: "Font Awesome 5 Free";
-    }
   }
 }
 

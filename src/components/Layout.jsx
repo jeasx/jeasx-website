@@ -1,8 +1,8 @@
 /* This file is an example. Delete it at will. */
 
 import { requestContext } from "@fastify/request-context";
-import Header from "../components/Header";
-import Sidebar from "../components/Sidebar";
+import Header from "./Header";
+import Sidebar from "./Sidebar";
 
 export default function Layout({
   title = "",

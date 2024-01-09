@@ -1,4 +1,4 @@
-import Layout from "./Layout";
+import Layout from "../components/Layout";
 
 /**
  * @param {import("./types").RouteProps} props
@@ -133,7 +133,7 @@ export default function Elements({}) {
                 <h4>Icons</h4>
                 <ul class="icons">
                   <li>
-                    <a href="#" class="icon brands fa-github">
+                    <a href="#" class="icon fa-home">
                       <span class="label">Github</span>
                     </a>
                   </li>

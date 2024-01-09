@@ -3,12 +3,7 @@
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 
-.fa,
-.fab,
-.fad,
-.fal,
-.far,
-.fas {
+.fa {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
@@ -88,18 +83,10 @@
 .fa-pull-right {
   float: right;
 }
-.fa.fa-pull-left,
-.fab.fa-pull-left,
-.fal.fa-pull-left,
-.far.fa-pull-left,
-.fas.fa-pull-left {
+.fa.fa-pull-left {
   margin-right: 0.3em;
 }
-.fa.fa-pull-right,
-.fab.fa-pull-right,
-.fal.fa-pull-right,
-.far.fa-pull-right,
-.fas.fa-pull-right {
+.fa.fa-pull-right {
   margin-left: 0.3em;
 }
 .fa-spin {
@@ -1841,9 +1828,9 @@
 // .fa-git-square:before {
 //   content: "\f1d2";
 // }
-.fa-github:before {
-  content: "\f09b";
-}
+// .fa-github:before {
+//   content: "\f09b";
+// }
 // .fa-github-alt:before {
 //   content: "\f113";
 // }
@@ -4571,46 +4558,7 @@
 // .fa-zhihu:before {
 //   content: "\f63f";
 // }
-.sr-only {
-  clip: rect(0, 0, 0, 0);
-  position: absolute;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-.sr-only-focusable:active,
-.sr-only-focusable:focus {
-  clip: auto;
-  position: static;
-  margin: 0;
-  width: auto;
-  height: auto;
-  overflow: visible;
-}
-@font-face {
-  font-style: normal;
-  font-weight: 400;
-  src: url(/fonts/fa-brands-400.woff2) format("woff2");
-  font-family: "Font Awesome 5 Brands";
-  font-display: swap;
-}
-.fab {
-  font-family: "Font Awesome 5 Brands";
-}
-@font-face {
-  font-style: normal;
-  font-weight: 400;
-  src: url(/fonts/fa-regular-400.woff2) format("woff2");
-  font-family: "Font Awesome 5 Free";
-  font-display: swap;
-}
-.fab,
-.far {
-  font-weight: 400;
-}
+
 @font-face {
   font-style: normal;
   font-weight: 900;
@@ -4618,12 +4566,7 @@
   font-family: "Font Awesome 5 Free";
   font-display: swap;
 }
-.fa,
-.far,
-.fas {
-  font-family: "Font Awesome 5 Free";
-}
-.fa,
-.fas {
+.fa {
   font-weight: 900;
+  font-family: "Font Awesome 5 Free";
 }
