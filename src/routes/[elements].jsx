@@ -133,33 +133,8 @@ export default function Elements({}) {
                 <h4>Icons</h4>
                 <ul class="icons">
                   <li>
-                    <a href="#" class="icon brands fa-twitter">
-                      <span class="label">Twitter</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="icon brands fa-facebook-f">
-                      <span class="label">Facebook</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="icon brands fa-instagram">
-                      <span class="label">Instagram</span>
-                    </a>
-                  </li>
-                  <li>
                     <a href="#" class="icon brands fa-github">
                       <span class="label">Github</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="icon brands fa-dribbble">
-                      <span class="label">Dribbble</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="icon brands fa-tumblr">
-                      <span class="label">Tumblr</span>
                     </a>
                   </li>
                 </ul>
@@ -625,53 +600,53 @@ export default function Elements({}) {
 
             <h4>Fit</h4>
             <span class="image fit">
-              <img src="images/pic01.jpg" alt="" />
+              <img src="/images/placeholder.webp" alt="" />
             </span>
             <div class="box alt">
               <div class="row gtr-50 gtr-uniform">
                 <div class="col-4">
                   <span class="image fit">
-                    <img src="images/pic01.jpg" alt="" />
+                    <img src="/images/placeholder.webp" alt="" />
                   </span>
                 </div>
                 <div class="col-4">
                   <span class="image fit">
-                    <img src="images/pic01.jpg" alt="" />
+                    <img src="/images/placeholder.webp" alt="" />
                   </span>
                 </div>
                 <div class="col-4">
                   <span class="image fit">
-                    <img src="images/pic01.jpg" alt="" />
+                    <img src="/images/placeholder.webp" alt="" />
                   </span>
                 </div>
                 <div class="col-4">
                   <span class="image fit">
-                    <img src="images/pic01.jpg" alt="" />
+                    <img src="/images/placeholder.webp" alt="" />
                   </span>
                 </div>
                 <div class="col-4">
                   <span class="image fit">
-                    <img src="images/pic01.jpg" alt="" />
+                    <img src="/images/placeholder.webp" alt="" />
                   </span>
                 </div>
                 <div class="col-4">
                   <span class="image fit">
-                    <img src="images/pic01.jpg" alt="" />
+                    <img src="/images/placeholder.webp" alt="" />
                   </span>
                 </div>
                 <div class="col-4">
                   <span class="image fit">
-                    <img src="images/pic01.jpg" alt="" />
+                    <img src="/images/placeholder.webp" alt="" />
                   </span>
                 </div>
                 <div class="col-4">
                   <span class="image fit">
-                    <img src="images/pic01.jpg" alt="" />
+                    <img src="/images/placeholder.webp" alt="" />
                   </span>
                 </div>
                 <div class="col-4">
                   <span class="image fit">
-                    <img src="images/pic01.jpg" alt="" />
+                    <img src="/images/placeholder.webp" alt="" />
                   </span>
                 </div>
               </div>
