@@ -1,0 +1,106 @@
+///
+/// Editorial by HTML5 UP
+/// html5up.net | @ajlkn
+/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+///
+
+/* Menu */
+
+#menu {
+  ul {
+    @include vendor("user-select", "none");
+    margin-bottom: 0;
+    padding: 0;
+    color: _palette(fg-bold);
+    font-weight: _font(weight-heading-alt);
+    font-family: _font(family-heading);
+    letter-spacing: _font(kerning-heading);
+    list-style: none;
+    text-transform: uppercase;
+
+    a,
+    span {
+      display: block;
+      cursor: pointer;
+      border-bottom: 0;
+      padding: 0.625em 0;
+      color: inherit;
+      font-size: 0.9em;
+
+      &:hover {
+        color: _palette(accent);
+      }
+
+      &.opener {
+        @include vendor(
+          "transition",
+          "color #{_duration(transition)} ease-in-out"
+        );
+        @include icon(false, solid);
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+        position: relative;
+
+        &:before {
+          @include vendor(
+            "transition",
+            (
+              "color #{_duration(transition)} ease-in-out",
+              "transform #{_duration(transition)} ease-in-out"
+            )
+          );
+          position: absolute;
+          right: 0;
+          content: "\f078";
+          color: _palette(fg-light);
+        }
+
+        &:hover {
+          &:before {
+            color: _palette(accent);
+          }
+        }
+
+        &.active {
+          & + ul {
+            display: block;
+          }
+
+          &:before {
+            @include vendor("transform", "rotate(-180deg)");
+          }
+        }
+      }
+    }
+  }
+
+  > ul {
+    > li {
+      margin: 0.5em 0 0 0;
+      border-top: solid 1px _palette(border);
+      padding: 0.5em 0 0 0;
+
+      > ul {
+        display: none;
+        margin: 0.5em 0 1.5em 0;
+        padding-left: 1em;
+        color: _palette(fg-light);
+
+        a,
+        span {
+          font-size: 0.8em;
+        }
+
+        > li {
+          margin: 0.125em 0 0 0;
+          padding: 0.125em 0 0 0;
+        }
+      }
+
+      &:first-child {
+        margin-top: 0;
+        border-top: 0;
+        padding-top: 0;
+      }
+    }
+  }
+}
