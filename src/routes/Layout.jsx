@@ -14,15 +14,12 @@ export default function Layout({
   return (
     <>
       {`<!DOCTYPE html>`}
-      <html>
+      <html lang="en">
         <head>
           <title>{title}</title>
           <meta name="description" content={description} />
           <meta charset="utf-8" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, user-scalable=no"
-          />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link
             rel="stylesheet"
             href={`/index.css?${process.env.BUILD_TIME}`}
