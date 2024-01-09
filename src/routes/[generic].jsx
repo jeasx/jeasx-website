@@ -12,7 +12,7 @@ export default function Generic({}) {
         </header>
 
         <span class="image main">
-          <img src="/images/placeholder.jpg" alt="" />
+          <img src="/images/placeholder.webp" alt="" />
         </span>
 
         <p>

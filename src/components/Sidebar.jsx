@@ -75,7 +75,7 @@ export default function Sidebar() {
           <div class="mini-posts">
             <article>
               <a href="#" class="image">
-                <img src="/images/placeholder.jpg" alt="" />
+                <img src="/images/placeholder.webp" alt="" />
               </a>
               <p>
                 Aenean ornare velit lacus, ac varius enim lorem ullamcorper
@@ -84,7 +84,7 @@ export default function Sidebar() {
             </article>
             <article>
               <a href="#" class="image">
-                <img src="/images/placeholder.jpg" alt="" />
+                <img src="/images/placeholder.webp" alt="" />
               </a>
               <p>
                 Aenean ornare velit lacus, ac varius enim lorem ullamcorper
@@ -93,7 +93,7 @@ export default function Sidebar() {
             </article>
             <article>
               <a href="#" class="image">
-                <img src="/images/placeholder.jpg" alt="" />
+                <img src="/images/placeholder.webp" alt="" />
               </a>
               <p>
                 Aenean ornare velit lacus, ac varius enim lorem ullamcorper

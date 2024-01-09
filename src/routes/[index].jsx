@@ -32,7 +32,7 @@ export default function Homepage({}) {
           </ul>
         </div>
         <span class="image object">
-          <img src="/images/placeholder.jpg" alt="" />
+          <img src="/images/placeholder.webp" alt="" />
         </span>
       </section>
 
@@ -95,7 +95,7 @@ export default function Homepage({}) {
         <div class="posts">
           <article>
             <a href="#" class="image">
-              <img src="/images/placeholder.jpg" alt="" />
+              <img src="/images/placeholder.webp" alt="" />
             </a>
             <h3>Interdum aenean</h3>
             <p>
@@ -113,7 +113,7 @@ export default function Homepage({}) {
           </article>
           <article>
             <a href="#" class="image">
-              <img src="/images/placeholder.jpg" alt="" />
+              <img src="/images/placeholder.webp" alt="" />
             </a>
             <h3>Nulla amet dolore</h3>
             <p>
@@ -131,7 +131,7 @@ export default function Homepage({}) {
           </article>
           <article>
             <a href="#" class="image">
-              <img src="/images/placeholder.jpg" alt="" />
+              <img src="/images/placeholder.webp" alt="" />
             </a>
             <h3>Tempus ullamcorper</h3>
             <p>
@@ -149,7 +149,7 @@ export default function Homepage({}) {
           </article>
           <article>
             <a href="#" class="image">
-              <img src="/images/placeholder.jpg" alt="" />
+              <img src="/images/placeholder.webp" alt="" />
             </a>
             <h3>Sed etiam facilis</h3>
             <p>
@@ -167,7 +167,7 @@ export default function Homepage({}) {
           </article>
           <article>
             <a href="#" class="image">
-              <img src="/images/placeholder.jpg" alt="" />
+              <img src="/images/placeholder.webp" alt="" />
             </a>
             <h3>Feugiat lorem aenean</h3>
             <p>
@@ -185,7 +185,7 @@ export default function Homepage({}) {
           </article>
           <article>
             <a href="#" class="image">
-              <img src="/images/placeholder.jpg" alt="" />
+              <img src="/images/placeholder.webp" alt="" />
             </a>
             <h3>Amet varius aliquam</h3>
             <p>
