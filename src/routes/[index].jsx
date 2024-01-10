@@ -6,12 +6,15 @@ import Layout from "../components/Layout";
  */
 export default function Homepage({}) {
   return (
-    <Layout title="jeasx - JSX with Ease" description="Homepage">
+    <Layout
+      title="jeasx - The Ease of JSX with the power of SSR"
+      description="Homepage"
+    >
       <section id="banner">
         <div class="content">
           <header>
             <h1>jeasx</h1>
-            <p>The power of server side rendering with the Ease of JSX</p>
+            <p>The Ease of JSX with the power of SSR</p>
           </header>
           <p>
             Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin
@@ -55,49 +58,54 @@ export default async function Products() {
 
       <section>
         <header class="major">
-          <h2>Built on a reliable stack</h2>
+          <h2>Built on a proven stack</h2>
         </header>
         <div class="features">
           <article>
-            <span class="icon fa-gem"></span>
+            <span class="icon fa-cookie-bite"></span>
             <div class="content">
-              <h3>Fastify</h3>
-              <p>
-                Fastify is a web framework highly focused on providing the best
-                developer experience with the least overhead and a powerful
-                plugin architecture.
-              </p>
+              <h3>
+                <a href="https://fastify.dev/" target="_blank">
+                  fastify
+                </a>
+              </h3>
+              <p>Fast and low overhead web framework.</p>
             </div>
           </article>
           <article>
-            <span class="icon solid fa-signal"></span>
+            <span class="icon fa-file-code"></span>
             <div class="content">
-              <h3>jsx-async-runtime</h3>
-              <p>
-                An asynchronous JSX runtime without dependencies to be used as
-                server-side template engine.
-              </p>
+              <h3>
+                <a
+                  href="https://github.com/jeasx/jsx-async-runtime"
+                  target="_blank"
+                >
+                  jsx-async-runtime
+                </a>
+              </h3>
+              <p>Asynchronous JSX as powerful templating tool.</p>
             </div>
           </article>
           <article>
-            <span class="icon solid fa-rocket"></span>
+            <span class="icon fa-rocket"></span>
             <div class="content">
-              <h3>esbuild</h3>
-              <p>
-                The main goal of the esbuild bundler project is to bring about a
-                new era of build tool performance, and create an easy-to-use
-                modern bundler along the way.
-              </p>
+              <h3>
+                <a href="https://esbuild.github.io/" target="_blank">
+                  esbuild
+                </a>
+              </h3>
+              <p>An extremely fast bundler for the web.</p>
             </div>
           </article>
           <article>
-            <span class="icon solid fa-paper-plane"></span>
+            <span class="icon fa-stopwatch"></span>
             <div class="content">
-              <h3>PM2</h3>
-              <p>
-                Node.js Production Process Manager with a built-in Load
-                Balancer.
-              </p>
+              <h3>
+                <a href="https://pm2.io/" target="_blank">
+                  pm2
+                </a>
+              </h3>
+              <p>Process manager with file watcher for fast development.</p>
             </div>
           </article>
         </div>
