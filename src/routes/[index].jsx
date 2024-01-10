@@ -1,3 +1,4 @@
+import { escapeEntities } from "jsx-async-runtime";
 import Layout from "../components/Layout";
 
 /**
@@ -28,56 +29,74 @@ export default function Homepage({}) {
           </ul>
         </div>
         <span class="image object">
-          <img src="/images/placeholder.webp" alt="" />
+          <pre>
+            <code class="language-js">
+              {escapeEntities(`
+export default async function Products() {
+  const { products } = await (
+    await fetch("https://dummyjson.com/products")
+  ).json();
+
+  return (
+    <Layout title="Products">
+      {products.map(({ id, title, description }) => (
+        <article>
+          <h2><a href={id}>{title}</a></h2>
+          <p>{description}</p>
+        </article>
+      ))}
+    </Layout>
+  );
+}`).trim()}
+            </code>
+          </pre>
         </span>
       </section>
 
       <section>
         <header class="major">
-          <h2>Erat lacinia</h2>
+          <h2>Built on a reliable stack</h2>
         </header>
         <div class="features">
           <article>
             <span class="icon fa-gem"></span>
             <div class="content">
-              <h3>Portitor ullamcorper</h3>
+              <h3>Fastify</h3>
               <p>
-                Aenean ornare velit lacus, ac varius enim lorem ullamcorper
-                dolore. Proin aliquam facilisis ante interdum. Sed nulla amet
-                lorem feugiat tempus aliquam.
-              </p>
-            </div>
-          </article>
-          <article>
-            <span class="icon solid fa-paper-plane"></span>
-            <div class="content">
-              <h3>Sapien veroeros</h3>
-              <p>
-                Aenean ornare velit lacus, ac varius enim lorem ullamcorper
-                dolore. Proin aliquam facilisis ante interdum. Sed nulla amet
-                lorem feugiat tempus aliquam.
-              </p>
-            </div>
-          </article>
-          <article>
-            <span class="icon solid fa-rocket"></span>
-            <div class="content">
-              <h3>Quam lorem ipsum</h3>
-              <p>
-                Aenean ornare velit lacus, ac varius enim lorem ullamcorper
-                dolore. Proin aliquam facilisis ante interdum. Sed nulla amet
-                lorem feugiat tempus aliquam.
+                Fastify is a web framework highly focused on providing the best
+                developer experience with the least overhead and a powerful
+                plugin architecture.
               </p>
             </div>
           </article>
           <article>
             <span class="icon solid fa-signal"></span>
             <div class="content">
-              <h3>Sed magna finibus</h3>
+              <h3>jsx-async-runtime</h3>
               <p>
-                Aenean ornare velit lacus, ac varius enim lorem ullamcorper
-                dolore. Proin aliquam facilisis ante interdum. Sed nulla amet
-                lorem feugiat tempus aliquam.
+                An asynchronous JSX runtime without dependencies to be used as
+                server-side template engine.
+              </p>
+            </div>
+          </article>
+          <article>
+            <span class="icon solid fa-rocket"></span>
+            <div class="content">
+              <h3>esbuild</h3>
+              <p>
+                The main goal of the esbuild bundler project is to bring about a
+                new era of build tool performance, and create an easy-to-use
+                modern bundler along the way.
+              </p>
+            </div>
+          </article>
+          <article>
+            <span class="icon solid fa-paper-plane"></span>
+            <div class="content">
+              <h3>PM2</h3>
+              <p>
+                Node.js Production Process Manager with a built-in Load
+                Balancer.
               </p>
             </div>
           </article>
@@ -112,78 +131,6 @@ export default function Homepage({}) {
               <img src="/images/placeholder.webp" alt="" />
             </a>
             <h3>Nulla amet dolore</h3>
-            <p>
-              Aenean ornare velit lacus, ac varius enim lorem ullamcorper
-              dolore. Proin aliquam facilisis ante interdum. Sed nulla amet
-              lorem feugiat tempus aliquam.
-            </p>
-            <ul class="actions">
-              <li>
-                <a href="#" class="button">
-                  More
-                </a>
-              </li>
-            </ul>
-          </article>
-          <article>
-            <a href="#" class="image">
-              <img src="/images/placeholder.webp" alt="" />
-            </a>
-            <h3>Tempus ullamcorper</h3>
-            <p>
-              Aenean ornare velit lacus, ac varius enim lorem ullamcorper
-              dolore. Proin aliquam facilisis ante interdum. Sed nulla amet
-              lorem feugiat tempus aliquam.
-            </p>
-            <ul class="actions">
-              <li>
-                <a href="#" class="button">
-                  More
-                </a>
-              </li>
-            </ul>
-          </article>
-          <article>
-            <a href="#" class="image">
-              <img src="/images/placeholder.webp" alt="" />
-            </a>
-            <h3>Sed etiam facilis</h3>
-            <p>
-              Aenean ornare velit lacus, ac varius enim lorem ullamcorper
-              dolore. Proin aliquam facilisis ante interdum. Sed nulla amet
-              lorem feugiat tempus aliquam.
-            </p>
-            <ul class="actions">
-              <li>
-                <a href="#" class="button">
-                  More
-                </a>
-              </li>
-            </ul>
-          </article>
-          <article>
-            <a href="#" class="image">
-              <img src="/images/placeholder.webp" alt="" />
-            </a>
-            <h3>Feugiat lorem aenean</h3>
-            <p>
-              Aenean ornare velit lacus, ac varius enim lorem ullamcorper
-              dolore. Proin aliquam facilisis ante interdum. Sed nulla amet
-              lorem feugiat tempus aliquam.
-            </p>
-            <ul class="actions">
-              <li>
-                <a href="#" class="button">
-                  More
-                </a>
-              </li>
-            </ul>
-          </article>
-          <article>
-            <a href="#" class="image">
-              <img src="/images/placeholder.webp" alt="" />
-            </a>
-            <h3>Amet varius aliquam</h3>
             <p>
               Aenean ornare velit lacus, ac varius enim lorem ullamcorper
               dolore. Proin aliquam facilisis ante interdum. Sed nulla amet

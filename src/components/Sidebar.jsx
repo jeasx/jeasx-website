@@ -11,38 +11,49 @@ export default function Sidebar() {
               <a href="/">Homepage</a>
             </li>
             <li>
-              <a href="/generic">Get started</a>
+              <a href="/generic">Getting started</a>
+            </li>
+            <li>
+              <a href="/elements">Philosophy</a>
             </li>
             <li>
               <a href="/elements">Elements</a>
             </li>
             <li>
-              <span>Another Submenu</span>
+              <span>Routes</span>
               <ul>
                 <li>
-                  <a href="#">Lorem Dolor</a>
+                  <a href="#">Regular Endpoints</a>
                 </li>
                 <li>
-                  <a href="#">Ipsum Adipiscing</a>
+                  <a href="#">Dynamic Endpoints</a>
                 </li>
                 <li>
-                  <a href="#">Tempus Magna</a>
-                </li>
-                <li>
-                  <a href="#">Feugiat Veroeros</a>
+                  <a href="#">Guards</a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#">Etiam Dolore</a>
+              <span>Browser</span>
+              <ul>
+                <li>
+                  <a href="#">Javascript</a>
+                </li>
+                <li>
+                  <a href="#">CSS</a>
+                </li>
+              </ul>
             </li>
             <li>
-              <a href="#">Adipiscing</a>
+              <a href="#">FAQ</a>
+            </li>
+            <li>
+              <a href="#">Resources</a>
             </li>
           </ul>
         </nav>
 
-        <section>
+        {/* <section>
           <header class="major">
             <h2>Ante interdum</h2>
           </header>
@@ -64,40 +75,30 @@ export default function Sidebar() {
               </a>
             </li>
           </ul>
-        </section>
+        </section> */}
 
         <section>
           <header class="major">
             <h2>Get in touch</h2>
           </header>
           <p>
-            Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit
-            lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam
-            facilisis ante interdum. Sed nulla amet lorem feugiat tempus
-            aliquam.
+            The development of jeasx is sponsored by
+            <a href="https://www.neoskop.de" target="_blank">
+              Neoskop.
+            </a>
+            If you want to get in touch, feel free to contact us.
           </p>
           <ul class="contact">
             <li class="icon solid fa-envelope">
-              <a href="#">information@untitled.tld</a>
-            </li>
-            <li class="icon solid fa-phone">(000) 000-0000</li>
-            <li class="icon solid fa-home">
-              1234 Somewhere Road #8254
-              <br />
-              Nashville, TN 00000-0000
+              <a href="mailto:jeasx@neoskop.de">jeasx@neoskop.de</a>
             </li>
           </ul>
         </section>
-
         <footer id="footer">
-          <p class="copyright">
-            &copy; Untitled. All rights reserved. Demo Images:{" "}
-            <a href="https://unsplash.com">Unsplash</a>. Design:{" "}
-            <a href="https://html5up.net">HTML5 UP</a>.
-          </p>
+          <p class="copyright">&copy; jeasx.dev</p>
         </footer>
       </div>
-      <a id="sidebar-toggle" href="#" class="toggle">
+      <a id="sidebar-toggle" href="javascript: return void;" class="toggle">
         Toggle
       </a>
     </div>

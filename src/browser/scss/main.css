@@ -2959,7 +2959,7 @@ button:disabled,
   -ms-transition: left 0.5s ease;
   transition: left 0.5s ease;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-  display: none;
+  display: block;
   position: absolute;
   top: 0.75em;
   left: 26em;
@@ -3183,10 +3183,10 @@ button:disabled,
 }
 @media screen and (orientation: portrait) {
   #banner {
-    -moz-flex-direction: column-reverse;
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
+    -moz-flex-direction: column;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
   }
   #banner h1 br {
     display: none;
