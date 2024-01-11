@@ -510,7 +510,7 @@ body,
 input,
 select,
 textarea {
-  color: #7f888f;
+  color: #51595d;
   font-weight: 400;
   font-size: 13pt;
   line-height: 1.65;
@@ -1951,7 +1951,7 @@ input[type=radio] + label {
   cursor: pointer;
   padding-right: 0.75em;
   padding-left: 2.4em;
-  color: #7f888f;
+  color: #51595d;
   font-weight: 400;
   font-size: 1em;
 }
@@ -3075,7 +3075,7 @@ button:disabled,
     top: 1em;
     left: 1em;
     border-radius: 0.375em;
-    background: rgba(222, 225, 226, 0.75);
+    background: rgba(171, 178, 182, 0.75);
     width: 4.25em;
     height: 3.25em;
     content: "";

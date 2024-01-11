@@ -7,7 +7,7 @@ export default function Header() {
       <ul class="icons">
         <li>
           <a href="https://github.com/jeasx/jeasx" class="icon">
-            <img src="/images/github.svg" width="32" height="32" alt="GitHub" />
+            <img src="/images/github.svg" width="32" height="32" alt="" />
             <span class="label">GitHub</span>
           </a>
         </li>
