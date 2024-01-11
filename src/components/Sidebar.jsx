@@ -14,33 +14,33 @@ export default function Sidebar() {
               <a href="/philosophy">Philosophy</a>
             </li>
             <li>
-              <a href="/getting-started">Getting started</a>
+              <a href="/quickstart">Quickstart</a>
             </li>
             <li>
-              <span>Routes</span>
+              <a href="/routes">Routes</a>
               <ul>
                 <li>
-                  <a href="/endpoints">Endpoints</a>
+                  <a href="/routes#endpoints">Endpoints</a>
                 </li>
                 <li>
-                  <a href="/paths">Paths</a>
+                  <a href="/routes#paths">Paths</a>
                 </li>
                 <li>
-                  <a href="/guards">Guards</a>
+                  <a href="/routes#guards">Guards</a>
                 </li>
               </ul>
             </li>
             <li>
-              <span>Browser</span>
+              <a href="/browser">Browser</a>
               <ul>
                 <li>
-                  <a href="/assets">Assets</a>
+                  <a href="/browser#assets">Assets</a>
                 </li>
                 <li>
-                  <a href="/css">CSS</a>
+                  <a href="/browser#css">CSS</a>
                 </li>
                 <li>
-                  <a href="/javascript">Javascript</a>
+                  <a href="/browser#javascript">Javascript</a>
                 </li>
               </ul>
             </li>

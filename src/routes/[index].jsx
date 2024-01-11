@@ -26,7 +26,7 @@ export default function Homepage({}) {
           </p>
           <ul class="actions">
             <li>
-              <a href="#" class="button big">
+              <a href="/philosophy" class="button big">
                 Learn More
               </a>
             </li>
@@ -129,7 +129,7 @@ export default async function Products() {
             </p>
             <ul class="actions">
               <li>
-                <a href="#" class="button">
+                <a href="/philosophy" class="button">
                   More
                 </a>
               </li>
@@ -147,7 +147,7 @@ export default async function Products() {
             </p>
             <ul class="actions">
               <li>
-                <a href="#" class="button">
+                <a href="/quickstart" class="button">
                   More
                 </a>
               </li>
