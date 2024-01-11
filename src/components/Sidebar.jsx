@@ -11,25 +11,22 @@ export default function Sidebar() {
               <a href="/">Homepage</a>
             </li>
             <li>
-              <a href="/generic">Getting started</a>
+              <a href="/philosophy">Philosophy</a>
             </li>
             <li>
-              <a href="/elements">Philosophy</a>
-            </li>
-            <li>
-              <a href="/elements">Elements</a>
+              <a href="/getting-started">Getting started</a>
             </li>
             <li>
               <span>Routes</span>
               <ul>
                 <li>
-                  <a href="#">Regular Endpoints</a>
+                  <a href="/endpoints">Endpoints</a>
                 </li>
                 <li>
-                  <a href="#">Dynamic Endpoints</a>
+                  <a href="/paths">Paths</a>
                 </li>
                 <li>
-                  <a href="#">Guards</a>
+                  <a href="/guards">Guards</a>
                 </li>
               </ul>
             </li>
@@ -37,18 +34,24 @@ export default function Sidebar() {
               <span>Browser</span>
               <ul>
                 <li>
-                  <a href="#">Javascript</a>
+                  <a href="/assets">Assets</a>
                 </li>
                 <li>
-                  <a href="#">CSS</a>
+                  <a href="/css">CSS</a>
+                </li>
+                <li>
+                  <a href="/javascript">Javascript</a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#">FAQ</a>
+              <a href="/deployment">Deployment</a>
             </li>
             <li>
-              <a href="#">Resources</a>
+              <a href="/faq">FAQ</a>
+            </li>
+            <li>
+              <a href="/resources">Resources</a>
             </li>
           </ul>
         </nav>
@@ -95,7 +98,7 @@ export default function Sidebar() {
           </ul>
         </section>
         <footer id="footer">
-          <p class="copyright">&copy; jeasx.dev</p>
+          <p class="copyright">&copy; Maik Jablonski (Neoskop GmbH)</p>
         </footer>
       </div>
       <a id="sidebar-toggle" href="javascript: return void;" class="toggle">

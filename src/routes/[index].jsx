@@ -17,11 +17,12 @@ export default function Homepage({}) {
             <p>The Ease of JSX with the power of SSR</p>
           </header>
           <p>
-            Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin
-            aliquam facilisis ante interdum congue. Integer mollis, nisl amet
-            convallis, porttitor magna ullamcorper, amet egestas mauris. Ut
-            magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas.
-            Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.
+            Jeasx seamlessly combines the modern developer experience of using
+            JSX with the proven benefits of server-side rendering, resulting in
+            a powerful and streamlined development approach. By eliminating
+            unnecessary complexity and offering fine-grained control over HTML,
+            CSS, and JavaScript, Jeasx empowers developers to create exceptional
+            web applications effortlessly.
           </p>
           <ul class="actions">
             <li>
@@ -58,7 +59,7 @@ export default async function Products() {
 
       <section>
         <header class="major">
-          <h2>Built on a proven stack</h2>
+          <h2>Built on a robust and proven tech stack</h2>
         </header>
         <div class="features">
           <article>
@@ -113,14 +114,14 @@ export default async function Products() {
 
       <section>
         <header class="major">
-          <h2>Ipsum sed dolor</h2>
+          <h2>Learn more</h2>
         </header>
         <div class="posts">
           <article>
-            <a href="#" class="image">
+            {/* <a href="#" class="image">
               <img src="/images/placeholder.webp" alt="" />
-            </a>
-            <h3>Interdum aenean</h3>
+            </a> */}
+            <h3>Philosophy</h3>
             <p>
               Aenean ornare velit lacus, ac varius enim lorem ullamcorper
               dolore. Proin aliquam facilisis ante interdum. Sed nulla amet
@@ -135,10 +136,10 @@ export default async function Products() {
             </ul>
           </article>
           <article>
-            <a href="#" class="image">
+            {/* <a href="#" class="image">
               <img src="/images/placeholder.webp" alt="" />
-            </a>
-            <h3>Nulla amet dolore</h3>
+            </a> */}
+            <h3>Getting started</h3>
             <p>
               Aenean ornare velit lacus, ac varius enim lorem ullamcorper
               dolore. Proin aliquam facilisis ante interdum. Sed nulla amet
