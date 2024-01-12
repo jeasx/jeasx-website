@@ -1,5 +1,5 @@
-import { escapeEntities } from "jsx-async-runtime";
 import Layout from "../components/Layout";
+import escapeHtml from "../utils/escapeHtml";
 
 /**
  * @param {import("./types").RouteProps} props
@@ -17,12 +17,12 @@ export default function Homepage({}) {
             <p>The Ease of JSX with the power of SSR</p>
           </header>
           <p>
-            Jeasx seamlessly combines the modern developer experience of using
-            JSX with the proven benefits of server-side rendering, resulting in
-            a powerful and streamlined development approach. By eliminating
-            unnecessary complexity and offering fine-grained control over HTML,
-            CSS, and JavaScript, Jeasx empowers developers to create exceptional
-            web applications effortlessly.
+            Jeasx seamlessly integrates the modern developer experience of using
+            asynchronous JSX with the proven benefits of server-side rendering,
+            resulting in a robust and streamlined development approach. By
+            eliminating unnecessary complexity and providing developers with
+            precise control over HTML, CSS, and JavaScript, Jeasx empowers them
+            to craft exceptional web experiences and applications.
           </p>
           <ul class="actions">
             <li>
@@ -35,7 +35,7 @@ export default function Homepage({}) {
         <span class="image object">
           <pre>
             <code class="language-js">
-              {escapeEntities(`
+              {escapeHtml`
 export default async function Products() {
   const { products } = await (
     await fetch("https://dummyjson.com/products")
@@ -51,7 +51,7 @@ export default async function Products() {
       ))}
     </Layout>
   );
-}`).trim()}
+}`}
             </code>
           </pre>
         </span>
