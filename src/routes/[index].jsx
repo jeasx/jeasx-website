@@ -1,10 +1,10 @@
 import Layout from "../components/Layout";
-import escapeHtml from "../utils/escapeHtml";
+import codeToHtml from "../utils/codeToHtml";
 
 /**
  * @param {import("./types").RouteProps} props
  */
-export default function Homepage({}) {
+export default async function Homepage({}) {
   return (
     <Layout
       title="jeasx - The Ease of JSX with the power of SSR"
@@ -33,9 +33,9 @@ export default function Homepage({}) {
           </ul>
         </div>
         <span class="image object">
-          <pre>
-            <code class="language-js">
-              {escapeHtml`
+          {codeToHtml(
+            "jsx",
+            `
 export default async function Products() {
   const { products } = await (
     await fetch("https://dummyjson.com/products")
@@ -51,9 +51,8 @@ export default async function Products() {
       ))}
     </Layout>
   );
-}`}
-            </code>
-          </pre>
+}`
+          )}
         </span>
       </section>
 
