@@ -19,6 +19,7 @@ export default function Layout({
           <title>{title}</title>
           <meta name="description" content={description} />
           <meta charset="utf-8" />
+          <meta name="view-transition" content="same-origin" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link
             rel="stylesheet"
