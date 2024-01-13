@@ -33,9 +33,7 @@ export default async function Homepage({}) {
           </ul>
         </div>
         <span class="image object">
-          {codeToHtml(
-            "jsx",
-            `
+          {codeToHtml(`
 export default async function Products() {
   const { products } = await (
     await fetch("https://dummyjson.com/products")
@@ -51,14 +49,13 @@ export default async function Products() {
       ))}
     </Layout>
   );
-}`
-          )}
+}`)}
         </span>
       </section>
 
       <section>
         <header class="major">
-          <h2>Built on a robust and proven tech stack</h2>
+          <h2>Built on top of a proven tech stack</h2>
         </header>
         <div class="features">
           <article>
@@ -69,7 +66,12 @@ export default async function Products() {
                   fastify
                 </a>
               </h3>
-              <p>Fast and low overhead web framework.</p>
+              <p>
+                Fastify is a high-performance web framework that excels at
+                delivering an exceptional developer experience with minimal
+                overhead. Fastify stands out as one of the fastest web
+                frameworks available.
+              </p>
             </div>
           </article>
           <article>
@@ -83,7 +85,11 @@ export default async function Products() {
                   jsx-async-runtime
                 </a>
               </h3>
-              <p>Asynchronous JSX as powerful templating tool.</p>
+              <p>
+                JSX is an outstanding templating technology that simplifies web
+                development. By utilizing an asynchronous JSX runtime, the
+                development process becomes even more straightforward.
+              </p>
             </div>
           </article>
           <article>
@@ -94,7 +100,11 @@ export default async function Products() {
                   esbuild
                 </a>
               </h3>
-              <p>An extremely fast bundler for the web.</p>
+              <p>
+                esbuild is an bundler for JavaScript. It is written in Go, which
+                enables it to achieve remarkable performance gains. esbuild
+                supports TypeScript, JSX,tree-shaking and more.
+              </p>
             </div>
           </article>
           <article>
@@ -105,7 +115,11 @@ export default async function Products() {
                   pm2
                 </a>
               </h3>
-              <p>Process manager with file watcher for fast development.</p>
+              <p>
+                PM2's intuitive configuration options and extensive feature set
+                make it a go-to choice for developers looking to streamline
+                their workflow and maximize productivity.
+              </p>
             </div>
           </article>
         </div>
@@ -122,14 +136,15 @@ export default async function Products() {
             </a> */}
             <h3>Philosophy</h3>
             <p>
-              Aenean ornare velit lacus, ac varius enim lorem ullamcorper
-              dolore. Proin aliquam facilisis ante interdum. Sed nulla amet
-              lorem feugiat tempus aliquam.
+              Jeasx simplifies web development by removing unnecessary
+              complexity. It prioritizes HTML and CSS as the foundational layer
+              for web development, while offering the flexibility to enhance
+              functionality with a touch of JavaScript.
             </p>
             <ul class="actions">
               <li>
                 <a href="/philosophy" class="button">
-                  More
+                  Read more...
                 </a>
               </li>
             </ul>
@@ -140,14 +155,15 @@ export default async function Products() {
             </a> */}
             <h3>Getting started</h3>
             <p>
-              Aenean ornare velit lacus, ac varius enim lorem ullamcorper
-              dolore. Proin aliquam facilisis ante interdum. Sed nulla amet
-              lorem feugiat tempus aliquam.
+              Start your project in seconds with a single command. Whether you
+              prefer a traditional Node server or a serverless environment like
+              Vercel, Jeasx gives you the flexibility to deploy your application
+              the way you want.
             </p>
             <ul class="actions">
               <li>
                 <a href="/quickstart" class="button">
-                  More
+                  Read more...
                 </a>
               </li>
             </ul>

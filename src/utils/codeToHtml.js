@@ -5,6 +5,6 @@ const highlighter = await getHighlighter({
   langs: ["jsx"],
 });
 
-export default function codeToHtml(lang, code) {
+export default function codeToHtml(code, lang = "jsx") {
   return highlighter.codeToHtml(code.trim(), { lang });
 }
