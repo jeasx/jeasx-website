@@ -101,7 +101,7 @@ export default async function Products() {
                 </a>
               </h3>
               <p>
-                esbuild is an bundler for JavaScript. It is written in Go, which
+                esbuild is a bundler for JavaScript. It is written in Go, which
                 enables it to achieve remarkable performance gains. esbuild
                 supports TypeScript, JSX,tree-shaking and more.
               </p>
@@ -136,10 +136,11 @@ export default async function Products() {
             </a> */}
             <h3>Philosophy</h3>
             <p>
-              Jeasx simplifies web development by removing unnecessary
-              complexity. It prioritizes HTML and CSS as the foundational layer
-              for web development, while offering the flexibility to enhance
-              functionality with a touch of JavaScript.
+              Jeasx embraces modern HTML and CSS as the core building blocks for
+              web development, complemented by server-side rendering. It
+              provides the flexibility to seamlessly enhance functionality using
+              JavaScript, empowering developers to create dynamic web sites with
+              minimal resource consumption.
             </p>
             <ul class="actions">
               <li>
@@ -155,10 +156,11 @@ export default async function Products() {
             </a> */}
             <h3>Getting started</h3>
             <p>
-              Start your project in seconds with a single command. Whether you
-              prefer a traditional Node server or a serverless environment like
-              Vercel, Jeasx gives you the flexibility to deploy your application
-              the way you want.
+              Start your project instantly with a single command, enabling
+              seamless development with zero turnarounds. Whether you opt for a
+              traditional Node server or a serverless environment like Vercel,
+              Jeasx provides the flexibility to deploy your application
+              according to your preferences.
             </p>
             <ul class="actions">
               <li>

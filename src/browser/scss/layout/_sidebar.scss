@@ -86,9 +86,9 @@
     }
   }
 
-  &.inactive {
-    margin-left: (_size(sidebar-width) * -1);
-  }
+  // &.inactive {
+  //   margin-left: (_size(sidebar-width) * -1);
+  // }
 
   @include breakpoint("<=xlarge") {
     $pad: calc(1.5em / 0.9);
@@ -106,6 +106,7 @@
     }
 
     .toggle {
+      display: none;
       left: _size(sidebar-width-alt);
       width: 5em;
       height: 6.25em;
@@ -117,9 +118,9 @@
       }
     }
 
-    &.inactive {
-      margin-left: (_size(sidebar-width-alt) * -1);
-    }
+    // &.inactive {
+    //   margin-left: unset; /*(_size(sidebar-width-alt) * -1);*/
+    // }
   }
 
   @include breakpoint("<=large") {
@@ -131,6 +132,7 @@
     height: 100%;
 
     &.inactive {
+      margin-left: (_size(sidebar-width-alt) * -1);
       box-shadow: none;
     }
 
@@ -152,6 +154,7 @@
     }
 
     .toggle {
+      display: block;
       width: 6em;
       text-indent: 6em;
 

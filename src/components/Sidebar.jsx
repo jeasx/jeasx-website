@@ -98,10 +98,10 @@ export default function Sidebar() {
           </ul>
         </section>
         <footer id="footer">
-          <p class="copyright">&copy; Maik Jablonski (Neoskop GmbH)</p>
+          <p class="copyright">&copy; 2024 Maik Jablonski (Neoskop GmbH)</p>
         </footer>
       </div>
-      <a id="sidebar-toggle" href="javascript: return void;" class="toggle">
+      <a id="sidebar-toggle" href="javascript: void(0);" class="toggle">
         Toggle
       </a>
     </div>
