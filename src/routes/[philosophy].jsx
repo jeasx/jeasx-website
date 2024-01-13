@@ -8,7 +8,7 @@ export default function Generic({}) {
     <Layout title="jeasx - JSX with Ease" description="Homepage">
       <section>
         <header class="main">
-          <h1>Generic</h1>
+          <h1>Philosophy</h1>
         </header>
 
         <span class="image main">
