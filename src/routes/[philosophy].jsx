@@ -11,9 +11,9 @@ export default function Generic({}) {
           <h1>Philosophy</h1>
         </header>
 
-        <span class="image main">
+        {/* <span class="image main">
           <img src="/images/placeholder.webp" alt="" />
-        </span>
+        </span> */}
 
         <p>
           Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis
