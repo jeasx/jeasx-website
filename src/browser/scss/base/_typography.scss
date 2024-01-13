@@ -12,21 +12,9 @@ select,
 textarea {
   color: _palette(fg);
   font-weight: _font(weight);
-  font-size: 13pt;
+  font-size: 11pt;
   line-height: 1.65;
   font-family: _font(family);
-
-  @include breakpoint("<=xlarge") {
-    font-size: 11pt;
-  }
-
-  @include breakpoint("<=large") {
-    font-size: 10pt;
-  }
-
-  @include breakpoint("<=xxsmall") {
-    font-size: 9pt;
-  }
 }
 
 a {
