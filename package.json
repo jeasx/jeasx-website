@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "jeasx": "0.0.8",
-    "sass": "1.69.7",
+    "sass": "1.70.0",
     "shiki": "0.14.7"
   }
 }
