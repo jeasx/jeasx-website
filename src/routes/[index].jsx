@@ -43,7 +43,7 @@ export default async function Products() {
     <Layout title="Products">
       {products.map(({ id, title, description }) => (
         <article>
-          <h2><a href={id}>{title}</a></h2>
+          <a href={id}>{title}</a>
           <p>{description}</p>
         </article>
       ))}
@@ -103,7 +103,7 @@ export default async function Products() {
               <p>
                 esbuild is a bundler for JavaScript. It is written in Go, which
                 enables it to achieve remarkable performance gains. esbuild
-                supports TypeScript, JSX,tree-shaking and more.
+                supports JSX, TypeScript, tree-shaking and more.
               </p>
             </div>
           </article>
@@ -137,7 +137,7 @@ export default async function Products() {
             <h3>Philosophy</h3>
             <p>
               Jeasx embraces modern HTML and CSS as the core building blocks for
-              web development, complemented by server-side rendering. It
+              web development, complemented by server-side rendered JSX. It
               provides the flexibility to seamlessly enhance functionality using
               JavaScript, empowering developers to create dynamic web sites with
               minimal resource consumption.
