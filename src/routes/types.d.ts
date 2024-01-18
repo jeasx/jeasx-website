@@ -1,5 +1,3 @@
-/* This file is an example. Delete it at will. */
-
 import { FastifyReply } from "fastify/types/reply";
 import { FastifyRequest } from "fastify/types/request";
 

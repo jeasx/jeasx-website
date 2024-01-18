@@ -1,5 +1,3 @@
-/* This file is an example. Delete it at will. */
-
 import Layout from "../components/Layout";
 
 /**
