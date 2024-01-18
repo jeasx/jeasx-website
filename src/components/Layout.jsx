@@ -23,9 +23,9 @@ export default function Layout({
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link
             rel="stylesheet"
-            href={`/index.css?${process.env.BUILD_TIME}`}
+            href={`/${process.env.BUILD_TIME}/index.css`}
           />
-          <script src={`/index.js?${process.env.BUILD_TIME}`} defer></script>
+          <script src={`/${process.env.BUILD_TIME}/index.js`} defer></script>
         </head>
         <body>
           <div id="wrapper">
