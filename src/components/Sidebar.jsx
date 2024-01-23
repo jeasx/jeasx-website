@@ -40,12 +40,12 @@ export default function Sidebar() {
                   <a href="/browser#css">CSS</a>
                 </li>
                 <li>
-                  <a href="/browser#javascript">Javascript</a>
+                  <a href="/browser#javascript">JavaScript</a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="/resources">Resources</a>
+              <a href="/showcase">Showcase</a>
             </li>
             <li>
               <a href="/faq">FAQ</a>

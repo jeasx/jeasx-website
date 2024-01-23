@@ -4,7 +4,7 @@ import codeToHtml from "../utils/codeToHtml";
 /**
  * @param {import("./types").RouteProps} props
  */
-export default function Generic({}) {
+export default function Quickstart({}) {
   const cmds = [
     "npm create jeasx@latest",
     "cd jeasx-quickstart",
