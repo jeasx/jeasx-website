@@ -45,13 +45,10 @@ export default function Sidebar() {
               </ul>
             </li>
             <li>
-              <a href="/deployment">Deployment</a>
+              <a href="/resources">Resources</a>
             </li>
             <li>
               <a href="/faq">FAQ</a>
-            </li>
-            <li>
-              <a href="/resources">Resources</a>
             </li>
           </ul>
         </nav>

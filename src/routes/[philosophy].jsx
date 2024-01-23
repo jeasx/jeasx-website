@@ -5,7 +5,10 @@ import Layout from "../components/Layout";
  */
 export default function Generic({}) {
   return (
-    <Layout title="jeasx - JSX with Ease" description="Homepage">
+    <Layout
+      title="Philosophy"
+      description="Returning to the future: from traditional server-side rendering to a modern developer experience."
+    >
       <section>
         <header class="main">
           <h1>Philosophy</h1>
@@ -30,6 +33,9 @@ export default function Generic({}) {
           simplifies web development, making it more accessible for developers
           to create powerful and efficient websites.
         </p>
+        <a href="/quickstart" class="button">
+          Get started
+        </a>
       </section>
     </Layout>
   );

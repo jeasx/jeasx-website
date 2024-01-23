@@ -12,7 +12,7 @@ export default function Generic({}) {
   ];
 
   return (
-    <Layout title="jeasx - JSX with Ease" description="Homepage">
+    <Layout title="Quickstart" description="How to get started with jeasx">
       <section>
         <header class="main">
           <h1>Quickstart</h1>
@@ -41,6 +41,9 @@ export default function Generic({}) {
           </a>
           in a browser of your choice.
         </p>
+        <a href="/routes" class="button">
+          Learn about routing and endpoints
+        </a>
       </section>
     </Layout>
   );
