@@ -34,13 +34,10 @@ export default function Sidebar() {
               <a href="/browser">Browser</a>
               <ul>
                 <li>
-                  <a href="/browser#assets">Assets</a>
+                  <a href="/browser#static-assets">Static Assets</a>
                 </li>
                 <li>
-                  <a href="/browser#css">CSS</a>
-                </li>
-                <li>
-                  <a href="/browser#javascript">JavaScript</a>
+                  <a href="/browser#css-js">CSS &amp; JavaScript</a>
                 </li>
               </ul>
             </li>

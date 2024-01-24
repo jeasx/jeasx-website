@@ -167,6 +167,28 @@ export default function AuthorizationGuard({ request, reply }) {
   }
 }
 `)}
+        <p>
+          Additionally, a guard has the capability to return an object, which
+          will serve as props for all endpoints protected by the guard. This
+          feature enables the creation of endpoints that are entirely
+          independent from the request object, simplifying component testing.
+        </p>
+        {codeToHtml(`
+export default function PropsGuard({ request }) {
+  const body = request.body || {};
+
+  const number = +body["number"];
+  const submit = body["submit"];
+ 
+  return { number, submit };
+}
+`)}
+
+        {codeToHtml(`
+export default function View({ number, submit }) {
+  return <p>{submit ? number : "No number"}</p>;
+}
+`)}
       </section>
     </Layout>
   );
