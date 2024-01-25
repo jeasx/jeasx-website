@@ -41,6 +41,10 @@ export default function Routes({}) {
           <th width="50%">URL</th>
         </tr>
         <tr>
+          <td>src/routes/[index].jsx</td>
+          <td>/</td>
+        </tr>
+        <tr>
           <td>src/routes/a/b/[you-name-it].jsx</td>
           <td>/a/b/you-name-it</td>
         </tr>
