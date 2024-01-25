@@ -2148,6 +2148,7 @@ dl dt {
   display: block;
   margin: 0 0 1em 0;
   font-weight: 600;
+  font-size: large;
 }
 dl dd {
   margin-left: 2em;

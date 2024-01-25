@@ -1,15 +1,12 @@
+import Code from "../components/Code";
 import Layout from "../components/Layout";
-import codeToHtml from "../utils/codeToHtml";
 
 /**
  * @param {import("./types").RouteProps} props
  */
 export default async function Homepage({}) {
   return (
-    <Layout
-      title="jeasx - The Ease of JSX with the power of SSR"
-      description="Homepage"
-    >
+    <Layout title="jeasx" description="The Ease of JSX with the power of SSR">
       <section id="banner">
         <div class="content">
           <header>
@@ -33,7 +30,8 @@ export default async function Homepage({}) {
           </ul>
         </div>
         <span class="image object">
-          {codeToHtml(`
+          <Code
+            source={`
 export default async function Products() {
   const { products } = await (
     await fetch("https://dummyjson.com/products")
@@ -49,7 +47,8 @@ export default async function Products() {
       ))}
     </Layout>
   );
-}`)}
+}`}
+          />
         </span>
       </section>
 

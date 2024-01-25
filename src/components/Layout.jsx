@@ -32,7 +32,17 @@ export default function Layout({
             <div id="main">
               <div class="inner">
                 <Header />
-                {children}
+                {path !== "/" ? (
+                  <section>
+                    <header class="main">
+                      <h1>{title}</h1>
+                      <h2>{description}</h2>
+                    </header>
+                    {children}
+                  </section>
+                ) : (
+                  children
+                )}
               </div>
             </div>
             <Sidebar />
