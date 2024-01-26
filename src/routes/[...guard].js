@@ -13,6 +13,10 @@ export default function RootGuard({ request, reply }) {
     );
   }
 
+  if (process.env.NODE_ENV !== "development") {
+    reply.header("Cache-Control", "public, max-age=600, s-maxage=600");
+  }
+
   // Set the request and reply objects in the request context
   requestContext.set("request", request);
   requestContext.set("reply", reply);
