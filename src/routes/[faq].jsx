@@ -19,7 +19,7 @@ export default function Faq({}) {
               fastity-request-context
             </a>
             by default. You can populate the request context in an endpoint
-            (e.g., a guard) using the following code:
+            (e.g., a guard):
           </p>
           <Code
             source={`
@@ -32,7 +32,7 @@ export default function RootGuard({ request, reply }) {
           />
           <p>
             Later, you can access the context in any server-side code of your
-            project using the following code:
+            project:
           </p>
           <Code
             source={`

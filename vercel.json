@@ -10,16 +10,5 @@
     "api/vercel.js": {
       "includeFiles": "{node_modules,dist,public}/**/*"
     }
-  },
-  "headers": [
-    {
-      "source": "/(.*).(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "immutable, max-age=2678400, s-maxage=2678400"
-        }
-      ]
-    }
-  ]
+  }
 }
