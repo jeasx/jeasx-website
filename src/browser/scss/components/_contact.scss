@@ -15,20 +15,25 @@ ul.contact {
     position: relative;
     margin: 1.5em 0 0 0;
     border-top: solid 1px _palette(border);
-    padding: 1.5em 0 0 3em;
+    padding: 0;
 
-    &:before {
-      display: inline-block;
-      position: absolute;
-      top: calc(1.5em / 1.5);
-      left: 0;
-      width: 1.5em;
-      height: 1.125em;
-      color: _palette(accent);
-      font-size: 1.5em;
-      line-height: 1.125em;
-      text-align: center;
+    svg {
+      transform: translateY(5px);
+      margin-right: 8px;
     }
+
+    // &:before {
+    //   display: inline-block;
+    //   position: absolute;
+    //   top: calc(1.5em / 1.5);
+    //   left: 0;
+    //   width: 1.5em;
+    //   height: 1.125em;
+    //   color: _palette(accent);
+    //   font-size: 1.5em;
+    //   line-height: 1.125em;
+    //   text-align: center;
+    // }
 
     &:first-child {
       margin-top: 0;

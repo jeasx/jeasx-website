@@ -1,3 +1,6 @@
+import IconBars from "../icons/bars";
+import IconEnvelope from "../icons/envelope";
+
 export default function Sidebar() {
   return (
     <div id="sidebar" class="inactive">
@@ -86,7 +89,14 @@ export default function Sidebar() {
             If you want to get in touch, feel free to contact us.
           </p>
           <ul class="contact">
-            <li class="icon solid fa-envelope">
+            <li class="icon">
+              <IconEnvelope
+                style={{
+                  width: "20px",
+                  height: "20px",
+                  fill: "#f56a6a",
+                }}
+              />
               <a href="mailto:jeasx@neoskop.de">jeasx@neoskop.de</a>
             </li>
           </ul>
@@ -96,7 +106,7 @@ export default function Sidebar() {
         </footer>
       </div>
       <a id="sidebar-toggle" href="javascript: void(0);" class="toggle">
-        Toggle
+        <IconBars style={{ width: "24px", height: "24px", fill: "#f56a6a" }} />
       </a>
     </div>
   );

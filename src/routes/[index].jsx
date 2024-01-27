@@ -1,10 +1,21 @@
 import Code from "../components/Code";
 import Layout from "../components/Layout";
+import IconCookieBite from "../icons/cookie-bite";
+import IconFileCode from "../icons/file-code";
+import IconRocket from "../icons/rocket";
+import IconStopwatch from "../icons/stopwatch";
 
 /**
  * @param {import("./types").RouteProps} props
  */
 export default async function Homepage({}) {
+  const iconStyle = {
+    width: "32px",
+    height: "32px",
+    transform: "translateY(10px)",
+    fill: "#f56a6a",
+  };
+
   return (
     <Layout title="jeasx" description="The Ease of JSX with the power of SSR">
       <section id="banner">
@@ -58,7 +69,9 @@ export default async function Products() {
         </header>
         <div class="features">
           <article>
-            <span class="icon fa-cookie-bite"></span>
+            <span class="icon">
+              <IconCookieBite style={iconStyle} />
+            </span>
             <div class="content">
               <h3>
                 <a href="https://fastify.dev/" target="_blank">
@@ -74,7 +87,9 @@ export default async function Products() {
             </div>
           </article>
           <article>
-            <span class="icon fa-file-code"></span>
+            <span class="icon">
+              <IconFileCode style={iconStyle} />
+            </span>
             <div class="content">
               <h3>
                 <a
@@ -92,7 +107,9 @@ export default async function Products() {
             </div>
           </article>
           <article>
-            <span class="icon fa-rocket"></span>
+            <span class="icon">
+              <IconRocket style={iconStyle} />
+            </span>
             <div class="content">
               <h3>
                 <a href="https://esbuild.github.io/" target="_blank">
@@ -107,7 +124,9 @@ export default async function Products() {
             </div>
           </article>
           <article>
-            <span class="icon fa-stopwatch"></span>
+            <span class="icon">
+              <IconStopwatch style={iconStyle} />
+            </span>
             <div class="content">
               <h3>
                 <a href="https://pm2.io/" target="_blank">
