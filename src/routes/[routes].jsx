@@ -200,6 +200,9 @@ export default function View({ number, submit }) {
 }
 `}
       />
+      <a href="/browser" class="button">
+        Learn about how to handle assets for use in a web browser
+      </a>
     </Layout>
   );
 }
