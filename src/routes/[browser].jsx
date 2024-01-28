@@ -6,7 +6,7 @@ import Layout from "../components/Layout";
 export default function Browser({}) {
   return (
     <Layout
-      title="Browser"
+      title="CSS &amp; JavaScript"
       description="How to handle assets for use in a web browser"
     >
       <p>

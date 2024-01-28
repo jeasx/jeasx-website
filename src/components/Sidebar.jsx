@@ -20,29 +20,10 @@ export default function Sidebar() {
               <a href="/quickstart">Quickstart</a>
             </li>
             <li>
-              <a href="/routes">Routes</a>
-              <ul>
-                <li>
-                  <a href="/routes#endpoints">Endpoints</a>
-                </li>
-                <li>
-                  <a href="/routes#paths">Paths</a>
-                </li>
-                <li>
-                  <a href="/routes#guards">Guards</a>
-                </li>
-              </ul>
+              <a href="/routes">Routes &amp; Guards</a>
             </li>
             <li>
-              <a href="/browser">Browser</a>
-              <ul>
-                <li>
-                  <a href="/browser#static-assets">Static Assets</a>
-                </li>
-                <li>
-                  <a href="/browser#css-js">CSS &amp; JavaScript</a>
-                </li>
-              </ul>
+              <a href="/browser">CSS &amp; JavaScript</a>
             </li>
             <li>
               <a href="/showcase">Showcase</a>

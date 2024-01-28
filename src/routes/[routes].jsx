@@ -7,8 +7,8 @@ import Layout from "../components/Layout";
 export default function Routes({}) {
   return (
     <Layout
-      title="Routes"
-      description="Understanding how to define routes is essential for working with jeasx"
+      title="Routes &amp; Guards"
+      description="Understanding how to define routes and guards"
     >
       <p>
         In jeasx, a file system-based routing system is at the heart of the
@@ -30,10 +30,11 @@ export default function Routes({}) {
         components as async.
       </p>
 
-      <h2 id="endpoints">Endpoints</h2>
+      <h2 id="endpoints">Named routes</h2>
       <p>
-        Regular endpoints can be named as you like. You only have to enclose it
-        within brackets.
+        The only rule for named routes is to enclose the base filename within
+        brackets. This convention allows you to store components and helpers in
+        the routes folder without exposing them as routes.
       </p>
       <table>
         <tr>
@@ -84,14 +85,13 @@ export default function FrontPage({ request, reply }) {
 }`}
       />
 
-      <h2 id="paths">Paths</h2>
+      <h2 id="paths">Dynamic routes</h2>
       <p>
-        Path endpoints are unique endpoints designed to capture all requests for
-        the current folder and its subfolders. They enable the creation of
-        content with a dynamic URL structure, such as pages retrieved from a
-        CMS. If a regular endpoint exists in the same folder as a path endpoint,
-        the regular endpoint will take precedence. The name for a path endpoint
-        is fixed and must be:
+        Dynamic routes are wildcards designed to capture all requests for the
+        current folder and its subfolders. They enable the creation of content
+        with a dynamic URL structure, such as pages retrieved from a CMS. If a
+        named route exists in the same folder as dynamic route, the named route
+        will take precedence. The name for a dynamic route is fixed and must be:
         <code>[...path](.jsx|.js|.tsx|.ts)</code>
       </p>
       <table>
@@ -137,9 +137,9 @@ export default async function BlogPage({ request, reply }) {
         Guards enable you to intercept requests and are inherited from the root
         to the current folder. They are valuable for controlling access to a
         route. Typically, a guard does not return any payload, allowing the
-        request to be handled by the next route. However, if a guard does return
-        a payload, it will be delivered to the client, and no other route will
-        be executed.
+        request to be handled by the next defined route. However, if a guard
+        does return a payload, it will be delivered to the client, and no other
+        route will be executed.
       </p>
       <table>
         <tr>
@@ -149,8 +149,8 @@ export default async function BlogPage({ request, reply }) {
         <tr>
           <td>src/routes/blog/[...guard].jsx</td>
           <td>
-            The code of the guard is executed before regular or path endpoints
-            in the current folder or below.
+            The code of the guard is executed before named or dynamic routes in
+            the current folder or below.
           </td>
         </tr>
       </table>
@@ -176,8 +176,8 @@ export default function AuthorizationGuard({ request, reply }) {
       />
       <p>
         Additionally, a guard has the capability to return an object, which will
-        serve as props for all endpoints protected by the guard. This feature
-        enables the creation of endpoints that are entirely independent from the
+        serve as props for all routes protected by the guard. This feature
+        enables the creation of routes that are entirely independent from the
         request object, simplifying component testing.
       </p>
       <Code
