@@ -13,7 +13,7 @@ export default function Routes({}) {
       <p>
         In jeasx, a file system-based routing system is at the heart of the
         framework. All routes are stored in the routes directory of your project
-        and are JavaScript functions that receive
+        and are functions that receive
         <a
           href="https://fastify.dev/docs/latest/Reference/Request/"
           target="_blank"
@@ -23,9 +23,12 @@ export default function Routes({}) {
         and
         <a href="https://fastify.dev/docs/latest/Reference/Reply/">reply</a>
         objects from Fastify as props. Routes can be written using JSX, but can
-        also be written in vanilla JavaScript. If you prefer TypeScript, it is
-        also supported. A route can return various types of payloads for the
-        client, including HTML, JSON, or other formats. If you need to perform
+        also be written in JavaScript and/or TypeScript, so supported extensions
+        are: <code>.js(x)|.ts(x)</code>
+      </p>
+      <p>
+        A route can return various types of payloads for the client, including
+        HTML (default), JSON, or other formats. If you need to perform
         asynchronous operations, you can declare your route or imported
         components as async.
       </p>
@@ -33,8 +36,8 @@ export default function Routes({}) {
       <h2 id="endpoints">Named routes</h2>
       <p>
         The only rule for named routes is to enclose the base filename within
-        brackets. This convention allows you to store components and helpers in
-        the routes folder without exposing them as routes.
+        brackets. This convention allows you to store components, services and
+        utilities besides your routes without exposing them as endpoints.
       </p>
       <table>
         <tr>
@@ -60,6 +63,10 @@ export default function Routes({}) {
         <tr>
           <td>src/routes/api/posts/[update.json].ts</td>
           <td>/api/posts/update.json</td>
+        </tr>
+        <tr>
+          <td>src/routes/api/posts/utils/format.ts</td>
+          <td>This file is not exposed as endpoint.</td>
         </tr>
       </table>
       <h3>Code example</h3>
@@ -201,7 +208,7 @@ export default function View({ number, submit }) {
 `}
       />
       <a href="/browser" class="button">
-        Learn about how to handle assets for use in a web browser
+        How to handle browser assets?
       </a>
     </Layout>
   );
