@@ -38,7 +38,7 @@ export default function Quickstart({}) {
         in a browser of your choice.
       </p>
       <a href="/routes" class="button">
-        Learn about routing and endpoints
+        How to define routes?
       </a>
     </Layout>
   );

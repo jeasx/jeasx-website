@@ -19,6 +19,17 @@ export default function Showcase({}) {
           </p>
         </dd>
         <dt>
+          <a href="https://github.com/jeasx/jeasx-website" target="_blank">
+            jeasx-website
+          </a>
+        </dt>
+        <dd>
+          <p>
+            This website is built with jeasx. Check out the GitHub repository to
+            learn how to integrate SCSS into your workflow.
+          </p>
+        </dd>
+        <dt>
           <a href="https://www.lottoindeutschland.de" target="_blank">
             LOTTO in Deutschland
           </a>
