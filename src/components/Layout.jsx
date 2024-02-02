@@ -17,6 +17,11 @@ export default function Layout({
       <html lang="en">
         <head>
           <title>{title} | JSX with Ease</title>
+          <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none';"
+          />
+          <meta http-equiv="Referrer-Policy" content="same-origin" />
           <meta name="description" content={description} />
           <meta charset="utf-8" />
           <meta name="view-transition" content="same-origin" />
