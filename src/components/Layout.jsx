@@ -19,7 +19,7 @@ export default function Layout({
           <title>{title} | JSX with Ease</title>
           <meta
             http-equiv="Content-Security-Policy"
-            content="default-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none';"
+            content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'; object-src 'none'; frame-ancestors 'none';"
           />
           <meta http-equiv="Referrer-Policy" content="same-origin" />
           <meta name="description" content={description} />
