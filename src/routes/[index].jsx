@@ -67,6 +67,10 @@ export default async function Products() {
         <header class="major">
           <h2>Built on top of a proven tech stack</h2>
         </header>
+        <p>
+          Jeasx is a sleek and modern framework that leverages tried and tested
+          web technologies to deliver powerful and efficient web solutions.
+        </p>
         <div class="features">
           <article>
             <span class="icon">
@@ -163,7 +167,7 @@ export default async function Products() {
             <ul class="actions">
               <li>
                 <a href="/philosophy" class="button">
-                  Read more...
+                  About the philosophy
                 </a>
               </li>
             </ul>
@@ -183,7 +187,7 @@ export default async function Products() {
             <ul class="actions">
               <li>
                 <a href="/quickstart" class="button">
-                  Read more...
+                  How to get started
                 </a>
               </li>
             </ul>
