@@ -3,11 +3,11 @@ import Layout from "../components/Layout";
 /**
  * @param {import("./types").RouteProps} props
  */
-export default function Generic({}) {
+export default function Philosophy({}) {
   return (
     <Layout
       title="Philosophy"
-      description="Returning to the future: server-side rendering with a modern developer experience"
+      description="Back to the future: server-side rendering with a modern developer experience"
     >
       <p>
         Web applications have historically relied on server-rendered HTML and
