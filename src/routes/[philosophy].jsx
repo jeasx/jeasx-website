@@ -27,8 +27,16 @@ export default function Philosophy({}) {
         <a href="https://jamstack.org/generators/" target="_blank">
           static site generators
         </a>
-        (SSG) has emerged to tackle these issues head-on. This exhilarating
-        journey culminates with the introduction of
+        (SSG) has emerged to tackle these issues head-on, generating new
+        problems like
+        <a
+          href="https://nextjs.org/docs/messages/react-hydration-error"
+          target="_blank"
+        >
+          hydration errors
+        </a>
+        along the way. This exhilarating journey culminates with the
+        introduction of
         <a
           href="https://nextjs.org/docs/app/building-your-application/rendering/server-components"
           target="_blank"
