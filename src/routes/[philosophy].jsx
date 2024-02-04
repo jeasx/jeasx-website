@@ -23,9 +23,9 @@ export default function Philosophy({}) {
         content driven websites and applications do not require the complexity
         of the Single Page Application (SPA) approach. As the industry faces
         challenges such as SEO limitations and performance issues on mobile
-        devices, a new wave of dynamic static site generators has emerged to
-        tackle these issues head-on. This exhilarating journey culminates with
-        the introduction of React Server Components (RSC), representing a
+        devices, a new wave of dynamic static site generators (SSG) has emerged
+        to tackle these issues head-on. This exhilarating journey culminates
+        with the introduction of React Server Components (RSC), representing a
         significant shift towards server-side rendering of markup. This brings
         us full circle to the roots of web development, with a modern twist on
         rendering markup on the server, providing an enhanced developer
@@ -36,8 +36,8 @@ export default function Philosophy({}) {
         that have accumulated during the evolution from AJAX to SSG to RSC. The
         historical association of server-side rendering with more or less
         obscure templating technologies has been overcome by leveraging the most
-        powerful feature of React - JSX - in server-side rendering. This
-        streamlined approach simplifies web development, making it more
+        powerful feature introduced by React - JSX - in server-side rendering.
+        This streamlined approach simplifies web development, making it more
         accessible for developers to create powerful and efficient websites.
       </p>
       <p>
