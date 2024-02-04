@@ -191,19 +191,15 @@ export default function AuthorizationGuard({ request, reply }) {
         source={`
 export default function PropsGuard({ request }) {
   const body = request.body || {};
-
-  const number = +body["number"];
-  const submit = body["submit"];
- 
-  return { number, submit };
+  return { message: body["message"] };
 }
 `}
       />
 
       <Code
         source={`
-export default function View({ number, submit }) {
-  return <p>{submit ? number : "No number"}</p>;
+export default function MessageView({ message }) {
+  return <p>{message ? message : "No message for you"}</p>;
 }
 `}
       />
