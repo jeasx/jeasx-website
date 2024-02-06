@@ -1,3 +1,4 @@
+import { escapeEntities } from "jsx-async-runtime";
 import Code from "../components/Code";
 import Layout from "../components/Layout";
 import IconCookieBite from "../icons/cookie-bite";
@@ -8,7 +9,22 @@ import IconStopwatch from "../icons/stopwatch";
 /**
  * @param {import("./types").RouteProps} props
  */
-export default async function Homepage({}) {
+export default async function Homepage({ request }) {
+  const mode = request.query["mode"];
+  const id = request.query["id"];
+
+  const products =
+    mode === "run"
+      ? (
+          await (await fetch("https://dummyjson.com/products")).json()
+        ).products.slice(0, 4)
+      : null;
+
+  const product =
+    mode === "run" && id
+      ? await (await fetch(`https://dummyjson.com/products/${id}`)).json()
+      : null;
+
   const iconStyle = {
     width: "32px",
     height: "32px",
@@ -41,8 +57,30 @@ export default async function Homepage({}) {
           </ul>
         </div>
         <span class="image object">
-          <Code
-            source={`
+          {mode === "run" ? (
+            product ? (
+              <article>
+                <h3>{escapeEntities(product.title)}</h3>
+                <p>{escapeEntities(product.description)}</p>
+                <p>
+                  <img
+                    src={product.thumbnail}
+                    width="256"
+                    style="width: 256px"
+                  />
+                </p>
+              </article>
+            ) : (
+              products.map(({ id, title, description }) => (
+                <article>
+                  <a href={`?mode=run&id=${id}`}>{escapeEntities(title)}</a>
+                  <p>{escapeEntities(description)}</p>
+                </article>
+              ))
+            )
+          ) : (
+            <Code
+              source={`
 export default async function Products() {
   const { products } = await (
     await fetch("https://dummyjson.com/products")
@@ -52,14 +90,24 @@ export default async function Products() {
     <Layout title="Products">
       {products.map(({ id, title, description }) => (
         <article>
-          <a href={id}>{title}</a>
+          <a href={\`?id=\${id}\`}>{title}</a>
           <p>{description}</p>
         </article>
       ))}
     </Layout>
   );
 }`}
-          />
+            />
+          )}
+          {mode === "run" ? (
+            <a class="button big" href="/">
+              Code
+            </a>
+          ) : (
+            <a class="button big" href="?mode=run">
+              Run
+            </a>
+          )}
         </span>
       </section>
 
