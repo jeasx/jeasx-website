@@ -35,52 +35,51 @@ export default async function Homepage({ request }) {
   return (
     <Layout title="jeasx" description="The Ease of JSX with the power of SSR">
       <section id="banner">
-        <div class="content">
-          <header>
-            <h1>jeasx</h1>
-            <p>The Ease of JSX with the power of SSR</p>
-          </header>
-          <p>
-            Jeasx seamlessly integrates the modern developer experience of using
-            asynchronous JSX with the proven benefits of server-side rendering,
-            resulting in a robust and streamlined development approach. By
-            eliminating unnecessary complexity and providing developers with
-            precise control over HTML, CSS, and JavaScript, Jeasx empowers them
-            to craft exceptional web experiences and applications.
-          </p>
-          <ul class="actions">
-            <li>
-              <a href="/philosophy" class="button big">
-                Learn More
-              </a>
-            </li>
-          </ul>
-        </div>
-        <span class="image object">
-          {mode === "run" ? (
-            product ? (
-              <article>
-                <h3>{escapeEntities(product.title)}</h3>
-                <p>{escapeEntities(product.description)}</p>
-                <p>
-                  <img
-                    src={product.thumbnail}
-                    width="256"
-                    style="width: 256px"
-                  />
-                </p>
-              </article>
-            ) : (
-              products.map(({ id, title, description }) => (
-                <article>
-                  <a href={`?mode=run&id=${id}`}>{escapeEntities(title)}</a>
-                  <p>{escapeEntities(description)}</p>
-                </article>
-              ))
-            )
-          ) : (
-            <Code
-              source={`
+        <div class="row">
+          <div class="col-6 col-12-small">
+            <header>
+              <h1>jeasx</h1>
+              <p>The Ease of JSX with the power of SSR</p>
+            </header>
+            <p>
+              Jeasx seamlessly integrates the modern developer experience of
+              using asynchronous JSX with the proven benefits of server-side
+              rendering, resulting in a robust and streamlined development
+              approach. By eliminating unnecessary complexity and providing
+              developers with precise control over HTML, CSS, and JavaScript,
+              Jeasx empowers them to craft exceptional web experiences and
+              applications.
+            </p>
+            <ul class="actions">
+              <li>
+                <a href="/philosophy" class="button big">
+                  Learn More
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-6 col-12-small">
+            <div class={{ box: true, alt: mode !== "run" }}>
+              {mode === "run" ? (
+                product ? (
+                  <article>
+                    <h3>{escapeEntities(product.title)}</h3>
+                    <p>{escapeEntities(product.description)}</p>
+                    <p>
+                      <img src={product.thumbnail} width="256" />
+                    </p>
+                  </article>
+                ) : (
+                  products.map(({ id, title, description }) => (
+                    <article>
+                      <a href={`?mode=run&id=${id}`}>{escapeEntities(title)}</a>
+                      <p>{escapeEntities(description)}</p>
+                    </article>
+                  ))
+                )
+              ) : (
+                <Code
+                  source={`
 export default async function Products() {
   const { products } = await (
     await fetch("https://dummyjson.com/products")
@@ -97,18 +96,24 @@ export default async function Products() {
     </Layout>
   );
 }`}
-            />
-          )}
-          {mode === "run" ? (
-            <a class="button big" href="/">
-              Code
-            </a>
-          ) : (
-            <a class="button big" href="?mode=run">
-              Run
-            </a>
-          )}
-        </span>
+                />
+              )}
+              <ul class="actions">
+                <li>
+                  {mode === "run" ? (
+                    <a class="button big" href="/">
+                      Code
+                    </a>
+                  ) : (
+                    <a class="button big" href="?mode=run">
+                      Run
+                    </a>
+                  )}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section>
