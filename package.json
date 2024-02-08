@@ -8,9 +8,9 @@
     "scss": "sass src/browser/scss/main.scss:src/browser/scss/main.css --no-source-map"
   },
   "dependencies": {
-    "jeasx": "0.3.1",
+    "jeasx": "0.3.2",
     "sass": "1.70.0",
-    "shiki": "0.14.7"
+    "shiki": "1.0.0"
   },
   "engines": {
     "node": "20.x"
