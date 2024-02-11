@@ -10,7 +10,7 @@
   "dependencies": {
     "jeasx": "0.3.2",
     "sass": "1.70.0",
-    "shiki": "1.0.0"
+    "shiki": "1.1.1"
   },
   "engines": {
     "node": "20.x"
