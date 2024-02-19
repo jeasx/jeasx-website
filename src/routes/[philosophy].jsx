@@ -14,29 +14,23 @@ export default function Philosophy({}) {
         traditional navigation patterns. However, the evolution of the web
         platform led to the emergence of technologies like AJAX, enabling
         dynamic updates without full page reloads. As JavaScript advanced,
-        browser-based applications such as React transformed the traditional
-        client-server architecture into a more interactive and dynamic approach.
+        browser-based libraries (React) and frameworks (Angular) transformed the
+        traditional client-server architecture into a more interactive and
+        dynamic approach.
       </p>
       <p>
         In the dynamic world of web development, the prevalence of client-side
-        JavaScript in modern web applications is undeniable. However, many
-        content driven websites and applications do not require the complexity
-        of the Single Page Application (SPA) approach. As the industry faces
-        challenges such as SEO limitations and performance issues on mobile
-        devices, a new wave of
+        JavaScript in modern web applications is undeniable. However, the
+        majority of content driven websites and many web applications do not
+        require the complexity of the Single Page Application (SPA) approach. As
+        the industry faces challenges such as SEO limitations and performance
+        issues on mobile devices, a new wave of
         <a href="https://jamstack.org/generators/" target="_blank">
           static site generators
         </a>
         (SSG) has emerged to tackle these issues head-on, generating new
-        problems like
-        <a
-          href="https://nextjs.org/docs/messages/react-hydration-error"
-          target="_blank"
-        >
-          hydration errors
-        </a>
-        along the way. This exhilarating journey culminates with the
-        introduction of
+        problems like hydration errors and bloated JavaScript bundles along the
+        way. This exhilarating journey culminates with the introduction of
         <a
           href="https://nextjs.org/docs/app/building-your-application/rendering/server-components"
           target="_blank"
@@ -63,12 +57,16 @@ export default function Philosophy({}) {
           Astro
         </a>
         and <a href="https://fresh.deno.dev/">Fresh</a> exemplify a new era of
-        learning from the past and exploring innovative approaches. While these
-        projects offer valuable insights, they may not be perfect from every
-        perspective: Astro utilizes a special syntax for its template files,
-        requiring IDE plugins and a complex compiler for code execution, whereas
-        Fresh relies on Deno, which may not align with your hosting
-        requirements.
+        learning from the past and exploring innovative approaches, e.g. the
+        <a href="https://jasonformat.com/islands-architecture/" target="_blank">
+          island architecture.
+        </a>
+        While these projects offer valuable insights, they may not be perfect
+        from every perspective: Astro utilizes a JSX-like syntax for its
+        template files with code blocks separated by dashes, requiring a
+        dedicated IDE plugin and a complex compiler for code transformation. On
+        the other hand, Fresh relies on Deno, which may not comply with your
+        corporate policies or hosting requirements.
       </p>
       <p>Sometimes it's beneficial to have choices...</p>
       <p>
