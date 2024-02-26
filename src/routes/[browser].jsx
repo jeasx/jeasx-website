@@ -61,6 +61,15 @@ export default function Browser({}) {
           <td>This file will be not available via an url.</td>
         </tr>
       </table>
+      <div class="box">
+        <h3>Shared code</h3>
+        <p>
+          To share code between the server and browser, simply place your code
+          in a folder named <code>shared</code> alongside <code>browser</code>
+          and <code>routes</code>. This folder is monitored in development mode,
+          and any changes made will automatically update the browser bundle.
+        </p>
+      </div>
     </Layout>
   );
 }
