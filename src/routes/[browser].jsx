@@ -64,13 +64,13 @@ export default function Browser({}) {
       <div class="box">
         <h3>Shared code</h3>
         <p>
-          You have the flexibility to share code between the server and browser.
-          When you import code from outside the browser directory into a browser
-          bundle, jeasx automatically rebuilds the bundle upon file changes.
-          Conversely, importing code from the browser directory into server code
-          does not trigger a rebuild. This approach optimizes build performance
-          during development by efficiently minimizing unnecessary rebuilds, as
-          jeasx is primarily a server framework.
+          While you have the flexibility to share code between the server and
+          browser, this is typically an edge case, as the DOM is not relevant on
+          the server side, and node core modules are not compatible with the
+          browser. To optimize build performance during development by
+          efficiently minimizing unnecessary rebuilds, no rebuild is triggered
+          when shared code changes. For an enhanced developer experience, you
+          can configure additional watchers via pm2 for shared code.
         </p>
       </div>
     </Layout>
