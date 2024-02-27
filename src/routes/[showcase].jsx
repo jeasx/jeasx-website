@@ -40,6 +40,20 @@ export default function Showcase({}) {
             jeasx and achieving outstanding page speed scores.
           </p>
         </dd>
+        <dt>
+          <a href="https://www.wave-ag.de/" target="_blank">
+            Wave AG
+          </a>
+        </dt>
+        <dd>
+          <p>
+            The WAVE Management AG is the investment company for the VHV Group
+            (Hanover, Germany). The project was originally constructed using
+            Next.js and has since been transformed to jeasx, resulting in a
+            notable improvement in pagespeed achieved by reducing the amount of
+            JavaScript to 1.5kb.
+          </p>
+        </dd>
       </dl>
     </Layout>
   );
