@@ -64,10 +64,13 @@ export default function Browser({}) {
       <div class="box">
         <h3>Shared code</h3>
         <p>
-          To share code between the server and browser, simply place your code
-          in a folder named <code>shared</code> alongside <code>browser</code>
-          and <code>routes</code>. This folder is monitored in development mode,
-          and any changes made will automatically update the browser bundle.
+          You have the flexibility to share code between the server and browser.
+          When you import code from outside the browser directory into a browser
+          bundle, jeasx automatically rebuilds the bundle upon file changes.
+          Conversely, importing code from the browser directory into server code
+          does not trigger a rebuild. This approach optimizes build performance
+          during development by efficiently minimizing unnecessary rebuilds, as
+          jeasx is primarily a server framework.
         </p>
       </div>
     </Layout>
