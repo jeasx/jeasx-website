@@ -69,8 +69,10 @@ export default function Browser({}) {
           the server side, and node core modules are not compatible with the
           browser. To optimize build performance during development by
           efficiently minimizing unnecessary rebuilds, no rebuild is triggered
-          when shared code changes. For an enhanced developer experience, you
-          can configure additional watchers via pm2 for shared code.
+          when shared code changes per default. You can easily configure
+          additional paths which should be watched for building the browser
+          bundles via an environment variable:
+          <code>JEASX_BUILD_JS_WATCH="src/browser,src/shared"</code>
         </p>
       </div>
     </Layout>
