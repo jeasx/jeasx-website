@@ -18,10 +18,10 @@ export default function Layout({
         <head>
           <title>{title} | JSX with Ease</title>
           <meta
-            http-equiv="Content-Security-Policy"
+            http-equiv="content-security-policy"
             content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' cdn.dummyjson.com; object-src 'none'; form-action 'self'; base-uri 'self';"
           />
-          <meta http-equiv="Referrer-Policy" content="same-origin" />
+          <meta name="referrer" content="same-origin" />
           <meta name="description" content={description} />
           <meta charset="utf-8" />
           <meta name="view-transition" content="same-origin" />
