@@ -52,8 +52,8 @@ export default async function Homepage({ request }) {
             </p>
             <ul class="actions">
               <li>
-                <a href="/philosophy" class="button big">
-                  Learn More
+                <a href="/quickstart" class="button big">
+                  Get started in a minute
                 </a>
               </li>
             </ul>
