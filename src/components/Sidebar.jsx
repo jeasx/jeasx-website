@@ -86,7 +86,7 @@ export default function Sidebar() {
           <p class="copyright">&copy; 2024 Maik Jablonski (Neoskop GmbH)</p>
         </footer>
       </div>
-      <a id="sidebar-toggle" href="javascript: void(0);" class="toggle">
+      <a id="sidebar-toggle" href="#" class="toggle">
         <IconBars style={{ width: "24px", height: "24px", fill: "#f56a6a" }} />
       </a>
     </div>
