@@ -8,8 +8,8 @@
     "scss": "sass src/browser/scss/main.scss:src/browser/scss/main.css --no-source-map"
   },
   "dependencies": {
-    "jeasx": "0.4.4",
-    "sass": "1.71.1",
+    "jeasx": "0.4.5",
+    "sass": "1.72.0",
     "shiki": "1.1.7"
   },
   "engines": {
