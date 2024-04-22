@@ -31,10 +31,10 @@ export default function Quickstart({}) {
       </p>
       <Code lang="sh" source={`${cmds[0]} my-awesome-project`} />
       <p>
-        If your project is successfully started, just visit
+        If your project is successfully started, just visit{" "}
         <a href="http://localhost:3000/" target="_blank">
           http://localhost:3000/
-        </a>
+        </a>{" "}
         in a browser of your choice.
       </p>
       <a href="/routes" class="button">

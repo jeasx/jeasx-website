@@ -17,7 +17,7 @@ export default function Faq({}) {
               target="_blank"
             >
               fastity-request-context
-            </a>
+            </a>{" "}
             by default. You can populate the request context in an endpoint
             (e.g., a guard):
           </p>
@@ -47,13 +47,13 @@ function CurrentDate() {
         <dt>Is it possible to use SASS/SCSS?</dt>
         <dd>
           <p>
-            Certainly! Please check out the
+            Certainly! Please check out the{" "}
             <a
               href="https://www.github.com/jeasx/jeasx-website"
               target="_blank"
             >
               GitHub repository
-            </a>
+            </a>{" "}
             of this website to see how things should be wired.
           </p>
         </dd>
@@ -63,15 +63,15 @@ function CurrentDate() {
             Jeasx provides two different hosting modes tailored to meet your
             specific needs: traditional hosting on a node server or a serverless
             approach. For effortless node-based hosting, I highly recommend a
-            platform like
+            platform like{" "}
             <a href="https://railway.app" target="_blank">
               Railway
             </a>
             , which seamlessly operates jeasx without the need for additional
-            configurations. If you prefer a serverless approach,
+            configurations. If you prefer a serverless approach,{" "}
             <a href="https://vercel.com" target="_blank">
               Vercel
-            </a>
+            </a>{" "}
             is the perfect fit, where jeasx provides the necessary
             configurations out of the box.
           </p>

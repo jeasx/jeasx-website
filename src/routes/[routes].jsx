@@ -13,15 +13,14 @@ export default function Routes({}) {
       <p>
         In jeasx, a file system-based routing system is at the heart of the
         framework. All routes are stored in the routes directory of your project
-        and are functions that receive
+        and are functions that receive{" "}
         <a
           href="https://fastify.dev/docs/latest/Reference/Request/"
           target="_blank"
         >
           request
-        </a>
-        and
-        <a href="https://fastify.dev/docs/latest/Reference/Reply/">reply</a>
+        </a>{" "}
+        and <a href="https://fastify.dev/docs/latest/Reference/Reply/">reply</a>{" "}
         objects from Fastify as props. Routes can be written using JSX, but can
         also be written in JavaScript and/or TypeScript, so supported extensions
         are: <code>.js(x)|.ts(x)</code>
