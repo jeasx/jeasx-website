@@ -63,10 +63,10 @@ export default function Sidebar() {
             <h2>Get in touch</h2>
           </header>
           <p>
-            The development of jeasx is sponsored by
+            The development of jeasx is sponsored by{" "}
             <a href="https://www.neoskop.de" target="_blank">
               Neoskop.
-            </a>
+            </a>{" "}
             If you want to get in touch, feel free to contact us.
           </p>
           <ul class="contact">
