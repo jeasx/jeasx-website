@@ -14,6 +14,9 @@ export default function Sidebar() {
               <a href="/">Homepage</a>
             </li>
             <li>
+              <a href="/news">News</a>
+            </li>
+            <li>
               <a href="/philosophy">Philosophy</a>
             </li>
             <li>
