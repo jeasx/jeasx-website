@@ -44,6 +44,29 @@ function CurrentDate() {
 `}
           />
         </dd>
+        <dt>Can I post-process the resulting HTML?</dt>
+        <dd>
+          <p>
+            If you want to prettify the HTML output, you can wire up a response
+            handler in a guard. The response handler takes the resulting payload
+            as a parameter and returns the modified payload.
+          </p>
+          <Code
+            source={`
+import * as prettier from "prettier";
+...
+export default function RootGuard({ request, reply }) {
+  requestContext.set("response", async (payload) => {
+    return typeof payload === "string" &&
+      String(reply.getHeader("content-type")).startsWith("text/html")
+      ? await prettier.format(payload, { parser: "html" })
+      : payload;
+  });
+}
+`}
+          />
+        </dd>
+
         <dt>Is it possible to use SASS/SCSS?</dt>
         <dd>
           <p>
