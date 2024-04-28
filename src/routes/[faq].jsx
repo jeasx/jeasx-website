@@ -48,8 +48,9 @@ function CurrentDate() {
         <dd>
           <p>
             If you want to prettify the HTML output, you can wire up a response
-            handler in a guard. The response handler takes the resulting payload
-            as a parameter and returns the modified payload.
+            handler in any endpoint (e.g. a guard). The response handler takes
+            the resulting payload as a parameter and returns the modified
+            payload.
           </p>
           <Code
             source={`
