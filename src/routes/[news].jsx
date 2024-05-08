@@ -11,6 +11,12 @@ export default function Faq({}) {
       description="What are the latest updates and new features in Jeasx?"
     >
       <dl>
+        <dt>2024-05-08 - jeasx 0.7.2 released</dt>
+        <dd>
+          <p>
+            Updated to fastify@4.27.0, esbuild@0.21.1, @fastify/static@7.0.4
+          </p>
+        </dd>
         <dt>2024-05-07 - jeasx 0.7.1 released</dt>
         <dd>
           <p>Updated esbuild to 0.21.0.</p>
