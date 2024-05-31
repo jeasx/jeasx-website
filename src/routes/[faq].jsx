@@ -81,6 +81,20 @@ export default function RootGuard({ request, reply }) {
             of this website to see how things should be wired.
           </p>
         </dd>
+        <dt>How to use a Browsersync with Jeasx?</dt>
+        <dd>
+          <p>
+            If you want to reload CSS automagically, start{" "}
+            <a href="https://browsersync.io/" target="_blank">
+              Browsersync
+            </a>{" "}
+            in proxy-mode in a second terminal:
+          </p>
+          <Code
+            source={`npx -y browser-sync start -w -f "dist/**/index.css" -p localhost:3000`}
+            lang="bash"
+          />
+        </dd>
         <dt>What are the hosting options for a jeasx project?</dt>
         <dd>
           <p>

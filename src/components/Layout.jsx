@@ -17,10 +17,14 @@ export default function Layout({
       <html lang="en">
         <head>
           <title>{title} | JSX with Ease</title>
-          <meta
-            http-equiv="content-security-policy"
-            content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' cdn.dummyjson.com; object-src 'none'; form-action 'self'; base-uri 'self';"
-          />
+          {process.env.NODE_ENV !== "development" && (
+            <meta
+              http-equiv="content-security-policy"
+              content={`default-src 'none'; script-src 'self'${
+                process.env.NODE_ENV === "development" ? " 'unsafe-inline'" : ""
+              }; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' cdn.dummyjson.com; object-src 'none'; form-action 'self'; base-uri 'self';`}
+            />
+          )}
           <meta name="referrer" content="same-origin" />
           <meta name="description" content={description} />
           <meta charset="utf-8" />
