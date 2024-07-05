@@ -11,6 +11,13 @@ export default function Faq({}) {
       description="What are the latest updates and new features in Jeasx?"
     >
       <dl>
+        <dt>2024-07-05 - jeasx 0.8.0 released</dt>
+        <dd>
+          <p>
+            Updated to jsx-async-runtime@0.3.0 (deprecated renderToString in
+            favor of jsxToString)
+          </p>
+        </dd>
         <dt>2024-07-03 - jeasx 0.7.6 released</dt>
         <dd>
           <p>Updated to esbuild@0.23.0</p>
