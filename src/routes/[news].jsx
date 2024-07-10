@@ -11,6 +11,17 @@ export default function Faq({}) {
       description="What are the latest updates and new features in Jeasx?"
     >
       <dl>
+        <dt>2024-07-10 - jeasx 0.9.0 released</dt>
+        <dd>
+          <p>
+            Updated to jsx-async-runtime@0.4.0 which allows to use 'this' as
+            context object to avoid prop drilling. Have a look at the{" "}
+            <a href="https://expo.jeasx.dev/context" target="_blank">
+              demo
+            </a>{" "}
+            to see how things work.
+          </p>
+        </dd>
         <dt>2024-07-05 - jeasx 0.8.0 released</dt>
         <dd>
           <p>
