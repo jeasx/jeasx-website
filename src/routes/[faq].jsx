@@ -43,6 +43,14 @@ function CurrentDate() {
 }
 `}
           />
+          <p>
+            Another way is to use <code>this</code> as context object which gets
+            automagically propagated to sub-components. Have a look at the{" "}
+            <a href="https://expo.jeasx.dev/context" target="_blank">
+              demo
+            </a>{" "}
+            to see how things work.
+          </p>
         </dd>
         <dt>Can I post-process the resulting HTML?</dt>
         <dd>
