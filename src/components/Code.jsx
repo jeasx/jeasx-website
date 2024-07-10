@@ -1,6 +1,6 @@
-import { getHighlighter } from "shiki";
+import { getSingletonHighlighter } from "shiki";
 
-const highlighter = await getHighlighter({
+const highlighter = await getSingletonHighlighter({
   themes: ["github-light"],
   langs: ["jsx", "sh"],
 });
