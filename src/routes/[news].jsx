@@ -11,6 +11,13 @@ export default function Faq({}) {
       description="What are the latest updates and new features in Jeasx?"
     >
       <dl>
+        <dt>2024-07-12 - jeasx 0.9.1 released</dt>
+        <dd>
+          <p>
+            Updated to jsx-async-runtime@0.4.1 which fixes a problem when
+            running tests with Vitest.
+          </p>
+        </dd>
         <dt>2024-07-10 - jeasx 0.9.0 released</dt>
         <dd>
           <p>
