@@ -1,4 +1,3 @@
-import { requestContext } from "@fastify/request-context";
 
 const BUILD_TIME_PREFIX = `/${process.env.BUILD_TIME}/`;
 
@@ -17,7 +16,7 @@ export default function RootGuard({ request, reply }) {
     reply.header("Cache-Control", "public, max-age=60, s-maxage=60");
   }
 
-  // Set the request and reply objects in the request context
-  requestContext.set("request", request);
-  requestContext.set("reply", reply);
+  // Set the request and reply objects as context
+  this.request = request;
+  this.response = reply;
 }

@@ -11,45 +11,34 @@ export default function Faq({}) {
         <dt>Is there something like a context object similar to React?</dt>
         <dd>
           <p>
-            Yes, jeasx includes the{" "}
-            <a
-              href="https://github.com/fastify/fastify-request-context"
-              target="_blank"
-            >
-              fastity-request-context
-            </a>{" "}
-            by default. You can populate the request context in an endpoint
-            (e.g., a guard):
+            Yes, Jeasx provides a context object via <code>this</code> which
+            gets automagically propagated to sub-components. You can populate
+            the context in an endpoint (e.g., a guard):
           </p>
           <Code
             source={`
-import { requestContext } from "@fastify/request-context";
-
 export default function RootGuard({ request, reply }) {
-  requestContext.set("date", new Date());
+  this.date = new Date();
 }
 `}
           />
           <p>
-            Later, you can access the context in any server-side code of your
-            project:
+            Later, you can access the context in any sub-component which gets
+            called via an endpoint:
           </p>
           <Code
             source={`
-import { requestContext } from "@fastify/request-context";
-
-function CurrentDate() {
-  return requestContext.get("date").toISOString();
+export default function CurrentDate() {
+  return <p>The current date is {this.date.toISOString()}</p>;
 }
 `}
           />
           <p>
-            Another way is to use <code>this</code> as context object which gets
-            automagically propagated to sub-components. Have a look at the{" "}
+            Have a look at the{" "}
             <a href="https://expo.jeasx.dev/context" target="_blank">
               demo
             </a>{" "}
-            to see how things work.
+            to see how things work using the context as them provider.
           </p>
         </dd>
         <dt>Can I post-process the resulting HTML?</dt>
@@ -65,12 +54,12 @@ function CurrentDate() {
 import * as prettier from "prettier";
 ...
 export default function RootGuard({ request, reply }) {
-  requestContext.set("response", async (payload) => {
+  this.response = async (payload) => {
     return typeof payload === "string" &&
       String(reply.getHeader("content-type")).startsWith("text/html")
       ? await prettier.format(payload, { parser: "html" })
       : payload;
-  });
+  };
 }
 `}
           />

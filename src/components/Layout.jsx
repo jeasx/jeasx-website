@@ -1,15 +1,17 @@
 /* This file is an example. Delete it at will. */
 
-import { requestContext } from "@fastify/request-context";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
+/**
+ * @this {import("../routes/types").RouteProps}
+ */
 export default function Layout({
   title = "",
   description = "",
   children = [],
 }) {
-  const path = requestContext.get("request").urlData().path;
+  const path = this.request.urlData().path;
 
   return (
     <>

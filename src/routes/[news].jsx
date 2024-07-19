@@ -11,6 +11,16 @@ export default function Faq({}) {
       description="What are the latest updates and new features in Jeasx?"
     >
       <dl>
+        <dt>2024-07-19 - jeasx 0.10.1 released</dt>
+        <dd>
+          <p>
+            <b>Breaking change:</b> removed @fastify/request-context in favor of
+            the recently introduced <code>this</code> context. Changing your
+            code should be straightforward. This change decouples userland code
+            from Fastify. Additionally code for Jeasx and jsx-async-runtime is
+            provided unminified, so debugging and testing is far easier now.
+          </p>
+        </dd>
         <dt>2024-07-12 - jeasx 0.9.1 released</dt>
         <dd>
           <p>
@@ -76,12 +86,12 @@ export default function Faq({}) {
 import * as prettier from "prettier";
 ...
 export default function RootGuard({ request, reply }) {
-  requestContext.set("response", async (payload) => {
+  this.response = async (payload) => {
     return typeof payload === "string" &&
       String(reply.getHeader("content-type")).startsWith("text/html")
       ? await prettier.format(payload, { parser: "html" })
       : payload;
-  });
+  };
 }
 `}
           />
