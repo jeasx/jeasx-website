@@ -64,7 +64,17 @@ export default function RootGuard({ request, reply }) {
 `}
           />
         </dd>
-
+        <dt>
+          Is there a way to set the document title in a sub-component (aka
+          Helmet)?
+        </dt>
+        <dd>
+          <p>
+            Yes, have a look at the{" "}
+            <a href="https://expo.jeasx.dev/head">head example</a> which
+            demonstrates how easily this can be achieved with a guard.
+          </p>
+        </dd>
         <dt>Is it possible to use SASS/SCSS?</dt>
         <dd>
           <p>
