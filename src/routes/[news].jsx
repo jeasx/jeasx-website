@@ -11,6 +11,25 @@ export default function Faq({}) {
       description="What are the latest updates and new features in Jeasx?"
     >
       <dl>
+        <dt>2024-07-26 - jeasx 0.11.0 released</dt>
+        <dd>
+          <p>
+            Updated to jsx-async-runtime@0.5.0 which allows to override{" "}
+            <code>jsxToString</code> from{" "}
+            <a
+              href="https://github.com/jeasx/jsx-async-runtime"
+              target="_blank"
+            >
+              jsx-async-runtime
+            </a>{" "}
+            to intercept / modify / replace JSX components via <code>this</code>{" "}
+            context. Have a look at the{" "}
+            <a href="https://expo.jeasx.dev/interceptor" target="_blank">
+              example
+            </a>{" "}
+            to see how it works.
+          </p>
+        </dd>
         <dt>2024-07-19 - jeasx 0.10.1 released</dt>
         <dd>
           <p>
