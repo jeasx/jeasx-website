@@ -11,6 +11,14 @@ export default function Faq({}) {
       description="What are the latest updates and new features in Jeasx?"
     >
       <dl>
+        <dt>2024-07-27 - jeasx 0.11.1 released</dt>
+        <dd>
+          <p>
+            Performance optimization: if response is string or buffer, break
+            evaluation loop early. This allows to build caches for pages and
+            binary assets in userland.
+          </p>
+        </dd>
         <dt>2024-07-26 - jeasx 0.11.0 released</dt>
         <dd>
           <p>
