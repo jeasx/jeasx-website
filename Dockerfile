@@ -8,4 +8,4 @@ RUN npm install --omit=dev && npm cache clean --force
 COPY --chown=node:node . ./
 
 RUN npx jeasx build
-CMD npx jeasx start
+CMD ["npx","jeasx","start"]
