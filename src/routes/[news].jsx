@@ -14,8 +14,15 @@ export default function Faq({}) {
         <dt>2024-08-21 - jeasx 0.11.2 released</dt>
         <dd>
           <p>
-            Dependency updates: esbuild@0.23.1, @fastify/cookie@9.4.0,
-            @types/node@20.16.1
+            Added simple{" "}
+            <a
+              href="https://github.com/jeasx/jeasx-quickstart/blob/main/Dockerfile"
+              target="_blank"
+            >
+              Dockerfile
+            </a>{" "}
+            to quickstart template. Dependency updates: esbuild@0.23.1,
+            @fastify/cookie@9.4.0, @types/node@20.16.1
           </p>
         </dd>
         <dt>2024-07-27 - jeasx 0.11.1 released</dt>
