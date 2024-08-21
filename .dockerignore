@@ -1,2 +1,8 @@
-dist
-node_modules
+**
+!/public/
+!/src/
+!.env
+!ecosystem.config.cjs
+!package-lock.json
+!package.json
+!tsconfig.json
