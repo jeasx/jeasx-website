@@ -11,7 +11,7 @@ export default function Layout({
   description = "",
   children = [],
 }) {
-  const path = this.request.urlData().path;
+  const [path] = this.request.url.split("?", 1);
 
   return (
     <>

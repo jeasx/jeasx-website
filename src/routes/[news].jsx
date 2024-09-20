@@ -11,6 +11,34 @@ export default function Faq({}) {
       description="What are the latest updates and new features in Jeasx?"
     >
       <dl>
+        <dt>2024-09-20 - jeasx 0.15.0 released</dt>
+        <dd>
+          <p>
+            This release comes with Fastify 5. It also removes @fastify/url-data
+            and @fastify/accepts as dependencies, therefore your{" "}
+            <b>code might break.</b> The reason behind this removal is to depend
+            on less dependencies in the long run which makes maintenance of the
+            core easier.
+          </p>
+          <p>
+            If you rely on either accepts or url-data, you must provide
+            appropriate changes in userland code. For @fastify/url-data I would
+            recommend to use{" "}
+            <a href="https://github.com/fastify/fast-uri" target="_blank">
+              fast-uri
+            </a>{" "}
+            and for @fastify/accepts{" "}
+            <a href="https://github.com/jshttp/accepts" target="_blank">
+              jshttp/accepts
+            </a>{" "}
+            for parsing accept-header if needed.
+          </p>
+          <p>
+            Please note: there were some intermediate releases since the past
+            proper release which shouldn't be used (and are mostly unpublished
+            from npm).
+          </p>
+        </dd>
         <dt>2024-08-21 - jeasx 0.11.2 released</dt>
         <dd>
           <p>

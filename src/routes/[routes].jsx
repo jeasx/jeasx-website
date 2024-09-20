@@ -72,7 +72,7 @@ export default function Routes({}) {
       <Code
         source={`
 export default function FrontPage({ request, reply }) {
-  const path = request.urlData().path;
+  const path = request.url;
 
   return (
     <>
@@ -118,7 +118,7 @@ export default function FrontPage({ request, reply }) {
       <Code
         source={`
 export default async function BlogPage({ request, reply }) {
-  const segments = request.urlData().path.split("/");
+  const segments = request.url.split("/");
   const product = await (await fetch(\`https://dummyjson.com/product/\${segments[1]}\`)).json();
 
   if (product.message) {

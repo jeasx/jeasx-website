@@ -1,4 +1,3 @@
-
 const BUILD_TIME_PREFIX = `/${process.env.BUILD_TIME}/`;
 
 /**
@@ -6,10 +5,8 @@ const BUILD_TIME_PREFIX = `/${process.env.BUILD_TIME}/`;
  */
 export default function RootGuard({ request, reply }) {
   // Handle static assets prefixed with build time
-  if (request.urlData().path.startsWith(BUILD_TIME_PREFIX)) {
-    return reply.sendFile(
-      request.urlData().path.slice(BUILD_TIME_PREFIX.length)
-    );
+  if (request.url.startsWith(BUILD_TIME_PREFIX)) {
+    return reply.sendFile(request.url.slice(BUILD_TIME_PREFIX.length));
   }
 
   if (process.env.NODE_ENV !== "development") {
