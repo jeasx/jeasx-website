@@ -72,14 +72,12 @@ export default function Routes({}) {
       <Code
         source={`
 export default function FrontPage({ request, reply }) {
-  const path = request.url;
-
   return (
     <>
       {"<!DOCTYPE html>"}
       <html lang="en">
       <head>
-        <base href={\`\${path.endsWith("/") ? path : path + "/"}\`} />
+        <base href={\`\${request.path.endsWith("/") ? request.path : request.path + "/"}\`} />
         <title>Hello World</title>
       </head>
       <body>
@@ -118,7 +116,7 @@ export default function FrontPage({ request, reply }) {
       <Code
         source={`
 export default async function BlogPage({ request, reply }) {
-  const segments = request.url.split("/");
+  const segments = request.path.split("/");
   const product = await (await fetch(\`https://dummyjson.com/product/\${segments[1]}\`)).json();
 
   if (product.message) {

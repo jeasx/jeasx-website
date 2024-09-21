@@ -11,8 +11,6 @@ export default function Layout({
   description = "",
   children = [],
 }) {
-  const [path] = this.request.url.split("?", 1);
-
   return (
     <>
       {`<!DOCTYPE html>`}
@@ -43,7 +41,7 @@ export default function Layout({
             <div id="main">
               <div class="inner">
                 <Header />
-                {path !== "/" ? (
+                {this.request.path !== "/" ? (
                   <section>
                     <header class="main">
                       <h1>{title}</h1>

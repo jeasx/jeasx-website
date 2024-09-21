@@ -11,6 +11,15 @@ export default function Faq({}) {
       description="What are the latest updates and new features in Jeasx?"
     >
       <dl>
+        <dt>2024-09-21 - jeasx 0.15.1 released</dt>
+        <dd>
+          <p>
+            Decorate the Fastify request object with "path" property, so you can
+            easily access the route path without query parameters via{" "}
+            <code>request.path</code>. This solves 99% of all use-cases for
+            recently removed @fastity/url-data.
+          </p>
+        </dd>
         <dt>2024-09-20 - jeasx 0.15.0 released</dt>
         <dd>
           <p>
