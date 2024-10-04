@@ -6,7 +6,9 @@ It provides an example how to integrate `Tailwind` (same approach works for SASS
 
 - `npm i tailwindcss`
 
-- Add npm-task to your package.json: `"build:css": "tailwindcss -i ./src/browser/css/tailwind.css -o ./src/browser/index.css"`
+- Add a new npm-task to your package.json: `"build:css": "tailwindcss -i ./src/browser/css/tailwind.css -o ./src/browser/index.css"`
+
+- Change the existing npm-task for "dev" to: `"dev": "jeasx dev ecosystem.config.cjs"`
 
 - Create `ecosystem.config.cjs` which inherits the defaults and add a custom task for building css.
 
