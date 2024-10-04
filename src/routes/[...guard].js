@@ -1,3 +1,5 @@
+import { escapeEntities } from "jsx-async-runtime";
+
 const BUILD_TIME_PREFIX = `/${process.env.BUILD_TIME}/`;
 
 /**
@@ -16,4 +18,5 @@ export default function RootGuard({ request, reply }) {
   // Set the request and reply objects as context
   this.request = request;
   this.response = reply;
+  this.escape = escapeEntities;
 }

@@ -2,9 +2,9 @@ module.exports = {
   apps: [
     ...require("jeasx/ecosystem.config.cjs").apps,
     {
-      name: "build:scss",
+      name: "build:css",
       script: "npm",
-      args: "run scss -- --update --watch",
+      args: "run build:css -- --watch",
       autorestart: false,
     },
   ],

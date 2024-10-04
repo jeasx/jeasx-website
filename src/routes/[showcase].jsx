@@ -1,3 +1,7 @@
+import Article from "../components/Article";
+import Content from "../components/Content";
+import Feature from "../components/Feature";
+import Features from "../components/Features";
 import Layout from "../components/Layout";
 
 /**
@@ -5,56 +9,78 @@ import Layout from "../components/Layout";
  */
 export default function Showcase({}) {
   return (
-    <Layout title="Showcase" description="Illustrative use cases for jeasx">
-      <dl>
-        <dt>
-          <a href="https://expo.jeasx.dev" target="_blank">
-            jeasx-expo
-          </a>
-        </dt>
-        <dd>
-          <p>
-            A compilation of concise examples showcasing the capabilities of
-            server-rendered JSX.
+    <Layout title="Showcase" description="Illustrative use cases for Jeasx">
+      <Content>
+        <Article
+          category="Showcase"
+          headline="Illustrative use cases for Jeasx"
+        >
+          <p class="lead">
+            If you have built a public website with Jeasx,{" "}
+            <a href="/contact">please let us know</a>, so we can add it to the
+            showcase.
           </p>
-        </dd>
-        <dt>
-          <a href="https://github.com/jeasx/jeasx-website" target="_blank">
-            jeasx-website
-          </a>
-        </dt>
-        <dd>
-          <p>
-            This website is built with jeasx. Check out the GitHub repository to
-            learn how to integrate SCSS into your workflow.
-          </p>
-        </dd>
-        <dt>
-          <a href="https://www.lottoindeutschland.de" target="_blank">
-            LOTTO in Deutschland
-          </a>
-        </dt>
-        <dd>
-          <p>
-            An informational website about LOTTO in Germany, constructed using
-            jeasx and achieving outstanding page speed scores.
-          </p>
-        </dd>
-        <dt>
-          <a href="https://www.wave-ag.de/" target="_blank">
-            Wave AG
-          </a>
-        </dt>
-        <dd>
-          <p>
-            The WAVE Management AG is the investment company for the VHV Group
-            (Hanover, Germany). The project was originally constructed using
-            Next.js and has since been transformed to jeasx, resulting in a
-            notable improvement in pagespeed achieved by reducing the amount of
-            JavaScript to 1.5kb.
-          </p>
-        </dd>
-      </dl>
+          <Features>
+            <Feature
+              headline="Jeasx-Expo"
+              link="https://expo.jeasx.dev"
+              icon={
+                <img
+                  src="/favicon/expo.jeasx.dev"
+                  width="24"
+                  height="24"
+                  alt=""
+                />
+              }
+            >
+              A compilation of concise examples showcasing the capabilities of
+              server-rendered JSX and userland integrations of various
+              JS-Frameworks.
+            </Feature>
+            <Feature
+              headline="Jeasx-Website"
+              link="https://github.com/jeasx/jeasx-website"
+              icon={
+                <img src="/favicon/github.com" width="24" height="24" alt="" />
+              }
+            >
+              This website is built with Jeasx. Check out the GitHub repository
+              to learn how to integrate Tailwind into your workflow.
+            </Feature>
+            <Feature
+              headline="LOTTO in Deutschland"
+              link="https://www.lottoindeutschland.de"
+              icon={
+                <img
+                  src="/favicon/www.lottoindeutschland.de"
+                  width="24"
+                  height="24"
+                  alt=""
+                />
+              }
+            >
+              An informational website about LOTTO in Germany, constructed using
+              Jeasx and achieving outstanding page speed scores.
+            </Feature>
+            <Feature
+              headline="Wave Management AG"
+              link="https://www.wave-ag.de"
+              icon={
+                <img
+                  src="/favicon/www.wave-ag.de"
+                  width="24"
+                  height="24"
+                  alt=""
+                />
+              }
+            >
+              The website is part of the VHV Insurance Group. The project was
+              originally built using Next.js and has been transformed to Jeasx,
+              resulting in ~1.5kb client side JS.
+            </Feature>
+          </Features>
+        </Article>
+      </Content>
     </Layout>
   );
 }

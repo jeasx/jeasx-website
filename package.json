@@ -5,14 +5,20 @@
     "start": "jeasx start",
     "build": "jeasx build",
     "dev": "jeasx dev ecosystem.config.cjs",
-    "scss": "sass src/browser/scss/main.scss:src/browser/scss/main.css --no-source-map"
+    "build:css": "tailwindcss -i ./src/browser/css/tailwind.css -o ./src/browser/index.css"
   },
-  "dependencies": {
-    "jeasx": "0.15.2",
-    "sass": "1.79.3",
-    "shiki": "1.18.0"
-  },
+  "browserslist": "defaults, not ie <= 11",
   "engines": {
     "node": "20.x"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "0.5.15",
+    "jeasx": "0.15.2",
+    "prismjs": "1.29.0",
+    "tailwindcss": "3.4.13"
+  },
+  "devDependencies": {
+    "prettier": "3.3.3",
+    "prettier-plugin-tailwindcss": "0.6.8"
   }
 }

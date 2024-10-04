@@ -1,4 +1,7 @@
+import Article from "../components/Article";
+import Aside from "../components/Aside";
 import Code from "../components/Code";
+import Content from "../components/Content";
 import Layout from "../components/Layout";
 
 /**
@@ -6,10 +9,12 @@ import Layout from "../components/Layout";
  */
 export default function Faq({}) {
   return (
-    <Layout title="FAQ" description="Everything you need to know about jeasx">
-      <dl>
-        <dt>Is there something like a context object similar to React?</dt>
-        <dd>
+    <Layout title="FAQ" description="Everything you need to know about Jeasx">
+      <Content>
+        <Article category="FAQ" headline="Frequently Asked Questions">
+          <h2 id="context">
+            Is there something like a context object similar to React?
+          </h2>
           <p>
             Yes, Jeasx provides a context object via <code>this</code> which
             gets automagically propagated to sub-components. You can populate
@@ -40,9 +45,8 @@ export default function CurrentDate() {
             </a>{" "}
             to see how things work using the context as them provider.
           </p>
-        </dd>
-        <dt>Can I post-process the resulting HTML?</dt>
-        <dd>
+          <hr />
+          <h2 id="post-process">Can I post-process the resulting HTML?</h2>
           <p>
             If you want to prettify the HTML output, you can wire up a response
             handler in any endpoint (e.g. a guard). The response handler takes
@@ -63,20 +67,21 @@ export default function RootGuard({ request, reply }) {
 }
 `}
           />
-        </dd>
-        <dt>
-          Is there a way to set the document title in a sub-component (aka
-          Helmet)?
-        </dt>
-        <dd>
+          <hr />
+          <h2 id="helmet">
+            Is there a way to set the document title in a sub-component (aka
+            Helmet)?
+          </h2>
           <p>
             Yes, have a look at the{" "}
             <a href="https://expo.jeasx.dev/head">head example</a> which
             demonstrates how easily this can be achieved with a guard.
           </p>
-        </dd>
-        <dt>Is it possible to use SASS/SCSS?</dt>
-        <dd>
+          <hr />
+          <h2 id="css-frameworks">
+            Is it possible to use CSS-Frameworks like SASS or Tailwind?
+          </h2>
+
           <p>
             Certainly! Please check out the{" "}
             <a
@@ -87,9 +92,8 @@ export default function RootGuard({ request, reply }) {
             </a>{" "}
             of this website to see how things should be wired.
           </p>
-        </dd>
-        <dt>How to use a Browsersync with Jeasx?</dt>
-        <dd>
+          <hr />
+          <h2 id="browsersync">How to use a Browsersync with Jeasx?</h2>
           <p>
             If you want to reload CSS automagically, start{" "}
             <a href="https://browsersync.io/" target="_blank">
@@ -101,9 +105,10 @@ export default function RootGuard({ request, reply }) {
             source={`npx -y browser-sync start -w -f "dist/**/index.css" -p localhost:3000`}
             lang="bash"
           />
-        </dd>
-        <dt>What are the hosting options for a jeasx project?</dt>
-        <dd>
+          <hr />
+          <h2 id="hosting">
+            What are the hosting options for a Jeasx project?
+          </h2>
           <p>
             Jeasx provides two different hosting modes tailored to meet your
             specific needs: traditional hosting on a node server or a serverless
@@ -112,16 +117,44 @@ export default function RootGuard({ request, reply }) {
             <a href="https://railway.app" target="_blank">
               Railway
             </a>
-            , which seamlessly operates jeasx without the need for additional
+            , which seamlessly operates Jeasx without the need for additional
             configurations. If you prefer a serverless approach,{" "}
             <a href="https://vercel.com" target="_blank">
               Vercel
             </a>{" "}
-            is the perfect fit, where jeasx provides the necessary
+            is the perfect fit, where Jeasx provides the necessary
             configurations out of the box.
           </p>
-        </dd>
-      </dl>
+        </Article>
+      </Content>
+      <Aside
+        links={[
+          {
+            label: "Context",
+            link: "#context",
+          },
+          {
+            label: "Post-process",
+            link: "#post-process",
+          },
+          {
+            label: "Helmet",
+            link: "#helmet",
+          },
+          {
+            label: "CSS-Frameworks",
+            link: "#css-frameworks",
+          },
+          {
+            label: "Browsersync",
+            link: "#browsersync",
+          },
+          {
+            label: "Hosting",
+            link: "#hosting",
+          },
+        ]}
+      />
     </Layout>
   );
 }

@@ -5,4 +5,5 @@
 !ecosystem.config.cjs
 !package-lock.json
 !package.json
+!tailwind.config.js
 !tsconfig.json
