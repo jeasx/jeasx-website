@@ -53,12 +53,7 @@ export default function Header() {
         </a>
       </div>
       <div class="-my-5 mr-6 hidden sm:mr-8 md:mr-0 lg:block">
-        <form
-          id="search-form"
-          action="https://www.ecosia.org/search"
-          method="get"
-          target="_blank"
-        >
+        <form id="search-form">
           <input
             id="search-input"
             type="search"

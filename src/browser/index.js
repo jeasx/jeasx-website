@@ -10,7 +10,9 @@ addEventListener("load", () => {
   });
 
   document.getElementById("search-form").addEventListener("submit", (e) => {
+    e.preventDefault();
     // @ts-ignore
-    document.getElementById("search-input").value += ' "jeasx"';
+    const q = document.getElementById("search-input").value;
+    window.location.replace(`https://www.ecosia.org/search?q=%22jeasx%22+${q}`);
   });
 });
