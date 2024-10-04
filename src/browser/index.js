@@ -13,6 +13,8 @@ addEventListener("load", () => {
     e.preventDefault();
     // @ts-ignore
     const q = document.getElementById("search-input").value;
-    window.location.replace(`https://www.ecosia.org/search?q=%22jeasx%22+${q}`);
+    window
+      .open(`https://www.ecosia.org/search?q=%22jeasx%22+${q}`, "_blank")
+      .focus();
   });
 });
