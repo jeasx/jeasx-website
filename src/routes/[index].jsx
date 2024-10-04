@@ -14,9 +14,12 @@ import Next from "../components/Next";
  */
 export default async function Homepage({ request }) {
   return (
-    <Layout title="Jeasx" description="The Ease of JSX with the power of SSR">
+    <Layout
+      title="Homepage"
+      description="The Ease of JSX with the power of SSR"
+    >
       <Content>
-        <Article category="Introduction" headline="Welcome to Jeasx">
+        <Article headline="Welcome to Jeasx">
           <p class="lead">
             By eliminating unnecessary complexity and providing precise control
             over HTML, CSS, and JavaScript, Jeasx empowers developers to craft

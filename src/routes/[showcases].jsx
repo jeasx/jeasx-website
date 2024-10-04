@@ -9,16 +9,16 @@ import Layout from "../components/Layout";
  */
 export default function Showcase({}) {
   return (
-    <Layout title="Showcase" description="Illustrative use cases for Jeasx">
+    <Layout title="Showcases" description="Illustrative use cases for Jeasx">
       <Content>
         <Article
-          category="Showcase"
+          category="Showcases"
           headline="Illustrative use cases for Jeasx"
         >
           <p class="lead">
             If you have built a public website with Jeasx,{" "}
             <a href="/contact">please let us know</a>, so we can add it to the
-            showcase.
+            showcases.
           </p>
           <Features>
             <Feature

@@ -53,7 +53,7 @@ const NAV_ITEMS = [
     links: [
       { label: "FAQ", link: "/faq" },
       { label: "News", link: "/news" },
-      { label: "Showcase", link: "/showcase" },
+      { label: "Showcases", link: "/showcases" },
     ],
   },
   {
