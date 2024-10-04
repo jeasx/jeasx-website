@@ -14,7 +14,10 @@ addEventListener("load", () => {
     // @ts-ignore
     const q = document.getElementById("search-input").value;
     window
-      .open(`https://www.ecosia.org/search?q=%22jeasx%22+${q}`, "_blank")
+      .open(
+        `https://www.ecosia.org/search?q=%22jeasx%22+${encodeURIComponent(q)}`,
+        "_blank",
+      )
       .focus();
   });
 });
