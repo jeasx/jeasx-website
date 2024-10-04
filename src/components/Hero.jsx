@@ -262,7 +262,7 @@ export default function Hero() {
                   <div class="mt-4 flex space-x-2 text-xs">
                     <div class="flex h-6 rounded-full bg-gradient-to-r from-sky-400/30 via-sky-400 to-sky-400/30 p-px font-medium text-sky-300">
                       <div class="flex items-center rounded-full bg-slate-800 px-2.5">
-                        [index].jsx
+                        [products].jsx
                       </div>
                     </div>
                   </div>
