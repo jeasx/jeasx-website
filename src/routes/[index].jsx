@@ -67,6 +67,13 @@ export default async function Homepage({ request }) {
               workflow and maximize productivity.
             </Feature>
           </Features>
+          <h2>Learn by examples</h2>
+          <p>
+            Exploring a new framework can be a daunting task. There are{" "}
+            <a href="https://expo.jeasx.dev">lots of examples</a> with source
+            code which will help you get started easily.
+          </p>
+
           <h2>Philosophy</h2>
           <p>
             Jeasx embraces modern HTML and CSS as the core building blocks for
