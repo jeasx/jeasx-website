@@ -1645,6 +1645,10 @@ video {
   margin-bottom: calc(2.25rem * var(--tw-space-y-reverse));
 }
 
+.overflow-auto {
+  overflow: auto;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
