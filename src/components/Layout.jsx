@@ -16,7 +16,7 @@ export default function Layout({
   return (
     <>
       {`<!DOCTYPE html>`}
-      <html lang="en" class="light h-full antialiased">
+      <html lang="en" class="light h-full scroll-smooth antialiased">
         <head>
           <title>{title} | JSX with Ease</title>
           {process.env.NODE_ENV !== "development" && (
