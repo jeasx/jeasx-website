@@ -2,6 +2,7 @@ import Article from "../components/Article";
 import Content from "../components/Content";
 import Feature from "../components/Feature";
 import Features from "../components/Features";
+import Highlight from "../components/Highlight";
 import IconArchitecture from "../components/icons/IconArchitecture";
 import IconInstallation from "../components/icons/IconInstallation";
 import IconPlugins from "../components/icons/IconPlugins";
@@ -25,6 +26,14 @@ export default async function Homepage({ request }) {
             over HTML, CSS, and JavaScript, Jeasx empowers developers to craft
             exceptional web experiences and applications.
           </p>
+          <h2>Breaking News</h2>
+          <Highlight title="2024-10-04 - Jeasx 1.0.0 released">
+            🎉 It's finally here! Jeasx 1.0.0 is ready for production. We are
+            proud to announce that the framework has reached feature
+            completeness and is now ready for the masses. Lots of hours of work
+            have been put into this project to make sure you have the best
+            experience possible.
+          </Highlight>
           <h2>Built on top of a proven tech stack</h2>
           <p>
             Jeasx is a sleek and modern framework that leverages tried and

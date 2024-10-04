@@ -1,6 +1,7 @@
 import Article from "../components/Article";
 import Code from "../components/Code";
 import Content from "../components/Content";
+import Highlight from "../components/Highlight";
 import Layout from "../components/Layout";
 
 /**
@@ -17,13 +18,29 @@ export default function Faq({}) {
           category="News"
           headline="What are the latest updates and new features in Jeasx?"
         >
+          <p class="lead">
+            Welcome to the news section of Jeasx. Here we are going to post
+            updates about new features, bug fixes, and general information about
+            the project. We are proud to announce that Jeasx is rock stable and
+            ready for production. We are committed to keep the project as small
+            as possible and focus on the core. Future updates are likely updates
+            for 3rd party dependencies like fastify, esbuild and esbuild.
+          </p>
+          <Highlight title="2024-10-04 - Jeasx 1.0.0 released">
+            🎉 It's finally here! Jeasx 1.0.0 is ready for production. We are
+            proud to announce that the framework has reached feature
+            completeness and is now ready for the masses. Lots of hours of work
+            have been put into this project to make sure you have the best
+            experience possible.
+          </Highlight>
+          <hr />
+          <h2>Release History</h2>
           <dl>
-            <dt>2024-09-23 - jeasx 0.15.2 released</dt>
+            <dt>2024-09-23 - Jeasx 0.15.2 released</dt>
             <dd>
               <p>Updates to all @fastify-plugins and esbuild@0.24.0.</p>
             </dd>
-
-            <dt>2024-09-21 - jeasx 0.15.1 released</dt>
+            <dt>2024-09-21 - Jeasx 0.15.1 released</dt>
             <dd>
               <p>
                 Decorate the Fastify request object with "path" property, so you
@@ -32,7 +49,7 @@ export default function Faq({}) {
                 recently removed @fastity/url-data.
               </p>
             </dd>
-            <dt>2024-09-20 - jeasx 0.15.0 released</dt>
+            <dt>2024-09-20 - Jeasx 0.15.0 released</dt>
             <dd>
               <p>
                 This release comes with Fastify 5. It also removes
@@ -60,7 +77,7 @@ export default function Faq({}) {
                 unpublished from npm).
               </p>
             </dd>
-            <dt>2024-08-21 - jeasx 0.11.2 released</dt>
+            <dt>2024-08-21 - Jeasx 0.11.2 released</dt>
             <dd>
               <p>
                 Added simple{" "}
@@ -74,7 +91,7 @@ export default function Faq({}) {
                 @fastify/cookie@9.4.0, @types/node@20.16.1
               </p>
             </dd>
-            <dt>2024-07-27 - jeasx 0.11.1 released</dt>
+            <dt>2024-07-27 - Jeasx 0.11.1 released</dt>
             <dd>
               <p>
                 Performance optimization: if response is string or buffer, break
@@ -82,7 +99,7 @@ export default function Faq({}) {
                 binary assets in userland.
               </p>
             </dd>
-            <dt>2024-07-26 - jeasx 0.11.0 released</dt>
+            <dt>2024-07-26 - Jeasx 0.11.0 released</dt>
             <dd>
               <p>
                 Updated to jsx-async-runtime@0.5.0 which allows to override{" "}
@@ -101,7 +118,7 @@ export default function Faq({}) {
                 to see how it works.
               </p>
             </dd>
-            <dt>2024-07-19 - jeasx 0.10.1 released</dt>
+            <dt>2024-07-19 - Jeasx 0.10.1 released</dt>
             <dd>
               <p>
                 <b>Breaking change:</b> removed @fastify/request-context in
@@ -112,14 +129,14 @@ export default function Faq({}) {
                 and testing is far easier now.
               </p>
             </dd>
-            <dt>2024-07-12 - jeasx 0.9.1 released</dt>
+            <dt>2024-07-12 - Jeasx 0.9.1 released</dt>
             <dd>
               <p>
                 Updated to jsx-async-runtime@0.4.1 which fixes a problem when
                 running tests with Vitest.
               </p>
             </dd>
-            <dt>2024-07-10 - jeasx 0.9.0 released</dt>
+            <dt>2024-07-10 - Jeasx 0.9.0 released</dt>
             <dd>
               <p>
                 Updated to jsx-async-runtime@0.4.0 which allows to use 'this' as
@@ -130,40 +147,40 @@ export default function Faq({}) {
                 to see how things work.
               </p>
             </dd>
-            <dt>2024-07-05 - jeasx 0.8.0 released</dt>
+            <dt>2024-07-05 - Jeasx 0.8.0 released</dt>
             <dd>
               <p>
                 Updated to jsx-async-runtime@0.3.0 (deprecated renderToString in
                 favor of jsxToString)
               </p>
             </dd>
-            <dt>2024-07-03 - jeasx 0.7.6 released</dt>
+            <dt>2024-07-03 - Jeasx 0.7.6 released</dt>
             <dd>
               <p>Updated to esbuild@0.23.0</p>
             </dd>
-            <dt>2024-07-01 - jeasx 0.7.5 released</dt>
+            <dt>2024-07-01 - Jeasx 0.7.5 released</dt>
             <dd>
               <p>Updated to fastify@4.28.1, esbuild@0.22.0, pm2@5.4.1</p>
             </dd>
-            <dt>2024-05-28 - jeasx 0.7.4 released</dt>
+            <dt>2024-05-28 - Jeasx 0.7.4 released</dt>
             <dd>
               <p>Updated to esbuild@0.21.4, pm2@5.4.0</p>
             </dd>
-            <dt>2024-05-17 - jeasx 0.7.3 released</dt>
+            <dt>2024-05-17 - Jeasx 0.7.3 released</dt>
             <dd>
               <p>Updated to esbuild@0.21.3, @types/node@20.12.12</p>
             </dd>
-            <dt>2024-05-08 - jeasx 0.7.2 released</dt>
+            <dt>2024-05-08 - Jeasx 0.7.2 released</dt>
             <dd>
               <p>
                 Updated to fastify@4.27.0, esbuild@0.21.1, @fastify/static@7.0.4
               </p>
             </dd>
-            <dt>2024-05-07 - jeasx 0.7.1 released</dt>
+            <dt>2024-05-07 - Jeasx 0.7.1 released</dt>
             <dd>
               <p>Updated esbuild to 0.21.0.</p>
             </dd>
-            <dt>2024-04-27 - jeasx 0.7.0 released</dt>
+            <dt>2024-04-27 - Jeasx 0.7.0 released</dt>
             <dd>
               <p>
                 This release introduces a new feature that allows you to
