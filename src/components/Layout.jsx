@@ -1,7 +1,6 @@
 /* This file is an example. Delete it at will. */
 
 import Header from "./Header";
-import Hero from "./Hero";
 import MobileNavigation from "./MobileNavigation";
 import Navigation from "./Navigation";
 
@@ -11,6 +10,7 @@ import Navigation from "./Navigation";
 export default function Layout({
   title = "",
   description = "",
+  stage = undefined,
   children = [],
 }) {
   return (
@@ -62,7 +62,7 @@ export default function Layout({
         <body class="flex min-h-full bg-white dark:bg-slate-900">
           <div class="flex w-full flex-col">
             <Header />
-            {this.request.path === "/" && <Hero />}
+            {stage}
             <div class="relative mx-auto flex w-full max-w-8xl flex-auto justify-center sm:px-2 lg:px-8 xl:px-12">
               <div class="hidden lg:relative lg:block lg:flex-none">
                 <div class="absolute inset-y-0 right-0 w-[50vw] bg-slate-50 dark:hidden"></div>
