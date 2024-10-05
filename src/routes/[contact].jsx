@@ -8,17 +8,10 @@ export default function Contact({}) {
       <Content>
         <Article category="Contributing" headline="Get in touch">
           <p class="lead">
-            The development of Jeasx is sponsored by{" "}
-            <a href="https://www.neoskop.de" target="_blank">
-              Neoskop
-            </a>{" "}
-            &ndash; a creative web development agency located in Hanover
-            (Germany).
+            If you want to get in touch, feel free to contact us:
           </p>
           <p>
-            If you want to get in touch, feel free to contact us:
-            <br />
-            <a href="mailto:jeasx@neoskop.de">jeasx@neoskop.de</a>
+            <a href="mailto:mail@jeasx.dev">mail@jeasx.dev</a>
           </p>
         </Article>
       </Content>
