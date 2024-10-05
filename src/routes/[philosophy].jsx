@@ -82,13 +82,11 @@ export default function Philosophy({}) {
             perfect from every perspective:
             <ul>
               <li>
-                {" "}
                 Astro utilizes a JSX-like syntax for its template files with
                 code blocks separated by dashes, requiring a dedicated IDE
                 plugin and a complex compiler for code transformation.
               </li>
               <li>
-                {" "}
                 On the other hand, Fresh relies on Deno, which may not comply
                 with your corporate policies or hosting requirements.
               </li>

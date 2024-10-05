@@ -2,6 +2,7 @@ import Article from "../components/Article";
 import Code from "../components/Code";
 import Content from "../components/Content";
 import Highlight from "../components/Highlight";
+import IconAttention from "../components/icons/IconAttention";
 import Layout from "../components/Layout";
 
 /**
@@ -69,7 +70,7 @@ export default function Browser({}) {
               <td>This file will be not available via an url.</td>
             </tr>
           </table>
-          <Highlight title="Shared code">
+          <Highlight title="Shared code" icon={<IconAttention />}>
             While you have the flexibility to share code between the server and
             browser, this is typically an edge case, as the DOM is not relevant
             on the server side, and node core modules are not compatible with
