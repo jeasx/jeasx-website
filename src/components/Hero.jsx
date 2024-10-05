@@ -15,7 +15,7 @@ export default function Hero() {
               data-nimg="1"
               class="absolute bottom-full right-full -mb-56 -mr-72 opacity-50"
               style="color: transparent"
-              src="/images/blur-cyan.png"
+              src="/images/blur-cyan.avif"
             />
             <div class="relative">
               <p class="inline bg-gradient-to-r from-indigo-200 via-sky-400 to-indigo-200 bg-clip-text font-display text-5xl tracking-tight text-transparent">
@@ -240,7 +240,7 @@ export default function Hero() {
                 data-nimg="1"
                 class="absolute -right-64 -top-64"
                 style="color: transparent"
-                src="/images/blur-cyan.png"
+                src="/images/blur-cyan.avif"
               />
               <img
                 alt=""
@@ -251,7 +251,7 @@ export default function Hero() {
                 data-nimg="1"
                 class="absolute -bottom-40 -right-44"
                 style="color: transparent"
-                src="/images/blur-indigo.png"
+                src="/images/blur-indigo.avif"
               />
               <div class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-sky-300 via-sky-300/70 to-blue-300 opacity-10 blur-lg"></div>
               <div class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-sky-300 via-sky-300/70 to-blue-300 opacity-10"></div>
