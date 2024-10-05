@@ -43,7 +43,6 @@ export default function Browser({}) {
               <td>/fonts/ubuntu.woff2</td>
             </tr>
           </table>
-
           <h2>CSS & JavaScript</h2>
           <p>
             CSS, JavaScript, or TypeScript files that require processing and
@@ -58,15 +57,15 @@ export default function Browser({}) {
               <th width="50%">URL</th>
             </tr>
             <tr>
-              <td>browser/src/index.css</td>
+              <td>src/browser/index.css</td>
               <td>/index.css</td>
             </tr>
             <tr>
-              <td>browser/src/custom/index.js</td>
+              <td>src/browser/custom/index.js</td>
               <td>/custom/index.js</td>
             </tr>
             <tr>
-              <td>browser/src/utils/date.js</td>
+              <td>src/browser/utils/date.js</td>
               <td>This file will be not available via an url.</td>
             </tr>
           </table>
