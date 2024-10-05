@@ -63,16 +63,45 @@ export default function JSX({}) {
             </li>
             <li>
               When using an object for a class definition, it is automagically
-              translated to a string: <br />
-              <Code
-                source={`<div class={{sticky: true, "my-class": true, "my-other-class": false}} />`}
-              />
-              is rendered as <Code source={`<div class="sticky my-class" />`} />
+              translated to a string with all truthy values separated by spaces.
             </li>
           </ul>
+          <h3>
+            Here's an example which shows all the differences in a single file:
+          </h3>
+          <Code
+            source={
+              /*js*/ `export default async function JokesPage() {
+  const { value } = await (
+    await fetch("https://api.chucknorris.io/jokes/random")
+  ).json();
+
+  return (
+    <>
+      {"<!DOCTYPE html>"}
+      <html lang="en">
+        <head>
+          <title>Random Jokes</title>
+          <style>{".center {text-align: center;}"}</style>
+        </head>
+        <body class="body" style={{ "background-color": "red" }}>
+          <h1
+            class={{ center: true, "my-class": true, "my-other-class": false }}
+            style="color: white"
+          >
+            {value}
+          </h1>
+        </body>
+      </html>
+    </>
+  );
+}
+`
+            }
+          />
           <Highlight title="Learn more" icon={<IconAttention />}>
-            For all the features provided by the asynchronous JSX runtime, have
-            a look at the{" "}
+            For all the advanced features provided by the asynchronous JSX
+            runtime, have a look at the{" "}
             <a
               href="https://github.com/jeasx/jsx-async-runtime/blob/main/example/src/App.jsx"
               target="_blank"
@@ -82,7 +111,7 @@ export default function JSX({}) {
             in the GitHub-Repository.
           </Highlight>
         </Article>
-        <Next link="/routes" label="How to create routes?" />
+        <Next link="/routes" label="How to create routes (aka pages)?" />
       </Content>
     </Layout>
   );
