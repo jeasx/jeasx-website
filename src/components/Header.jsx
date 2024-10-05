@@ -45,10 +45,7 @@ export default function Header() {
             </g>
           </svg>
           <span class="ml-2 font-display text-lg font-bold text-neutral-700">
-            Jeasx
-          </span>
-          <span class="ml-2 font-display text-lg font-bold text-neutral-700">
-            &ndash; JSX with Ease
+            Jeasx &ndash; JSX with Ease
           </span>
         </a>
       </div>

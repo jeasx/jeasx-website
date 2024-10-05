@@ -36,7 +36,7 @@ export default function Quickstart({}) {
             in a browser of your choice.
           </p>
         </Article>
-        <Next link="/routes" label="Learn the core concept: routes" />
+        <Next link="/jsx" label="Learn about server-side JSX" />
       </Content>
     </Layout>
   );
