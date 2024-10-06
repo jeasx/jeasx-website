@@ -31,11 +31,13 @@ export default async function Homepage({}) {
           </p>
           <h2>Breaking News</h2>
           <Highlight title="2024-10-04 - Jeasx 1.0.0 released">
-            🎉 It's finally here! Jeasx 1.0.0 is ready for production. We are
-            proud to announce that the framework has reached feature
-            completeness and is now ready for the masses. Lots of hours of work
-            have been put into this project to make sure you have the best
-            experience possible.
+            <p>
+              🎉 It's finally here! Jeasx 1.0.0 is ready for production. We are
+              proud to announce that the framework has reached feature
+              completeness and is now ready for the masses. Lots of hours of
+              work have been put into this project to make sure you have the
+              best experience possible.
+            </p>
           </Highlight>
           <h2>Built on top of a proven tech stack</h2>
           <p>
@@ -183,7 +185,7 @@ function HeroStage() {
               <div class="relative rounded-2xl bg-[#0A101F]/80 ring-1 ring-white/10 backdrop-blur">
                 <div class="absolute -top-px left-20 right-11 h-px bg-gradient-to-r from-sky-300/0 via-sky-300/70 to-sky-300/0"></div>
                 <div class="absolute -bottom-px left-11 right-20 h-px bg-gradient-to-r from-blue-400/0 via-blue-400 to-blue-400/0"></div>
-                <div class="pl-4 pt-4">
+                <div class="pb-2 pl-4 pt-2">
                   <div class="mt-4 flex space-x-2 text-xs">
                     <div class="flex h-6 rounded-full bg-gradient-to-r from-sky-400/30 via-sky-400 to-sky-400/30 p-px font-medium text-sky-300">
                       <div class="flex items-center rounded-full bg-slate-800 px-2.5">

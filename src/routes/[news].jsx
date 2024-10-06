@@ -27,11 +27,13 @@ export default function Faq({}) {
             for 3rd party dependencies like fastify, esbuild and esbuild.
           </p>
           <Highlight title="2024-10-04 - Jeasx 1.0.0 released">
-            🎉 It's finally here! Jeasx 1.0.0 is ready for production. We are
-            proud to announce that the framework has reached feature
-            completeness and is now ready for the masses. Lots of hours of work
-            have been put into this project to make sure you have the best
-            experience possible.
+            <p>
+              🎉 It's finally here! Jeasx 1.0.0 is ready for production. We are
+              proud to announce that the framework has reached feature
+              completeness and is now ready for the masses. Lots of hours of
+              work have been put into this project to make sure you have the
+              best experience possible.
+            </p>
           </Highlight>
           <hr />
           <h2>Release History</h2>

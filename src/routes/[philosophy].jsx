@@ -84,7 +84,7 @@ export default function Philosophy({}) {
               <li>
                 Astro utilizes a JSX-like syntax for its template files with
                 code blocks separated by dashes, requiring a dedicated IDE
-                plugin and a complex compiler for code transformation.
+                plugin and a special compiler for code transformation.
               </li>
               <li>
                 On the other hand, Fresh relies on Deno, which may not comply
@@ -92,9 +92,25 @@ export default function Philosophy({}) {
               </li>
             </ul>
           </p>
+          <p>
+            Astro and Fresh are great products, but they try to pack many
+            features into the framework itself. This "all-batteries-included"
+            approach might be convenient at first, but can lead to maintenance
+            problems in the long run since the framework is tightly coupled with
+            the application code.
+          </p>
           <Highlight title="Sometimes it's beneficial to have choices...">
-            Introducing Jeasx – the server side rendering framework on top of
-            JSX designed for the era of simplicity.
+            <p>
+              One of the main goals of Jeasx is to focus on the core (about 100
+              lines of code) and let all customizations be done in userland.
+              This gives you a rock solid foundation with a simple rule: if your
+              code works, it just works. And there's no need to worry about
+              framework updates.
+            </p>
+            <p>
+              Introducing Jeasx – the server side rendering framework on top of
+              JSX designed for the era of simplicity...
+            </p>
           </Highlight>
         </Article>
         <Next label="Get Started" link="/quickstart" />

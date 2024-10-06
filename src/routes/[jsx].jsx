@@ -71,7 +71,7 @@ export default function JSX({}) {
           </h3>
           <Code
             source={
-              /*js*/ `export default async function JokesPage() {
+              /*js*/ `export default async function Jokes() {
   const { value } = await (
     await fetch("https://api.chucknorris.io/jokes/random")
   ).json();
@@ -81,7 +81,7 @@ export default function JSX({}) {
       {"<!DOCTYPE html>"}
       <html lang="en">
         <head>
-          <title>Random Jokes</title>
+          <title>Jokes</title>
           <style>{".center {text-align: center;}"}</style>
         </head>
         <body class="body" style={{ "background-color": "red" }}>
@@ -100,15 +100,17 @@ export default function JSX({}) {
             }
           />
           <Highlight title="Learn more" icon={<IconAttention />}>
-            For all the advanced features provided by the asynchronous JSX
-            runtime, have a look at the{" "}
-            <a
-              href="https://github.com/jeasx/jsx-async-runtime/blob/main/example/src/App.jsx"
-              target="_blank"
-            >
-              example application
-            </a>{" "}
-            in the GitHub-Repository.
+            <p>
+              For all the advanced features provided by the asynchronous JSX
+              runtime, have a look at the{" "}
+              <a
+                href="https://github.com/jeasx/jsx-async-runtime/blob/main/example/src/App.jsx"
+                target="_blank"
+              >
+                example application
+              </a>{" "}
+              in the GitHub-Repository.
+            </p>
           </Highlight>
         </Article>
         <Next link="/routes" label="How to create routes (aka pages)?" />

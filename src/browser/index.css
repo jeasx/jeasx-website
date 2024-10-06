@@ -1908,6 +1908,10 @@ video {
   padding-bottom: 3rem;
 }
 
+.pb-2 {
+  padding-bottom: 0.5rem;
+}
+
 .pl-0\.5 {
   padding-left: 0.125rem;
 }
@@ -1932,8 +1936,8 @@ video {
   padding-right: 2rem;
 }
 
-.pt-4 {
-  padding-top: 1rem;
+.pt-2 {
+  padding-top: 0.5rem;
 }
 
 .pt-5 {
@@ -2173,6 +2177,10 @@ video {
 .\[mask-image\:linear-gradient\(transparent\2c white\2c white\)\] {
   -webkit-mask-image: linear-gradient(transparent,white,white);
           mask-image: linear-gradient(transparent,white,white);
+}
+
+.prose {
+  max-width: unset;
 }
 
 .dark\:prose-invert:where(.dark, .dark *) {

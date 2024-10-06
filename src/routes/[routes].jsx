@@ -81,7 +81,7 @@ export default function Routes({}) {
           <h3>Code example</h3>
           <Code
             source={`
-export default function FrontPage({ request, reply }) {
+export default function Welcome({ request, reply }) {
   return (
     <>
       {"<!DOCTYPE html>"}
@@ -125,8 +125,7 @@ export default function FrontPage({ request, reply }) {
           </table>
           <h3>Code example</h3>
           <Code
-            source={`
-export default async function BlogPage({ request, reply }) {
+            source={`export default async function Product({ request, reply }) {
   const segments = request.path.split("/");
   const product = await (await fetch(\`https://dummyjson.com/product/\${segments[1]}\`)).json();
 

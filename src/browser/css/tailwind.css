@@ -37,3 +37,7 @@
     display: none;
   }
 }
+
+.prose {
+  max-width: unset;
+}

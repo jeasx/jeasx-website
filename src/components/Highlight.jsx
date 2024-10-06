@@ -30,7 +30,7 @@ export default function Highlight({
               : "prose mt-2.5 text-sky-800 [--tw-prose-background:theme(colors.sky.50)] prose-a:text-sky-900 prose-code:text-sky-900 dark:text-slate-300 dark:prose-code:text-slate-300"
           }
         >
-          <p>{children}</p>
+          {children}
         </div>
       </div>
     </div>
