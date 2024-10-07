@@ -18,13 +18,14 @@ export default function JSX({}) {
           headline="Server-side rendering of JSX"
         >
           <p class="lead">
-            Jeasx is a server-side rendering (SSR) framework, which means that
-            all of your code is executed on the server and the resulting HTML is
-            sent to the client.
+            Jeasx is a server-side rendering (SSR) framework based on JSX, which
+            means that all of your code is executed on the server and the
+            resulting HTML is sent to the client. JSX is a great templating
+            technology due to its simplicity if you are familiar with the basics
+            of JavaScript.
           </p>
           <p>
-            I assume you are familiar with client-side JSX. Otherwise you should
-            read the excellent{" "}
+            If you are not familiar with JSX, you should read the excellent{" "}
             <a
               href="https://react.dev/learn/writing-markup-with-jsx"
               target="_blank"
