@@ -8,9 +8,6 @@
     "build:css": "tailwindcss -i ./src/browser/css/tailwind.css -o ./src/browser/index.css"
   },
   "browserslist": "defaults, not ie <= 11",
-  "engines": {
-    "node": "20.x"
-  },
   "dependencies": {
     "@tailwindcss/typography": "0.5.15",
     "jeasx": "1.0.0",
