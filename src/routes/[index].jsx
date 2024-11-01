@@ -34,12 +34,16 @@ export default async function Homepage({}) {
             <p>
               🎉 This version brings official support for Node 22. Also
               dependencies were updated to latest versions of fastify@5.0.1,
-              fastify/static@8.0.2 and fastify/cookie@11.0.1. And a new example
+              fastify/static@8.0.2 and fastify/cookie@11.0.1. Added new examples
               for{" "}
               <a href="https://expo.jeasx.dev/fragments" target="_blank">
                 template fragments
               </a>{" "}
-              in combination with HTMX was added to the expo.
+              in combination with HTMX and{" "}
+              <a href="https://expo.jeasx.dev/sharp" target="_blank">
+                image optimization
+              </a>{" "}
+              with sharp.
             </p>
           </Highlight>
           <h2>Built on top of a proven tech stack</h2>
