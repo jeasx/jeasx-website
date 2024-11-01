@@ -30,13 +30,16 @@ export default async function Homepage({}) {
             exceptional web experiences and applications.
           </p>
           <h2>Breaking News</h2>
-          <Highlight title="2024-10-04 - Jeasx 1.0.0 released">
+          <Highlight title="2024-11-01 - Jeasx 1.0.1 released">
             <p>
-              🎉 It's finally here! Jeasx 1.0.0 is ready for production. We are
-              proud to announce that the framework has reached feature
-              completeness and is now ready for the masses. Lots of hours of
-              work have been put into this project to make sure you have the
-              best experience possible.
+              🎉 This version brings official support for Node 22. Also
+              dependencies were updated to latest versions of fastify@5.0.1,
+              fastify/static@8.0.2 and fastify/cookie@11.0.1. And a new example
+              for{" "}
+              <a href="https://expo.jeasx.dev/fragments" target="_blank">
+                template fragments
+              </a>{" "}
+              in combination with HTMX was added to the expo.
             </p>
           </Highlight>
           <h2>Built on top of a proven tech stack</h2>
