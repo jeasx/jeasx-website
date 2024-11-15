@@ -29,7 +29,17 @@ export default function Faq({}) {
           <Highlight title="2024-11-15 - Jeasx 1.0.2 released">
             <p>
               🎉 Disabled cache-control for fastify-static, so proper
-              Cache-Control-Headers could be applied via environment.
+              Cache-Control response header could be applied via the environment
+              variable <code>FASTIFY_STATIC_HEADERS</code>. Have a look at the
+              env-file in the{" "}
+              <a
+                href="https://github.com/jeasx/jeasx-quickstart/blob/main/.env#L6-L8"
+                target="_blank"
+              >
+                quickstart project
+              </a>{" "}
+              for an example.
+              <br />
             </p>
           </Highlight>
           <hr />
