@@ -30,20 +30,10 @@ export default async function Homepage({}) {
             exceptional web experiences and applications.
           </p>
           <h2>Breaking News</h2>
-          <Highlight title="2024-11-01 - Jeasx 1.0.1 released">
+          <Highlight title="2024-11-15 - Jeasx 1.0.2 released">
             <p>
-              🎉 This version brings official support for Node 22. Also
-              dependencies were updated to latest versions of fastify@5.0.1,
-              fastify/static@8.0.2 and fastify/cookie@11.0.1. Added new examples
-              for{" "}
-              <a href="https://expo.jeasx.dev/fragments" target="_blank">
-                template fragments
-              </a>{" "}
-              in combination with HTMX and{" "}
-              <a href="https://expo.jeasx.dev/sharp" target="_blank">
-                image optimization
-              </a>{" "}
-              with sharp.
+              🎉 Disabled cache-control for fastify-static, so proper
+              Cache-Control-Headers could be applied via environment.
             </p>
           </Highlight>
           <h2>Built on top of a proven tech stack</h2>

@@ -26,25 +26,32 @@ export default function Faq({}) {
             as possible and focus on the core. Future updates are likely updates
             for 3rd party dependencies like fastify, esbuild and esbuild.
           </p>
-          <Highlight title="2024-11-01 - Jeasx 1.0.1 released">
+          <Highlight title="2024-11-15 - Jeasx 1.0.2 released">
             <p>
-              🎉 This version brings official support for Node 22. Also
-              dependencies were updated to latest versions of fastify@5.0.1,
-              fastify/static@8.0.2 and fastify/cookie@11.0.1. Added new examples
-              for{" "}
-              <a href="https://expo.jeasx.dev/fragments" target="_blank">
-                template fragments
-              </a>{" "}
-              in combination with HTMX and{" "}
-              <a href="https://expo.jeasx.dev/sharp" target="_blank">
-                image optimization
-              </a>{" "}
-              with sharp.
+              🎉 Disabled cache-control for fastify-static, so proper
+              Cache-Control-Headers could be applied via environment.
             </p>
           </Highlight>
           <hr />
           <h2>Release History</h2>
           <dl>
+            <dt>2024-11-01 - Jeasx 1.0.1 released</dt>
+            <dd>
+              <p>
+                🎉 This version brings official support for Node 22. Also
+                dependencies were updated to latest versions of fastify@5.0.1,
+                fastify/static@8.0.2 and fastify/cookie@11.0.1. Added new
+                examples for{" "}
+                <a href="https://expo.jeasx.dev/fragments" target="_blank">
+                  template fragments
+                </a>{" "}
+                in combination with HTMX and{" "}
+                <a href="https://expo.jeasx.dev/sharp" target="_blank">
+                  image optimization
+                </a>{" "}
+                with sharp.
+              </p>
+            </dd>
             <dt>2024-10-04 - Jeasx 1.0.0 released</dt>
             <dd>
               <p>
