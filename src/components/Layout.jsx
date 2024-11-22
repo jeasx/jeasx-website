@@ -57,7 +57,11 @@ export default function Layout({
             rel="stylesheet"
             href={`/${process.env.BUILD_TIME}/index.css`}
           />
-          <script src={`/${process.env.BUILD_TIME}/index.js`} defer></script>
+          <script
+            type="module"
+            src={`/${process.env.BUILD_TIME}/index.js`}
+            defer
+          ></script>
         </head>
         <body class="flex min-h-full bg-white dark:bg-slate-900">
           <div class="flex w-full flex-col">
