@@ -60,7 +60,22 @@ export default function Showcase({}) {
               }
             >
               An informational website about LOTTO in Germany, constructed using
-              Jeasx and achieving outstanding page speed scores.
+              Contentful and Jeasx and achieving outstanding page speed scores.
+            </Feature>
+            <Feature
+              headline="Annual report for LOTTO Niedersachsen"
+              link="https://unserjahr.lotto-niedersachsen.de/2023"
+              icon={
+                <img
+                  src="/favicon/www.lottoindeutschland.de"
+                  width="24"
+                  height="24"
+                  alt=""
+                />
+              }
+            >
+              The annual report from LOTTO Niedersachsen (2023 and later) is
+              built with Contentful and Jeasx with only ~1.5kb client side JS.
             </Feature>
             <Feature
               headline="Wave Management AG"
