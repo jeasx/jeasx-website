@@ -68,9 +68,11 @@ export default function Configuration({}) {
                 <b>HOST</b>
               </td>
               <td>
-                The hostname or IP address that the server should listen on.
-                Defaults to <code>::</code> which allows the server to listen on
-                any interface (IPv4 or IPv6).
+                <p>
+                  The hostname or IP address that the server should listen on.
+                  Defaults to <code>::</code> which allows the server to listen
+                  on any interface (IPv4 or IPv6).
+                </p>
               </td>
             </tr>
             <tr>
@@ -78,8 +80,10 @@ export default function Configuration({}) {
                 <b>PORT</b>
               </td>
               <td>
-                The port number that the server should listen on. Defaults to{" "}
-                <code>3000</code>.
+                <p>
+                  The port number that the server should listen on. Defaults to{" "}
+                  <code>3000</code>.
+                </p>
               </td>
             </tr>
             <tr>
@@ -87,10 +91,12 @@ export default function Configuration({}) {
                 <b>BUILD_TIME</b>
               </td>
               <td>
-                A <b>read-only value</b> set at build time and encoded as{" "}
-                <code>base36</code> (lower case alphabet and digits). Use it to
-                create a cache busting parameter for loading JavaScript and CSS
-                files.
+                <p>
+                  A <b>read-only value</b> set at build time and encoded as{" "}
+                  <code>base36</code> (lower case alphabet and digits). Use it
+                  to create a cache busting parameter for loading JavaScript and
+                  CSS files.
+                </p>
               </td>
             </tr>
             <tr>
@@ -98,13 +104,18 @@ export default function Configuration({}) {
                 <b>ESBUILD_BROWSER_TARGET</b>
               </td>
               <td>
-                Defaults to{" "}
-                <code>chrome126, edge126, firefox128, safari17</code>, more info
-                at{" "}
-                <a href="https://esbuild.github.io/api/#target" target="_blank">
-                  esbuild website
-                </a>
-                .
+                <p>
+                  Defaults to{" "}
+                  <code>chrome126, edge126, firefox128, safari17</code>, more
+                  info at{" "}
+                  <a
+                    href="https://esbuild.github.io/api/#target"
+                    target="_blank"
+                  >
+                    esbuild website
+                  </a>
+                  .
+                </p>
               </td>
             </tr>
             <tr>
@@ -112,9 +123,11 @@ export default function Configuration({}) {
                 <b>FASTIFY_BODY_LIMIT</b>
               </td>
               <td>
-                The default maximum body size for incoming requests is{" "}
-                <code>1048576</code> bytes. Adjust this value only if you need
-                to accommodate large file uploads.
+                <p>
+                  The default maximum body size for incoming requests is{" "}
+                  <code>1048576</code> bytes. Adjust this value only if you need
+                  to accommodate large file uploads.
+                </p>
               </td>
             </tr>
             <tr>
@@ -122,9 +135,11 @@ export default function Configuration({}) {
                 <b>FASTIFY_STATIC_HEADERS</b>
               </td>
               <td>
-                Custom headers for static files, such as JavaScript, CSS, and
-                assets from the public directory. Use these headers to configure
-                cache settings for static content.
+                <p>
+                  Custom headers for static files, such as JavaScript, CSS, and
+                  assets from the public directory. Use these headers to
+                  configure cache settings for static content.
+                </p>
                 <Code
                   lang="json"
                   source={JSON.stringify(
@@ -145,6 +160,18 @@ export default function Configuration({}) {
                     2,
                   )}
                 />
+                <p>
+                  The keys of the mapping are compared via{" "}
+                  <code>.endsWith()</code> with the current path, so an empty
+                  string matches all paths and can be used as fallback.
+                </p>
+                <p>
+                  <b>Please note:</b> If you set caching headers in global{" "}
+                  <code>.env</code>, you should clear them in{" "}
+                  <code>.env.development</code> (e.g. via{" "}
+                  <code>FASTIFY_STATIC_HEADERS=</code>) to avoid caching issues
+                  in development.
+                </p>
               </td>
             </tr>
             <tr>
@@ -152,9 +179,11 @@ export default function Configuration({}) {
                 <b>JEASX_BUILD_JS_WATCH</b>
               </td>
               <td>
-                Watched directories for browser bundle. This is only needed if
-                you want to share code between server and browser (e.g. set it
-                to <code>src/browser,src/shared</code>).
+                <p>
+                  Watched directories for browser bundle. This is only needed if
+                  you want to share code between server and browser (e.g. set it
+                  to <code>src/browser,src/shared</code>).
+                </p>
               </td>
             </tr>
           </table>
