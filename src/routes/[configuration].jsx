@@ -60,8 +60,8 @@ export default function Configuration({}) {
           <h2>Environment Variables</h2>
           <table>
             <tr>
-              <th width="50%">Name</th>
-              <th width="50%">Description</th>
+              <th width="30%">Name</th>
+              <th width="70%">Description</th>
             </tr>
             <tr>
               <td>
@@ -106,8 +106,8 @@ export default function Configuration({}) {
               <td>
                 <p>
                   Defaults to{" "}
-                  <code>chrome126, edge126, firefox128, safari17</code>, more
-                  info at{" "}
+                  <code>chrome126, edge126, firefox128, safari17</code>, full
+                  documentation at{" "}
                   <a
                     href="https://esbuild.github.io/api/#target"
                     target="_blank"
