@@ -4,6 +4,7 @@ import Content from "../components/Content";
 import Highlight from "../components/Highlight";
 import IconAttention from "../components/icons/IconAttention";
 import Layout from "../components/Layout";
+import Next from "../components/Next";
 
 /**
  * @param {import("./types").RouteProps} props
@@ -93,6 +94,10 @@ export default function Browser({}) {
           </p>
           <Code source={`JEASX_BUILD_JS_WATCH="src/browser,src/shared"`} />
         </Article>
+        <Next
+          link="/configuration"
+          label="How to configure Jease via environment?"
+        />
       </Content>
     </Layout>
   );
