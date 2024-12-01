@@ -67,7 +67,9 @@ export default function Faq({}) {
             <p>
               Updated <code>jsx-async-runtime</code> which fixes a bug in{" "}
               <code>escapeEntities</code> which escaped existing{" "}
-              <code>{this.escape("&amp;amp;")}</code> two times.
+              <code>{this.escape("&amp;amp;")}</code> two times. This release
+              also removes the deprecated <code>renderToString</code> function.
+              Simply replace it with <code>jsxToString</code>.
             </p>
             <p>
               The default host is now <code>::</code> which binds to all
