@@ -69,6 +69,14 @@ export default function Browser({}) {
               <td>This file will be not available via an url.</td>
             </tr>
           </table>
+          <p>
+            <b>Please note:</b> as JavaScript or TypeScript is compiled to{" "}
+            <a href="https://esbuild.github.io/api/#format-esm" target="_blank">
+              ECMAScript modules (ESM) via esbuild
+            </a>
+            , you should add <code>type="module"</code> to your script tags to
+            avoid subtle errors.
+          </p>
           <Highlight title="Shared code" icon={<IconAttention />}>
             <p>
               While you have the flexibility to share code between the server

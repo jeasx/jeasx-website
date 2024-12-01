@@ -24,7 +24,7 @@ export default function Faq({}) {
             the project. We are proud to announce that Jeasx is rock stable and
             ready for production. We are committed to keep the project as small
             as possible and focus on the core. Future updates are likely updates
-            for 3rd party dependencies like fastify, esbuild and esbuild.
+            for 3rd party dependencies like fastify, esbuild and pm2.
           </p>
           <Highlight title="2024-12-01 - Jeasx 1.1.0 released">
             <p>
