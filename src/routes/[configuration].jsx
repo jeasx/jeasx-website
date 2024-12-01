@@ -11,12 +11,12 @@ import Layout from "../components/Layout";
 export default function Configuration({}) {
   return (
     <Layout
-      title="Config &amp; Environment"
+      title="Config &amp; Environments"
       description="How to use environment variables to configure Jeasx"
     >
       <Content>
         <Article
-          category="Config &amp; Environment"
+          category="Config &amp; Environments"
           headline="How to configure Jeasx"
         >
           <p class="lead">

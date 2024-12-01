@@ -47,7 +47,7 @@ const NAV_ITEMS = [
       { label: "JSX &amp; SSR", link: "/jsx" },
       { label: "Routes &amp; Guards", link: "/routes" },
       { label: "CSS &amp; JavaScript", link: "/browser" },
-      { label: "Config &amp; Environment", link: "/configuration" },
+      { label: "Config &amp; Environments", link: "/configuration" },
     ],
   },
   {
