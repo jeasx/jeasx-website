@@ -26,25 +26,81 @@ export default function Faq({}) {
             as possible and focus on the core. Future updates are likely updates
             for 3rd party dependencies like fastify, esbuild and esbuild.
           </p>
-          <Highlight title="2024-11-15 - Jeasx 1.0.2 released">
+          <Highlight title="2024-12-01 - Jeasx 1.1.0 released">
             <p>
-              🎉 Disabled cache-control for fastify-static, so proper
-              Cache-Control response header could be applied via the environment
-              variable <code>FASTIFY_STATIC_HEADERS</code>. Have a look at the
-              env-file in the{" "}
+              🎉 Migrated from <code>dotenv</code> to{" "}
               <a
-                href="https://github.com/jeasx/jeasx-quickstart/blob/main/.env#L6-L8"
+                href="https://github.com/kerimdzhanov/dotenv-flow"
                 target="_blank"
               >
-                quickstart project
+                dotenv-flow
+              </a>
+              , so you can use <code>NODE_ENV</code>-specific <code>.env*</code>{" "}
+              files (like <code>.env.development</code>) to configure different
+              environments for production and development. This is useful to
+              disable caching headers (e.g. via{" "}
+              <code>FASTIFY_STATIC_HEADERS</code>) in development, as Jeasx
+              applies <code>FASTIFY_STATIC_HEADERS</code> in development from
+              now on for a more consistent developer expierence. See updated
+              .env-files in the{" "}
+              <a
+                href="https://github.com/jeasx/jeasx-quickstart"
+                target="_blank"
+              >
+                quickstart-project
               </a>{" "}
-              for an example.
-              <br />
+              for an example how to disable caching in development. This is only
+              needed if you have configured <code>FASTIFY_STATIC_HEADERS</code>{" "}
+              for your existing projects.
+            </p>
+            <p>
+              Bumped default environment variable{" "}
+              <code>ESBUILD_BROWSER_TARGET</code> to more recent browser
+              versions (e.g.{" "}
+              <code>chrome126, edge126, firefox128, safari17</code>). If you
+              want to stick with older versions, you can override it via the
+              environment. Learn more about possible values at the{" "}
+              <a href="https://esbuild.github.io/api/#target" target="_blank">
+                esbuild website.
+              </a>
+            </p>
+            <p>
+              Updated <code>jsx-async-runtime</code> which fixes a bug in{" "}
+              <code>escapeEntities</code> which escaped existing{" "}
+              <code>{this.escape("&amp;amp;")}</code> two times.
+            </p>
+            <p>
+              The default host is now <code>::</code> which binds to all
+              available network interfaces (e.g. IPv6). You can change it via
+              the <code>HOST</code> environment variable (e.g.{" "}
+              <code>HOST=0.0.0.0</code> for the old behaviour). The change is
+              especially useful to connect to Jeasx via private networking on
+              hosting platforms like{" "}
+              <a href="https://railway.app/" target="blank">
+                Railway
+              </a>
+              .
             </p>
           </Highlight>
           <hr />
           <h2>Release History</h2>
           <dl>
+            <dt>2024-11-15 - Jeasx 1.0.2 released</dt>
+            <dd>
+              <p>
+                🎉 Disabled cache-control for fastify-static, so proper
+                Cache-Control response header could be applied via the
+                environment variable <code>FASTIFY_STATIC_HEADERS</code>. Have a
+                look at the env-file in the{" "}
+                <a
+                  href="https://github.com/jeasx/jeasx-quickstart/blob/main/.env#L6-L8"
+                  target="_blank"
+                >
+                  quickstart project
+                </a>{" "}
+                for an example.
+              </p>
+            </dd>
             <dt>2024-11-01 - Jeasx 1.0.1 released</dt>
             <dd>
               <p>
