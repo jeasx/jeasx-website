@@ -88,7 +88,7 @@ export default function Configuration({}) {
             </tr>
             <tr>
               <td>
-                <b>BUILD_TIME</b>
+                <b>BUILD_&#8203;TIME</b>
               </td>
               <td>
                 <p>
@@ -101,7 +101,7 @@ export default function Configuration({}) {
             </tr>
             <tr>
               <td>
-                <b>ESBUILD_BROWSER_TARGET</b>
+                <b>ESBUILD_&#8203;BROWSER_&#8203;TARGET</b>
               </td>
               <td>
                 <p>
@@ -120,7 +120,7 @@ export default function Configuration({}) {
             </tr>
             <tr>
               <td>
-                <b>FASTIFY_BODY_LIMIT</b>
+                <b>FASTIFY_&#8203;BODY_&#8203;LIMIT</b>
               </td>
               <td>
                 <p>
@@ -132,7 +132,7 @@ export default function Configuration({}) {
             </tr>
             <tr>
               <td>
-                <b>FASTIFY_STATIC_HEADERS</b>
+                <b>FASTIFY_&#8203;STATIC_&#8203;HEADERS</b>
               </td>
               <td>
                 <p>
@@ -142,23 +142,21 @@ export default function Configuration({}) {
                 </p>
                 <Code
                   lang="json"
-                  source={JSON.stringify(
-                    {
-                      "robots.txt": {
-                        "Cache-Control":
-                          "public, max-age=86400, s-maxage=86400",
-                      },
-                      ".html": {
-                        "Cache-Control": "public, max-age=0, s-maxage=120",
-                      },
-                      "": {
-                        "Cache-Control":
-                          "public, max-age=31536000, s-maxage=31536000",
-                      },
-                    },
-                    null,
-                    2,
-                  )}
+                  source={`
+{
+  "robots.txt": {
+    "Cache-Control":
+      "public, max-age=86400"
+  },
+  ".html": {
+    "Cache-Control":
+      "public, max-age=0"
+  },
+  "": {
+    "Cache-Control":
+      "public, max-age=31536000"
+  }
+}`.trim()}
                 />
                 <p>
                   The keys of the mapping are compared via{" "}
@@ -176,7 +174,7 @@ export default function Configuration({}) {
             </tr>
             <tr>
               <td>
-                <b>JEASX_BUILD_JS_WATCH</b>
+                <b>JEASX_&#8203;BUILD_&#8203;JS_&#8203;WATCH</b>
               </td>
               <td>
                 <p>
