@@ -30,11 +30,11 @@ export default async function Homepage({}) {
             exceptional web experiences and applications.
           </p>
           <h2>Breaking News</h2>
-          <Highlight title="2024-12-01 - Jeasx 1.1.0 released">
+          <Highlight title="2024-12-07 - Jeasx 1.2.0 released">
             <p>
-              🎉 Migration to dotenv-flow for multiple .env-files, updated
-              default browser targets and other improvments and fixes.{" "}
-              <a href="/news">Read more...</a>
+              🎉 Huge performance boost (2-5 times faster in benchmarks),
+              updated typings for HTML tags and attributes and new environment
+              variables. <a href="/news">Read more...</a>
             </p>
           </Highlight>
           <h2>Built on top of a proven tech stack</h2>

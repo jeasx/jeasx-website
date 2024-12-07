@@ -132,6 +132,14 @@ export default function Configuration({}) {
             </tr>
             <tr>
               <td>
+                <b>FASTIFY_&#8203;DISABLE_&#8203;REQUEST_&#8203;LOGGING</b>
+              </td>
+              <td>
+                <p>Set this to true to disable request logging.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
                 <b>FASTIFY_&#8203;STATIC_&#8203;HEADERS</b>
               </td>
               <td>
@@ -169,6 +177,27 @@ export default function Configuration({}) {
                   <code>.env.development</code> (e.g. via{" "}
                   <code>FASTIFY_STATIC_HEADERS=</code>) to avoid caching issues
                   in development.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>FASTIFY_&#8203;TRUST_&#8203;PROXY</b>
+              </td>
+              <td>
+                <p>
+                  By enabling the{" "}
+                  <a
+                    href="https://fastify.dev/docs/latest/Reference/Server/#trustproxy"
+                    target="_blank"
+                  >
+                    trustProxy
+                  </a>{" "}
+                  option, Fastify will know that it is sitting behind a proxy
+                  and that the X-Forwarded-* header fields may be trusted, which
+                  otherwise may be easily spoofed. <b>Please note:</b> the
+                  option only supports <code>true</code>, not other string
+                  values.
                 </p>
               </td>
             </tr>

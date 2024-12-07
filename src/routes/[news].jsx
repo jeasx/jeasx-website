@@ -26,67 +26,99 @@ export default function Faq({}) {
             as possible and focus on the core. Future updates are likely updates
             for 3rd party dependencies like fastify, esbuild and pm2.
           </p>
-          <Highlight title="2024-12-01 - Jeasx 1.1.0 released">
+          <Highlight title="2024-12-07 - Jeasx 1.2.0 released">
             <p>
-              🎉 Migrated from <code>dotenv</code> to{" "}
-              <a
-                href="https://github.com/kerimdzhanov/dotenv-flow"
-                target="_blank"
-              >
-                dotenv-flow
+              🎉 This release brings a major performance boost (
+              <b>about 2-5 times faster in benchmarks</b>) by introducing
+              runtime caches for resolved routes and loaded JavaScript modules.
+              The caches are only used in production and won't interfere with
+              your development workflow. This change was triggered by a{" "}
+              <a href="https://github.com/jeasx/jeasx/pull/8">
+                PR submitted by Bryce
               </a>
-              , so you can use <code>NODE_ENV</code>-specific <code>.env*</code>{" "}
-              files (like <code>.env.development</code>) to configure different
-              environments for production and development. This is useful to
-              disable caching headers (e.g. via{" "}
-              <code>FASTIFY_STATIC_HEADERS</code>) in development, as Jeasx
-              applies <code>FASTIFY_STATIC_HEADERS</code> in development from
-              now on for a more consistent developer expierence. See updated
-              .env-files in the{" "}
+              , Kudos to him for bringing this topic onto the radar.
+            </p>
+            <p>
+              It also features an update to <code>jsx-async-runtime</code> which
+              provides more accurate and also deprecated typings for HTML tags
+              and attributes according to the fantastic{" "}
               <a
-                href="https://github.com/jeasx/jeasx-quickstart"
+                href="https://developer.mozilla.org/de/docs/Web/HTML"
                 target="_blank"
               >
-                quickstart-project
+                HTML reference
               </a>{" "}
-              for an example how to disable caching in development. This is only
-              needed if you have configured <code>FASTIFY_STATIC_HEADERS</code>{" "}
-              for your existing projects.
+              from the Mozilla Development Network.
             </p>
             <p>
-              Bumped default environment variable{" "}
-              <code>ESBUILD_BROWSER_TARGET</code> to more recent browser
-              versions (e.g.{" "}
-              <code>chrome126, edge126, firefox128, safari17</code>). If you
-              want to stick with older versions, you can override it via the
-              environment. Learn more about possible values at the{" "}
-              <a href="https://esbuild.github.io/api/#target" target="_blank">
-                esbuild website.
-              </a>
-            </p>
-            <p>
-              Updated <code>jsx-async-runtime</code> which fixes a bug in{" "}
-              <code>escapeEntities</code> which escaped existing{" "}
-              <code>{this.escape("&amp;amp;")}</code> two times. This release
-              also removes the deprecated <code>renderToString</code> function.
-              Simply replace it with <code>jsxToString</code>.
-            </p>
-            <p>
-              The default host is now <code>::</code> which binds to all
-              available network interfaces (e.g. IPv6). You can change it via
-              the <code>HOST</code> environment variable (e.g.{" "}
-              <code>HOST=0.0.0.0</code> for the old behaviour). The change is
-              especially useful to connect to Jeasx via private networking on
-              hosting platforms like{" "}
-              <a href="https://railway.app/" target="blank">
-                Railway
-              </a>
-              .
+              Added two new environment variables (
+              <code>FASTIFY_DISABLE_REQUEST_LOGGING</code> and{" "}
+              <code>FASTIFY_TRUST_PROXY</code>) to give you more control over
+              how Jeasx should behave in different environments.
             </p>
           </Highlight>
           <hr />
           <h2>Release History</h2>
           <dl>
+            <dt>2024-12-01 - Jeasx 1.1.0 released</dt>
+            <dd>
+              <p>
+                🎉 Migrated from <code>dotenv</code> to{" "}
+                <a
+                  href="https://github.com/kerimdzhanov/dotenv-flow"
+                  target="_blank"
+                >
+                  dotenv-flow
+                </a>
+                , so you can use <code>NODE_ENV</code>-specific{" "}
+                <code>.env*</code> files (like <code>.env.development</code>) to
+                configure different environments for production and development.
+                This is useful to disable caching headers (e.g. via{" "}
+                <code>FASTIFY_STATIC_HEADERS</code>) in development, as Jeasx
+                applies <code>FASTIFY_STATIC_HEADERS</code> in development from
+                now on for a more consistent developer expierence. See updated
+                .env-files in the{" "}
+                <a
+                  href="https://github.com/jeasx/jeasx-quickstart"
+                  target="_blank"
+                >
+                  quickstart-project
+                </a>{" "}
+                for an example how to disable caching in development. This is
+                only needed if you have configured{" "}
+                <code>FASTIFY_STATIC_HEADERS</code> for your existing projects.
+              </p>
+              <p>
+                Bumped default environment variable{" "}
+                <code>ESBUILD_BROWSER_TARGET</code> to more recent browser
+                versions (e.g.{" "}
+                <code>chrome126, edge126, firefox128, safari17</code>). If you
+                want to stick with older versions, you can override it via the
+                environment. Learn more about possible values at the{" "}
+                <a href="https://esbuild.github.io/api/#target" target="_blank">
+                  esbuild website.
+                </a>
+              </p>
+              <p>
+                Updated <code>jsx-async-runtime</code> which fixes a bug in{" "}
+                <code>escapeEntities</code> which escaped existing{" "}
+                <code>{this.escape("&amp;amp;")}</code> two times. This release
+                also removes the deprecated <code>renderToString</code>{" "}
+                function. Simply replace it with <code>jsxToString</code>.
+              </p>
+              <p>
+                The default host is now <code>::</code> which binds to all
+                available network interfaces (e.g. IPv6). You can change it via
+                the <code>HOST</code> environment variable (e.g.{" "}
+                <code>HOST=0.0.0.0</code> for the old behaviour). The change is
+                especially useful to connect to Jeasx via private networking on
+                hosting platforms like{" "}
+                <a href="https://railway.app/" target="blank">
+                  Railway
+                </a>
+                .
+              </p>
+            </dd>
             <dt>2024-11-15 - Jeasx 1.0.2 released</dt>
             <dd>
               <p>
