@@ -93,6 +93,23 @@ export default function Showcase({}) {
               originally built using Next.js and has been transformed to Jeasx,
               resulting in ~1.5kb client side JS.
             </Feature>
+            <Feature
+              headline="Enercity Climate Monitor"
+              link="https://www.enercity.de/klimamonitor/langenhagen"
+              icon={
+                <img
+                  src="/favicon/www.enercity.de"
+                  width="24"
+                  height="24"
+                  alt=""
+                />
+              }
+            >
+              This website is operated by the city utility company Enercity and
+              displays the locally generated electricity. The project was
+              migrated from React to Jeasx to drastically reduce ongoing
+              maintenance costs.
+            </Feature>
           </Features>
         </Article>
       </Content>
