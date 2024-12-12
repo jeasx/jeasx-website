@@ -26,40 +26,50 @@ export default function Faq({}) {
             as possible and focus on the core. Future updates are likely updates
             for 3rd party dependencies like fastify, esbuild and pm2.
           </p>
-          <Highlight title="2024-12-07 - Jeasx 1.2.0 released">
+          <Highlight title="2024-12-12 - Jeasx 1.2.1 released">
             <p>
-              🎉 This release brings a major performance boost (
-              <b>about 2-5 times faster in benchmarks</b>) by introducing
-              runtime caches for resolved routes and loaded JavaScript modules.
-              The caches are only used in production and won't interfere with
-              your development workflow. This change was triggered by a{" "}
-              <a href="https://github.com/jeasx/jeasx/pull/8">
-                PR submitted by Bryce
-              </a>
-              , Kudos to him for bringing this topic onto the radar.
-            </p>
-            <p>
-              It also features an update to <code>jsx-async-runtime</code> which
-              provides more accurate and also deprecated typings for HTML tags
-              and attributes according to the fantastic{" "}
-              <a
-                href="https://developer.mozilla.org/de/docs/Web/HTML"
-                target="_blank"
-              >
-                HTML reference
-              </a>{" "}
-              from the Mozilla Development Network.
-            </p>
-            <p>
-              Added two new environment variables (
-              <code>FASTIFY_DISABLE_REQUEST_LOGGING</code> and{" "}
-              <code>FASTIFY_TRUST_PROXY</code>) to give you more control over
-              how Jeasx should behave in different environments.
+              🎉 This release fixes a bug introduced by the recently introduced
+              route caching feature: if a guard returned different response
+              types (e.g. JSX code for a forbidden route, otherwise props for
+              the guarded routes), the guarded routes weren't resolved anymore.
             </p>
           </Highlight>
           <hr />
           <h2>Release History</h2>
           <dl>
+            <dt>2024-12-07 - Jeasx 1.2.0 released</dt>
+            <dd>
+              <p>
+                🎉 This release brings a major performance boost (
+                <b>about 2-5 times faster in benchmarks</b>) by introducing
+                runtime caches for resolved routes and loaded JavaScript
+                modules. The caches are only used in production and won't
+                interfere with your development workflow. This change was
+                triggered by a{" "}
+                <a href="https://github.com/jeasx/jeasx/pull/8">
+                  PR submitted by Bryce
+                </a>
+                , Kudos to him for bringing this topic onto the radar.
+              </p>
+              <p>
+                It also features an update to <code>jsx-async-runtime</code>{" "}
+                which provides more accurate and also deprecated typings for
+                HTML tags and attributes according to the fantastic{" "}
+                <a
+                  href="https://developer.mozilla.org/de/docs/Web/HTML"
+                  target="_blank"
+                >
+                  HTML reference
+                </a>{" "}
+                from the Mozilla Development Network.
+              </p>
+              <p>
+                Added two new environment variables (
+                <code>FASTIFY_DISABLE_REQUEST_LOGGING</code> and{" "}
+                <code>FASTIFY_TRUST_PROXY</code>) to give you more control over
+                how Jeasx should behave in different environments.
+              </p>
+            </dd>
             <dt>2024-12-01 - Jeasx 1.1.0 released</dt>
             <dd>
               <p>
