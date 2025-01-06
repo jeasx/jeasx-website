@@ -1,6 +1,7 @@
 import Article from "../components/Article";
 import Code from "../components/Code";
 import Content from "../components/Content";
+import Highlight from "../components/Highlight";
 import Layout from "../components/Layout";
 import Next from "../components/Next";
 
@@ -35,6 +36,18 @@ export default function Quickstart({}) {
             </a>{" "}
             in a browser of your choice.
           </p>
+          <Highlight title="Which Node version should I use?">
+            <p>
+              Jeasx is developed and tested with the <b>latest LTS</b> version
+              of Node.js (currently Node 22). Node 20 should work, too. Older
+              versions are not supported. Newer Node versions should work as
+              well, but are not recommended for production. If you encounter any
+              issues, feel free to{" "}
+              <a href="https://github.com/jeasx/jeasx/issues" target="_blank">
+                report them.
+              </a>
+            </p>
+          </Highlight>
         </Article>
         <Next link="/jsx" label="Learn about server-side JSX" />
       </Content>

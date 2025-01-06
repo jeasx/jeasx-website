@@ -30,10 +30,10 @@ export default async function Homepage({}) {
             exceptional web experiences and applications.
           </p>
           <h2>Breaking News</h2>
-          <Highlight title="2024-12-12 - Jeasx 1.2.1 released">
+          <Highlight title="2025-01-06 - Jeasx 1.2.2 released">
             <p>
-              🎉 A bug fix release for the recently introduced route caching
-              feature. <a href="/news">Read more...</a>
+              🎉 Updated dependencies to latest versions.{" "}
+              <a href="/news">Read more...</a>
             </p>
           </Highlight>
           <h2>Built on top of a proven tech stack</h2>

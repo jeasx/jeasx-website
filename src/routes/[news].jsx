@@ -26,17 +26,25 @@ export default function Faq({}) {
             as possible and focus on the core. Future updates are likely updates
             for 3rd party dependencies like fastify, esbuild and pm2.
           </p>
-          <Highlight title="2024-12-12 - Jeasx 1.2.1 released">
+          <Highlight title="2025-01-06 - Jeasx 1.2.2 released">
             <p>
-              🎉 This release fixes a bug introduced by the recently introduced
-              route caching feature: if a guard returned different response
-              types (e.g. JSX code for a forbidden route, otherwise props for
-              the guarded routes), the guarded routes weren't resolved anymore.
+              🎉 This release is just a minor dependency update: fastify@5.2.1,
+              fastify/cookie@11.0.2 and types/node@22.10.5.
             </p>
           </Highlight>
           <hr />
           <h2>Release History</h2>
           <dl>
+            <dt>2024-12-12 - Jeasx 1.2.1 released</dt>
+            <dd>
+              <p>
+                🎉 This release fixes a bug introduced by the recently
+                introduced route caching feature: if a guard returned different
+                response types (e.g. JSX code for a forbidden route, otherwise
+                props for the guarded routes), the guarded routes weren't
+                resolved anymore.
+              </p>
+            </dd>
             <dt>2024-12-07 - Jeasx 1.2.0 released</dt>
             <dd>
               <p>
