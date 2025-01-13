@@ -1,5 +1,9 @@
 @import "./prism.css";
 
+@view-transition {
+  navigation: auto;
+}
+
 @font-face {
   font-style: normal;
   font-weight: 100 900;

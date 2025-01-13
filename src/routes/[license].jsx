@@ -7,7 +7,9 @@ export default function Contact({}) {
     <Layout title="MIT License" description="The MIT License">
       <Content>
         <Article category="Contributing" headline="MIT License">
-          <p class="lead">Copyright (c) 2024 Maik Jablonski (mail@jeasx.dev)</p>
+          <p class="lead">
+            Copyright (c) 2024-2025 Maik Jablonski (mail@jeasx.dev)
+          </p>
           <p>
             Permission is hereby granted, free of charge, to any person
             obtaining a copy of this software and associated documentation files
