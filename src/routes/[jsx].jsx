@@ -57,14 +57,20 @@ export default function JSX({}) {
               <code>class</code> instead of <code>className</code>.
             </li>
             <li>
-              When using a style object to create inline styles, you have to
-              provide css attribute names as used in CSS, therefore use{" "}
-              <code>background-color</code> instead of{" "}
-              <code>backgroundColor</code>.
+              When using an <strong>object for a class</strong> definition, it
+              is automagically translated to a string with all truthy values
+              separated by spaces.
             </li>
             <li>
-              When using an object for a class definition, it is automagically
-              translated to a string with all truthy values separated by spaces.
+              When using an <strong>array of strings for a class</strong>{" "}
+              definition, it is automatically translated into a single string
+              with values separated by spaces.
+            </li>
+            <li>
+              When using a <strong>style object</strong> to create inline
+              styles, you have to provide css attribute names as used in CSS,
+              therefore use <code>background-color</code> instead of{" "}
+              <code>backgroundColor</code>.
             </li>
           </ul>
           <h3>
@@ -85,13 +91,15 @@ export default function JSX({}) {
           <title>Jokes</title>
           <style>{".center {text-align: center;}"}</style>
         </head>
-        <body class="body" style={{ "background-color": "red" }}>
-          <h1
-            class={{ center: true, "my-class": true, "my-other-class": false }}
-            style="color: white"
-          >
-            {value}
-          </h1>
+        <body class="body" style={{ "background-color": "red", "padding": "1rem" }}>
+          <div class={["v-align","h-align"]}>
+            <h1
+              class={{ center: true, "my-class": true, "my-other-class": false }}
+              style="color: white"
+            >
+              {value}
+            </h1>
+          </div>
         </body>
       </html>
     </>

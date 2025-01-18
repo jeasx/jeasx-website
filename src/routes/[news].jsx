@@ -26,15 +26,57 @@ export default function Faq({}) {
             as possible and focus on the core. Future updates are likely updates
             for 3rd party dependencies like fastify, esbuild and pm2.
           </p>
-          <Highlight title="2025-01-06 - Jeasx 1.2.2 released">
+          <Highlight title="2025-01-18 - Jeasx 1.3.0 released">
             <p>
-              🎉 This release is just a minor dependency update: fastify@5.2.1,
-              fastify/cookie@11.0.2 and types/node@22.10.5.
+              🎉 We are excited to announce the release of{" "}
+              <a
+                href="https://github.com/jeasx/jsx-async-runtime"
+                target="_blank"
+              >
+                jsx-async-runtime@0.7.1
+              </a>
+              , which now includes proper typings for all HTML attributes in
+              accordance with the{" "}
+              <a
+                href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference"
+                target="_blank"
+              >
+                Mozilla Developer Network
+              </a>
+              . This ensures that code completion in your IDE for all HTML
+              attributes works now as expected in Jeasx. Special thanks to
+              Rebecca for highlighting{" "}
+              <a
+                href="https://github.com/jeasx/jsx-async-runtime/issues/5"
+                target="_blank"
+              >
+                this issue!
+              </a>
+            </p>
+            <p>
+              The updated version of jsx-async-runtime now supports using an
+              array of strings for the <code>class</code> attribute, making it
+              easier to create complex classnames. You can now construct
+              classnames using plain strings or template strings, an array of
+              strings, or an object, covering most use-cases known from other
+              libraries like classnames.
+            </p>
+            <p>
+              As always, we've updated to the latest versions of our
+              dependencies: fastify/formbody@8.0.2, fastify/multipart@9.0.2,
+              fastify/static@8.0.4, and types/node@22.10.7.
             </p>
           </Highlight>
           <hr />
           <h2>Release History</h2>
           <dl>
+            <dt>2025-01-06 - Jeasx 1.2.2 released</dt>
+            <dd>
+              <p>
+                🎉 This release is just a minor dependency update:
+                fastify@5.2.1, fastify/cookie@11.0.2 and types/node@22.10.5.
+              </p>
+            </dd>
             <dt>2024-12-12 - Jeasx 1.2.1 released</dt>
             <dd>
               <p>

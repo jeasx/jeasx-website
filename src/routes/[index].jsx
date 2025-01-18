@@ -30,10 +30,11 @@ export default async function Homepage({}) {
             exceptional web experiences and applications.
           </p>
           <h2>Breaking News</h2>
-          <Highlight title="2025-01-06 - Jeasx 1.2.2 released">
+          <Highlight title="2025-01-18 - Jeasx 1.3.0 released">
             <p>
-              🎉 Updated dependencies to latest versions.{" "}
-              <a href="/news">Read more...</a>
+              🎉 We have updated jsx-async-runtime to include proper typings for
+              HTML attributes and the ability to build classnames using an array
+              of strings. <a href="/news">Read more...</a>
             </p>
           </Highlight>
           <h2>Built on top of a proven tech stack</h2>
