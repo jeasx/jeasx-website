@@ -13,6 +13,7 @@ export default function Layout({
   stage = undefined,
   children = [],
 }) {
+  const path = this.request.path;
   return (
     <>
       {`<!DOCTYPE html>`}
@@ -54,7 +55,7 @@ export default function Layout({
           <meta name="theme-color" content="#ffffff" />
           <link
             rel="canonical"
-            href={`https://www.jeasx.dev${this.request.path}`}
+            href={`https://www.jeasx.dev${path.endsWith("/") ? path.slice(0, -1) : path}`}
           ></link>
           <link
             rel="stylesheet"
