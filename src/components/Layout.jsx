@@ -53,6 +53,10 @@ export default function Layout({
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
           <link
+            rel="canonical"
+            href={`https://www.jeasx.dev${this.request.path}`}
+          ></link>
+          <link
             rel="stylesheet"
             href={`/${process.env.BUILD_TIME}/index.css`}
           />
