@@ -31,7 +31,7 @@ export default async function Homepage({}) {
           </p>
           <h2>Breaking News</h2>
           <Highlight title="2025-03-01 - Jeasx 1.4.1 released">
-            🎉 This release featuresan updated{" "}
+            🎉 This release features an updated{" "}
             <a
               href="https://github.com/jeasx/jsx-async-runtime"
               target="_blank"
