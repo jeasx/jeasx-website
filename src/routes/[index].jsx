@@ -30,9 +30,15 @@ export default async function Homepage({}) {
             exceptional web experiences and applications.
           </p>
           <h2>Breaking News</h2>
-          <Highlight title="2025-02-12 - Jeasx 1.4.0 released">
-            🎉 We have added <code>request.route</code> to access the path to
-            the current endpoint handler via request object.{" "}
+          <Highlight title="2025-03-01 - Jeasx 1.4.1 released">
+            🎉 This release featuresan updated{" "}
+            <a
+              href="https://github.com/jeasx/jsx-async-runtime"
+              target="_blank"
+            >
+              jsx-async-runime
+            </a>{" "}
+            which brings proper typings for SVGs.{" "}
             <a href="/news">Read more...</a>
           </Highlight>
           <h2>Built on top of a proven tech stack</h2>
