@@ -116,6 +116,10 @@ export default function RootGuard({ request, reply }) {
             platform like{" "}
             <a href="https://railway.app" target="_blank">
               Railway
+            </a>{" "}
+            or{" "}
+            <a href="https://sliplane.io" target="_blank">
+              Sliplane
             </a>
             , which seamlessly operates Jeasx without the need for additional
             configurations. If you prefer a serverless approach,{" "}
