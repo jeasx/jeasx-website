@@ -208,8 +208,10 @@ export default function Configuration({}) {
               <td>
                 <p>
                   Watched directories for browser bundle. This is only needed if
-                  you want to share code between server and browser (e.g. set it
-                  to <code>src/browser,src/shared</code>).
+                  you want to share code between server and browser (default is{" "}
+                  <code>src/browser</code>, e.g. set it to{" "}
+                  <code>src/browser,src/shared</code> to monitor changes in
+                  shared directory).
                 </p>
               </td>
             </tr>

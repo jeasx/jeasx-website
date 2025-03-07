@@ -1,6 +1,6 @@
-export default function Content({ children = [] }) {
+export default function Content({ children = undefined }) {
   return (
-    <div class="min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pl-8 lg:pr-0 xl:px-16">
+    <div class="max-w-2xl min-w-0 flex-auto px-4 py-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16">
       {children}
     </div>
   );

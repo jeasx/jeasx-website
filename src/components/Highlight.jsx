@@ -2,7 +2,7 @@ export default function Highlight({
   title,
   icon = undefined,
   variant = false,
-  children = [],
+  children = undefined,
 }) {
   return (
     <div

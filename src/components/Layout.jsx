@@ -11,7 +11,7 @@ export default function Layout({
   title = "",
   description = "",
   stage = undefined,
-  children = [],
+  children = undefined,
 }) {
   const path = this.request.path;
   return (
