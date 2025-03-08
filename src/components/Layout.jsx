@@ -64,7 +64,6 @@ export default function Layout({
           <script
             type="module"
             src={`/${process.env.BUILD_TIME}/index.js`}
-            defer
           ></script>
         </head>
         <body class="flex min-h-full bg-white dark:bg-slate-900">
