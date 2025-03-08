@@ -26,20 +26,38 @@ export default function Faq({}) {
             as possible and focus on the core. Future updates are likely updates
             for 3rd party dependencies like fastify, esbuild and pm2.
           </p>
-          <Highlight title="2025-03-01 - Jeasx 1.4.1 released">
-            <p>
-              🎉 This release features an updated{" "}
-              <code>jsx-async-runtime@0.8.1</code> which brings typings for SVGs
-              for a better developer experience in the IDE of your choice.
-            </p>
-            <p>
-              3rd-party dependencies were updated to the latest versions:
-              @fastify/static@8.1.1, @types/node@22.13.5
-            </p>
+          <Highlight title="2025-03-09 - Jeasx 1.5.0 released">
+            <p>🎉 This release features two new configurations:</p>
+            <ul>
+              <li>
+                <code>FASTIFY_REWRITE_URL</code> allows you to rewrite incoming
+                URLs. Useful when running behind proxies or when you want to
+                fake URLs.
+              </li>
+              <li>
+                <code>JEASX_BUILD_ROUTES_IGNORE_WATCH</code> allows watching for
+                changes in <code>src/browser</code> when importing browser code
+                into server code.
+              </li>
+            </ul>
+            <p>Dependency updates: @types/node@22.13.10.</p>
           </Highlight>
           <hr />
           <h2>Release History</h2>
           <dl>
+            <dt>2025-03-01 - Jeasx 1.4.1 released</dt>
+            <dd>
+              <p>
+                🎉 This release features an updated{" "}
+                <code>jsx-async-runtime@0.8.1</code> which brings typings for
+                SVGs for a better developer experience in the IDE of your
+                choice.
+              </p>
+              <p>
+                3rd-party dependencies were updated to the latest versions:
+                @fastify/static@8.1.1, @types/node@22.13.5
+              </p>
+            </dd>
             <dt>2025-02-12 - Jeasx 1.4.0 released</dt>
             <dd>
               <p>

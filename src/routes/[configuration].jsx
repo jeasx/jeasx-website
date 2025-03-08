@@ -140,6 +140,29 @@ export default function Configuration({}) {
             </tr>
             <tr>
               <td>
+                <b>FASTIFY_&#8203;REWRITE_&#8203;URL</b>
+              </td>
+              <td>
+                <p>
+                  If you want to rewrite incoming URLs (e.g. running behind a
+                  proxy server or when you want to fake non-existing URLs), you
+                  can provide a function which takes a request object and
+                  returns an URL as string. To ignore a leading segment like{" "}
+                  <code>/proxy/</code>, use{" "}
+                  <code>{`(req) => req.url.replace(/^\/proxy/,"")`}</code>.
+                  Please have a look at the{" "}
+                  <a
+                    href="https://fastify.dev/docs/latest/Reference/Server/#rewriteurl"
+                    target="_blank"
+                  >
+                    Fastify docs
+                  </a>{" "}
+                  for more information.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
                 <b>FASTIFY_&#8203;STATIC_&#8203;HEADERS</b>
               </td>
               <td>
@@ -212,6 +235,23 @@ export default function Configuration({}) {
                   <code>src/browser</code>, e.g. set it to{" "}
                   <code>src/browser,src/shared</code> to monitor changes in
                   shared directory).
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>
+                  JEASX_&#8203;BUILD_&#8203;ROUTES_&#8203;IGNORE_&#8203;WATCH
+                </b>
+              </td>
+              <td>
+                <p>
+                  Server side code (routes) watches all directories below{" "}
+                  <code>src</code> for changes, but ignores changes in{" "}
+                  <code>src/browser</code>. Via this option you can include
+                  specific browser directories, e.g. to watch for changes in
+                  'react' or 'preact' directories use
+                  <code>src/browser/!(react|preact)</code>.
                 </p>
               </td>
             </tr>
