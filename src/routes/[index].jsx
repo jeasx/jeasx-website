@@ -30,15 +30,13 @@ export default async function Homepage({}) {
             exceptional web experiences and applications.
           </p>
           <h2>Breaking News</h2>
-          <Highlight title="2025-03-01 - Jeasx 1.4.1 released">
-            🎉 This release features an updated{" "}
-            <a
-              href="https://github.com/jeasx/jsx-async-runtime"
-              target="_blank"
-            >
-              jsx-async-runime
-            </a>{" "}
-            which brings proper typings for SVGs.{" "}
+          <Highlight title="2025-03-09 - Jeasx 1.5.0 released">
+            🎉 Two new handy configuration options:{" "}
+            <code>FASTIFY_REWRITE_URL</code> to provide virtual URLs (e.g. when
+            running behind a proxy) and{" "}
+            <code>JEASX_BUILD_ROUTES_IGNORE_WATCH</code> to watch browser code
+            changes in server code (e.g. when rendering (P)React components on
+            server and hydrating them on the client).{" "}
             <a href="/news">Read more...</a>
           </Highlight>
           <h2>Built on top of a proven tech stack</h2>
