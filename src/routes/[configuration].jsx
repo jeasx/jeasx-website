@@ -149,7 +149,7 @@ export default function Configuration({}) {
                   can provide a function which takes a request object and
                   returns an URL as string. To ignore a leading segment like{" "}
                   <code>/proxy/</code>, use{" "}
-                  <code>{`(req) => req.url.replace(/^\/proxy/,"")`}</code>.
+                  <code>{`(req) => req.url.replace(/^\\/proxy/,"")`}</code>.
                   Please have a look at the{" "}
                   <a
                     href="https://fastify.dev/docs/latest/Reference/Server/#rewriteurl"
