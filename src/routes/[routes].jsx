@@ -249,6 +249,31 @@ export default function MessageView({ message }) {
 }
 `}
           />
+          <Highlight title="Shared code" icon={<IconAttention />}>
+            <p>
+              While you have the flexibility to share code between the server
+              and browser, this is typically an edge case, as the DOM is not
+              relevant on the server side, and node core modules are not
+              compatible with the browser. To optimize build performance during
+              development by efficiently minimizing unnecessary rebuilds, no
+              rebuild is triggered when shared code changes per default.
+            </p>
+          </Highlight>
+          <p>
+            For all server side code (e.g. routes), Jeasx watches all files
+            below <code>src</code>, but ignores all files in{" "}
+            <code>src/browser</code> per default. If you want to import browser
+            code into server code (e.g. when pre-rendering Preact/React
+            components on server side), you can specify advanced 'ignore rules'.
+          </p>
+          <p>
+            The following rule ignores all changes in <code>src/browser</code> ,
+            but triggers a rebuild of server code when a file changes in{" "}
+            <code>src/browser/react</code> or <code>src/browser/preact</code>.
+          </p>
+          <Code
+            source={`JEASX_BUILD_ROUTES_IGNORE_WATCH="src/browser/!(react|preact)"`}
+          />
         </Article>
         <Next link="/browser" label="How to handle browser assets?" />
       </Content>
