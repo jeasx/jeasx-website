@@ -11,7 +11,7 @@
   "dependencies": {
     "@tailwindcss/cli": "4.0.14",
     "@tailwindcss/typography": "0.5.16",
-    "jeasx": "1.5.0",
+    "jeasx": "1.6.1",
     "prismjs": "1.30.0",
     "tailwindcss": "4.0.14"
   },

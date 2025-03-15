@@ -219,8 +219,7 @@ export default function Configuration({}) {
                   option, Fastify will know that it is sitting behind a proxy
                   and that the X-Forwarded-* header fields may be trusted, which
                   otherwise may be easily spoofed. <b>Please note:</b> the
-                  option only supports <code>true</code>, not other string
-                  values.
+                  option only supports boolean or string values.
                 </p>
               </td>
             </tr>

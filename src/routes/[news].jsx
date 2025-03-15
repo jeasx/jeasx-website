@@ -26,25 +26,75 @@ export default function Faq({}) {
             as possible and focus on the core. Future updates are likely updates
             for 3rd party dependencies like fastify, esbuild and pm2.
           </p>
-          <Highlight title="2025-03-09 - Jeasx 1.5.0 released">
-            <p>🎉 This release features two new configurations:</p>
-            <ul>
-              <li>
-                <code>FASTIFY_REWRITE_URL</code> allows you to rewrite incoming
-                URLs. Useful when running behind proxies or when you want to
-                fake URLs.
-              </li>
-              <li>
-                <code>JEASX_BUILD_ROUTES_IGNORE_WATCH</code> allows watching for
-                changes in <code>src/browser</code> when importing browser code
-                into server code.
-              </li>
-            </ul>
-            <p>Dependency updates: @types/node@22.13.10.</p>
+          <Highlight title="2025-03-15 - Jeasx 1.6.1 released">
+            <p>
+              🎉 This releases replaces the dependency on{" "}
+              <code>dotenv-flow</code> with a Node native implementation (using{" "}
+              <a
+                href="https://nodejs.org/docs/latest/api/process.html#processloadenvfilepath"
+                target="_blank"
+              >
+                process.loadEnv
+              </a>{" "}
+              introduced with Node v20.12.0) to load environment variables from
+              .env-files. The order of loading .env-files is the same as before:
+              <ol>
+                <li>.env.defaults</li>
+                <li>.env</li>
+                <li>.env.local</li>
+                <li>
+                  .env.[NODE_ENV]{" "}
+                  <i>(e.g. .env.development or .env.production)</i>
+                </li>
+                <li>
+                  .env.[NODE_ENV].local{" "}
+                  <i>(e.g. .env.development.local or .env.production.local)</i>
+                </li>
+              </ol>
+            </p>
+            <p>
+              <b>Breaking change:</b> If you use .env-files to configure Jeasx
+              and deploy to Vercel, please update your <code>vercel.json</code>.
+              You'll need to change{" "}
+              <code>{`"includeFiles": "{node_modules,dist,public}/**/*"`}</code>{" "}
+              to <code>{`"includeFiles": "./**/*"`}</code> to make sure Vercel
+              includes the .env-files in the deployment.
+            </p>
+            <p>
+              Additionally a fix for correctly parsing environment variables to
+              configure Fastify (
+              <code>FASTIFY_DISABLE_REQUEST_LOGGING, FASTIFY_TRUST_PROXY</code>)
+              was implemented.
+            </p>
+            <p>
+              Dependency updates: jsx-async-runtime@1.0.0, esbuild@0.25.1,
+              pm2@6.0.5
+            </p>
+            <p>
+              <b>Please note:</b> version 1.6.0 was unpublished from NPM right
+              after the release due to a mistake.
+            </p>
           </Highlight>
           <hr />
           <h2>Release History</h2>
           <dl>
+            <dt>2025-03-09 - Jeasx 1.5.0 released</dt>
+            <dd>
+              <p>🎉 This release features two new configurations:</p>
+              <ul>
+                <li>
+                  <code>FASTIFY_REWRITE_URL</code> allows you to rewrite
+                  incoming URLs. Useful when running behind proxies or when you
+                  want to fake URLs.
+                </li>
+                <li>
+                  <code>JEASX_BUILD_ROUTES_IGNORE_WATCH</code> allows watching
+                  for changes in <code>src/browser</code> when importing browser
+                  code into server code.
+                </li>
+              </ul>
+              <p>Dependency updates: @types/node@22.13.10.</p>
+            </dd>
             <dt>2025-03-01 - Jeasx 1.4.1 released</dt>
             <dd>
               <p>
