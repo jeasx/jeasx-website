@@ -29,12 +29,13 @@ export default function Faq({}) {
           <Highlight title="2025-03-15 - Jeasx 1.6.1 released">
             <p>
               🎉 This releases replaces the dependency on{" "}
-              <code>dotenv-flow</code> with a Node native implementation (using{" "}
+              <code>dotenv-flow</code> with a native implementation provided by
+              Node.js (using{" "}
               <a
                 href="https://nodejs.org/docs/latest/api/process.html#processloadenvfilepath"
                 target="_blank"
               >
-                process.loadEnv
+                process.loadEnvFile
               </a>{" "}
               introduced with Node v20.12.0) to load environment variables from
               .env-files. The order of loading .env-files is the same as before:
@@ -57,8 +58,8 @@ export default function Faq({}) {
               and deploy to Vercel, please update your <code>vercel.json</code>.
               You'll need to change{" "}
               <code>{`"includeFiles": "{node_modules,dist,public}/**/*"`}</code>{" "}
-              to <code>{`"includeFiles": "./**/*"`}</code> to make sure Vercel
-              includes the .env-files in the deployment.
+              to <code>{`"includeFiles": "./**/*"`}</code>
+              to make sure Vercel includes the .env-files in the deployment.
             </p>
             <p>
               Additionally a fix for correctly parsing environment variables to

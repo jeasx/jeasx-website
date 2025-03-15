@@ -29,14 +29,29 @@ export default function Configuration({}) {
             layers of .env-files. This enables the use of different .env-files
             based on the NODE_ENV value, such as <code>.env.development</code>{" "}
             to override values from <code>.env</code> for development. The order
-            of loading .env-files is the same as it is used by{" "}
+            of loading .env-files is the same as it is used by the well-known{" "}
             <a
               href="https://github.com/kerimdzhanov/dotenv-flow"
               target="_blank"
             >
               dotenv-flow
+            </a>{" "}
+            library. To load the env-files into <code>process.env</code>, Jeasx
+            makes use of the native implementation provided by Node.js via{" "}
+            <a
+              href="https://nodejs.org/docs/latest/api/process.html#processloadenvfilepath"
+              target="_blank"
+            >
+              process.loadEnvFile
+            </a>{" "}
+            via a custom{" "}
+            <a
+              href="https://github.com/jeasx/jeasx/blob/main/env.js"
+              target="_blank"
+            >
+              utility function
             </a>
-            :
+            .
           </p>
           <ol>
             <li>.env.defaults</li>
@@ -52,7 +67,7 @@ export default function Configuration({}) {
           </ol>
           <p>
             <b>Please note:</b> Jeasx only sets{" "}
-            <code>NODE_ENV="development"</code> automatically when running{" "}
+            <code>NODE_ENV=development</code> automatically when running{" "}
             <code>jeasx dev</code>. For production or testing environments,
             you'll need to set the <code>NODE_ENV</code> environment variable to
             the desired value (e.g. <code>production</code> or <code>test</code>
@@ -66,8 +81,7 @@ export default function Configuration({}) {
               For security reasons, only environment variables prefixed with{" "}
               <code>BROWSER_PUBLIC_</code> are accessible in client-side
               JavaScript to prevent accidental exposure of sensitive data. In
-              server-side code, all environment variables are accessible
-              regardless of their naming convention.
+              server-side code, all environment variables are accessible.
             </p>
           </Highlight>
           <h2>Environment Variables</h2>
