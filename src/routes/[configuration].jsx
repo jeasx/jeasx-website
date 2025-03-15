@@ -25,18 +25,31 @@ export default function Configuration({}) {
             variables. This makes it easy to adapt the framework to your needs.
           </p>
           <p>
-            To facilitate managing multiple configurations, Jeasx leverages{" "}
+            To facilitate managing multiple configurations, Jeasx leverages
+            layers of .env-files. This enables the use of different .env-files
+            based on the NODE_ENV value, such as <code>.env.development</code>{" "}
+            to override values from <code>.env</code> for development. The order
+            of loading .env-files is the same as it is used by{" "}
             <a
               href="https://github.com/kerimdzhanov/dotenv-flow"
               target="_blank"
             >
               dotenv-flow
-            </a>{" "}
-            for handling .env-files. This enables the use of different
-            .env-files based on the NODE_ENV value, such as{" "}
-            <code>.env.development</code> to override values from{" "}
-            <code>.env</code>.
+            </a>
+            :
           </p>
+          <ol>
+            <li>.env.defaults</li>
+            <li>.env</li>
+            <li>.env.local</li>
+            <li>
+              .env.[NODE_ENV] <i>(e.g. .env.development or .env.production)</i>
+            </li>
+            <li>
+              .env.[NODE_ENV].local{" "}
+              <i>(e.g. .env.development.local or .env.production.local)</i>
+            </li>
+          </ol>
           <p>
             <b>Please note:</b> Jeasx only sets{" "}
             <code>NODE_ENV="development"</code> automatically when running{" "}
