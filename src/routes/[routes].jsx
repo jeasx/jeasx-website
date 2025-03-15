@@ -249,7 +249,8 @@ export default function MessageView({ message }) {
 }
 `}
           />
-          <Highlight title="Shared code" icon={<IconAttention />}>
+          <h2>Sharing code between browser and server</h2>
+          <Highlight icon={<IconAttention />}>
             <p>
               While you have the flexibility to share code between the server
               and browser, this is typically an edge case, as the DOM is not
