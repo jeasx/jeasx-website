@@ -39,10 +39,10 @@ export default function Quickstart({}) {
           <Highlight title="Which Node version should I use?">
             <p>
               Jeasx is developed and tested with the <b>latest LTS</b> version
-              of Node.js (currently Node 22). Node 20 should work, too. Older
-              versions are not supported. Newer Node versions should work as
-              well, but are not recommended for production. If you encounter any
-              issues, feel free to{" "}
+              of Node.js (currently Node 22). Node 20.12.0 or newer should work,
+              too. Older versions are not supported. Newer Node versions should
+              work as well, but are not recommended for production. If you
+              encounter any issues, feel free to{" "}
               <a href="https://github.com/jeasx/jeasx/issues" target="_blank">
                 report them.
               </a>
