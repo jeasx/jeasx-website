@@ -74,14 +74,16 @@ export default function Configuration({}) {
             ) depending on your requirements and workflows.
           </p>
           <Highlight
-            title="Environment variables for client and server"
+            title="Environment variables for client code"
             icon={<IconAttention />}
           >
             <p>
               For security reasons, only environment variables prefixed with{" "}
               <code>BROWSER_PUBLIC_</code> are accessible in client-side
-              JavaScript to prevent accidental exposure of sensitive data. In
-              server-side code, all environment variables are accessible.
+              JavaScript (<code>src/browser</code>) to prevent accidental
+              exposure of sensitive data. The values are only updated at build
+              time, so changes to environment variables will require a rebuild
+              to take effect.
             </p>
           </Highlight>
           <h2>Environment Variables</h2>
