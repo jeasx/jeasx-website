@@ -1,5 +1,7 @@
 import "prismjs";
 import "prismjs/components/prism-bash";
+import "prismjs/components/prism-docker";
+import "prismjs/components/prism-ini";
 import "prismjs/components/prism-json";
 import "prismjs/components/prism-jsx";
 

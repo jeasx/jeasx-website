@@ -26,59 +26,86 @@ export default function Faq({}) {
             as possible and focus on the core. Future updates are likely updates
             for 3rd party dependencies like fastify, esbuild and pm2.
           </p>
-          <Highlight title="2025-03-15 - Jeasx 1.6.1 released">
+          <Highlight title="2025-03-19 - Jeasx 1.6.2 released">
             <p>
-              🎉 This releases replaces the dependency on{" "}
-              <code>dotenv-flow</code> with a native implementation provided by
-              Node.js (using{" "}
-              <a
-                href="https://nodejs.org/docs/latest/api/process.html#processloadenvfilepath"
-                target="_blank"
-              >
-                process.loadEnvFile
-              </a>{" "}
-              introduced with Node v20.12.0) to load environment variables from
-              .env-files. The order of loading .env-files is the same as before:
-              <ol>
-                <li>.env.defaults</li>
-                <li>.env</li>
-                <li>.env.local</li>
-                <li>
-                  .env.[NODE_ENV]{" "}
-                  <i>(e.g. .env.development or .env.production)</i>
-                </li>
-                <li>
-                  .env.[NODE_ENV].local{" "}
-                  <i>(e.g. .env.development.local or .env.production.local)</i>
-                </li>
-              </ol>
+              🎉 This release introduces a try/catch block in the central
+              request handler, ensuring that proper error messages are logged.
+              Additionally, it enables sourcemaps for both server and browser
+              code, making debugging a breeze.
             </p>
             <p>
-              <b>Breaking change:</b> If you use .env-files to configure Jeasx
-              and deploy to Vercel, please update your <code>vercel.json</code>.
-              You'll need to change{" "}
-              <code>{`"includeFiles": "{node_modules,dist,public}/**/*"`}</code>{" "}
-              to <code>{`"includeFiles": "./**/*"`}</code>
-              to make sure Vercel includes the .env-files in the deployment.
+              To enable sourcemap support for Node.js, add the following code to
+              the root of your project as a <code>.npmrc</code> file:
+              <Code lang="ini" source="node-options=--enable-source-maps" />
             </p>
             <p>
-              Additionally a fix for correctly parsing environment variables to
-              configure Fastify (
-              <code>FASTIFY_DISABLE_REQUEST_LOGGING, FASTIFY_TRUST_PROXY</code>)
-              was implemented.
+              If you are using Docker, you need to modify the following lines in
+              your Dockerfile to enable support for <code>.npmrc</code>:
             </p>
-            <p>
-              Dependency updates: jsx-async-runtime@1.0.0, esbuild@0.25.1,
-              pm2@6.0.5
-            </p>
-            <p>
-              <b>Please note:</b> version 1.6.0 was unpublished from NPM right
-              after the release due to a mistake.
-            </p>
+            <Code
+              lang="docker"
+              source={`# RUN npx jeasx build\nRUN npm run build\n# CMD ["npx","jeasx","start"]\nCMD ["npm","start"]`}
+            />
           </Highlight>
           <hr />
           <h2>Release History</h2>
           <dl>
+            <dt>2025-03-15 - Jeasx 1.6.1 released</dt>
+            <dd>
+              <p>
+                🎉 This releases replaces the dependency on{" "}
+                <code>dotenv-flow</code> with a native implementation provided
+                by Node.js (using{" "}
+                <a
+                  href="https://nodejs.org/docs/latest/api/process.html#processloadenvfilepath"
+                  target="_blank"
+                >
+                  process.loadEnvFile
+                </a>{" "}
+                introduced with Node v20.12.0) to load environment variables
+                from .env-files. The order of loading .env-files is the same as
+                before:
+                <ol>
+                  <li>.env.defaults</li>
+                  <li>.env</li>
+                  <li>.env.local</li>
+                  <li>
+                    .env.[NODE_ENV]{" "}
+                    <i>(e.g. .env.development or .env.production)</i>
+                  </li>
+                  <li>
+                    .env.[NODE_ENV].local{" "}
+                    <i>
+                      (e.g. .env.development.local or .env.production.local)
+                    </i>
+                  </li>
+                </ol>
+              </p>
+              <p>
+                <b>Breaking change:</b> If you use .env-files to configure Jeasx
+                and deploy to Vercel, please update your{" "}
+                <code>vercel.json</code>. You'll need to change{" "}
+                <code>{`"includeFiles": "{node_modules,dist,public}/**/*"`}</code>{" "}
+                to <code>{`"includeFiles": "./**/*"`}</code>
+                to make sure Vercel includes the .env-files in the deployment.
+              </p>
+              <p>
+                Additionally a fix for correctly parsing environment variables
+                to configure Fastify (
+                <code>
+                  FASTIFY_DISABLE_REQUEST_LOGGING, FASTIFY_TRUST_PROXY
+                </code>
+                ) was implemented.
+              </p>
+              <p>
+                Dependency updates: jsx-async-runtime@1.0.0, esbuild@0.25.1,
+                pm2@6.0.5
+              </p>
+              <p>
+                <b>Please note:</b> version 1.6.0 was unpublished from NPM right
+                after the release due to a mistake.
+              </p>
+            </dd>
             <dt>2025-03-09 - Jeasx 1.5.0 released</dt>
             <dd>
               <p>🎉 This release features two new configurations:</p>
