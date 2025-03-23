@@ -1,12 +1,12 @@
-# jeasx-website
+# Jeasx website repository
 
-This repository provides the website for [jeasx](https://github.com/jeasx/jeasx).
+This repository provides the website for [Jeasx](https://github.com/jeasx/jeasx).
 
-It provides an example how to integrate `Tailwind` (same approach works for SASS/SCSS) into your jeasx project:
+It provides an example how to integrate `Tailwind` (similar approach works for SASS/SCSS) into your Jeasx project:
 
-- `npm i tailwindcss`
+- `npm i @tailwindcss/cli tailwindcss`
 
-- Add a new npm-task to your package.json: `"build:css": "tailwindcss -i ./src/browser/css/tailwind.css -o ./src/browser/index.css"`
+- Add a new npm-task to your package.json: `"build:css": "npx @tailwindcss/cli -i ./src/browser/css/tailwind.css -o ./src/browser/index.css"`
 
 - Change the existing npm-task for "dev" to: `"dev": "jeasx dev ecosystem.config.cjs"`
 
