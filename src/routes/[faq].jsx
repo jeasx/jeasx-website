@@ -110,19 +110,22 @@ export default function RootGuard({ request, reply }) {
             What are the hosting options for a Jeasx project?
           </h2>
           <p>
-            Jeasx provides two different hosting modes tailored to meet your
-            specific needs: traditional hosting on a node server or a serverless
-            approach. For effortless node-based hosting, I highly recommend a
-            platform like{" "}
+            Jeasx provides different hosting modes tailored to meet your
+            specific needs: traditional hosting on a Node.js server, a
+            deployment via a Docker container (a Dockerfile is already included
+            in the quickstart template) or a serverless approach.
+          </p>
+          <p>
+            For effortless Node.js-based hosting, I highly recommend a platform
+            like{" "}
             <a href="https://railway.app" target="_blank">
               Railway
-            </a>{" "}
-            or{" "}
+            </a>
+            . For a Docker deployment{" "}
             <a href="https://sliplane.io" target="_blank">
               Sliplane
-            </a>
-            , which seamlessly operates Jeasx without the need for additional
-            configurations. If you prefer a serverless approach,{" "}
+            </a>{" "}
+            is an interesting option. If you prefer a serverless approach,{" "}
             <a href="https://vercel.com" target="_blank">
               Vercel
             </a>{" "}
