@@ -26,30 +26,39 @@ export default function Faq({}) {
             as possible and focus on the core. Future updates are likely updates
             for 3rd party dependencies like fastify, esbuild and pm2.
           </p>
-          <Highlight title="2025-03-19 - Jeasx 1.6.2 released">
+          <Highlight title="2025-03-26 - Jeasx 1.6.3 released">
             <p>
-              🎉 This release introduces a try/catch block in the central
-              request handler, ensuring that proper error messages are logged.
-              Additionally, it enables sourcemaps for both server and browser
-              code, making debugging a breeze.
+              🎉 This release fixes a bug with the recently introduced env file
+              loading. The env files were loaded in the wrong order, so that
+              overwriting existing env variables didn't work.
             </p>
-            <p>
-              To enable sourcemap support for Node.js, add the following code to
-              the root of your project as a <code>.npmrc</code> file:
-              <Code lang="ini" source="node-options=--enable-source-maps" />
-            </p>
-            <p>
-              If you are using Docker, you need to modify the following lines in
-              your Dockerfile to enable support for <code>.npmrc</code>:
-            </p>
-            <Code
-              lang="docker"
-              source={`# RUN npx jeasx build\nRUN npm run build\n# CMD ["npx","jeasx","start"]\nCMD ["npm","start"]`}
-            />
+            <p>Dependency updates: fastify@5.2.2, @types/node@22.13.13</p>
           </Highlight>
           <hr />
           <h2>Release History</h2>
           <dl>
+            <dt>2025-03-19 - Jeasx 1.6.2 released</dt>
+            <dd>
+              <p>
+                🎉 This release introduces a try/catch block in the central
+                request handler, ensuring that proper error messages are logged.
+                Additionally, it enables sourcemaps for both server and browser
+                code, making debugging a breeze.
+              </p>
+              <p>
+                To enable sourcemap support for Node.js, add the following code
+                to the root of your project as a <code>.npmrc</code> file:
+                <Code lang="ini" source="node-options=--enable-source-maps" />
+              </p>
+              <p>
+                If you are using Docker, you need to modify the following lines
+                in your Dockerfile to enable support for <code>.npmrc</code>:
+              </p>
+              <Code
+                lang="docker"
+                source={`# RUN npx jeasx build\nRUN npm run build\n# CMD ["npx","jeasx","start"]\nCMD ["npm","start"]`}
+              />
+            </dd>
             <dt>2025-03-15 - Jeasx 1.6.1 released</dt>
             <dd>
               <p>
