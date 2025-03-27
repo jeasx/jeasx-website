@@ -4,8 +4,8 @@
   "scripts": {
     "start": "jeasx start",
     "build": "jeasx build",
-    "dev": "concurrently -c auto -n dev,css 'jeasx dev' 'npm:build:css -- --watch'",
-    "build:css": "npx @tailwindcss/cli -i ./src/browser/css/tailwind/tailwind.css -o ./src/browser/css/tailwind/output.css"
+    "dev": "concurrently -c auto -n dev,css 'jeasx dev' 'npm:css -- --watch'",
+    "css": "npx @tailwindcss/cli -i ./src/browser/tailwind/tailwind.css -o ./src/browser/tailwind/output.css"
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
