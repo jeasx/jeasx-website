@@ -39,7 +39,7 @@ export default function Faq({}) {
             <p>
               As an added benefit, Jeasx now works with <code>Bun</code> as an
               alternative JavaScript runtime, although this setup is not yet
-              recommended for production.
+              recommended for development or production.
             </p>
             <p>Dependency updates: @types/node@22.13.14</p>
           </Highlight>
