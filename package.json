@@ -4,16 +4,17 @@
   "scripts": {
     "start": "jeasx start",
     "build": "jeasx build",
-    "dev": "jeasx dev ecosystem.config.cjs",
-    "build:css": "npx @tailwindcss/cli -i ./src/browser/css/tailwind.css -o ./src/browser/index.css"
+    "dev": "concurrently -c auto -n dev,css 'jeasx dev' 'npm:build:css -- --watch'",
+    "build:css": "npx @tailwindcss/cli -i ./src/browser/css/tailwind/tailwind.css -o ./src/browser/css/tailwind/output.css"
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
-    "@tailwindcss/cli": "4.0.16",
+    "@tailwindcss/cli": "4.0.17",
     "@tailwindcss/typography": "0.5.16",
+    "concurrently": "9.1.2",
     "jeasx": "1.6.3",
     "prismjs": "1.30.0",
-    "tailwindcss": "4.0.16"
+    "tailwindcss": "4.0.17"
   },
   "devDependencies": {
     "prettier": "3.5.3",
