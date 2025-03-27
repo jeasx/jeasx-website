@@ -7,7 +7,6 @@ import Highlight from "../components/Highlight";
 import IconArchitecture from "../components/icons/IconArchitecture";
 import IconHeroStage from "../components/icons/IconHeroStage";
 import IconInstallation from "../components/icons/IconInstallation";
-import IconPlugins from "../components/icons/IconPlugins";
 import IconReference from "../components/icons/IconReference";
 import Layout from "../components/Layout";
 import Next from "../components/Next";
@@ -30,10 +29,12 @@ export default async function Homepage({}) {
             exceptional web experiences and applications.
           </p>
           <h2>Breaking News</h2>
-          <Highlight title="2025-03-26 - Jeasx 1.6.3 released">
+          <Highlight title="2025-03-27 - Jeasx 1.7.0 released">
             <p>
-              🎉 This release fixes a bug in the recently introduced env file
-              loading. <a href="/news">Learn more...</a>
+              🎉 This release replaces <code>pm2</code> as the file watcher with
+              the capabilities from <code>esbuild</code> directly, significantly
+              improving build performance in development.{" "}
+              <a href="/news">Learn more...</a>
             </p>
           </Highlight>
           <h2>Built on top of a proven tech stack</h2>
@@ -43,6 +44,15 @@ export default async function Homepage({}) {
             solutions.
           </p>
           <Features>
+            <Feature
+              headline="esbuild"
+              link="https://esbuild.github.io"
+              icon={<IconReference />}
+            >
+              esbuild is a bundler for JavaScript. It is written in Go, which
+              enables it to achieve remarkable performance gains. esbuild
+              supports JSX, TypeScript, tree-shaking and more.
+            </Feature>
             <Feature
               headline="fastify"
               link="https://fastify.dev"
@@ -61,24 +71,6 @@ export default async function Homepage({}) {
               JSX is an outstanding templating technology that simplifies web
               development. By utilizing an asynchronous JSX runtime, the
               development process becomes even more straightforward.
-            </Feature>
-            <Feature
-              headline="esbuild"
-              link="https://esbuild.github.io"
-              icon={<IconReference />}
-            >
-              esbuild is a bundler for JavaScript. It is written in Go, which
-              enables it to achieve remarkable performance gains. esbuild
-              supports JSX, TypeScript, tree-shaking and more.
-            </Feature>
-            <Feature
-              headline="pm2"
-              link="https://pm2.io"
-              icon={<IconPlugins />}
-            >
-              PM2's intuitive configuration options and extensive feature set
-              make it a go-to choice for developers looking to streamline their
-              workflow and maximize productivity.
             </Feature>
           </Features>
           <h2>Learn by examples</h2>

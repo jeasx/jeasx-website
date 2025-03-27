@@ -252,37 +252,6 @@ export default function Configuration({}) {
                 </p>
               </td>
             </tr>
-            <tr>
-              <td>
-                <b>JEASX_&#8203;BUILD_&#8203;JS_&#8203;WATCH</b>
-              </td>
-              <td>
-                <p>
-                  Watched directories for browser bundle. This is only needed if
-                  you want to share code between server and browser (default is{" "}
-                  <code>src/browser</code>, e.g. set it to{" "}
-                  <code>src/browser,src/shared</code> to monitor changes in
-                  shared directory).
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <b>
-                  JEASX_&#8203;BUILD_&#8203;ROUTES_&#8203;IGNORE_&#8203;WATCH
-                </b>
-              </td>
-              <td>
-                <p>
-                  Server side code (routes) watches all directories below{" "}
-                  <code>src</code> for changes, but ignores changes in{" "}
-                  <code>src/browser</code>. Via this option you can include
-                  specific browser directories, e.g. to watch for changes in
-                  'react' or 'preact' directories use
-                  <code>src/browser/!(react|preact)</code>.
-                </p>
-              </td>
-            </tr>
           </table>
         </Article>
       </Content>

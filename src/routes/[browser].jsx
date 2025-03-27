@@ -1,8 +1,5 @@
 import Article from "../components/Article";
-import Code from "../components/Code";
 import Content from "../components/Content";
-import Highlight from "../components/Highlight";
-import IconAttention from "../components/icons/IconAttention";
 import Layout from "../components/Layout";
 import Next from "../components/Next";
 
@@ -78,22 +75,6 @@ export default function Browser({}) {
             , you should add <code>type="module"</code> to your script tags to
             avoid subtle errors.
           </p>
-          <h2>Sharing code between server and browser</h2>
-          <Highlight icon={<IconAttention />}>
-            <p>
-              While you have the flexibility to share code between the server
-              and browser, this is typically an edge case, as the DOM is not
-              relevant on the server side, and node core modules are not
-              compatible with the browser. To optimize build performance during
-              development by efficiently minimizing unnecessary rebuilds, no
-              rebuild is triggered when shared code changes per default.
-            </p>
-          </Highlight>
-          <p>
-            You can easily configure additional paths which should be watched
-            for building the browser bundles via an environment variable:
-          </p>
-          <Code source={`JEASX_BUILD_JS_WATCH="src/browser,src/shared"`} />
         </Article>
         <Next
           link="/configuration"

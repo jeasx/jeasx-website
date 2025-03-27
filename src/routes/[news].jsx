@@ -26,17 +26,35 @@ export default function Faq({}) {
             as possible and focus on the core. Future updates are likely updates
             for 3rd party dependencies like fastify, esbuild and pm2.
           </p>
-          <Highlight title="2025-03-26 - Jeasx 1.6.3 released">
+          <Highlight title="2025-03-27 - Jeasx 1.7.0 released">
             <p>
-              🎉 This release fixes a bug with the recently introduced env file
-              loading. The env files were loaded in the wrong order, so that
-              overwriting existing env variables didn't work.
+              🎉 This release removes <code>pm2</code> as a dependency and
+              utilizes the powerful file watching capabilities of{" "}
+              <code>esbuild</code> directly. This enhancement significantly
+              improves build performance because <code>esbuild</code> only
+              re-compiles dependent files. Additionally, sharing code between
+              the server and browser now works seamlessly without any additional
+              configurations.
             </p>
-            <p>Dependency updates: fastify@5.2.2, @types/node@22.13.13</p>
+            <p>
+              As an added benefit, Jeasx now works with <code>Bun</code> as an
+              alternative JavaScript runtime, although this setup is not yet
+              recommended for production.
+            </p>
+            <p>Dependency updates: @types/node@22.13.14</p>
           </Highlight>
           <hr />
           <h2>Release History</h2>
           <dl>
+            <dt>2025-03-26 - Jeasx 1.6.3 released</dt>
+            <dd>
+              <p>
+                🎉 This release fixes a bug with the recently introduced env
+                file loading. The env files were loaded in the wrong order, so
+                that overwriting existing env variables didn't work.
+              </p>
+              <p>Dependency updates: fastify@5.2.2, @types/node@22.13.13</p>
+            </dd>
             <dt>2025-03-19 - Jeasx 1.6.2 released</dt>
             <dd>
               <p>
