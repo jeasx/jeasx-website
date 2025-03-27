@@ -31,9 +31,9 @@ export default async function Homepage({}) {
           <h2>Breaking News</h2>
           <Highlight title="2025-03-27 - Jeasx 1.7.0 released">
             <p>
-              🎉 This release replaces <code>pm2</code> as the file watcher with
-              the capabilities from <code>esbuild</code> directly, significantly
-              improving build performance in development.{" "}
+              🎉 This release replaces <code>pm2</code> with the built-in file
+              watching capabilities from <code>esbuild</code>, significantly
+              enhancing build performance and convenience during development.{" "}
               <a href="/news">Learn more...</a>
             </p>
           </Highlight>

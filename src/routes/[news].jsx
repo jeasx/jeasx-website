@@ -32,8 +32,8 @@ export default function Faq({}) {
               utilizes the powerful file watching capabilities of{" "}
               <code>esbuild</code> directly. This enhancement significantly
               improves build performance because <code>esbuild</code> only
-              re-compiles dependent files. Additionally, sharing code between
-              the server and browser now works seamlessly without any additional
+              re-compiles linked files. Additionally, sharing code between the
+              server and browser now works seamlessly without any additional
               configurations.
             </p>
             <p>
