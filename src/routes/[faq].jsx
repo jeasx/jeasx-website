@@ -81,16 +81,16 @@ export default function RootGuard({ request, reply }) {
           <h2 id="css-frameworks">
             Is it possible to use CSS-Frameworks like SASS or Tailwind?
           </h2>
-
           <p>
-            Certainly! Please check out the{" "}
+            Certainly! Please have a look at the{" "}
             <a
-              href="https://www.github.com/jeasx/jeasx-website"
+              href="https://github.com/jeasx/jeasx-website/blob/main/package.json"
               target="_blank"
             >
-              GitHub repository
+              package.json
             </a>{" "}
-            of this website to see how things should be wired.
+            of this website to see how things should be wired for Tailwind. Same
+            approach works for SASS too.
           </p>
           <hr />
           <h2 id="browsersync">How to use a Browsersync with Jeasx?</h2>
