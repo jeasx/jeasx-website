@@ -45,13 +45,13 @@ export default async function Homepage({}) {
           </p>
           <Features>
             <Feature
-              headline="esbuild"
-              link="https://esbuild.github.io"
-              icon={<IconReference />}
+              headline="jsx-async-runtime"
+              link="https://github.com/jeasx/jsx-async-runtime"
+              icon={<IconInstallation />}
             >
-              esbuild is a bundler for JavaScript. It is written in Go, which
-              enables it to achieve remarkable performance gains. esbuild
-              supports JSX, TypeScript, tree-shaking and more.
+              JSX is an outstanding templating technology that simplifies web
+              development. By utilizing an asynchronous JSX runtime, the
+              development process becomes even more straightforward.
             </Feature>
             <Feature
               headline="fastify"
@@ -64,13 +64,13 @@ export default async function Homepage({}) {
               available.
             </Feature>
             <Feature
-              headline="jsx-async-runtime"
-              link="https://github.com/jeasx/jsx-async-runtime"
-              icon={<IconInstallation />}
+              headline="esbuild"
+              link="https://esbuild.github.io"
+              icon={<IconReference />}
             >
-              JSX is an outstanding templating technology that simplifies web
-              development. By utilizing an asynchronous JSX runtime, the
-              development process becomes even more straightforward.
+              esbuild is a bundler for JavaScript. It is written in Go, which
+              enables it to achieve remarkable performance gains. esbuild
+              supports JSX, TypeScript, tree-shaking and more.
             </Feature>
           </Features>
           <h2>Learn by examples</h2>
