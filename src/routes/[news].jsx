@@ -21,10 +21,7 @@ export default function Faq({}) {
           <p class="lead">
             Welcome to the news section of Jeasx. Here we are going to post
             updates about new features, bug fixes, and general information about
-            the project. We are proud to announce that Jeasx is rock stable and
-            ready for production. We are committed to keep the project as small
-            as possible and focus on the core. Future updates are likely updates
-            for 3rd party dependencies like fastify, esbuild and pm2.
+            the project.
           </p>
           <Highlight title="2025-03-27 - Jeasx 1.7.0 released">
             <p>
