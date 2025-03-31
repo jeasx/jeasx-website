@@ -23,26 +23,57 @@ export default function Faq({}) {
             updates about new features, bug fixes, and general information about
             the project.
           </p>
-          <Highlight title="2025-03-27 - Jeasx 1.7.0 released">
+          <Highlight title="2025-03-31 - Jeasx 1.7.1 released">
             <p>
-              🎉 This release removes <code>pm2</code> as a dependency and
-              utilizes the powerful file watching capabilities of{" "}
-              <code>esbuild</code> directly. This enhancement significantly
-              improves build performance because <code>esbuild</code> only
-              re-compiles linked files. Additionally, sharing code between the
-              server and browser now works seamlessly without any additional
-              configurations.
+              🎉 This release enhances support for{" "}
+              <a href="https://bun.sh" target="_blank">
+                Bun
+              </a>{" "}
+              as an alternative JavaScript runtime for both development and
+              production. Use <code>bun -b dev</code> to start development with
+              Jeasx and Bun. With the upcoming Bun 1.2.8 (or current canary
+              release), the entire{" "}
+              <a href="https://expo.jeasx.dev" target="_blank">
+                Jeasx expo
+              </a>{" "}
+              will function without any issues. While Node.js remains the
+              primary focus of the project, Bun support will continue to
+              improve. Having multiple options is always beneficial.
             </p>
             <p>
-              As an added benefit, Jeasx now works with <code>Bun</code> as an
-              alternative JavaScript runtime, although this setup is not yet
-              recommended for development or production.
+              Route loading in development has been enhanced. It now relies on
+              the modification time of the module, eliminating the need to
+              calculate a hash value. Additionally, a redundant file existence
+              check for route handlers has been removed, resulting in more
+              streamlined core code.
             </p>
-            <p>Dependency updates: @types/node@22.13.14</p>
+            <p>
+              From now on, source maps for <code>serverless.js</code> are
+              provided to enhance debugging.
+            </p>
+            <p>Dependency updates: esbuild@0.25.2</p>
           </Highlight>
           <hr />
           <h2>Release History</h2>
           <dl>
+            <dt>2025-03-27 - Jeasx 1.7.0 released</dt>
+            <dd>
+              <p>
+                🎉 This release removes <code>pm2</code> as a dependency and
+                utilizes the powerful file watching capabilities of{" "}
+                <code>esbuild</code> directly. This enhancement significantly
+                improves build performance because <code>esbuild</code> only
+                re-compiles linked files. Additionally, sharing code between the
+                server and browser now works seamlessly without any additional
+                configurations.
+              </p>
+              <p>
+                As an added benefit, Jeasx now works with <code>Bun</code> as an
+                alternative JavaScript runtime, although this setup is not yet
+                recommended for development or production.
+              </p>
+              <p>Dependency updates: @types/node@22.13.14</p>
+            </dd>
             <dt>2025-03-26 - Jeasx 1.6.3 released</dt>
             <dd>
               <p>

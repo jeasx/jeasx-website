@@ -29,11 +29,13 @@ export default async function Homepage({}) {
             exceptional web experiences and applications.
           </p>
           <h2>Breaking News</h2>
-          <Highlight title="2025-03-27 - Jeasx 1.7.0 released">
+          <Highlight title="2025-03-31 - Jeasx 1.7.1 released">
             <p>
-              🎉 This release replaces <code>pm2</code> with the built-in file
-              watching capabilities from <code>esbuild</code>, significantly
-              enhancing build performance and convenience during development.{" "}
+              🎉 This release introduces{" "}
+              <a href="https://bun.sh" target="_blank">
+                Bun
+              </a>{" "}
+              (alongside Node.js) as a first-class citizen of Jeasx.{" "}
               <a href="/news">Learn more...</a>
             </p>
           </Highlight>
