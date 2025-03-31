@@ -42,9 +42,9 @@ export default function Faq({}) {
             <p>
               Route loading in development has been enhanced. It now relies on
               the modification time of the module, eliminating the need to
-              calculate a hash value. Additionally, a redundant file existence
-              check for route handlers has been removed, resulting in more
-              streamlined core code.
+              calculate a hash for the file content. Additionally, a redundant
+              file existence check for route handlers has been removed,
+              resulting in more streamlined core code.
             </p>
             <p>
               From now on, source maps for <code>serverless.js</code> are
