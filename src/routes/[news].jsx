@@ -31,14 +31,13 @@ export default function Faq({}) {
               </a>{" "}
               as an alternative JavaScript runtime for both development and
               production. Use <code>bun -b dev</code> to start development with
-              Jeasx and Bun. With the upcoming Bun 1.2.8 (or current canary
-              release), the entire{" "}
+              Jeasx and Bun. With Bun 1.2.8, the entire{" "}
               <a href="https://expo.jeasx.dev" target="_blank">
                 Jeasx expo
               </a>{" "}
-              will function without any issues. While Node.js remains the
-              primary focus of the project, Bun support will continue to
-              improve. Having multiple options is always beneficial.
+              functions without any issues. While Node.js remains the primary
+              focus of the project, Bun support will continue to improve. Having
+              multiple options is always beneficial.
             </p>
             <p>
               Route loading in development has been enhanced. It now relies on
