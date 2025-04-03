@@ -94,6 +94,23 @@ export default function Showcase({}) {
               resulting in ~1.5kb client side JS.
             </Feature>
             <Feature
+              headline="Enercity Corporate Website"
+              link="https://www.enercity.com"
+              icon={
+                <img
+                  src="/favicon/www.enercity.com"
+                  width="24"
+                  height="24"
+                  alt=""
+                />
+              }
+            >
+              This is the corporate website of the city utility company
+              Enercity. The initial project was started with Astro, but was
+              migrated to Jeasx to enhance the developer and maintenance
+              experience.
+            </Feature>
+            <Feature
               headline="Enercity Climate Monitor"
               link="https://www.enercity.de/klimamonitor/langenhagen"
               icon={
