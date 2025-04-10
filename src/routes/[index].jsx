@@ -180,29 +180,30 @@ function HeroStage() {
                   <div class="mt-4 flex space-x-2 text-xs">
                     <div class="flex h-6 rounded-full bg-gradient-to-r from-sky-400/30 via-sky-400 to-sky-400/30 p-px font-medium text-sky-300">
                       <div class="flex items-center rounded-full bg-slate-800 px-2.5">
-                        [products].jsx
+                        [product].jsx
                       </div>
                     </div>
                   </div>
                   <div class="flex items-start px-1 text-sm">
                     <Code
                       source={`
-export default async function Products() {
-  const { products } = await (
-    await fetch("https://dummyjson.com/products")
+export default async function Product({ request }) {
+  const id = request.query["id"];
+  const { title, description, tags } = await (
+    await fetch(\`https://dummyjson.com/products/\${id}\`)
   ).json();
 
   return (
-    <Layout title="Products">
-      {products.map(({ id, title, description }) => (
-        <article>
-          <a href={\`?id=\${id}\`}>{title}</a>
-          <p>{description}</p>
-        </article>
+    <article class="product">
+      <h1>{title}</h1>
+      <p>{description}</p>
+      {tags.map((tag) => (
+        <span>{tag}</span>
       ))}
-    </Layout>
+    </article>
   );
-}`}
+}
+`}
                     />
                   </div>
                 </div>
