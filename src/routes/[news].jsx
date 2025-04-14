@@ -32,7 +32,7 @@ export default function Faq({}) {
               as an alternative JavaScript runtime for both development and
               production. Use <code>bun -b dev</code> to start development with
               Jeasx and Bun. With Bun 1.2.8, the entire{" "}
-              <a href="https://expo.jeasx.dev" target="_blank">
+              <a href="https://bun.jeasx.dev" target="_blank">
                 Jeasx expo
               </a>{" "}
               functions without any issues. While Node.js remains the primary
