@@ -51,19 +51,20 @@ export default function Configuration({}) {
             >
               utility function
             </a>
-            .
+            . An existing environment variable will not be overwritten by
+            subsequent files.
           </p>
           <ol>
-            <li>.env.defaults</li>
-            <li>.env</li>
-            <li>.env.local</li>
-            <li>
-              .env.[NODE_ENV] <i>(e.g. .env.development or .env.production)</i>
-            </li>
             <li>
               .env.[NODE_ENV].local{" "}
               <i>(e.g. .env.development.local or .env.production.local)</i>
             </li>
+            <li>
+              .env.[NODE_ENV] <i>(e.g. .env.development or .env.production)</i>
+            </li>
+            <li>.env.local</li>
+            <li>.env</li>
+            <li>.env.defaults</li>
           </ol>
           <p>
             <b>Please note:</b> Jeasx only sets{" "}
