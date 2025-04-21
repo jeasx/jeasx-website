@@ -9,7 +9,7 @@
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
-    "jeasx": "1.7.1",
+    "jeasx": "1.7.2",
     "prismjs": "1.30.0"
   },
   "devDependencies": {

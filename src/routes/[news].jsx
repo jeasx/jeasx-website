@@ -23,38 +23,64 @@ export default function Faq({}) {
             updates about new features, bug fixes, and general information about
             the project.
           </p>
-          <Highlight title="2025-03-31 - Jeasx 1.7.1 released">
-            <p>
-              🎉 This release enhances support for{" "}
-              <a href="https://bun.sh" target="_blank">
-                Bun
-              </a>{" "}
-              as an alternative JavaScript runtime for both development and
-              production. Use <code>bun -b dev</code> to start development with
-              Jeasx and Bun. With Bun 1.2.8, the entire{" "}
-              <a href="https://bun.jeasx.dev" target="_blank">
-                Jeasx expo
-              </a>{" "}
-              functions without any issues. While Node.js remains the primary
-              focus of the project, Bun support will continue to improve. Having
-              multiple options is always beneficial.
-            </p>
-            <p>
-              Route loading in development has been enhanced. It now relies on
-              the modification time of the module, eliminating the need to
-              calculate a hash for the file content. Additionally, a redundant
-              file existence check for route handlers has been removed,
-              resulting in more streamlined core code.
-            </p>
-            <p>
-              From now on, source maps for <code>serverless.js</code> are
-              provided to enhance debugging.
-            </p>
-            <p>Dependency updates: esbuild@0.25.2</p>
+          <Highlight title="2025-04-21 - Jeasx 1.7.2 released">
+            <p>🎉 This release is brings only minor changes:</p>
+            <ul>
+              <li>
+                <b>FASTIFY_STATIC_HEADERS:</b> Apply all matching headers to the
+                current path. Use an empty string ("") as first rule to set
+                default headers, which can be overridden by more specific rules
+                later. Please checkout the updated{" "}
+                <a href="/configuration#FASTIFY_STATIC_HEADERS">
+                  configuration
+                </a>
+                .
+                <br />
+                <b>Please note:</b> You may need to adjust your existing
+                configuration by moving the wildcard rule to the top of the JSON
+                file to ensure it can be overridden by more specific rules
+                defined below.
+              </li>
+              <li>
+                <b>env.sh:</b> Removed logging of loaded environment files.
+                Minor refactoring to clean up the code.
+              </li>
+            </ul>
+            <p>Dependency updates: fastify@5.3.2, @types/node@22.14.1</p>
           </Highlight>
           <hr />
           <h2>Release History</h2>
           <dl>
+            <dt>2025-03-31 - Jeasx 1.7.1 released</dt>
+            <dd>
+              <p>
+                🎉 This release enhances support for{" "}
+                <a href="https://bun.sh" target="_blank">
+                  Bun
+                </a>{" "}
+                as an alternative JavaScript runtime for both development and
+                production. Use <code>bun -b dev</code> to start development
+                with Jeasx and Bun. With Bun 1.2.8, the entire{" "}
+                <a href="https://bun.jeasx.dev" target="_blank">
+                  Jeasx expo
+                </a>{" "}
+                functions without any issues. While Node.js remains the primary
+                focus of the project, Bun support will continue to improve.
+                Having multiple options is always beneficial.
+              </p>
+              <p>
+                Route loading in development has been enhanced. It now relies on
+                the modification time of the module, eliminating the need to
+                calculate a hash for the file content. Additionally, a redundant
+                file existence check for route handlers has been removed,
+                resulting in more streamlined core code.
+              </p>
+              <p>
+                From now on, source maps for <code>serverless.js</code> are
+                provided to enhance debugging.
+              </p>
+              <p>Dependency updates: esbuild@0.25.2</p>
+            </dd>
             <dt>2025-03-27 - Jeasx 1.7.0 released</dt>
             <dd>
               <p>

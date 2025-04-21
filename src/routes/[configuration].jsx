@@ -94,7 +94,7 @@ export default function Configuration({}) {
               <th width="70%">Description</th>
             </tr>
             <tr>
-              <td>
+              <td id="HOST">
                 <b>HOST</b>
               </td>
               <td>
@@ -106,7 +106,7 @@ export default function Configuration({}) {
               </td>
             </tr>
             <tr>
-              <td>
+              <td id="PORT">
                 <b>PORT</b>
               </td>
               <td>
@@ -117,7 +117,7 @@ export default function Configuration({}) {
               </td>
             </tr>
             <tr>
-              <td>
+              <td id="BUILD_TIME">
                 <b>BUILD_&#8203;TIME</b>
               </td>
               <td>
@@ -130,7 +130,7 @@ export default function Configuration({}) {
               </td>
             </tr>
             <tr>
-              <td>
+              <td id="ESBUILD_BROWSER_TARGET">
                 <b>ESBUILD_&#8203;BROWSER_&#8203;TARGET</b>
               </td>
               <td>
@@ -149,7 +149,7 @@ export default function Configuration({}) {
               </td>
             </tr>
             <tr>
-              <td>
+              <td id="FASTIFY_BODY_LIMIT">
                 <b>FASTIFY_&#8203;BODY_&#8203;LIMIT</b>
               </td>
               <td>
@@ -161,7 +161,7 @@ export default function Configuration({}) {
               </td>
             </tr>
             <tr>
-              <td>
+              <td id="FASTIFY_DISABLE_REQUEST_LOGGING">
                 <b>FASTIFY_&#8203;DISABLE_&#8203;REQUEST_&#8203;LOGGING</b>
               </td>
               <td>
@@ -169,7 +169,7 @@ export default function Configuration({}) {
               </td>
             </tr>
             <tr>
-              <td>
+              <td id="FASTIFY_REWRITE_URL">
                 <b>FASTIFY_&#8203;REWRITE_&#8203;URL</b>
               </td>
               <td>
@@ -192,7 +192,7 @@ export default function Configuration({}) {
               </td>
             </tr>
             <tr>
-              <td>
+              <td id="FASTIFY_STATIC_HEADERS">
                 <b>FASTIFY_&#8203;STATIC_&#8203;HEADERS</b>
               </td>
               <td>
@@ -203,8 +203,13 @@ export default function Configuration({}) {
                 </p>
                 <Code
                   lang="json"
-                  source={`
+                  source={
+                    /*json*/ `
 {
+  "": {
+    "Cache-Control":
+      "public, max-age=31536000"
+  },
   "robots.txt": {
     "Cache-Control":
       "public, max-age=86400"
@@ -213,11 +218,8 @@ export default function Configuration({}) {
     "Cache-Control":
       "public, max-age=0"
   },
-  "": {
-    "Cache-Control":
-      "public, max-age=31536000"
-  }
-}`.trim()}
+}`.trim()
+                  }
                 />
                 <p>
                   The keys of the mapping are compared via{" "}
@@ -234,7 +236,7 @@ export default function Configuration({}) {
               </td>
             </tr>
             <tr>
-              <td>
+              <td id="FASTIFY_TRUST_PROXY">
                 <b>FASTIFY_&#8203;TRUST_&#8203;PROXY</b>
               </td>
               <td>
