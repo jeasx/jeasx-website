@@ -255,6 +255,26 @@ export default function Configuration({}) {
                 </p>
               </td>
             </tr>
+            <tr>
+              <td id="JEASX_ROUTE_CACHE_LIMIT">
+                <b>JEASX_&#8203;ROUTE_&#8203;CACHE_&#8203;LIMIT</b>
+              </td>
+              <td>
+                <p>
+                  Jeasx employs an internal cache to enhance performance by
+                  efficiently mapping routes to JavaScript modules. This option
+                  allows you to set a maximum limit on the cache entries to
+                  prevent excessive memory usage. A good starting point is{" "}
+                  <code>10000</code>.
+                </p>
+                <p>
+                  <b>Note:</b> If you are deploying on Vercel (which uses
+                  serverless functions) or have memory constraints on your
+                  Docker containers, you typically won't need this
+                  configuration. However, it is safe to include it regardless.
+                </p>
+              </td>
+            </tr>
           </table>
         </Article>
       </Content>

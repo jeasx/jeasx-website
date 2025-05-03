@@ -29,10 +29,11 @@ export default async function Homepage({}) {
             exceptional web experiences and applications.
           </p>
           <h2>Breaking News</h2>
-          <Highlight title="2025-04-21 - Jeasx 1.7.2 released">
+
+          <Highlight title="2025-05-03 - Jeasx 1.7.3 released">
             <p>
-              🎉 This release improves configuration options via
-              FASTIFY_STATIC_HEADERS. <a href="/news">Learn more...</a>
+              🎉 This release introduces an enhanced and configurable
+              route-to-module cache. <a href="/news">Learn more...</a>
             </p>
           </Highlight>
           <h2>Built on top of a proven tech stack</h2>

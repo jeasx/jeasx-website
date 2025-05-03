@@ -23,34 +23,51 @@ export default function Faq({}) {
             updates about new features, bug fixes, and general information about
             the project.
           </p>
-          <Highlight title="2025-04-21 - Jeasx 1.7.2 released">
-            <p>🎉 This release is brings only minor changes:</p>
-            <ul>
-              <li>
-                <b>FASTIFY_STATIC_HEADERS:</b> Apply all matching headers to the
-                current path. Use an empty string ("") as first rule to set
-                default headers, which can be overridden by more specific rules
-                later. Please checkout the updated{" "}
-                <a href="/configuration#FASTIFY_STATIC_HEADERS">
-                  configuration
-                </a>
-                .
-                <br />
-                <b>Please note:</b> You may need to adjust your existing
-                configuration by moving the wildcard rule to the top of the JSON
-                file to ensure it can be overridden by more specific rules
-                defined below.
-              </li>
-              <li>
-                <b>env.sh:</b> Removed logging of loaded environment files.
-                Minor refactoring to clean up the code.
-              </li>
-            </ul>
-            <p>Dependency updates: fastify@5.3.2, @types/node@22.14.1</p>
+          <Highlight title="2025-05-03 - Jeasx 1.7.3 released">
+            <p>
+              🎉 This release introduces a performance improvement by switching
+              the internal route-to-module cache implementation from a
+              JavaScript object to a <code>Map</code>. This change allows for
+              better management of cache entries, enabling the configuration of
+              a maximum cache limit. To take advantage of this, a new
+              configuration option
+              <code>JEASX_ROUTE_CACHE_LIMIT</code> has been added.{" "}
+              <a href="/configuration#JEASX_ROUTE_CACHE_LIMIT">Read more...</a>
+            </p>
+            <p>
+              Dependency updates: jsx-async-runtime@1.0.1, esbuild@0.25.3,
+              @types/node@22.15.3
+            </p>
           </Highlight>
           <hr />
           <h2>Release History</h2>
           <dl>
+            <dt>2025-04-21 - Jeasx 1.7.2 released</dt>
+            <dd>
+              <p>🎉 This release is brings only minor changes:</p>
+              <ul>
+                <li>
+                  <b>FASTIFY_STATIC_HEADERS:</b> Apply all matching headers to
+                  the current path. Use an empty string ("") as first rule to
+                  set default headers, which can be overridden by more specific
+                  rules later. Please checkout the updated{" "}
+                  <a href="/configuration#FASTIFY_STATIC_HEADERS">
+                    configuration
+                  </a>
+                  .
+                  <br />
+                  <b>Please note:</b> You may need to adjust your existing
+                  configuration by moving the wildcard rule to the top of the
+                  JSON file to ensure it can be overridden by more specific
+                  rules defined below.
+                </li>
+                <li>
+                  <b>env.sh:</b> Removed logging of loaded environment files.
+                  Minor refactoring to clean up the code.
+                </li>
+              </ul>
+              <p>Dependency updates: fastify@5.3.2, @types/node@22.14.1</p>
+            </dd>
             <dt>2025-03-31 - Jeasx 1.7.1 released</dt>
             <dd>
               <p>
