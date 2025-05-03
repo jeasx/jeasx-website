@@ -269,7 +269,8 @@ export default function Configuration({}) {
                 </p>
                 <p>
                   <b>Note:</b> If you are deploying on Vercel (which uses
-                  serverless functions) or have memory constraints on your
+                  serverless functions), using pm2 with memory limits as a
+                  process manager, or have memory constraints defined for your
                   Docker containers, you typically won't need this
                   configuration. However, it is safe to include it regardless.
                 </p>
