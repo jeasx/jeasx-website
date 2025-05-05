@@ -16,8 +16,8 @@ export default function Navigation() {
                   <a
                     class={
                       this.request.path === link
-                        ? "block w-full pl-3.5 font-semibold text-sky-500 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full before:bg-sky-500"
-                        : "block w-full pl-3.5 text-slate-500 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:hidden before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
+                        ? "block w-full pl-3.5 font-semibold text-sky-500 before:pointer-events-none before:absolute before:top-1/2 before:-left-1 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full before:bg-sky-500"
+                        : "block w-full pl-3.5 text-slate-500 before:pointer-events-none before:absolute before:top-1/2 before:-left-1 before:hidden before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
                     }
                     href={link}
                   >
@@ -42,12 +42,13 @@ const NAV_ITEMS = [
     ],
   },
   {
-    label: "Concepts",
+    label: "Essentials",
     links: [
       { label: "JSX &amp; SSR", link: "/jsx" },
       { label: "Routes &amp; Guards", link: "/routes" },
       { label: "CSS &amp; JavaScript", link: "/browser" },
-      { label: "Config &amp; Environments", link: "/configuration" },
+      { label: "Configuration", link: "/configuration" },
+      { label: "Hosting", link: "/hosting" },
     ],
   },
   {

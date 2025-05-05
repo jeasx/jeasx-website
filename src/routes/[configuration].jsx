@@ -4,6 +4,7 @@ import Content from "../components/Content";
 import Highlight from "../components/Highlight";
 import IconAttention from "../components/icons/IconAttention";
 import Layout from "../components/Layout";
+import Next from "../components/Next";
 
 /**
  * @param {import("./types").RouteProps} props
@@ -11,14 +12,11 @@ import Layout from "../components/Layout";
 export default function Configuration({}) {
   return (
     <Layout
-      title="Config &amp; Environments"
+      title="Configuration"
       description="How to use environment variables to configure Jeasx"
     >
       <Content>
-        <Article
-          category="Config &amp; Environments"
-          headline="How to configure Jeasx"
-        >
+        <Article category="Configuration" headline="How to configure Jeasx">
           <p class="lead">
             Jeasx provides sensible defaults to get you started quickly, but it
             also allows you to override important settings with environment
@@ -278,6 +276,7 @@ export default function Configuration({}) {
             </tr>
           </table>
         </Article>
+        <Next link="/hosting" label="How to host a Jeasx application?" />
       </Content>
     </Layout>
   );

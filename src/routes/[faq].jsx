@@ -105,33 +105,6 @@ export default function RootGuard({ request, reply }) {
             source={`npx -y browser-sync start -w -f "dist/**/index.css" -p localhost:3000`}
             lang="bash"
           />
-          <hr />
-          <h2 id="hosting">
-            What are the hosting options for a Jeasx project?
-          </h2>
-          <p>
-            Jeasx provides different hosting modes tailored to meet your
-            specific needs: traditional hosting on a Node.js server, a
-            deployment via a Docker container (a Dockerfile is already included
-            in the quickstart template) or a serverless approach.
-          </p>
-          <p>
-            For effortless Node.js-based hosting, I highly recommend a platform
-            like{" "}
-            <a href="https://railway.app" target="_blank">
-              Railway
-            </a>
-            . For a Docker deployment{" "}
-            <a href="https://sliplane.io" target="_blank">
-              Sliplane
-            </a>{" "}
-            is an interesting option. If you prefer a serverless approach,{" "}
-            <a href="https://vercel.com" target="_blank">
-              Vercel
-            </a>{" "}
-            is the perfect fit, where Jeasx provides the necessary
-            configurations out of the box.
-          </p>
         </Article>
       </Content>
       <Aside
