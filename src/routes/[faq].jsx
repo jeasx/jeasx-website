@@ -79,7 +79,7 @@ export default function CurrentDate() {
 import * as prettier from "prettier";
 ...
 export default function RootGuard({ request, reply }) {
-  this.response = async (payload) => {
+  this.responseHandler = async (payload) => {
     return typeof payload === "string" &&
       String(reply.getHeader("content-type")).startsWith("text/html")
       ? await prettier.format(payload, { parser: "html" })

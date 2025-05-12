@@ -17,6 +17,6 @@ export default function RootGuard({ request, reply }) {
 
   // Set the request and reply objects as context
   this.request = request;
-  this.response = reply;
+  this.reply = reply;
   this.escape = escapeEntities;
 }
