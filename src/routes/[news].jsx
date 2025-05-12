@@ -34,7 +34,6 @@ export default function Faq({}) {
               choice:
             </p>
             <Code
-              lang="javascript"
               source={
                 /*js*/ `this.errorHandler = async (error) => {
   console.error("❌", error);
