@@ -46,12 +46,33 @@ export default function CurrentDate() {
             to see how things work using the context as them provider.
           </p>
           <hr />
-          <h2 id="post-process">Can I post-process the resulting HTML?</h2>
+          <h2 id="error-handler">
+            How can I provide user friendly error messages?
+          </h2>
           <p>
-            If you want to prettify the HTML output, you can wire up a response
-            handler in any endpoint (e.g. a guard). The response handler takes
-            the resulting payload as a parameter and returns the modified
-            payload.
+            <p>
+              To set up an error handler, simply register it in a route of your
+              choice:
+            </p>
+            <Code
+              lang="javascript"
+              source={
+                /*js*/ `this.errorHandler = async (error) => {
+  // You can decide if you want to create a log entry.
+  // console.error("❌", error);
+  return <h1>Internal server error</h1>;
+}`.trim()
+              }
+            />
+          </p>
+          <h2 id="response-handler">
+            How can I modifiy the resulting response (e.g. post-process HTML)?
+          </h2>
+          <p>
+            For example, if you want to prettify the HTML output, you can wire
+            up a response handler in any endpoint (e.g., a guard). The response
+            handler takes the resulting payload as a parameter and returns the
+            modified payload.
           </p>
           <Code
             source={`
@@ -114,8 +135,12 @@ export default function RootGuard({ request, reply }) {
             link: "#context",
           },
           {
-            label: "Post-process",
-            link: "#post-process",
+            label: "Error handler",
+            link: "#error-handler",
+          },
+          {
+            label: "Response handler",
+            link: "#response-handler",
           },
           {
             label: "Helmet",

@@ -23,25 +23,67 @@ export default function Faq({}) {
             updates about new features, bug fixes, and general information about
             the project.
           </p>
-          <Highlight title="2025-05-03 - Jeasx 1.7.3 released">
+          <Highlight title="2025-05-12 - Jeasx 1.8.0 released">
             <p>
-              🎉 This release introduces a performance improvement by switching
-              the internal route-to-module cache implementation from a
-              JavaScript object to a <code>Map</code>. This change allows for
-              better management of cache entries, enabling the configuration of
-              a maximum cache limit. To take advantage of this, a new
-              configuration option
-              <code>JEASX_ROUTE_CACHE_LIMIT</code> has been added.{" "}
-              <a href="/configuration#JEASX_ROUTE_CACHE_LIMIT">Read more...</a>
+              🎉 This release introduces a custom error handler to provide
+              user-friendly error messages for internal server errors and to
+              facilitate team notifications.
             </p>
             <p>
-              Dependency updates: jsx-async-runtime@1.0.1, esbuild@0.25.3,
-              @types/node@22.15.3
+              To set up an error handler, simply register it in a route of your
+              choice:
             </p>
+            <Code
+              lang="javascript"
+              source={
+                /*js*/ `this.errorHandler = async (error) => {
+  console.error("❌", error);
+  return <h1>Internal error</h1>;
+}`.trim()
+              }
+            />
+            <p>
+              An error handler is called with <code>this</code> as context,
+              allowing easy access to your context setup.
+            </p>
+            <p>
+              <b>Breaking change:</b> If you use a response handler, you'll need
+              to change the name from <code>this.response</code> to{" "}
+              <code>this.responseHandler</code>. This aligns the response
+              handler with the introduced error handler. We apologize for any
+              inconvenience, but since this is a seldom-used feature, we aim to
+              streamline the codebase by aligning it without maintaining
+              deprecated code.
+            </p>
+            <p>
+              As additional feature, a response handler is now called with{" "}
+              <code>this</code> as the context, so you can access your existing
+              context.
+            </p>
+            <p>Dependency updates: esbuild@0.25.4, @types/node@22.15.17</p>
           </Highlight>
           <hr />
           <h2>Release History</h2>
           <dl>
+            <dt>2025-05-03 - Jeasx 1.7.3 released</dt>
+            <dd>
+              <p>
+                🎉 This release introduces a performance improvement by
+                switching the internal route-to-module cache implementation from
+                a JavaScript object to a <code>Map</code>. This change allows
+                for better management of cache entries, enabling the
+                configuration of a maximum cache limit. To take advantage of
+                this, a new configuration option
+                <code>JEASX_ROUTE_CACHE_LIMIT</code> has been added.{" "}
+                <a href="/configuration#JEASX_ROUTE_CACHE_LIMIT">
+                  Read more...
+                </a>
+              </p>
+              <p>
+                Dependency updates: jsx-async-runtime@1.0.1, esbuild@0.25.3,
+                @types/node@22.15.3
+              </p>
+            </dd>
             <dt>2025-04-21 - Jeasx 1.7.2 released</dt>
             <dd>
               <p>🎉 This release is brings only minor changes:</p>

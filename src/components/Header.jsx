@@ -44,7 +44,7 @@ export default function Header() {
               <path d="M18 17.5L10.308 5h15.144l7.933 12.5M18 17.5h15.385L25.452 30H10.308L18 17.5z"></path>
             </g>
           </svg>
-          <span class="ml-2 font-display text-lg font-bold text-neutral-700">
+          <span class="font-display ml-2 font-bold text-neutral-700">
             Jeasx &ndash; JSX with Ease
           </span>
         </a>
@@ -56,7 +56,7 @@ export default function Header() {
             type="search"
             name="q"
             placeholder="🔎 Search Ecosia for Jeasx related topics"
-            class="group flex h-6 w-6 items-center justify-center sm:justify-start md:h-auto md:w-80 md:flex-none md:rounded-lg md:py-2.5 md:pl-4 md:pr-3.5 md:text-sm md:ring-1 md:ring-slate-200 md:hover:ring-slate-300 lg:w-96 dark:md:bg-slate-800/75 dark:md:ring-inset dark:md:ring-white/5 dark:md:hover:bg-slate-700/40 dark:md:hover:ring-slate-500"
+            class="group flex h-6 w-6 items-center justify-center sm:justify-start md:h-auto md:w-80 md:flex-none md:rounded-lg md:py-2.5 md:pr-3.5 md:pl-4 md:text-sm md:ring-1 md:ring-slate-200 md:hover:ring-slate-300 lg:w-96 dark:md:bg-slate-800/75 dark:md:ring-white/5 dark:md:ring-inset dark:md:hover:bg-slate-700/40 dark:md:hover:ring-slate-500"
           />
         </form>
       </div>
