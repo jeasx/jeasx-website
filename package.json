@@ -4,6 +4,7 @@
   "scripts": {
     "start": "jeasx start",
     "build": "jeasx build",
+    "clean": "jeasx clean",
     "dev": "concurrently -c auto -n dev,css 'jeasx dev' 'npm:css -- --watch'",
     "css": "npx @tailwindcss/cli -i ./src/browser/tailwind/tailwind.css -o ./src/browser/tailwind/output.css"
   },
