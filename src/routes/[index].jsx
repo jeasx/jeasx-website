@@ -29,10 +29,10 @@ export default async function Homepage({}) {
             exceptional web experiences and applications.
           </p>
           <h2>Breaking News</h2>
-          <Highlight title="2025-05-12 - Jeasx 1.8.0 released">
+          <Highlight title="2025-05-28 - Jeasx 1.8.1 released">
             <p>
-              🎉 This release introduces a custom error handler to provide
-              user-friendly error messages. <a href="/news">Learn more...</a>
+              🎉 Just some dependency updates...{" "}
+              <a href="/news">Learn more...</a>
             </p>
           </Highlight>
           <h2>Built on top of a proven tech stack</h2>

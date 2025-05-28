@@ -23,47 +23,55 @@ export default function Faq({}) {
             updates about new features, bug fixes, and general information about
             the project.
           </p>
-          <Highlight title="2025-05-12 - Jeasx 1.8.0 released">
+          <Highlight title="2025-05-28 - Jeasx 1.8.1 released">
+            <p>🎉 Just some dependency updates...</p>
             <p>
-              🎉 This release introduces a custom error handler to provide
-              user-friendly error messages for internal server errors and to
-              facilitate team notifications.
+              Dependency updates: jsx-async-runtime@1.0.2, fastify@5.3.3,
+              fastify/static@8.2.0, esbuild@0.25.5, @types/node@22.15.23
             </p>
-            <p>
-              To set up an error handler, simply register it in a route of your
-              choice:
-            </p>
-            <Code
-              source={
-                /*js*/ `this.errorHandler = async (error) => {
-  console.error("❌", error);
-  return <h1>Internal error</h1>;
-}`.trim()
-              }
-            />
-            <p>
-              An error handler is called with <code>this</code> as context,
-              allowing easy access to your context setup.
-            </p>
-            <p>
-              <b>Breaking change:</b> If you use a response handler, you'll need
-              to change the name from <code>this.response</code> to{" "}
-              <code>this.responseHandler</code>. This aligns the response
-              handler with the introduced error handler. We apologize for any
-              inconvenience, but since this is a seldom-used feature, we aim to
-              streamline the codebase by aligning it without maintaining
-              deprecated code.
-            </p>
-            <p>
-              As additional feature, a response handler is now called with{" "}
-              <code>this</code> as the context, so you can access your existing
-              context.
-            </p>
-            <p>Dependency updates: esbuild@0.25.4, @types/node@22.15.17</p>
           </Highlight>
           <hr />
           <h2>Release History</h2>
           <dl>
+            <dt>2025-05-12 - Jeasx 1.8.0 released</dt>
+            <dd>
+              <p>
+                🎉 This release introduces a custom error handler to provide
+                user-friendly error messages for internal server errors and to
+                facilitate team notifications.
+              </p>
+              <p>
+                To set up an error handler, simply register it in a route of
+                your choice:
+              </p>
+              <Code
+                source={
+                  /*js*/ `this.errorHandler = async (error) => {
+  console.error("❌", error);
+  return <h1>Internal error</h1>;
+}`.trim()
+                }
+              />
+              <p>
+                An error handler is called with <code>this</code> as context,
+                allowing easy access to your context setup.
+              </p>
+              <p>
+                <b>Breaking change:</b> If you use a response handler, you'll
+                need to change the name from <code>this.response</code> to{" "}
+                <code>this.responseHandler</code>. This aligns the response
+                handler with the introduced error handler. We apologize for any
+                inconvenience, but since this is a seldom-used feature, we aim
+                to streamline the codebase by aligning it without maintaining
+                deprecated code.
+              </p>
+              <p>
+                As additional feature, a response handler is now called with{" "}
+                <code>this</code> as the context, so you can access your
+                existing context.
+              </p>
+              <p>Dependency updates: esbuild@0.25.4, @types/node@22.15.17</p>
+            </dd>
             <dt>2025-05-03 - Jeasx 1.7.3 released</dt>
             <dd>
               <p>
