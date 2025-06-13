@@ -23,16 +23,56 @@ export default function Faq({}) {
             updates about new features, bug fixes, and general information about
             the project.
           </p>
-          <Highlight title="2025-05-28 - Jeasx 1.8.1 released">
-            <p>🎉 Just some dependency updates...</p>
+          <Highlight title="2025-06-13 - Jeasx 1.8.2 released">
             <p>
-              Dependency updates: jsx-async-runtime@1.0.2, fastify@5.3.3,
-              fastify/static@8.2.0, esbuild@0.25.5, @types/node@22.15.23
+              🎉 This release changes the default options for
+              @fastify/multipart. From now on the default for{" "}
+              <code>attachFieldsToBody</code> is <code>keyValues</code> which
+              provides all data for form body requests (e.g. uploads) directly
+              via <code>request.body</code>. Have a look at the{" "}
+              <a href="https://github.com/fastify/fastify-multipart?tab=readme-ov-file#parse-all-fields-and-assign-them-to-the-body">
+                Fastify documentation
+              </a>{" "}
+              for code examples and options.
             </p>
+            <p>
+              This change makes the required code for handling form body
+              requests much easier:
+              <Code
+                lang="js"
+                source={
+                  /*js*/ `
+// Change this code...
+const file = await request.file();
+const upload = await file.toBuffer()
+const format = file.fields["format"]["value"];
+
+// ... to this code.
+const upload = request.body["upload"];
+const format = request.body["format"];
+`.trim()
+                }
+              />
+            </p>
+            <p>
+              <b>Please note:</b> This change might break your code. If you want
+              to revert to the old behaviour, you can set the following
+              environment variable:{" "}
+              <code>FASTIFY_MULTIPART_ATTACH_FIELDS_TO_BODY=false</code>
+            </p>
+            <p>Dependency updates: fastify@5.4.0, @types/node@22.15.31</p>
           </Highlight>
           <hr />
           <h2>Release History</h2>
           <dl>
+            <dt>2025-05-28 - Jeasx 1.8.1 released</dt>
+            <dd>
+              <p>🎉 Just some dependency updates...</p>
+              <p>
+                Dependency updates: jsx-async-runtime@1.0.2, fastify@5.3.3,
+                fastify/static@8.2.0, esbuild@0.25.5, @types/node@22.15.23
+              </p>
+            </dd>
             <dt>2025-05-12 - Jeasx 1.8.0 released</dt>
             <dd>
               <p>

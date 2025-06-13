@@ -254,6 +254,23 @@ export default function Configuration({}) {
               </td>
             </tr>
             <tr>
+              <td id="FASTIFY_MULTIPART_ATTACH_FIELDS_TO_BODY">
+                <b>
+                  FASTIFY_&#8203;MULTIPART_&#8203;ATTACH_&#8203;FIELDS_&#8203;TO_&#8203;BODY
+                </b>
+              </td>
+              <td>
+                <p>
+                  The default is <code>keyValues</code>, have a look at the{" "}
+                  <a href="https://github.com/fastify/fastify-multipart?tab=readme-ov-file#parse-all-fields-and-assign-them-to-the-body">
+                    Fastify documentation
+                  </a>{" "}
+                  for more code examples and options.
+                </p>
+              </td>
+            </tr>
+
+            <tr>
               <td id="JEASX_ROUTE_CACHE_LIMIT">
                 <b>JEASX_&#8203;ROUTE_&#8203;CACHE_&#8203;LIMIT</b>
               </td>

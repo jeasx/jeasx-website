@@ -29,9 +29,9 @@ export default async function Homepage({}) {
             exceptional web experiences and applications.
           </p>
           <h2>Breaking News</h2>
-          <Highlight title="2025-05-28 - Jeasx 1.8.1 released">
+          <Highlight title="2025-06-13 - Jeasx 1.8.2 released">
             <p>
-              🎉 Just some dependency updates...{" "}
+              🎉 Improved handling of form body requests (e.g. file uploads).{" "}
               <a href="/news">Learn more...</a>
             </p>
           </Highlight>
