@@ -39,7 +39,7 @@ export default function Faq({}) {
               This change makes the required code for handling form body
               requests much easier:
               <Code
-                lang="js"
+                lang="jsx"
                 source={
                   /*js*/ `
 // Change this code...
