@@ -10,14 +10,14 @@
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
-    "jeasx": "1.8.2",
+    "jeasx": "1.8.3",
     "prismjs": "1.30.0"
   },
   "devDependencies": {
     "@tailwindcss/cli": "4.1.11",
     "@tailwindcss/typography": "0.5.16",
     "concurrently": "9.2.0",
-    "prettier-plugin-tailwindcss": "0.6.13",
+    "prettier-plugin-tailwindcss": "0.6.14",
     "prettier": "3.6.2",
     "tailwindcss": "4.1.11"
   }
