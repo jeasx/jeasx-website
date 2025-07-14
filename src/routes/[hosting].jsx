@@ -1,11 +1,12 @@
 import Article from "../components/Article";
 import Content from "../components/Content";
 import Layout from "../components/Layout";
+import Lead from "../components/Lead";
 
 /**
  * @param {import("./types").RouteProps} props
  */
-export default function Faq({}) {
+export default function ({}) {
   return (
     <Layout title="Hosting" description="How to host a Jeasx application">
       <Content>
@@ -13,11 +14,11 @@ export default function Faq({}) {
           category="Hosting"
           headline="What are the hosting options for a Jeasx project?"
         >
-          <p class="lead">
+          <Lead>
             Jeasx supports various hosting modes tailored to different needs and
             preferences. You can host Jeasx on a VPS, deploy it via a Docker
             container, or opt for a serverless approach.
-          </p>
+          </Lead>
           <h2>Hosting on a virtual private server (VPS)</h2>
           <p>
             Typically, a Jeasx application requires around 50 MB of RAM and a

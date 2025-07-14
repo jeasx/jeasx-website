@@ -2,12 +2,13 @@ import Article from "../components/Article";
 import Content from "../components/Content";
 import Highlight from "../components/Highlight";
 import Layout from "../components/Layout";
+import Lead from "../components/Lead";
 import Next from "../components/Next";
 
 /**
  * @param {import("./types").RouteProps} props
  */
-export default function Philosophy({}) {
+export default function ({}) {
   return (
     <Layout
       title="Philosophy"
@@ -15,12 +16,12 @@ export default function Philosophy({}) {
     >
       <Content>
         <Article category="Philosophy" headline="Back to the future">
-          <p class="lead">
+          <Lead>
             Web applications have historically relied on server-rendered HTML
             and traditional navigation patterns. However, the evolution of the
             web platform led to the emergence of technologies like AJAX,
             enabling dynamic updates without full page reloads.
-          </p>
+          </Lead>
           <p>
             As JavaScript advanced, browser-based libraries (React) and
             frameworks (Angular) transformed the traditional client-server

@@ -7,7 +7,7 @@ import Layout from "../components/Layout";
 /**
  * @param {import("./types").RouteProps} props
  */
-export default function Faq({}) {
+export default function ({}) {
   return (
     <Layout title="FAQ" description="Everything you need to know about Jeasx">
       <Content>

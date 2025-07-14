@@ -9,12 +9,13 @@ import IconHeroStage from "../components/icons/IconHeroStage";
 import IconInstallation from "../components/icons/IconInstallation";
 import IconReference from "../components/icons/IconReference";
 import Layout from "../components/Layout";
+import Lead from "../components/Lead";
 import Next from "../components/Next";
 
 /**
  * @param {import("./types").RouteProps} props
  */
-export default async function Homepage({}) {
+export default async function ({}) {
   return (
     <Layout
       title="Homepage"
@@ -23,11 +24,11 @@ export default async function Homepage({}) {
     >
       <Content>
         <Article headline="Welcome to Jeasx">
-          <p class="lead">
+          <Lead>
             By eliminating unnecessary complexity and providing precise control
             over HTML, CSS, and JavaScript, Jeasx empowers developers to craft
             exceptional web experiences and applications.
-          </p>
+          </Lead>
           <h2>Breaking News</h2>
           <Highlight title="2025-07-11 - Jeasx 1.8.3 released">
             <p>

@@ -3,12 +3,13 @@ import Code from "../components/Code";
 import Content from "../components/Content";
 import Highlight from "../components/Highlight";
 import Layout from "../components/Layout";
+import Lead from "../components/Lead";
 import Next from "../components/Next";
 
 /**
  * @param {import("./types").RouteProps} props
  */
-export default function Quickstart({}) {
+export default function ({}) {
   const cmds = [
     "npm create jeasx@latest",
     "cd jeasx-quickstart",
@@ -19,10 +20,10 @@ export default function Quickstart({}) {
     <Layout title="Quickstart" description="How to get started with Jeasx">
       <Content>
         <Article category="Quickstart" headline="How to get started with Jeasx">
-          <p class="lead">
+          <Lead>
             It's easy to get started. Just use the following commands to set up
             and start your first project:
-          </p>
+          </Lead>
           <Code lang="shell" source={cmds.join("\n")} />
           <p>
             If you want to create a new project with a specific name, you can

@@ -1,12 +1,13 @@
 import Article from "../components/Article";
 import Content from "../components/Content";
 import Layout from "../components/Layout";
+import Lead from "../components/Lead";
 import Next from "../components/Next";
 
 /**
  * @param {import("./types").RouteProps} props
  */
-export default function Browser({}) {
+export default function ({}) {
   return (
     <Layout
       title="CSS &amp; JavaScript"
@@ -17,10 +18,10 @@ export default function Browser({}) {
           category="CSS &amp; JavaScript"
           headline="How to handle assets for use in a web browser"
         >
-          <p class="lead">
+          <Lead>
             Browser assets are stored in two distinct folders, based on whether
             these assets require processing or not.
-          </p>
+          </Lead>
           <h2>Static Assets</h2>
           <p>
             Any assets that do not require processing (e.g., fonts, robots.txt,

@@ -4,12 +4,13 @@ import Content from "../components/Content";
 import Highlight from "../components/Highlight";
 import IconAttention from "../components/icons/IconAttention";
 import Layout from "../components/Layout";
+import Lead from "../components/Lead";
 import Next from "../components/Next";
 
 /**
  * @param {import("./types").RouteProps} props
  */
-export default function Routes({}) {
+export default function ({}) {
   return (
     <Layout
       title="Routes &amp; Guards"
@@ -17,10 +18,10 @@ export default function Routes({}) {
     >
       <Content>
         <Article category="Routes &amp; Guards" headline="Understanding routes">
-          <p class="lead">
+          <Lead>
             In Jeasx, a file system-based routing system is at the heart of the
             framework.
-          </p>
+          </Lead>
           <p>
             All routes are stored in the routes directory of your project and
             are functions that receive{" "}

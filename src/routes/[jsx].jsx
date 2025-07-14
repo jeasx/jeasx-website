@@ -5,12 +5,13 @@ import Content from "../components/Content";
 import Highlight from "../components/Highlight";
 import IconAttention from "../components/icons/IconAttention";
 import Layout from "../components/Layout";
+import Lead from "../components/Lead";
 import Next from "../components/Next";
 
 /**
  * @param {import("./types").RouteProps} props
  */
-export default function JSX({}) {
+export default function ({}) {
   return (
     <Layout title="JSX &amp; SSR" description="Understanding JSX">
       <Content>
@@ -18,13 +19,13 @@ export default function JSX({}) {
           category="JSX &amp; SSR"
           headline="Server-side rendering of JSX"
         >
-          <p class="lead">
+          <Lead>
             Jeasx is a server-side rendering (SSR) framework based on JSX, which
             means that all of your code is executed on the server and the
             resulting HTML is sent to the client. JSX is a great templating
             technology due to its simplicity if you are familiar with the basics
             of JavaScript.
-          </p>
+          </Lead>
           <p>
             If you are not familiar with JSX, you should read the excellent{" "}
             <a

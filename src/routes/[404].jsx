@@ -1,11 +1,12 @@
 import Article from "../components/Article";
 import Content from "../components/Content";
 import Layout from "../components/Layout";
+import Lead from "../components/Lead";
 
 /**
  * @param {import("./types").RouteProps} props
  */
-export default function ResourceNotFound({}) {
+export default function ({}) {
   return (
     <Layout
       title="404 - Resource Not Found"
@@ -14,10 +15,10 @@ export default function ResourceNotFound({}) {
     >
       <Content>
         <Article category="404" headline="Resource Not Found">
-          <p class="lead">
+          <Lead>
             The resource you requested has not been found at the specified
             address.
-          </p>
+          </Lead>
           <a href="/" class="button">
             Go to Homepage
           </a>

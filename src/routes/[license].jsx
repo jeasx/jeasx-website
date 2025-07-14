@@ -1,15 +1,14 @@
 import Article from "../components/Article";
 import Content from "../components/Content";
 import Layout from "../components/Layout";
+import Lead from "../components/Lead";
 
-export default function Contact({}) {
+export default function ({}) {
   return (
     <Layout title="MIT License" description="The MIT License">
       <Content>
         <Article category="Contributing" headline="MIT License">
-          <p class="lead">
-            Copyright (c) 2024-2025 Maik Jablonski (mail@jeasx.dev)
-          </p>
+          <Lead>Copyright (c) 2024-2025 Maik Jablonski (mail@jeasx.dev)</Lead>
           <p>
             Permission is hereby granted, free of charge, to any person
             obtaining a copy of this software and associated documentation files

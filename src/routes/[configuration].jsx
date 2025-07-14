@@ -4,12 +4,13 @@ import Content from "../components/Content";
 import Highlight from "../components/Highlight";
 import IconAttention from "../components/icons/IconAttention";
 import Layout from "../components/Layout";
+import Lead from "../components/Lead";
 import Next from "../components/Next";
 
 /**
  * @param {import("./types").RouteProps} props
  */
-export default function Configuration({}) {
+export default function ({}) {
   return (
     <Layout
       title="Configuration"
@@ -17,11 +18,11 @@ export default function Configuration({}) {
     >
       <Content>
         <Article category="Configuration" headline="How to configure Jeasx">
-          <p class="lead">
+          <Lead>
             Jeasx provides sensible defaults to get you started quickly, but it
             also allows you to override important settings with environment
             variables. This makes it easy to adapt the framework to your needs.
-          </p>
+          </Lead>
           <p>
             To facilitate managing multiple configurations, Jeasx leverages
             layers of .env-files. This enables the use of different .env-files

@@ -1,6 +1,6 @@
 import { escapeEntities } from "jsx-async-runtime";
 
-export default async function Jokes() {
+export default async function () {
   const { value } = await (
     await fetch("https://api.chucknorris.io/jokes/random")
   ).json();

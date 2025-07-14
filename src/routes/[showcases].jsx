@@ -3,11 +3,12 @@ import Content from "../components/Content";
 import Feature from "../components/Feature";
 import Features from "../components/Features";
 import Layout from "../components/Layout";
+import Lead from "../components/Lead";
 
 /**
  * @param {import("./types").RouteProps} props
  */
-export default function Showcase({}) {
+export default function ({}) {
   return (
     <Layout title="Showcases" description="Illustrative use cases for Jeasx">
       <Content>
@@ -15,11 +16,11 @@ export default function Showcase({}) {
           category="Showcases"
           headline="Illustrative use cases for Jeasx"
         >
-          <p class="lead">
+          <Lead>
             If you have built a public website with Jeasx,{" "}
             <a href="/contact">please let us know</a>, so we can add it to the
             showcases.
-          </p>
+          </Lead>
           <Features>
             <Feature
               headline="Jeasx-Expo"

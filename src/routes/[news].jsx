@@ -1,13 +1,16 @@
 import Article from "../components/Article";
 import Code from "../components/Code";
 import Content from "../components/Content";
+import Definition from "../components/Definition";
+import Definitions from "../components/Definitions";
 import Highlight from "../components/Highlight";
 import Layout from "../components/Layout";
+import Lead from "../components/Lead";
 
 /**
  * @param {import("./types").RouteProps} props
  */
-export default function Faq({}) {
+export default function ({}) {
   return (
     <Layout
       title="News"
@@ -18,11 +21,11 @@ export default function Faq({}) {
           category="News"
           headline="What are the latest updates and new features in Jeasx?"
         >
-          <p class="lead">
+          <Lead>
             Welcome to the news section of Jeasx. Here we are going to post
             updates about new features, bug fixes, and general information about
             the project.
-          </p>
+          </Lead>
           <Highlight title="2025-07-11 - Jeasx 1.8.3 released">
             <p>
               🎉 This release bumps dependencies to the latest and greatest
@@ -35,9 +38,8 @@ export default function Faq({}) {
           </Highlight>
           <hr />
           <h2>Release History</h2>
-          <dl>
-            <dt>2025-06-13 - Jeasx 1.8.2 released</dt>
-            <dd>
+          <Definitions>
+            <Definition title="2025-06-13 - Jeasx 1.8.2 released">
               <p>
                 🎉 This release changes the default options for
                 @fastify/multipart. From now on the default for{" "}
@@ -75,17 +77,15 @@ const format = request.body["format"];
                 <code>FASTIFY_MULTIPART_ATTACH_FIELDS_TO_BODY=false</code>
               </p>
               <p>Dependency updates: fastify@5.4.0, @types/node@22.15.31</p>
-            </dd>
-            <dt>2025-05-28 - Jeasx 1.8.1 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2025-05-28 - Jeasx 1.8.1 released">
               <p>🎉 Just some dependency updates...</p>
               <p>
                 Dependency updates: jsx-async-runtime@1.0.2, fastify@5.3.3,
                 fastify/static@8.2.0, esbuild@0.25.5, @types/node@22.15.23
               </p>
-            </dd>
-            <dt>2025-05-12 - Jeasx 1.8.0 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2025-05-12 - Jeasx 1.8.0 released">
               <p>
                 🎉 This release introduces a custom error handler to provide
                 user-friendly error messages for internal server errors and to
@@ -122,9 +122,8 @@ const format = request.body["format"];
                 existing context.
               </p>
               <p>Dependency updates: esbuild@0.25.4, @types/node@22.15.17</p>
-            </dd>
-            <dt>2025-05-03 - Jeasx 1.7.3 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2025-05-03 - Jeasx 1.7.3 released">
               <p>
                 🎉 This release introduces a performance improvement by
                 switching the internal route-to-module cache implementation from
@@ -141,9 +140,8 @@ const format = request.body["format"];
                 Dependency updates: jsx-async-runtime@1.0.1, esbuild@0.25.3,
                 @types/node@22.15.3
               </p>
-            </dd>
-            <dt>2025-04-21 - Jeasx 1.7.2 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2025-04-21 - Jeasx 1.7.2 released">
               <p>🎉 This release is brings only minor changes:</p>
               <ul>
                 <li>
@@ -167,9 +165,8 @@ const format = request.body["format"];
                 </li>
               </ul>
               <p>Dependency updates: fastify@5.3.2, @types/node@22.14.1</p>
-            </dd>
-            <dt>2025-03-31 - Jeasx 1.7.1 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2025-03-31 - Jeasx 1.7.1 released">
               <p>
                 🎉 This release enhances support for{" "}
                 <a href="https://bun.sh" target="_blank">
@@ -197,9 +194,8 @@ const format = request.body["format"];
                 provided to enhance debugging.
               </p>
               <p>Dependency updates: esbuild@0.25.2</p>
-            </dd>
-            <dt>2025-03-27 - Jeasx 1.7.0 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2025-03-27 - Jeasx 1.7.0 released">
               <p>
                 🎉 This release removes <code>pm2</code> as a dependency and
                 utilizes the powerful file watching capabilities of{" "}
@@ -215,18 +211,16 @@ const format = request.body["format"];
                 recommended for development or production.
               </p>
               <p>Dependency updates: @types/node@22.13.14</p>
-            </dd>
-            <dt>2025-03-26 - Jeasx 1.6.3 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2025-03-26 - Jeasx 1.6.3 released">
               <p>
                 🎉 This release fixes a bug with the recently introduced env
                 file loading. The env files were loaded in the wrong order, so
                 that overwriting existing env variables didn't work.
               </p>
               <p>Dependency updates: fastify@5.2.2, @types/node@22.13.13</p>
-            </dd>
-            <dt>2025-03-19 - Jeasx 1.6.2 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2025-03-19 - Jeasx 1.6.2 released">
               <p>
                 🎉 This release introduces a try/catch block in the central
                 request handler, ensuring that proper error messages are logged.
@@ -246,9 +240,8 @@ const format = request.body["format"];
                 lang="docker"
                 source={`# RUN npx jeasx build\nRUN npm run build\n# CMD ["npx","jeasx","start"]\nCMD ["npm","start"]`}
               />
-            </dd>
-            <dt>2025-03-15 - Jeasx 1.6.1 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2025-03-15 - Jeasx 1.6.1 released">
               <p>
                 🎉 This releases replaces the dependency on{" "}
                 <code>dotenv-flow</code> with a native implementation provided
@@ -302,9 +295,8 @@ const format = request.body["format"];
                 <b>Please note:</b> version 1.6.0 was unpublished from NPM right
                 after the release due to a mistake.
               </p>
-            </dd>
-            <dt>2025-03-09 - Jeasx 1.5.0 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2025-03-09 - Jeasx 1.5.0 released">
               <p>🎉 This release features two new configurations:</p>
               <ul>
                 <li>
@@ -319,9 +311,8 @@ const format = request.body["format"];
                 </li>
               </ul>
               <p>Dependency updates: @types/node@22.13.10.</p>
-            </dd>
-            <dt>2025-03-01 - Jeasx 1.4.1 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2025-03-01 - Jeasx 1.4.1 released">
               <p>
                 🎉 This release features an updated{" "}
                 <code>jsx-async-runtime@0.8.1</code> which brings typings for
@@ -332,9 +323,8 @@ const format = request.body["format"];
                 3rd-party dependencies were updated to the latest versions:
                 @fastify/static@8.1.1, @types/node@22.13.5
               </p>
-            </dd>
-            <dt>2025-02-12 - Jeasx 1.4.0 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2025-02-12 - Jeasx 1.4.0 released">
               <p>
                 🎉 This release adds the <code>route</code> property to the
                 current endpoint handler (e.g., <code>/[index]</code> or{" "}
@@ -347,9 +337,8 @@ const format = request.body["format"];
                 esbuild@0.25.0, @fastify/static@8.1.0, @fastify/multipart@9.0.3,
                 @fastify/formbody@8.0.3, @types/node@22.13.1
               </p>
-            </dd>
-            <dt>2025-01-18 - Jeasx 1.3.0 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2025-01-18 - Jeasx 1.3.0 released">
               <p>
                 🎉 We are excited to announce the release of{" "}
                 <a
@@ -389,18 +378,14 @@ const format = request.body["format"];
                 dependencies: fastify/formbody@8.0.2, fastify/multipart@9.0.2,
                 fastify/static@8.0.4, and types/node@22.10.7.
               </p>
-            </dd>
-          </dl>
-          <dl>
-            <dt>2025-01-06 - Jeasx 1.2.2 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2025-01-06 - Jeasx 1.2.2 released">
               <p>
                 🎉 This release is just a minor dependency update:
                 fastify@5.2.1, fastify/cookie@11.0.2 and types/node@22.10.5.
               </p>
-            </dd>
-            <dt>2024-12-12 - Jeasx 1.2.1 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2024-12-12 - Jeasx 1.2.1 released">
               <p>
                 🎉 This release fixes a bug introduced by the recently
                 introduced route caching feature: if a guard returned different
@@ -408,9 +393,8 @@ const format = request.body["format"];
                 props for the guarded routes), the guarded routes weren't
                 resolved anymore.
               </p>
-            </dd>
-            <dt>2024-12-07 - Jeasx 1.2.0 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2024-12-07 - Jeasx 1.2.0 released">
               <p>
                 🎉 This release brings a major performance boost (
                 <b>about 2-5 times faster in benchmarks</b>) by introducing
@@ -441,9 +425,8 @@ const format = request.body["format"];
                 <code>FASTIFY_TRUST_PROXY</code>) to give you more control over
                 how Jeasx should behave in different environments.
               </p>
-            </dd>
-            <dt>2024-12-01 - Jeasx 1.1.0 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2024-12-01 - Jeasx 1.1.0 released">
               <p>
                 🎉 Migrated from <code>dotenv</code> to{" "}
                 <a
@@ -500,9 +483,8 @@ const format = request.body["format"];
                 </a>
                 .
               </p>
-            </dd>
-            <dt>2024-11-15 - Jeasx 1.0.2 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2024-11-15 - Jeasx 1.0.2 released">
               <p>
                 🎉 Disabled cache-control for fastify-static, so proper
                 Cache-Control response header could be applied via the
@@ -516,9 +498,8 @@ const format = request.body["format"];
                 </a>{" "}
                 for an example.
               </p>
-            </dd>
-            <dt>2024-11-01 - Jeasx 1.0.1 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2024-11-01 - Jeasx 1.0.1 released">
               <p>
                 🎉 This version brings official support for Node 22. Also
                 dependencies were updated to latest versions of fastify@5.0.1,
@@ -533,9 +514,8 @@ const format = request.body["format"];
                 </a>{" "}
                 with sharp.
               </p>
-            </dd>
-            <dt>2024-10-04 - Jeasx 1.0.0 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2024-10-04 - Jeasx 1.0.0 released">
               <p>
                 It's finally here! Jeasx 1.0.0 is ready for production. We are
                 proud to announce that the framework has reached feature
@@ -543,24 +523,19 @@ const format = request.body["format"];
                 work have been put into this project to make sure you have the
                 best experience possible.
               </p>
-            </dd>
-          </dl>
-          <dl>
-            <dt>2024-09-23 - Jeasx 0.15.2 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2024-09-23 - Jeasx 0.15.2 released">
               <p>Updates to all @fastify-plugins and esbuild@0.24.0.</p>
-            </dd>
-            <dt>2024-09-21 - Jeasx 0.15.1 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2024-09-21 - Jeasx 0.15.1 released">
               <p>
                 Decorate the Fastify request object with "path" property, so you
                 can easily access the route path without query parameters via{" "}
                 <code>request.path</code>. This solves 99% of all use-cases for
                 recently removed @fastity/url-data.
               </p>
-            </dd>
-            <dt>2024-09-20 - Jeasx 0.15.0 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2024-09-20 - Jeasx 0.15.0 released">
               <p>
                 This release comes with Fastify 5. It also removes
                 @fastify/url-data and @fastify/accepts as dependencies,
@@ -586,9 +561,8 @@ const format = request.body["format"];
                 past proper release which shouldn't be used (and are mostly
                 unpublished from npm).
               </p>
-            </dd>
-            <dt>2024-08-21 - Jeasx 0.11.2 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2024-08-21 - Jeasx 0.11.2 released">
               <p>
                 Added simple{" "}
                 <a
@@ -600,17 +574,15 @@ const format = request.body["format"];
                 to quickstart template. Dependency updates: esbuild@0.23.1,
                 @fastify/cookie@9.4.0, @types/node@20.16.1
               </p>
-            </dd>
-            <dt>2024-07-27 - Jeasx 0.11.1 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2024-07-27 - Jeasx 0.11.1 released">
               <p>
                 Performance optimization: if response is string or buffer, break
                 evaluation loop early. This allows to build caches for pages and
                 binary assets in userland.
               </p>
-            </dd>
-            <dt>2024-07-26 - Jeasx 0.11.0 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2024-07-26 - Jeasx 0.11.0 released">
               <p>
                 Updated to jsx-async-runtime@0.5.0 which allows to override{" "}
                 <code>jsxToString</code> from{" "}
@@ -627,9 +599,8 @@ const format = request.body["format"];
                 </a>{" "}
                 to see how it works.
               </p>
-            </dd>
-            <dt>2024-07-19 - Jeasx 0.10.1 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2024-07-19 - Jeasx 0.10.1 released">
               <p>
                 <b>Breaking change:</b> removed @fastify/request-context in
                 favor of the recently introduced <code>this</code> context.
@@ -638,16 +609,14 @@ const format = request.body["format"];
                 Jeasx and jsx-async-runtime is provided unminified, so debugging
                 and testing is far easier now.
               </p>
-            </dd>
-            <dt>2024-07-12 - Jeasx 0.9.1 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2024-07-12 - Jeasx 0.9.1 released">
               <p>
                 Updated to jsx-async-runtime@0.4.1 which fixes a problem when
                 running tests with Vitest.
               </p>
-            </dd>
-            <dt>2024-07-10 - Jeasx 0.9.0 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2024-07-10 - Jeasx 0.9.0 released">
               <p>
                 Updated to jsx-async-runtime@0.4.0 which allows to use 'this' as
                 context object to avoid prop drilling. Have a look at the{" "}
@@ -656,42 +625,34 @@ const format = request.body["format"];
                 </a>{" "}
                 to see how things work.
               </p>
-            </dd>
-            <dt>2024-07-05 - Jeasx 0.8.0 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2024-07-05 - Jeasx 0.8.0 released">
               <p>
                 Updated to jsx-async-runtime@0.3.0 (deprecated renderToString in
                 favor of jsxToString)
               </p>
-            </dd>
-            <dt>2024-07-03 - Jeasx 0.7.6 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2024-07-03 - Jeasx 0.7.6 released">
               <p>Updated to esbuild@0.23.0</p>
-            </dd>
-            <dt>2024-07-01 - Jeasx 0.7.5 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2024-07-01 - Jeasx 0.7.5 released">
               <p>Updated to fastify@4.28.1, esbuild@0.22.0, pm2@5.4.1</p>
-            </dd>
-            <dt>2024-05-28 - Jeasx 0.7.4 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2024-05-28 - Jeasx 0.7.4 released">
               <p>Updated to esbuild@0.21.4, pm2@5.4.0</p>
-            </dd>
-            <dt>2024-05-17 - Jeasx 0.7.3 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2024-05-17 - Jeasx 0.7.3 released">
               <p>Updated to esbuild@0.21.3, @types/node@20.12.12</p>
-            </dd>
-            <dt>2024-05-08 - Jeasx 0.7.2 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2024-05-08 - Jeasx 0.7.2 released">
               <p>
                 Updated to fastify@4.27.0, esbuild@0.21.1, @fastify/static@7.0.4
               </p>
-            </dd>
-            <dt>2024-05-07 - Jeasx 0.7.1 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2024-05-07 - Jeasx 0.7.1 released">
               <p>Updated esbuild to 0.21.0.</p>
-            </dd>
-            <dt>2024-04-27 - Jeasx 0.7.0 released</dt>
-            <dd>
+            </Definition>
+            <Definition title="2024-04-27 - Jeasx 0.7.0 released">
               <p>
                 This release introduces a new feature that allows you to
                 post-process the resulting payloads, such as prettifying the
@@ -713,9 +674,8 @@ export default function RootGuard({ request, reply }) {
 }
 `}
               />
-            </dd>
-            <dt>Shame on me...</dt>
-            <dd>
+            </Definition>
+            <Definition title="Shame on me...">
               <p>
                 I have recently started writing news as we approach the 1.0
                 release. But you can study the{" "}
@@ -727,9 +687,8 @@ export default function RootGuard({ request, reply }) {
                 </a>{" "}
                 at GitHub to see what has happend in the past.
               </p>
-            </dd>
-            <dt>2023-12-30 - First public commit</dt>
-            <dd>
+            </Definition>
+            <Definition title="2023-12-30 - First public commit">
               <p>
                 Our Journey Begins! 🎉 Introducing Jeasx, a revolutionary web
                 development framework born out of a summer experiment in 2023.
@@ -738,8 +697,8 @@ export default function RootGuard({ request, reply }) {
                 HTML, CSS, and progressive enhancing JavaScript. Join us as we
                 redefine the future of web development together!
               </p>
-            </dd>
-          </dl>
+            </Definition>
+          </Definitions>
         </Article>
       </Content>
     </Layout>
