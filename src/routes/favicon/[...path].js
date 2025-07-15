@@ -1,7 +1,7 @@
 /**
  * @param {import("../types").RouteProps} props
  */
-export default async function Icon({ request, reply }) {
+export default async function ({ request, reply }) {
   const domain = request.path.substring("/favicon/".length);
 
   reply.header("Content-Type", "image/x-icon");

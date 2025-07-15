@@ -183,7 +183,7 @@ function HeroStage() {
                   <div class="flex items-start px-1 text-sm">
                     <Code
                       source={`
-export default async function Product({ request }) {
+export default async function ({ request }) {
   const id = request.query["id"];
   const { title, description, tags } = await (
     await fetch(\`https://dummyjson.com/products/\${id}\`)

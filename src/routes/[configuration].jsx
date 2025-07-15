@@ -89,8 +89,8 @@ export default function ({}) {
           <h2>Environment Variables</h2>
           <table>
             <tr>
-              <th width="30%">Name</th>
-              <th width="70%">Description</th>
+              <th style="width:30%">Name</th>
+              <th style="width:70%">Description</th>
             </tr>
             <tr>
               <td id="HOST">

@@ -90,8 +90,8 @@ export default function ({}) {
           </p>
           <table>
             <tr>
-              <th width="50%">Route path</th>
-              <th width="50%">URL</th>
+              <th style="width:50%">Route path</th>
+              <th style="width:50%">URL</th>
             </tr>
             <tr>
               <td>src/routes/[index].jsx</td>
@@ -121,7 +121,7 @@ export default function ({}) {
           <h3>Code example</h3>
           <Code
             source={`
-export default function Welcome({ request, reply }) {
+export default function ({ request, reply }) {
   return (
     <>
       {"<!DOCTYPE html>"}
@@ -151,8 +151,8 @@ export default function Welcome({ request, reply }) {
           </p>
           <table>
             <tr>
-              <th width="50%">Route path</th>
-              <th width="50%">URL</th>
+              <th style="width:50%">Route path</th>
+              <th style="width:50%">URL</th>
             </tr>
             <tr>
               <td>src/routes/blog/[...path].jsx</td>
@@ -165,7 +165,7 @@ export default function Welcome({ request, reply }) {
           </table>
           <h3>Code example</h3>
           <Code
-            source={`export default async function Product({ request, reply }) {
+            source={`export default async function ({ request, reply }) {
   const segments = request.path.split("/");
   const product = await (await fetch(\`https://dummyjson.com/product/\${segments[1]}\`)).json();
 
@@ -197,8 +197,8 @@ export default function Welcome({ request, reply }) {
           </p>
           <table>
             <tr>
-              <th width="50%">Route path</th>
-              <th width="50%">URL</th>
+              <th style="width:50%">Route path</th>
+              <th style="width:50%">URL</th>
             </tr>
             <tr>
               <td>src/routes/blog/[...guard].jsx</td>
@@ -211,7 +211,7 @@ export default function Welcome({ request, reply }) {
           <h3>Code example</h3>
           <Code
             source={`
-export default function AuthorizationGuard({ request, reply }) {
+export default function ({ request, reply }) {
   const authorization = request.headers["authorization"];
   if (
     authorization !== \`Basic \${Buffer.from("demo:demo").toString("base64")}\`
@@ -236,7 +236,7 @@ export default function AuthorizationGuard({ request, reply }) {
           </p>
           <Code
             source={`
-export default function PropsGuard({ request }) {
+export default function ({ request }) {
   const body = request.body || {};
   return { message: body["message"] };
 }
@@ -245,7 +245,7 @@ export default function PropsGuard({ request }) {
 
           <Code
             source={`
-export default function MessageView({ message }) {
+export default function ({ message }) {
   return <p>{message ? message : "No message for you"}</p>;
 }
 `}

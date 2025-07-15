@@ -30,8 +30,8 @@ export default function ({}) {
           </p>
           <table>
             <tr>
-              <th width="50%">Route path</th>
-              <th width="50%">URL</th>
+              <th style="width:50%">Route path</th>
+              <th style="width:50%">URL</th>
             </tr>
             <tr>
               <td>public/robots.txt</td>
@@ -52,8 +52,8 @@ export default function ({}) {
           </p>
           <table>
             <tr>
-              <th width="50%">Route path</th>
-              <th width="50%">URL</th>
+              <th style="width:50%">Route path</th>
+              <th style="width:50%">URL</th>
             </tr>
             <tr>
               <td>src/browser/index.css</td>

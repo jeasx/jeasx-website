@@ -22,7 +22,7 @@ export default function ({}) {
           </p>
           <Code
             source={`
-export default function RootGuard({ request, reply }) {
+export default function ({ request, reply }) {
   this.date = new Date();
 }
 `}
@@ -33,7 +33,7 @@ export default function RootGuard({ request, reply }) {
           </p>
           <Code
             source={`
-export default function CurrentDate() {
+export default function () {
   return <p>The current date is {this.date.toISOString()}</p>;
 }
 `}
@@ -78,7 +78,7 @@ export default function CurrentDate() {
             source={`
 import * as prettier from "prettier";
 ...
-export default function RootGuard({ request, reply }) {
+export default function ({ request, reply }) {
   this.responseHandler = async (payload) => {
     return typeof payload === "string" &&
       String(reply.getHeader("content-type")).startsWith("text/html")

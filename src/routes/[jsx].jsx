@@ -106,7 +106,7 @@ export default function ({}) {
             source={
               /*js*/ `import { escapeEntities } from "jsx-async-runtime";
 
-export default async function Jokes() {
+export default async function () {
   const { value } = await (
     await fetch("https://api.chucknorris.io/jokes/random")
   ).json();
@@ -157,7 +157,7 @@ export default async function Jokes() {
           <Code
             source={`import { jsxToString } from "jsx-async-runtime";
 
-export default function RootGuard({ request, reply }) {
+export default function ({ request, reply }) {
   this.jsxToString = (jsxElement) => {
     if (jsxElement.type === "tag" && jsxElement.tag === "img") {
       jsxElement.props.src = jsxElement.props.src + "?" + process.env.BUILD_TIME;
