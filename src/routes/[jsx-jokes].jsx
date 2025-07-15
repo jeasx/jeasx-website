@@ -1,6 +1,9 @@
 import { escapeEntities } from "jsx-async-runtime";
 
-export default async function () {
+/**
+ * @param {import("./types").RouteProps} props
+ */
+export default async function ({}) {
   const { value } = await (
     await fetch("https://api.chucknorris.io/jokes/random")
   ).json();

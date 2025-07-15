@@ -3,6 +3,9 @@ import Content from "../components/Content";
 import Layout from "../components/Layout";
 import Lead from "../components/Lead";
 
+/**
+ * @param {import("./types").RouteProps} props
+ */
 export default function ({}) {
   return (
     <Layout title="Contact" description="Get in touch">

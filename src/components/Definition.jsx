@@ -1,4 +1,7 @@
-export default function Definition({ title = "", children = undefined }) {
+export default function Definition({
+  title = undefined,
+  children = undefined,
+}) {
   return (
     <>
       <dt>{title}</dt>
