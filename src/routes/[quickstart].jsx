@@ -37,6 +37,14 @@ export default function ({}) {
             </a>{" "}
             in a browser of your choice.
           </p>
+          <p>
+            If you want to see the quickstart example in action, you can visit a
+            deployed version of the quickstart template at{" "}
+            <a href="https://quickstart.jeasx.dev/" target="_blank">
+              https://quickstart.jeasx.dev/
+            </a>
+            .
+          </p>
           <Highlight title="Which Node version should I use?">
             <p>
               Jeasx is developed and tested with the <b>latest LTS</b> version
