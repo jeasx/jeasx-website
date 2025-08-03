@@ -26,19 +26,26 @@ export default function ({}) {
             updates about new features, bug fixes, and general information about
             the project.
           </Lead>
-          <Highlight title="2025-07-11 - Jeasx 1.8.3 released">
+          <Highlight title="2025-08-03 - Jeasx 1.8.4 released">
             <p>
               🎉 This release bumps dependencies to the latest and greatest
               versions.
             </p>
-            <p>
-              Dependency updates: jsx-async-runtime@1.0.3, esbuild@0.25.6,
-              @types/node@22.16.3
-            </p>
+            <p>Dependency updates: esbuild@0.25.8, @types/node@22.17.0</p>
           </Highlight>
           <hr />
           <h2>Release History</h2>
           <Definitions>
+            <Definition title="2025-07-11 - Jeasx 1.8.3 released">
+              <p>
+                🎉 This release bumps dependencies to the latest and greatest
+                versions.
+              </p>
+              <p>
+                Dependency updates: jsx-async-runtime@1.0.3, esbuild@0.25.6,
+                @types/node@22.16.3
+              </p>
+            </Definition>
             <Definition title="2025-06-13 - Jeasx 1.8.2 released">
               <p>
                 🎉 This release changes the default options for
