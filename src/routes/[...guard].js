@@ -12,7 +12,7 @@ export default function ({ request, reply }) {
   }
 
   if (process.env.NODE_ENV !== "development") {
-    reply.header("Cache-Control", "public, max-age=60, s-maxage=60");
+    reply.header("Cache-Control", "public, max-age=3600, s-maxage=3600");
   }
 
   // Set the request and reply objects as context
