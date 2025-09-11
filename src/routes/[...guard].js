@@ -12,7 +12,9 @@ export default function ({ request, reply }) {
   }
 
   if (process.env.NODE_ENV !== "development") {
-    reply.header("Cache-Control", "public,max-age=3600,s-maxage=3600");
+    ["Cache-Control", "Cloudflare-CDN-Cache-Control"].forEach((key) => {
+      reply.header(key, "public, max-age=3600, s-maxage=3600");
+    });
   }
 
   // Set the request and reply objects as context
