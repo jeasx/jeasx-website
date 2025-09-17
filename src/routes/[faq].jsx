@@ -126,6 +126,29 @@ export default function ({ request, reply }) {
             source={`npx -y browser-sync start -w -f "dist/**/index.css" -p localhost:3000`}
             lang="bash"
           />
+          <h2 id="vercel">
+            How can I apply custom caching rules via FASTIFY_STATIC_HEADERS for
+            the public folder when deploying to Vercel?
+          </h2>
+          <p>
+            As Vercel configures the public folder as default directory for
+            static assets, you have to specify another directory in your{" "}
+            <code>vercel.json</code>. For example, create an empty directory
+            named <code>build</code> at root level with only a{" "}
+            <code>.gitkeep</code> in it:
+          </p>
+          <Code source={`{"outputDirectory": "build"}`} lang="json" />
+          <p>
+            This change is only recommended, if your Vercel application is
+            proxied via a 3rd-party CDN like Cloudflare. Please visit the{" "}
+            <a
+              target="_blank"
+              href="https://vercel.com/docs/project-configuration#outputdirectory"
+            >
+              Vercel documentation
+            </a>{" "}
+            for more information.
+          </p>
         </Article>
       </Content>
       <Aside
@@ -155,8 +178,8 @@ export default function ({ request, reply }) {
             link: "#browsersync",
           },
           {
-            label: "Hosting",
-            link: "#hosting",
+            label: "Vercel",
+            link: "#vercel",
           },
         ]}
       />

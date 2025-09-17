@@ -1,4 +1,5 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "devCommand": "npm run dev",
   "trailingSlash": false,
   "rewrites": [
@@ -11,5 +12,6 @@
     "api/vercel.js": {
       "includeFiles": "./**/*"
     }
-  }
+  },
+  "outputDirectory": "build"
 }
