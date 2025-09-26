@@ -101,7 +101,9 @@ const format = request.body["format"];
                 <b>Please note:</b> This change might break your code. If you
                 want to revert to the old behaviour, you can set the following
                 environment variable:{" "}
-                <code>FASTIFY_MULTIPART_ATTACH_FIELDS_TO_BODY=false</code>
+                <code>
+                  FASTIFY_&#8203;MULTIPART_&#8203;ATTACH_&#8203;FIELDS_&#8203;TO_&#8203;BODY=false
+                </code>
               </p>
               <p>Dependency updates: fastify@5.4.0, @types/node@22.15.31</p>
             </Definition>
