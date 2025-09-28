@@ -65,7 +65,7 @@ export default function ({}) {
             </Feature>
             <Feature
               headline="Annual report for LOTTO Niedersachsen"
-              link="https://unserjahr.lotto-niedersachsen.de/2023"
+              link="https://unserjahr.lotto-niedersachsen.de/2024"
               icon={
                 <img
                   src="/favicon/www.lottoindeutschland.de"
