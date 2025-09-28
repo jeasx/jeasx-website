@@ -11,10 +11,6 @@ export default function ({ request, reply }) {
     return reply.sendFile(request.url.slice(BUILD_TIME_PREFIX.length));
   }
 
-  if (process.env.NODE_ENV !== "development") {
-    reply.header("Cache-Control", "public,max-age=3600,s-maxage=3600");
-  }
-
   // Set the request and reply objects as context
   this.request = request;
   this.reply = reply;
