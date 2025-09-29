@@ -23,8 +23,10 @@ export default function ({}) {
             framework.
           </Lead>
           <p>
-            All routes are stored in the routes directory of your project and
-            are functions that receive{" "}
+            All server routes must be put anywhere in the <code>src</code>{" "}
+            directory with filenames enclosed with brackets (
+            <code>[news].jsx</code>) and must be defined as functions that
+            receive{" "}
             <a
               href="https://fastify.dev/docs/latest/Reference/Request/"
               target="_blank"
@@ -81,6 +83,13 @@ export default function ({}) {
             perform asynchronous operations, you can declare your route or
             imported components as async.
           </p>
+          <p>
+            <b>Please note:</b> Jeasx doesn't specify any hardcoded outbase
+            directory for esbuild, so it defaults to the lowest common ancestor
+            directory for all your routes. So when you put <b>all</b> your
+            routes into a dedicated folder (e.g. <code>src/routes</code>),{" "}
+            <code>routes</code> will be removed from the resulting path.
+          </p>
           <h2 id="endpoints">Named routes</h2>
           <p>
             The only rule for named routes is to enclose the base filename
@@ -94,27 +103,27 @@ export default function ({}) {
               <th style="width:50%">URL</th>
             </tr>
             <tr>
-              <td>src/routes/[index].jsx</td>
+              <td>src/[index].jsx</td>
               <td>/</td>
             </tr>
             <tr>
-              <td>src/routes/a/b/[you-name-it].jsx</td>
+              <td>src/a/b/[you-name-it].jsx</td>
               <td>/a/b/you-name-it</td>
             </tr>
             <tr>
-              <td>src/routes/company/[index].tsx</td>
+              <td>src/company/[index].tsx</td>
               <td>/company</td>
             </tr>
             <tr>
-              <td>src/routes/images/[logo.svg].js</td>
+              <td>src/images/[logo.svg].js</td>
               <td>/images/logo.svg</td>
             </tr>
             <tr>
-              <td>src/routes/api/posts/[update.json].ts</td>
+              <td>src/api/posts/[update.json].ts</td>
               <td>/api/posts/update.json</td>
             </tr>
             <tr>
-              <td>src/routes/api/posts/utils/format.ts</td>
+              <td>src/api/posts/utils/format.ts</td>
               <td>This file is not exposed as endpoint.</td>
             </tr>
           </table>
@@ -155,7 +164,7 @@ export default function ({ request, reply }) {
               <th style="width:50%">URL</th>
             </tr>
             <tr>
-              <td>src/routes/blog/[...path].jsx</td>
+              <td>src/blog/[...path].jsx</td>
               <td>
                 /blog/article1
                 <br />
@@ -201,7 +210,7 @@ export default function ({ request, reply }) {
               <th style="width:50%">URL</th>
             </tr>
             <tr>
-              <td>src/routes/blog/[...guard].jsx</td>
+              <td>src/blog/[...guard].jsx</td>
               <td>
                 The code of the guard is executed before named or dynamic routes
                 in the current folder or below.

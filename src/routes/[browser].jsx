@@ -45,10 +45,17 @@ export default function ({}) {
           <h2>CSS & JavaScript</h2>
           <p>
             CSS, JavaScript, or TypeScript files that require processing and
-            minification should be stored in the src/browser directory and must
-            be named as <code>index.[css|js|jsx|ts|tsx]</code>. Only index files
-            serve as bundle entries and are accessible to the client. This
+            minification should be stored in the <code>src</code> directory and
+            must be named as <code>index.[css|js|jsx|ts|tsx]</code>. Only index
+            files serve as bundle entries and are accessible to the client. This
             approach offers flexibility in creating a custom directory layout.
+          </p>
+          <p>
+            <b>Please note:</b> Jeasx doesn't specify any hardcoded outbase
+            directory for esbuild, so it defaults to the lowest common ancestor
+            directory for all your browser assets. So when you put <b>all</b>{" "}
+            your assets into a dedicated folder (e.g. <code>src/browser</code>),{" "}
+            <code>browser</code> will be removed from the resulting path.
           </p>
           <table>
             <tr>
@@ -56,15 +63,15 @@ export default function ({}) {
               <th style="width:50%">URL</th>
             </tr>
             <tr>
-              <td>src/browser/index.css</td>
+              <td>src/index.css</td>
               <td>/index.css</td>
             </tr>
             <tr>
-              <td>src/browser/custom/index.js</td>
+              <td>src/custom/index.js</td>
               <td>/custom/index.js</td>
             </tr>
             <tr>
-              <td>src/browser/utils/date.js</td>
+              <td>src/utils/date.js</td>
               <td>This file will be not available via an url.</td>
             </tr>
           </table>

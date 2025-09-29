@@ -26,19 +26,64 @@ export default function ({}) {
             updates about new features, bug fixes, and general information about
             the project.
           </Lead>
-          <Highlight title="2025-09-11 - Jeasx 1.8.6 released">
+          <Highlight title="2025-09-29 - Jeasx 1.9.0 released">
             <p>
-              🎉 This release bumps dependencies to the latest and greatest
-              versions.
+              🎉 This release drops the constraint that you had to put all
+              routes into a dedicated <code>routes</code>-directory and all
+              JavaScript &amp; CSS into a dedicated <code>browser</code>
+              -directory. From now on you can use any directory layout in your
+              projects as you like. You can still use the proven{" "}
+              <code>browser/routes</code> layout, but you don't have to.
             </p>
             <p>
-              Dependency updates: fastify@5.6.0, fastify/multipart@9.2.1,
-              @types/node@22.18.1
+              This feature enables the co-location of server and browser code in
+              the same directory which might be a better default for your
+              workflows.
+            </p>
+            <p>
+              The only remaining constraint is to mark server routes with
+              brackets (e.g. <code>[news].jsx</code>) and browser-bundled assets
+              as index-files (e.g. <code>index.js</code> or{" "}
+              <code>index.css</code>).
+            </p>
+            <p>
+              <b>Please note:</b> This feature is enabled by dropping the hard
+              coded outbase-directories in the esbuild configuration. If the
+              outbase directory isn't specified, it defaults to the lowest
+              common ancestor directory among all input entry point paths.
+            </p>
+            <p>
+              If you run into an edge case (e.g. your browser bundles won't load
+              anymore), here's how to fix it: if you store all your assets in{" "}
+              <code>browser/assets</code> and request your assets via{" "}
+              <code>/assets/...</code>, this won't work anymore, because{" "}
+              <code>assets</code> is now the lowest common ancestor directory
+              and is removed by esbuild. Simple fix: just put an empty{" "}
+              <code>index.js</code> into <code>browser</code> directory, so this
+              directory is lowest common ancestor directory again.
+            </p>
+            <p>
+              Bumbed the default <code>ESBUILD_BROWSER_TARGET</code> to{" "}
+              <code>"chrome130", "edge130", "firefox130", "safari18"</code>.
+            </p>
+            <p>
+              Dependency updates: fastify@5.6.1, esbuild@0.25.10,
+              @types/node@22.18.6
             </p>
           </Highlight>
           <hr />
           <h2>Release History</h2>
           <Definitions>
+            <Definition title="2025-09-11 - Jeasx 1.8.6 released">
+              <p>
+                🎉 This release bumps dependencies to the latest and greatest
+                versions.
+              </p>
+              <p>
+                Dependency updates: fastify@5.6.0, fastify/multipart@9.2.1,
+                @types/node@22.18.1
+              </p>
+            </Definition>
             <Definition title="2025-08-13 - Jeasx 1.8.5 released">
               <p>
                 🎉 This release bumps dependencies to the latest and greatest
