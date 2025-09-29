@@ -135,7 +135,7 @@ export default function ({}) {
               <td>
                 <p>
                   Defaults to{" "}
-                  <code>chrome126, edge126, firefox128, safari17</code>, full
+                  <code>chrome130, edge130, firefox130, safari18</code>, full
                   documentation at{" "}
                   <a
                     href="https://esbuild.github.io/api/#target"
@@ -153,9 +153,9 @@ export default function ({}) {
               </td>
               <td>
                 <p>
-                  The default maximum body size for incoming requests is{" "}
-                  <code>1048576</code> bytes. Adjust this value only if you need
-                  to accommodate large file uploads.
+                  The default maximum body size for incoming requests (e.g.
+                  <code>1048576</code> bytes). Adjust this value only if you
+                  need to accommodate large file uploads.
                 </p>
               </td>
             </tr>

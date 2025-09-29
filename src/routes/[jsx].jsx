@@ -152,7 +152,7 @@ export default async function () {
             so each image receives a new URL with each deployment. It works by
             adding a custom <code>jsxToString</code> handler via the{" "}
             <code>this</code> context. Just add the following code as{" "}
-            <code>src/routes/[guard].js</code> to your project:
+            <code>src/[guard].js</code> to your project:
           </p>
           <Code
             source={`import { jsxToString } from "jsx-async-runtime";
