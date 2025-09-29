@@ -13,6 +13,7 @@ export default function ({}) {
   const cmds = [
     "npm create jeasx@latest",
     "cd jeasx-quickstart",
+    "npm run build",
     "npm run dev",
   ];
 
