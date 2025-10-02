@@ -92,9 +92,9 @@ export default async function ({}) {
           <p>
             Start your project instantly with a single command, enabling
             seamless development with zero turnarounds. Whether you opt for a
-            traditional Node server or a serverless environment like Vercel,
-            Jeasx provides the flexibility to deploy your application according
-            to your preferences.
+            Node server, a Docker setup or a serverless environment, Jeasx
+            provides the flexibility to deploy your application according to
+            your preferences.
           </p>
         </Article>
         <Next label="How to get started?" link="/quickstart" />
