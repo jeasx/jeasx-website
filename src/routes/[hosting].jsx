@@ -69,8 +69,8 @@ export default function ({}) {
             <a href="https://vercel.com" target="_blank">
               Vercel
             </a>{" "}
-            is highly recommended, as Jeasx comes with the necessary
-            configurations pre-configured.
+            is recommended, as Jeasx can be bootstrapped with the necessary
+            configurations.
           </p>
         </Article>
       </Content>
