@@ -52,14 +52,14 @@ export default function ({}) {
             additional resources (<code>Dockerfile</code>,{" "}
             <code>.dockerignore</code>) via the following flag:
           </p>
-          <Code lang="sh" source="npm create jeasx@latest --with-docker" />
+          <Code lang="sh" source="npm create jeasx@latest -- --with-docker" />
           <h2>Install project with Vercel support</h2>
           <p>
             If you are going to deploy your project on Vercel, you can bootstrap
             a project with additional resources (<code>vercel.json</code>,{" "}
             <code>api/vercel.js</code>) via the following flag:
           </p>
-          <Code lang="sh" source="npm create jeasx@latest --with-vercel" />
+          <Code lang="sh" source="npm create jeasx@latest -- --with-vercel" />
           <Highlight title="Which Node version should I use?">
             <p>
               Jeasx is developed and tested with the <b>latest LTS</b> version
