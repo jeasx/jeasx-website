@@ -30,11 +30,11 @@ export default async function ({}) {
             exceptional web experiences and applications.
           </Lead>
           <h2>Breaking News</h2>
-          <Highlight title="2025-09-29 - Jeasx 1.9.0 released">
+          <Highlight title="2025-10-12 - Jeasx 2.0.0 released">
             <p>
-              🎉 This release drops the constraint that you had to put your{" "}
-              <code>routes</code> and <code>browser</code> code into hardcoded
-              directories. <a href="/news">Learn more...</a>
+              🎉 This release comes with a <b>breaking change:</b> all HTML is
+              escaped from now on per default to improve security.{" "}
+              <a href="/news">Learn more...</a>
             </p>
           </Highlight>
           <h2>Built on top of a proven tech stack</h2>
@@ -187,7 +187,7 @@ function HeroStage() {
                       source={`
 export default async function ({ request, reply }) {
   const id = request.query["id"];
-  const { name, ingredients, instructions, image } = await (
+  const { name, image, ingredients } = await (
     await fetch(\`https://dummyjson.com/recipes/\${id}\`)
   ).json();
 
@@ -195,7 +195,6 @@ export default async function ({ request, reply }) {
     <article class="recipe">
       <h1>{name}</h1>
       <img src={image} alt={name} />
-      <p>{instructions.join("<br>")}</p>
       <ul>
         {ingredients.map((ingredient) => (
           <li>{ingredient}</li>

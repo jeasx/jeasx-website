@@ -16,7 +16,7 @@ export default function Layout({
   const path = this.request.path;
   return (
     <>
-      {`<!DOCTYPE html>`}
+      {{ html: "<!DOCTYPE html>" }}
       <html lang="en" class="light h-full scroll-smooth antialiased">
         <head>
           <title>{title} &raquo; Jeasx - JSX with Ease</title>

@@ -1,4 +1,3 @@
-import { escapeEntities } from "jsx-async-runtime";
 import Article from "../components/Article";
 import Code from "../components/Code";
 import Content from "../components/Content";
@@ -36,7 +35,7 @@ export default function ({}) {
             </a>{" "}
             at the React homepage.
           </p>
-          <h2>JSX in Jeasx is different</h2>
+          <h2>JSX in Jeasx is a little bit different</h2>
           <p>
             Jeasx uses a syntax similar to React, but there are some important
             differences. Under the hood an independent asynchronous JSX runtime
@@ -81,22 +80,66 @@ export default function ({}) {
               attributes than <code>class</code> or <code>style</code>, it is
               automatically translated to a JSON string in the resulting markup
               (e.g. <code>{`data-props={{ key: "value" }}`}</code> becomes{" "}
-              <code>
-                {escapeEntities(
-                  `data-props="{&quot;key&quot;:&quot;value&quot;}"`,
-                )}
-              </code>
+              <code>{`data-props="{&quot;key&quot;:&quot;value&quot;}"`}</code>
               ).
             </li>
             <li>
-              When rendering HTML markup via JSX components, no escaping is done
-              due to performance reasons, so you have to be careful when
-              emitting data from uncontrolled sources. You can use a utility
-              function via{" "}
-              <code>
-                import {"{"} escapeEntities {"}"} from "jsx-async-runtime"
-              </code>{" "}
-              to escape HTML entities.
+              With <b>Jeasx &gt;= v2.x.x</b> all HTML markup is escaped by
+              default. If you want to include HTML (or other code) snippets, you
+              can provide an object with the key <code>html</code> containing
+              the literal code to be included in the rendered result:{" "}
+              <code>{/*jsx*/ `{{ html: "<p>Some HTML from a CMS</p>" }}`}</code>
+              .<br />
+              <Code
+                source={`
+<>
+  {{ html: "<!DOCTYPE html>"}}
+  <html lang="en">
+    <body>
+      <h1>{{ html: "Include <i>literal</i> html from a <b>trusted</b> source" }}</h1>
+    </body>
+  </html>
+<>
+`}
+              />
+              If you need to disable HTML escaping globally (e.g. restore the
+              behaviour of Jeasx &lt; v2.x.x), you can set{" "}
+              <code>this.jsxEscapeHTML = false</code> in a JSX component. This
+              feature can be used for advanced patterns (e.g. to create custom
+              HTML components):
+              <Code
+                source={
+                  /*jsx*/ `
+export default function Html({ children }) {
+  const $jsxEscapeHTML = this.jsxEscapeHTML;
+
+  const RestoreEscape = () => {
+    this.jsxEscapeHTML = $jsxEscapeHTML;
+    return null;
+  };
+
+  this.jsxEscapeHTML = false;
+
+  return (
+    <>
+      {children}
+      <RestoreEscape />
+    </>
+  );
+}
+`
+                }
+              />
+              Then use it like:
+              <Code
+                source={`<Html><section>{"<p>Unescaped text</p>"}</section></Html>`}
+              />
+              If you need to escape HTML by hand, you can import the existing
+              utility function directly from Jeasx:
+              <br />
+              <Code
+                source={`import { escapeEntities } from "jsx-async-runtime";\nescapeEntities("<p>Hello World</p>");`}
+              />
             </li>
           </ul>
           <h3>
@@ -104,16 +147,14 @@ export default function ({}) {
           </h3>
           <Code
             source={
-              /*js*/ `import { escapeEntities } from "jsx-async-runtime";
-
-export default async function () {
+              /*js*/ `export default async function () {
   const { value } = await (
     await fetch("https://api.chucknorris.io/jokes/random")
   ).json();
 
   return (
     <>
-      {"<!DOCTYPE html>"}
+      {{ html: "<!DOCTYPE html>"}}
       <html lang="en">
         <head>
           <title>Jokes</title>
@@ -125,7 +166,7 @@ export default async function () {
               class={{ center: true, "my-class": true, "my-other-class": false }}
               style="color: white"
             >
-              {escapeEntities(value)}
+              {value}
             </h1>
           </div>
         </body>

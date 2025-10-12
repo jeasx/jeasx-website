@@ -1,5 +1,3 @@
-import { escapeEntities } from "jsx-async-runtime";
-
 /**
  * @param {import("./types").RouteProps} props
  */
@@ -10,7 +8,7 @@ export default async function ({}) {
 
   return (
     <>
-      {"<!DOCTYPE html>"}
+      {{ html: "<!DOCTYPE html>" }}
       <html lang="en">
         <head>
           <title>Jokes</title>
@@ -29,7 +27,7 @@ export default async function ({}) {
               }}
               style="color: white"
             >
-              {escapeEntities(value)}
+              {value}
             </h1>
           </div>
         </body>

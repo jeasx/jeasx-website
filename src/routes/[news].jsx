@@ -26,54 +26,106 @@ export default function ({}) {
             updates about new features, bug fixes, and general information about
             the project.
           </Lead>
-          <Highlight title="2025-09-29 - Jeasx 1.9.0 released">
+          <Highlight title="2025-10-12 - Jeasx 2.0.0 released">
             <p>
-              🎉 This release drops the constraint that you had to put all
-              routes into a dedicated <code>routes</code>-directory and all
-              JavaScript &amp; CSS into a dedicated <code>browser</code>
-              -directory. From now on you can use any directory layout in your
-              projects as you like. You can still use the proven{" "}
-              <code>browser/routes</code> layout, but you don't have to.
+              🎉 Approximately one year after the release of Jeasx 1.0 I'm proud
+              to announce the release of Jeasx 2.0. It's a funny story... every
+              time I think Jeasx is feature-complete, there is still some more
+              room to improve. Although the main idea behind Jeasx development
+              still holds true: focus on a lean and stable core and let
+              developers do all their magic in userland.
             </p>
             <p>
-              This feature enables the co-location of server and browser code in
-              the same directory which might be a better default for your
-              workflows.
+              This release is focused on security and comes with a{" "}
+              <b>major breaking change:</b> all HTML markup is escaped by
+              default from now on, so you don't have to escape dangerous user
+              input on your own anymore. This way the developer experience is
+              improved and the actual performance costs for automatic escaping
+              are neglible due to the reuse of the highly optimized{" "}
+              <a href="https://github.com/SukkaW/fast-escape-html">
+                fast-escape-html
+              </a>{" "}
+              library.
             </p>
             <p>
-              The only remaining constraint is to mark server routes with
-              brackets (e.g. <code>[news].jsx</code>) and browser-bundled assets
-              as index-files (e.g. <code>index.js</code> or{" "}
-              <code>index.css</code>).
+              If you need to include literal HTML in your JSX templates (e.g.
+              HTML snippets from a CMS), you can use a special object syntax to
+              opt out of escaping:{" "}
+              <code>{/*jsx*/ `{{ html: "<p>Some HTML from a CMS</p>" }}`}</code>
             </p>
             <p>
-              <b>Please note:</b> This feature is enabled by dropping the hard
-              coded outbase-directories in the esbuild configuration. If the
-              outbase directory isn't specified, it defaults to the lowest
-              common ancestor directory among all input entry point paths.
+              If you want to migrate from Jeasx 1.0 to Jeasx 2.0 with automatic
+              HTML escaping enabled, you'll need to remove all calls to{" "}
+              <code>#escapeEntities()</code> and modify the HTML declaration in
+              your layouts (<code>{`{{ html: "<!DOCTYPE html>" }}`}</code>).
+              Then you should check where you need to render literal HTML (or
+              other code) and apply the required changes to opt out of escaping
+              (e.g. <code>{`<div>{ wysiwygContent }</div>`}</code> to{" "}
+              <code>{`<div>{{ html: wysiwygContent }}</div>`}</code>).
             </p>
             <p>
-              If you run into an edge case (e.g. your browser bundles won't load
-              anymore), here's how to fix it: if you store all your assets in{" "}
-              <code>browser/assets</code> and request your assets via{" "}
-              <code>/assets/...</code>, this won't work anymore, because{" "}
-              <code>assets</code> is now the lowest common ancestor directory
-              and is removed by esbuild. Simple fix: just put an empty{" "}
-              <code>index.js</code> into <code>browser</code> directory, so this
-              directory is lowest common ancestor directory again.
+              If you want to restore the non-escaping behaviour of Jeasx &lt;
+              v2, you can set <code>jsxEscapeHTML = false</code> in the root
+              guard. This way HTML escaping is disabled globally.
             </p>
             <p>
-              Bumbed the default <code>ESBUILD_BROWSER_TARGET</code> to{" "}
-              <code>"chrome130", "edge130", "firefox130", "safari18"</code>.
+              Another internal change is the renaming of the directories in the{" "}
+              output directory (<code>dist</code>): <code>routes</code> is now
+              called <code>server</code> alongside the <code>browser</code>{" "}
+              directory.
             </p>
             <p>
-              Dependency updates: fastify@5.6.1, esbuild@0.25.10,
-              @types/node@22.18.6
+              Dependency updates: jsx-async-runtime@2.0.0, @types/node@22.18.10
             </p>
           </Highlight>
           <hr />
           <h2>Release History</h2>
           <Definitions>
+            <Definition title="2025-09-29 - Jeasx 1.9.0 released">
+              <p>
+                🎉 This release drops the constraint that you had to put all
+                routes into a dedicated <code>routes</code>-directory and all
+                JavaScript &amp; CSS into a dedicated <code>browser</code>
+                -directory. From now on you can use any directory layout in your
+                projects as you like. You can still use the proven{" "}
+                <code>browser/routes</code> layout, but you don't have to.
+              </p>
+              <p>
+                This feature enables the co-location of server and browser code
+                in the same directory which might be a better default for your
+                workflows.
+              </p>
+              <p>
+                The only remaining constraint is to mark server routes with
+                brackets (e.g. <code>[news].jsx</code>) and browser-bundled
+                assets as index-files (e.g. <code>index.js</code> or{" "}
+                <code>index.css</code>).
+              </p>
+              <p>
+                <b>Please note:</b> This feature is enabled by dropping the hard
+                coded outbase-directories in the esbuild configuration. If the
+                outbase directory isn't specified, it defaults to the lowest
+                common ancestor directory among all input entry point paths.
+              </p>
+              <p>
+                If you run into an edge case (e.g. your browser bundles won't
+                load anymore), here's how to fix it: if you store all your
+                assets in <code>browser/assets</code> and request your assets
+                via <code>/assets/...</code>, this won't work anymore, because{" "}
+                <code>assets</code> is now the lowest common ancestor directory
+                and is removed by esbuild. Simple fix: just put an empty{" "}
+                <code>index.js</code> into <code>browser</code> directory, so
+                this directory is lowest common ancestor directory again.
+              </p>
+              <p>
+                Bumbed the default <code>ESBUILD_BROWSER_TARGET</code> to{" "}
+                <code>"chrome130", "edge130", "firefox130", "safari18"</code>.
+              </p>
+              <p>
+                Dependency updates: fastify@5.6.1, esbuild@0.25.10,
+                @types/node@22.18.6
+              </p>
+            </Definition>
             <Definition title="2025-09-11 - Jeasx 1.8.6 released">
               <p>
                 🎉 This release bumps dependencies to the latest and greatest
@@ -541,9 +593,9 @@ const format = request.body["format"];
               <p>
                 Updated <code>jsx-async-runtime</code> which fixes a bug in{" "}
                 <code>escapeEntities</code> which escaped existing{" "}
-                <code>{this.escape("&amp;amp;")}</code> two times. This release
-                also removes the deprecated <code>renderToString</code>{" "}
-                function. Simply replace it with <code>jsxToString</code>.
+                <code>&amp;amp;</code> two times. This release also removes the
+                deprecated <code>renderToString</code> function. Simply replace
+                it with <code>jsxToString</code>.
               </p>
               <p>
                 The default host is now <code>::</code> which binds to all

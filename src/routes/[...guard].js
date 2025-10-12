@@ -1,5 +1,3 @@
-import { escapeEntities } from "jsx-async-runtime";
-
 const BUILD_TIME_PREFIX = `/${process.env.BUILD_TIME}/`;
 
 /**
@@ -14,5 +12,4 @@ export default function ({ request, reply }) {
   // Set the request and reply objects as context
   this.request = request;
   this.reply = reply;
-  this.escape = escapeEntities;
 }
