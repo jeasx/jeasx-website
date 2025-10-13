@@ -103,10 +103,10 @@ export default function ({}) {
 `}
               />
               If you need to disable HTML escaping globally (e.g. restore the
-              behaviour of Jeasx &lt; v2.x.x), you can set{" "}
-              <code>this.jsxEscapeHTML = false</code> in a JSX component. This
-              feature can be used for advanced patterns (e.g. to create custom
-              HTML components):
+              behaviour of Jeasx &lt; v2.x.x) or for a component and children,
+              you can set <code>this.jsxEscapeHTML = false</code> in a JSX
+              component. This feature can be used for advanced patterns (e.g. to
+              create custom HTML components):
               <Code
                 source={
                   /*jsx*/ `
