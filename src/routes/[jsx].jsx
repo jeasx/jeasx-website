@@ -47,6 +47,14 @@ export default function ({}) {
               jsx-async-runtime
             </a>
             ) is used, which is optimized for performant server-side rendering.
+            As this is runtime is mostly intended for creating HTML markup on a
+            server, it tries to stick as close to the HTML standards as
+            possible. It also ships with some convenience rendering
+            implementations which make additional libraries like{" "}
+            <a href="https://github.com/JedWatson/classnames" target="_blank">
+              classnames
+            </a>{" "}
+            superfluous.
           </p>
           <ul>
             <li>
@@ -60,20 +68,25 @@ export default function ({}) {
               <code>aria-label</code> instead of <code>ariaLabel</code>.
             </li>
             <li>
+              When using a <strong>style object</strong> to create inline
+              styles, you have to provide css attribute names as used in CSS,
+              therefore use <code>background-color</code> instead of{" "}
+              <code>backgroundColor</code> (e.g.{" "}
+              <code>{`<div style={{ "background-color": "red", "margin-top": "1rem" }}>...</div>`}</code>
+            </li>
+            <li>
               When using an <strong>object for a class</strong> definition, it
               is automagically translated to a string with all truthy values
-              separated by spaces.
+              separated by spaces (e.g.{" "}
+              <code>{`<h1
+              class={{ center: true, "my-class": true, "my-other-class": false }}>...</h1>`}</code>
+              )
             </li>
             <li>
               When using an <strong>array of strings for a class</strong>{" "}
               definition, it is automatically translated into a single string
-              with values separated by spaces.
-            </li>
-            <li>
-              When using a <strong>style object</strong> to create inline
-              styles, you have to provide css attribute names as used in CSS,
-              therefore use <code>background-color</code> instead of{" "}
-              <code>backgroundColor</code>.
+              with values separated by spaces (e.g.{" "}
+              <code>{`<div class={["v-align","h-align"]}>...</div>`}</code>)
             </li>
             <li>
               When using an <strong>object</strong> as value for other JSX
