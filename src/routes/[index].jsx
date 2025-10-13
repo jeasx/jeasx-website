@@ -138,8 +138,9 @@ function HeroStage() {
                 <a
                   class="rounded-full bg-slate-800 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/50 active:text-slate-400"
                   href="https://expo.jeasx.dev"
+                  target="_blank"
                 >
-                  View examples
+                  Learn by examples
                 </a>
               </div>
             </div>

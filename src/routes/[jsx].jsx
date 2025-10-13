@@ -132,13 +132,26 @@ export default function Html({ children }) {
               />
               Then use it like:
               <Code
-                source={`<Html><section>{"<p>Unescaped text</p>"}</section></Html>`}
+                source={
+                  /*js*/ `
+<Html>
+  <section>
+    {"<p>Unescaped text</p>"}
+  </section>
+</Html>
+`
+                }
               />
               If you need to escape HTML by hand, you can import the existing
               utility function directly from Jeasx:
               <br />
               <Code
-                source={`import { escapeEntities } from "jsx-async-runtime";\nescapeEntities("<p>Hello World</p>");`}
+                source={
+                  /*js*/ `
+import { escapeEntities } from "jsx-async-runtime";
+escapeEntities("<p>Hello World</p>");
+`
+                }
               />
             </li>
           </ul>

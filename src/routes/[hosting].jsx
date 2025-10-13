@@ -16,14 +16,14 @@ export default function ({}) {
         >
           <Lead>
             Jeasx supports various hosting modes tailored to different needs and
-            preferences. You can host Jeasx on a VPS, deploy it via a Docker
-            container, or opt for a serverless approach.
+            preferences. You can host Jeasx on a dedicated server or VPS, deploy
+            it via a Docker container, or opt for a serverless approach.
           </Lead>
-          <h2>Hosting on a virtual private server (VPS)</h2>
+          <h2>Hosting on a dedicated / virtual private server (VPS)</h2>
           <p>
             Typically, a Jeasx application requires around 50 MB of RAM and a
-            single (v)CPU. Therefore the smallest VPS should get you started.
-            Running Jeasx on a VPS involves installing Node.js (or Bun),
+            single (v)CPU. Therefore the smallest server should get you started.
+            Running Jeasx on a server involves installing Node.js (or Bun),
             building the application with <code>npm run build</code> and
             starting it with <code>npm start</code>. I highly recommend to use a
             process manager like{" "}
@@ -65,12 +65,14 @@ export default function ({}) {
           </p>
           <h2>Serverless hosting</h2>
           <p>
-            For a serverless experience,{" "}
+            For a serverless setup,{" "}
             <a href="https://vercel.com" target="_blank">
               Vercel
             </a>{" "}
-            is recommended, as Jeasx can be bootstrapped with the necessary
-            configurations.
+            is an option, as Jeasx can be bootstrapped with the necessary
+            configurations via the quickstart template. Other serverless
+            platforms should work with additional configurations, but I haven't
+            tested any of them.
           </p>
         </Article>
       </Content>

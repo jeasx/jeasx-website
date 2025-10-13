@@ -133,7 +133,7 @@ export default function ({}) {
 export default function ({ request, reply }) {
   return (
     <>
-      {"<!DOCTYPE html>"}
+      {{ html: "<!DOCTYPE html>"}}
       <html lang="en">
       <head>
         <base href={\`\${request.path.endsWith("/") ? request.path : request.path + "/"}\`} />

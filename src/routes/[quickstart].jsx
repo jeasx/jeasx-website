@@ -44,8 +44,34 @@ export default function ({}) {
             <a href="https://quickstart.jeasx.dev/" target="_blank">
               https://quickstart.jeasx.dev/
             </a>
+            . The contents of the quickstart template can be found at{" "}
+            <a href="https://github.com/jeasx/jeasx-quickstart" target="_blank">
+              GitHub
+            </a>
             .
           </p>
+          <Highlight title="Which JavaScript runtime should I use?">
+            <p>
+              Jeasx is developed and tested with the <b>latest LTS</b> version
+              of Node.js (currently Node 22). Node &gt;= v20.12.0 should work,
+              too. Older versions are not supported. Newer Node versions should
+              work without problems, but are not recommended for production.
+            </p>
+            <p>
+              Jeasx is tested against Bun (&gt;= v1.2.8) and all{" "}
+              <a href="https://bun.jeasx.dev" target="_blank">
+                Jeasx examples powered by Bun
+              </a>{" "}
+              are working without any issues, so Bun can be considered as a
+              stable platform for running Jeasx.
+            </p>
+            <p>
+              If you encounter any issues, feel free to{" "}
+              <a href="https://github.com/jeasx/jeasx/issues" target="_blank">
+                report them.
+              </a>
+            </p>
+          </Highlight>
           <h2>Install project with Docker support</h2>
           <p>
             If you want to use Docker, you can bootstrap a new project with
@@ -60,18 +86,6 @@ export default function ({}) {
             <code>api/vercel.js</code>) via the following flag:
           </p>
           <Code lang="sh" source="npm create jeasx@latest -- --with-vercel" />
-          <Highlight title="Which Node version should I use?">
-            <p>
-              Jeasx is developed and tested with the <b>latest LTS</b> version
-              of Node.js (currently Node 22). Node 20.12.0 or newer should work,
-              too. Older versions are not supported. Newer Node versions should
-              work as well, but are not recommended for production. If you
-              encounter any issues, feel free to{" "}
-              <a href="https://github.com/jeasx/jeasx/issues" target="_blank">
-                report them.
-              </a>
-            </p>
-          </Highlight>
         </Article>
         <Next link="/jsx" label="Learn about server-side JSX" />
       </Content>
