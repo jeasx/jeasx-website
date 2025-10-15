@@ -30,10 +30,9 @@ export default async function ({}) {
             exceptional web experiences and applications.
           </Lead>
           <h2>Breaking News</h2>
-          <Highlight title="2025-10-12 - Jeasx 2.0.0 released">
+          <Highlight title="2025-10-15 - Jeasx 2.0.1 released">
             <p>
-              🎉 This release comes with a <b>breaking change:</b> all HTML is
-              escaped from now on per default to improve security.{" "}
+              This releases fixes status codes for fallback 404 routes.{" "}
               <a href="/news">Learn more...</a>
             </p>
           </Highlight>

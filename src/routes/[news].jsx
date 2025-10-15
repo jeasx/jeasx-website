@@ -26,61 +26,75 @@ export default function ({}) {
             updates about new features, bug fixes, and general information about
             the project.
           </Lead>
-          <Highlight title="2025-10-12 - Jeasx 2.0.0 released">
+          <Highlight title="2025-10-15 - Jeasx 2.0.1 released">
             <p>
-              🎉 Approximately one year after the release of Jeasx 1.0 I'm proud
-              to announce the release of Jeasx 2.0. It's a funny story... every
-              time I think Jeasx is feature-complete, there is still some more
-              room to improve. Although the main idea behind Jeasx development
-              still holds true: focus on a lean and stable core and let
-              developers do all their magic in userland.
+              This releases fixes status codes for fallback 404 routes. Due to
+              an unnoticed bug introduced by a minor refactoring, 404-routes
+              were delivered with <code>status=200</code>, now it is the correct{" "}
+              <code>status=404</code> again. This might impact your SEO score,
+              so an update is highly recommended.
             </p>
-            <p>
-              This release is focused on security and comes with a{" "}
-              <b>major breaking change:</b> all HTML markup is escaped by
-              default from now on, so you don't have to escape dangerous user
-              input on your own anymore. This way the developer experience is
-              improved and the actual performance costs for automatic escaping
-              are neglible due to the reuse of the highly optimized{" "}
-              <a href="https://github.com/SukkaW/fast-escape-html">
-                fast-escape-html
-              </a>{" "}
-              library.
-            </p>
-            <p>
-              If you need to include literal HTML in your JSX templates (e.g.
-              HTML snippets from a CMS), you can use a special object syntax to
-              opt out of escaping:{" "}
-              <code>{/*jsx*/ `{{ html: "<p>Some HTML from a CMS</p>" }}`}</code>
-            </p>
-            <p>
-              If you want to migrate from Jeasx 1.0 to Jeasx 2.0 with automatic
-              HTML escaping enabled, you'll need to remove all calls to{" "}
-              <code>#escapeEntities()</code> and modify the HTML declaration in
-              your layouts (<code>{`{{ html: "<!DOCTYPE html>" }}`}</code>).
-              Then you should check where you need to render literal HTML (or
-              other code) and apply the required changes to opt out of escaping
-              (e.g. <code>{`<div>{ wysiwygContent }</div>`}</code> to{" "}
-              <code>{`<div>{{ html: wysiwygContent }}</div>`}</code>).
-            </p>
-            <p>
-              If you want to restore the non-escaping behaviour of Jeasx &lt;
-              v2, you can set <code>jsxEscapeHTML = false</code> in the root
-              guard. This way HTML escaping is disabled globally.
-            </p>
-            <p>
-              Another internal change is the renaming of the directories in the{" "}
-              output directory (<code>dist</code>): <code>routes</code> is now
-              called <code>server</code> alongside the <code>browser</code>{" "}
-              directory.
-            </p>
-            <p>
-              Dependency updates: jsx-async-runtime@2.0.0, @types/node@22.18.10
-            </p>
+            <p>Dependency updates: esbuild@0.25.11</p>
           </Highlight>
           <hr />
           <h2>Release History</h2>
           <Definitions>
+            <Definition title="2025-10-12 - Jeasx 2.0.0 released">
+              <p>
+                🎉 Approximately one year after the release of Jeasx 1.0 I'm
+                proud to announce the release of Jeasx 2.0. It's a funny
+                story... every time I think Jeasx is feature-complete, there is
+                still some more room to improve. Although the main idea behind
+                Jeasx development still holds true: focus on a lean and stable
+                core and let developers do all their magic in userland.
+              </p>
+              <p>
+                This release is focused on security and comes with a{" "}
+                <b>major breaking change:</b> all HTML markup is escaped by
+                default from now on, so you don't have to escape dangerous user
+                input on your own anymore. This way the developer experience is
+                improved and the actual performance costs for automatic escaping
+                are neglible due to the reuse of the highly optimized{" "}
+                <a href="https://github.com/SukkaW/fast-escape-html">
+                  fast-escape-html
+                </a>{" "}
+                library.
+              </p>
+              <p>
+                If you need to include literal HTML in your JSX templates (e.g.
+                HTML snippets from a CMS), you can use a special object syntax
+                to opt out of escaping:{" "}
+                <code>{
+                  /*jsx*/ `{{ html: "<p>Some HTML from a CMS</p>" }}`
+                }</code>
+              </p>
+              <p>
+                If you want to migrate from Jeasx 1.0 to Jeasx 2.0 with
+                automatic HTML escaping enabled, you'll need to remove all calls
+                to <code>#escapeEntities()</code> and modify the HTML
+                declaration in your layouts (
+                <code>{`{{ html: "<!DOCTYPE html>" }}`}</code>). Then you should
+                check where you need to render literal HTML (or other code) and
+                apply the required changes to opt out of escaping (e.g.{" "}
+                <code>{`<div>{ wysiwygContent }</div>`}</code> to{" "}
+                <code>{`<div>{{ html: wysiwygContent }}</div>`}</code>).
+              </p>
+              <p>
+                If you want to restore the non-escaping behaviour of Jeasx &lt;
+                v2, you can set <code>jsxEscapeHTML = false</code> in the root
+                guard. This way HTML escaping is disabled globally.
+              </p>
+              <p>
+                Another internal change is the renaming of the directories in
+                the output directory (<code>dist</code>): <code>routes</code> is
+                now called <code>server</code> alongside the{" "}
+                <code>browser</code> directory.
+              </p>
+              <p>
+                Dependency updates: jsx-async-runtime@2.0.0,
+                @types/node@22.18.10
+              </p>
+            </Definition>
             <Definition title="2025-09-29 - Jeasx 1.9.0 released">
               <p>
                 🎉 This release drops the constraint that you had to put all
