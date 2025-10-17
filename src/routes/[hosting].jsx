@@ -42,6 +42,14 @@ export default function ({}) {
           </p>
           <h2>Container based hosting</h2>
           <p>
+            An powerful self-hosted option is to install{" "}
+            <a href="https://dokploy.com" target="_blank">
+              Dokploy
+            </a>{" "}
+            on your server. Dokploy uses Docker under the hood and comes with a
+            nice user interface to create deployments directly from GitHub.
+          </p>
+          <p>
             For straightforward Node.js-based hosting, platforms like{" "}
             <a href="https://railway.app" target="_blank">
               Railway
