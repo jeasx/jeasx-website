@@ -37,41 +37,6 @@ export default function ({}) {
             <a href="https://fastify.dev/docs/latest/Reference/Reply/">reply</a>{" "}
             objects from Fastify as props.
           </p>
-          <Highlight
-            title="What is the difference between request.url, request.path and request.route?"
-            icon={<IconAttention />}
-          >
-            <p>
-              The vanilla Fastify request object exposes the current url (e.g.{" "}
-              <code>/json/api/request.json?foo=bar</code>) via{" "}
-              <code>request.url</code>.
-            </p>
-            <p>
-              Jeasx adds two additional attributes to the Fastify request object
-              to improve the developer experience:
-              <ul>
-                <li>
-                  <code>request.path</code> gives you the plain path without any
-                  query parameters (e.g. <code>/json/api/request.json</code>)
-                </li>
-                <li>
-                  <code>request.route</code> provides the path to the current
-                  endpoint handler (e.g. <code>/json/[...path]</code>)
-                </li>
-              </ul>
-            </p>
-            <p>
-              Have a look at the{" "}
-              <a
-                href="https://expo.jeasx.dev/json/api/request.json?foo=bar"
-                target="_blank"
-              >
-                JSON example
-              </a>{" "}
-              to see <code>request.url, request.path, request.route</code> at
-              work.
-            </p>
-          </Highlight>
           <p>
             Routes can be written using JSX, but can also be written in
             JavaScript and/or TypeScript, so supported extensions are:{" "}
@@ -259,6 +224,41 @@ export default function ({ message }) {
 }
 `}
           />
+          <Highlight
+            title="What is the difference between request.url, request.path and request.route?"
+            icon={<IconAttention />}
+          >
+            <p>
+              The vanilla Fastify request object exposes the current url (e.g.{" "}
+              <code>/json/api/request.json?foo=bar</code>) via{" "}
+              <code>request.url</code>.
+            </p>
+            <p>
+              Jeasx adds two additional attributes to the Fastify request object
+              to improve the developer experience:
+              <ul>
+                <li>
+                  <code>request.path</code> gives you the plain path without any
+                  query parameters (e.g. <code>/json/api/request.json</code>)
+                </li>
+                <li>
+                  <code>request.route</code> provides the path to the current
+                  endpoint handler (e.g. <code>/json/[...path]</code>)
+                </li>
+              </ul>
+            </p>
+            <p>
+              Have a look at the{" "}
+              <a
+                href="https://expo.jeasx.dev/json/api/request.json?foo=bar"
+                target="_blank"
+              >
+                JSON example
+              </a>{" "}
+              to see <code>request.url, request.path, request.route</code> at
+              work.
+            </p>
+          </Highlight>
         </Article>
         <Next link="/browser" label="How to handle browser assets?" />
       </Content>
