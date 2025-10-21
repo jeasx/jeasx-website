@@ -21,7 +21,7 @@ export default function ({}) {
           </Lead>
           <h2>Hosting on a dedicated / virtual private server (VPS)</h2>
           <p>
-            Typically, a Jeasx application requires around 50 MB of RAM and a
+            Typically, a Jeasx application requires around 35 MB of RAM and a
             single (v)CPU. Therefore the smallest server should get you started.
             Running Jeasx on a server involves installing Node.js (or Bun),
             building the application with <code>npm run build</code> and
