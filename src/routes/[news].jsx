@@ -26,19 +26,32 @@ export default function ({}) {
             updates about new features, bug fixes, and general information about
             the project.
           </Lead>
-          <Highlight title="2025-10-15 - Jeasx 2.0.1 released">
+          <Highlight title="2025-10-28 - Jeasx 2.1.0 released">
             <p>
-              This releases fixes status codes for fallback 404 routes. Due to
-              an unnoticed bug introduced by a minor refactoring, 404-routes
-              were delivered with <code>status=200</code>, now it is the correct{" "}
-              <code>status=404</code> again. This might impact your SEO score,
-              so an update is highly recommended.
+              🎉 Environment vars can now be loaded from a JavaScript file (
+              <code>.env.js</code>) additionally to existing <code>.env</code>
+              -files. This allows enhanced environment setups depending on your
+              workflows. <a href="/configuration">Read more...</a>
             </p>
-            <p>Dependency updates: esbuild@0.25.11</p>
+            <p>Node 24 (LTS) is the official default runtime from now on.</p>
+            <p>
+              Dependency updates: @fastify/multipart@9.3.0,
+              @fastify/static@8.3.0, @types/node@24.9.1
+            </p>
           </Highlight>
           <hr />
           <h2>Release History</h2>
           <Definitions>
+            <Definition title="2025-10-15 - Jeasx 2.0.1 released">
+              <p>
+                This releases fixes status codes for fallback 404 routes. Due to
+                an unnoticed bug introduced by a minor refactoring, 404-routes
+                were delivered with <code>status=200</code>, now it is the
+                correct <code>status=404</code> again. This might impact your
+                SEO score, so an update is highly recommended.
+              </p>
+              <p>Dependency updates: esbuild@0.25.11</p>
+            </Definition>
             <Definition title="2025-10-12 - Jeasx 2.0.0 released">
               <p>
                 🎉 Approximately one year after the release of Jeasx 1.0 I'm

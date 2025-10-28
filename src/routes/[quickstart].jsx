@@ -53,7 +53,7 @@ export default function ({}) {
           <Highlight title="Which JavaScript runtime should I use?">
             <p>
               Jeasx is developed and tested with the <b>latest LTS</b> version
-              of Node.js (currently Node 22). Node &gt;= v20.12.0 should work,
+              of Node.js (currently Node 24). Node &gt;= v20.12.0 should work,
               too. Older versions are not supported. Newer Node versions should
               work without problems, but are not recommended for production.
             </p>

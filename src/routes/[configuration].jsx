@@ -64,6 +64,7 @@ export default function ({}) {
             <li>.env.local</li>
             <li>.env</li>
             <li>.env.defaults</li>
+            <li>.env.js</li>
           </ol>
           <p>
             <b>Please note:</b> Jeasx only sets{" "}
@@ -73,6 +74,35 @@ export default function ({}) {
             the desired value (e.g. <code>production</code> or <code>test</code>
             ) depending on your requirements and workflows.
           </p>
+          <p>
+            The last environment file which is loaded is a JavaScript file which
+            must export an default object containing the environment variables.
+            Only variables which are not already set, will be populated. Here is
+            an example <code>.env.js</code> file:
+          </p>
+          <Code
+            source={
+              /*js*/ `
+const NODE_ENV_IS_DEVELOPMENT = process.env.NODE_ENV === "development";
+
+export default {
+  JEASX_ROUTE_CACHE_LIMIT: 10000,
+  FASTIFY_DISABLE_REQUEST_LOGGING: NODE_ENV_IS_DEVELOPMENT,
+  FASTIFY_STATIC_HEADERS: NODE_ENV_IS_DEVELOPMENT
+    ? {
+        "": { "Cache-Control": "no-store" },
+        ".woff2": {
+          "Cache-Control": "public,max-age=31536000,s-maxage=31536000",
+        },
+      }
+    : {
+        "": { "Cache-Control": "public,max-age=31536000,s-maxage=31536000" },
+      },
+};
+`
+            }
+            lang="js"
+          />
           <Highlight
             title="Environment variables for client code"
             icon={<IconAttention />}

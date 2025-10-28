@@ -30,9 +30,9 @@ export default async function ({}) {
             exceptional web experiences and applications.
           </Lead>
           <h2>Breaking News</h2>
-          <Highlight title="2025-10-15 - Jeasx 2.0.1 released">
+          <Highlight title="2025-10-28 - Jeasx 2.1.0 released">
             <p>
-              This releases fixes status codes for fallback 404 routes.{" "}
+              🎉 Environment vars can now be loaded from a JavaScript file.{" "}
               <a href="/news">Learn more...</a>
             </p>
           </Highlight>
