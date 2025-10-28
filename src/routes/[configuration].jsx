@@ -75,10 +75,11 @@ export default function ({}) {
             ) depending on your requirements and workflows.
           </p>
           <p>
-            The last environment file which is loaded is a JavaScript file which
-            must export an default object containing the environment variables.
-            Only variables which are not already set, will be populated. Here is
-            an example <code>.env.js</code> file:
+            The last environment file which may be optionally loaded is a
+            JavaScript file which must export an default object containing the
+            environment variables. Only variables which are not already set,
+            will be populated into the environment. Here is an example{" "}
+            <code>.env.js</code> file:
           </p>
           <Code
             source={
