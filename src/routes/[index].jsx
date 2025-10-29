@@ -27,7 +27,7 @@ export default async function ({}) {
           <Lead>
             By eliminating unnecessary complexity and providing precise control
             over HTML, CSS, and JavaScript, Jeasx empowers developers to craft
-            exceptional web experiences and applications.
+            sustainable web experiences and applications.
           </Lead>
           <h2>Breaking News</h2>
           <Highlight title="2025-10-28 - Jeasx 2.1.0 released">
