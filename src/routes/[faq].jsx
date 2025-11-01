@@ -12,6 +12,14 @@ export default function ({}) {
     <Layout title="FAQ" description="Everything you need to know about Jeasx">
       <Content>
         <Article category="FAQ" headline="Frequently Asked Questions">
+          <h2 id="pronunciation">How is Jeasx officially pronounced?</h2>
+          <p>
+            Jeasx is a combination of the words "JSX" and "ease". The phonetic
+            transcription is <code>d͡ʒizɛks</code>.
+          </p>
+          <p>
+            <audio src="/jeasx.mp3" autoplay={false} controls />
+          </p>
           <h2 id="context">
             Is there something like a context object similar to React?
           </h2>
@@ -153,6 +161,10 @@ export default function ({ request, reply }) {
       </Content>
       <Aside
         links={[
+          {
+            label: "Pronunciation",
+            link: "#pronunciation",
+          },
           {
             label: "Context",
             link: "#context",
