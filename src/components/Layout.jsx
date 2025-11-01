@@ -25,7 +25,7 @@ export default function Layout({
               http-equiv="content-security-policy"
               content={`default-src 'none'; script-src 'self'${
                 process.env.NODE_ENV === "development" ? " 'unsafe-inline'" : ""
-              }; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' cdn.dummyjson.com; object-src 'none'; form-action 'self'; base-uri 'self'; manifest-src 'self';`}
+              }; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' cdn.dummyjson.com; object-src 'none'; form-action 'self'; base-uri 'self'; manifest-src 'self'; media-src 'self';`}
             />
           )}
           <meta charset="utf-8" />
