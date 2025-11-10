@@ -30,10 +30,10 @@ export default async function ({}) {
             sustainable web experiences and applications.
           </Lead>
           <h2>Breaking News</h2>
-          <Highlight title="2025-10-28 - Jeasx 2.1.0 released">
+          <Highlight title="2025-11-10 - Jeasx 2.1.1 released">
             <p>
-              🎉 Environment vars can now be loaded from a JavaScript file.{" "}
-              <a href="/news">Learn more...</a>
+              🎉 Enhanced configuration for @fastify/static, so you can serve
+              pre-compressed static files... <a href="/news">Learn more...</a>
             </p>
           </Highlight>
           <h2>Built on top of a proven tech stack</h2>

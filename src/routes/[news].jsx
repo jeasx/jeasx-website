@@ -26,22 +26,72 @@ export default function ({}) {
             updates about new features, bug fixes, and general information about
             the project.
           </Lead>
-          <Highlight title="2025-10-28 - Jeasx 2.1.0 released">
+          <Highlight title="2025-11-10 - Jeasx 2.1.1 released">
             <p>
-              🎉 Environment vars can now be loaded from a JavaScript file (
-              <code>.env.js</code>) additionally to existing <code>.env</code>
-              -files. This allows enhanced environment setups depending on your
-              workflows. <a href="/configuration">Read more...</a>
+              🎉 Enhanced configuration for @fastify/static, so you can serve
+              pre-compressed static files (see{" "}
+              <a href="https://github.com/fastify/fastify-static?tab=readme-ov-file#precompressed">
+                @fastify/static docs
+              </a>
+              ) from <code>public</code> and <code>dist/browser</code>. Just run{" "}
+              <code>gzip -rk public dist/browser</code> as post build for
+              gzipping your static assets. This might be useful if you don't
+              want to run a reverse proxy in front of your Jeasx application and
+              serve compressed files nevertheless.
             </p>
-            <p>Node 24 (LTS) is the official default runtime from now on.</p>
             <p>
-              Dependency updates: @fastify/multipart@9.3.0,
-              @fastify/static@8.3.0, @types/node@24.9.1
+              Setting up compression for dynamic content can be wired up in
+              userland via a root guard:
+            </p>
+            <Code
+              lang="js"
+              source={
+                /*js*/ `
+import { promisify } from "node:util";
+import { gzip } from "node:zlib";
+
+export default function ({ request, reply }) {
+  this.responseHandler = (payload) => {
+    if (
+      typeof payload === "string" &&
+      request.headers["accept-encoding"]?.includes("gzip")
+    ) {
+      reply.header("content-encoding", "gzip");
+      return promisify(gzip)(payload);
+    } else {
+      return payload;
+    }
+  };
+}
+`.trim()
+              }
+            />
+            <p>
+              Updated <code>moduleResolution</code> to <code>bundler</code> in{" "}
+              <code>tsconfig.json</code>.
+            </p>
+            <p>
+              Dependency updates: <code>jsx-async-runtime@2.0.1</code>,{" "}
+              <code>fastify@5.6.2</code>,<code>esbuild@0.27.0</code>,{" "}
+              <code>@types/node@24.9.2</code>
             </p>
           </Highlight>
           <hr />
           <h2>Release History</h2>
           <Definitions>
+            <Definition title="2025-10-28 - Jeasx 2.1.0 released">
+              <p>
+                🎉 Environment vars can now be loaded from a JavaScript file (
+                <code>.env.js</code>) additionally to existing <code>.env</code>
+                -files. This allows enhanced environment setups depending on
+                your workflows. <a href="/configuration">Read more...</a>
+              </p>
+              <p>Node 24 (LTS) is the official default runtime from now on.</p>
+              <p>
+                Dependency updates: @fastify/multipart@9.3.0,
+                @fastify/static@8.3.0, @types/node@24.9.1
+              </p>
+            </Definition>
             <Definition title="2025-10-15 - Jeasx 2.0.1 released">
               <p>
                 This releases fixes status codes for fallback 404 routes. Due to
