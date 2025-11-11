@@ -13,7 +13,7 @@ export default function Highlight({
       }
     >
       {icon}
-      <div class="ml-4 flex-auto">
+      <div class="ml-4 w-full flex-auto">
         {title && (
           <div
             class={
