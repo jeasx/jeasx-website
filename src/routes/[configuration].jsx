@@ -111,10 +111,9 @@ export default {
             <p>
               For security reasons, only environment variables prefixed with{" "}
               <code>BROWSER_PUBLIC_</code> are accessible in client-side
-              JavaScript (<code>src/browser</code>) to prevent accidental
-              exposure of sensitive data. The values are only updated at build
-              time, so changes to environment variables will require a rebuild
-              to take effect.
+              JavaScript to prevent accidental exposure of sensitive data. The
+              values are only updated at build time, so changes to environment
+              variables will require a rebuild to take effect.
             </p>
           </Highlight>
           <h2>Environment Variables</h2>
