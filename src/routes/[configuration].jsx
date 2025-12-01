@@ -82,27 +82,36 @@ export default function ({}) {
             <code>.env.js</code> file:
           </p>
           <Code
+            lang="js"
             source={
-              /*js*/ `
-const NODE_ENV_IS_DEVELOPMENT = process.env.NODE_ENV === "development";
+              /*js*/ `const NODE_ENV_IS_DEVELOPMENT = process.env.NODE_ENV === "development";
 
 export default {
-  JEASX_ROUTE_CACHE_LIMIT: 10000,
-  FASTIFY_DISABLE_REQUEST_LOGGING: NODE_ENV_IS_DEVELOPMENT,
-  FASTIFY_STATIC_HEADERS: NODE_ENV_IS_DEVELOPMENT
-    ? {
-        "": { "Cache-Control": "no-store" },
-        ".woff2": {
-          "Cache-Control": "public,max-age=31536000,s-maxage=31536000",
-        },
-      }
-    : {
-        "": { "Cache-Control": "public,max-age=31536000,s-maxage=31536000" },
-      },
+  ESBUILD_BROWSER_TARGET: "chrome130,edge130,firefox130,safari18",
+
+  /** @type import("fastify").FastifyServerOptions */
+  FASTIFY_SERVER_OPTIONS: {
+    disableRequestLogging: NODE_ENV_IS_DEVELOPMENT,
+    bodyLimit: 2 * 1024 * 1024,
+    rewriteUrl: (req) => String(req.url).replace(/^\/jeasx/, ""),
+  },
+
+  /** @type import("@fastify/static").FastifyStaticOptions */
+  FASTIFY_STATIC_OPTIONS: {
+    maxAge: NODE_ENV_IS_DEVELOPMENT ? 0 : "365d",
+  },
+
+  /** @type import("@fastify/cookie").FastifyCookieOptions */
+  // FASTIFY_COOKIE_OPTIONS: {},
+
+  /** @type import("@fastify/formbody").FastifyFormbodyOptions */
+  // FASTIFY_FORMBODY_OPTIONS: {},
+
+  /** @type import("@fastify/multipart").FastifyMultipartOptions */
+  // FASTIFY_MULTIPART_OPTIONS: {},
 };
 `
             }
-            lang="js"
           />
           <Highlight
             title="Environment variables for client code"
@@ -147,7 +156,7 @@ export default {
             </tr>
             <tr>
               <td id="BUILD_TIME">
-                <b>BUILD_&#8203;TIME</b>
+                <b>BUILD_TIME</b>
               </td>
               <td>
                 <p>
@@ -160,7 +169,7 @@ export default {
             </tr>
             <tr>
               <td id="ESBUILD_BROWSER_TARGET">
-                <b>ESBUILD_&#8203;BROWSER_&#8203;TARGET</b>
+                <b>ESBUILD_BROWSER_TARGET</b>
               </td>
               <td>
                 <p>
@@ -178,148 +187,70 @@ export default {
               </td>
             </tr>
             <tr>
-              <td id="FASTIFY_BODY_LIMIT">
-                <b>FASTIFY_&#8203;BODY_&#8203;LIMIT</b>
+              <td id="FASTIFY_SERVER_OPTIONS">
+                <b>FASTIFY_SERVER_OPTIONS</b>
               </td>
               <td>
                 <p>
-                  The default maximum body size for incoming requests (e.g.
-                  <code>1048576</code> bytes). Adjust this value only if you
-                  need to accommodate large file uploads.
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td id="FASTIFY_DISABLE_REQUEST_LOGGING">
-                <b>FASTIFY_&#8203;DISABLE_&#8203;REQUEST_&#8203;LOGGING</b>
-              </td>
-              <td>
-                <p>Set this to true to disable request logging.</p>
-              </td>
-            </tr>
-            <tr>
-              <td id="FASTIFY_REWRITE_URL">
-                <b>FASTIFY_&#8203;REWRITE_&#8203;URL</b>
-              </td>
-              <td>
-                <p>
-                  If you want to rewrite incoming URLs (e.g. running behind a
-                  proxy server or when you want to fake non-existing URLs), you
-                  can provide a function which takes a request object and
-                  returns an URL as string. To ignore a leading segment like{" "}
-                  <code>/proxy/</code>, use{" "}
-                  <code>{`(req) => req.url.replace(/^\\/proxy/,"")`}</code>.
-                  Please have a look at the{" "}
                   <a
-                    href="https://fastify.dev/docs/latest/Reference/Server/#rewriteurl"
+                    href="https://fastify.dev/docs/latest/Reference/Server"
                     target="_blank"
                   >
-                    Fastify docs
-                  </a>{" "}
-                  for more information.
+                    Options reference
+                  </a>
                 </p>
               </td>
             </tr>
             <tr>
-              <td id="FASTIFY_STATIC_HEADERS">
-                <b>FASTIFY_&#8203;STATIC_&#8203;HEADERS</b>
+              <td id="FASTIFY_COOKIE_OPTIONS">
+                <b>FASTIFY_COOKIE_OPTIONS</b>
               </td>
               <td>
-                <p>
-                  Custom headers for static files, such as JavaScript, CSS, and
-                  assets from the public directory. Use these headers to
-                  configure cache settings for static content.
-                </p>
-                <Code
-                  lang="json"
-                  source={
-                    /*json*/ `
-{
-  "": {
-    "Cache-Control":
-      "public, max-age=31536000"
-  },
-  "robots.txt": {
-    "Cache-Control":
-      "public, max-age=86400"
-  },
-  ".html": {
-    "Cache-Control":
-      "public, max-age=0"
-  },
-}`.trim()
-                  }
-                />
-                <p>
-                  The keys of the mapping are compared via{" "}
-                  <code>.endsWith()</code> with the current path, so an empty
-                  string matches all paths and can be used as fallback.
-                </p>
-                <p>
-                  <b>Please note:</b> If you set caching headers in global{" "}
-                  <code>.env</code>, you should clear them in{" "}
-                  <code>.env.development</code> (e.g. via{" "}
-                  <code>FASTIFY_STATIC_HEADERS=</code>) to avoid caching issues
-                  in development.
-                </p>
+                <a
+                  href="https://github.com/fastify/fastify-cookie#options"
+                  target="_blank"
+                >
+                  Options reference
+                </a>
               </td>
             </tr>
             <tr>
-              <td id="FASTIFY_TRUST_PROXY">
-                <b>FASTIFY_&#8203;TRUST_&#8203;PROXY</b>
+              <td id="FASTIFY_FORMBODY_OPTIONS">
+                <b>FASTIFY_FORMBODY_OPTIONS</b>
               </td>
               <td>
-                <p>
-                  By enabling the{" "}
-                  <a
-                    href="https://fastify.dev/docs/latest/Reference/Server/#trustproxy"
-                    target="_blank"
-                  >
-                    trustProxy
-                  </a>{" "}
-                  option, Fastify will know that it is sitting behind a proxy
-                  and that the X-Forwarded-* header fields may be trusted, which
-                  otherwise may be easily spoofed. <b>Please note:</b> the
-                  option only supports boolean or string values.
-                </p>
+                <a
+                  href="https://github.com/fastify/fastify-formbody#options"
+                  target="_blank"
+                >
+                  Options reference
+                </a>
               </td>
             </tr>
             <tr>
-              <td id="FASTIFY_MULTIPART_ATTACH_FIELDS_TO_BODY">
-                <b>
-                  FASTIFY_&#8203;MULTIPART_&#8203;ATTACH_&#8203;FIELDS_&#8203;TO_&#8203;BODY
-                </b>
+              <td id="FASTIFY_MULTIPART_OPTIONS">
+                <b>FASTIFY_MULTIPART_OPTIONS</b>
               </td>
               <td>
-                <p>
-                  The default is <code>keyValues</code>, have a look at the{" "}
-                  <a href="https://github.com/fastify/fastify-multipart?tab=readme-ov-file#parse-all-fields-and-assign-them-to-the-body">
-                    Fastify documentation
-                  </a>{" "}
-                  for more code examples and options.
-                </p>
+                <a
+                  href="https://github.com/fastify/fastify-multipart#options"
+                  target="_blank"
+                >
+                  Options reference
+                </a>
               </td>
             </tr>
-
             <tr>
-              <td id="JEASX_ROUTE_CACHE_LIMIT">
-                <b>JEASX_&#8203;ROUTE_&#8203;CACHE_&#8203;LIMIT</b>
+              <td id="FASTIFY_STATIC_OPTIONS">
+                <b>FASTIFY_STATIC_OPTIONS</b>
               </td>
               <td>
-                <p>
-                  Jeasx employs an internal cache to enhance performance by
-                  efficiently mapping routes to JavaScript modules. This option
-                  allows you to set a maximum limit on the cache entries to
-                  prevent excessive memory usage. A good starting point is{" "}
-                  <code>10000</code>.
-                </p>
-                <p>
-                  <b>Note:</b> If you are deploying on Vercel (which uses
-                  serverless functions), using pm2 with memory limits as a
-                  process manager, or have memory constraints defined for your
-                  Docker containers, you typically won't need this
-                  configuration. However, it is safe to include it regardless.
-                </p>
+                <a
+                  href="https://github.com/fastify/fastify-static#options"
+                  target="_blank"
+                >
+                  Options reference
+                </a>
               </td>
             </tr>
           </table>

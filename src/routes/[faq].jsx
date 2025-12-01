@@ -135,8 +135,8 @@ export default function ({ request, reply }) {
             lang="bash"
           />
           <h2 id="vercel">
-            How can I apply custom caching rules via FASTIFY_STATIC_HEADERS for
-            the public folder when deploying to Vercel?
+            How can I apply custom caching rules for the public folder when
+            deploying to Vercel?
           </h2>
           <p>
             As Vercel configures the public folder as default directory for

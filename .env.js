@@ -1,16 +1,23 @@
 const NODE_ENV_IS_DEVELOPMENT = process.env.NODE_ENV === "development";
 
 export default {
-  JEASX_ROUTE_CACHE_LIMIT: 10000,
-  FASTIFY_DISABLE_REQUEST_LOGGING: NODE_ENV_IS_DEVELOPMENT,
-  FASTIFY_STATIC_HEADERS: NODE_ENV_IS_DEVELOPMENT
-    ? {
-        "": { "Cache-Control": "no-store" },
-        ".woff2": {
-          "Cache-Control": "public,max-age=31536000,s-maxage=31536000",
-        },
-      }
-    : {
-        "": { "Cache-Control": "public,max-age=31536000,s-maxage=31536000" },
-      },
+  /** @type import("fastify").FastifyServerOptions */
+  FASTIFY_SERVER_OPTIONS: {
+    disableRequestLogging: NODE_ENV_IS_DEVELOPMENT,
+  },
+
+  /** @type import("@fastify/static").FastifyStaticOptions */
+  FASTIFY_STATIC_OPTIONS: {
+    immutable: !NODE_ENV_IS_DEVELOPMENT,
+    maxAge: NODE_ENV_IS_DEVELOPMENT ? 0 : "365d",
+  },
+
+  /** @type import("@fastify/cookie").FastifyCookieOptions */
+  // FASTIFY_COOKIE_OPTIONS: {},
+
+  /** @type import("@fastify/formbody").FastifyFormbodyOptions */
+  // FASTIFY_FORMBODY_OPTIONS: {},
+
+  /** @type import("@fastify/multipart").FastifyMultipartOptions */
+  // FASTIFY_MULTIPART_OPTIONS: {},
 };
