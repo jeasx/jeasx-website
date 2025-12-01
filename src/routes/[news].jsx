@@ -107,10 +107,7 @@ export default function ({}) {
               provide these configuration options. Alternatively, you can also
               provide them via <code>.env</code> or your process environment.
               Jeasx comes with a minimal set of reasonable{" "}
-              <a
-                href="https://github.com/jeasx/jeasx/blob/main/serverless.ts"
-                target="_blank"
-              >
+              <a href="/configuration#FASTIFY_SERVER_OPTIONS">
                 Fastify defaults
               </a>{" "}
               but you can also overwrite them if necessary.

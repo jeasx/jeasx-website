@@ -196,48 +196,12 @@ export default {
                     href="https://fastify.dev/docs/latest/Reference/Server"
                     target="_blank"
                   >
-                    Options reference
+                    Fastity-Server options reference
                   </a>
+                  {" / "}
+                  Options applied by Jeasx:
+                  <Code lang="json" source={`{"logger": true}`} />
                 </p>
-              </td>
-            </tr>
-            <tr>
-              <td id="FASTIFY_COOKIE_OPTIONS">
-                <b>FASTIFY_COOKIE_OPTIONS</b>
-              </td>
-              <td>
-                <a
-                  href="https://github.com/fastify/fastify-cookie#options"
-                  target="_blank"
-                >
-                  Options reference
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td id="FASTIFY_FORMBODY_OPTIONS">
-                <b>FASTIFY_FORMBODY_OPTIONS</b>
-              </td>
-              <td>
-                <a
-                  href="https://github.com/fastify/fastify-formbody#options"
-                  target="_blank"
-                >
-                  Options reference
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td id="FASTIFY_MULTIPART_OPTIONS">
-                <b>FASTIFY_MULTIPART_OPTIONS</b>
-              </td>
-              <td>
-                <a
-                  href="https://github.com/fastify/fastify-multipart#options"
-                  target="_blank"
-                >
-                  Options reference
-                </a>
               </td>
             </tr>
             <tr>
@@ -249,8 +213,72 @@ export default {
                   href="https://github.com/fastify/fastify-static#options"
                   target="_blank"
                 >
-                  Options reference
+                  Fastify-Static options reference
                 </a>
+                {" / "}
+                Options applied by Jeasx:
+                <Code
+                  lang="json"
+                  source={`"root": [
+  "/absolute/path/to/public",
+  "/absolute/path/to/dist/browser"
+],
+"prefix": "/",
+"wildcard": false,
+"preCompressed": true
+`}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td id="FASTIFY_MULTIPART_OPTIONS">
+                <b>FASTIFY_MULTIPART_OPTIONS</b>
+              </td>
+              <td>
+                <a
+                  href="https://github.com/fastify/fastify-multipart#options"
+                  target="_blank"
+                >
+                  Fastify-Multipart options reference
+                </a>
+                {" / "}
+                Options applied by Jeasx:
+                <Code
+                  lang="json"
+                  source={`{"attachFieldsToBody": "keyValues"}`}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td id="FASTIFY_COOKIE_OPTIONS">
+                <b>FASTIFY_COOKIE_OPTIONS</b>
+              </td>
+              <td>
+                <a
+                  href="https://github.com/fastify/fastify-cookie#options"
+                  target="_blank"
+                >
+                  Fastify-Cookie options reference
+                </a>
+                {" / "}
+                Options applied by Jeasx:
+                <Code lang="json" source={`{}`} />
+              </td>
+            </tr>
+            <tr>
+              <td id="FASTIFY_FORMBODY_OPTIONS">
+                <b>FASTIFY_FORMBODY_OPTIONS</b>
+              </td>
+              <td>
+                <a
+                  href="https://github.com/fastify/fastify-formbody#options"
+                  target="_blank"
+                >
+                  Fastity-Formbody options reference
+                </a>
+                {" / "}
+                Options applied by Jeasx:
+                <Code lang="json" source={`{}`} />
               </td>
             </tr>
           </table>
