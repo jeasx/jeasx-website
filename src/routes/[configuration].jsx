@@ -214,7 +214,7 @@ export default {
                 >
                   Fastify-Static options reference
                 </a>
-                ,default options applied by Jeasx:
+                , default options applied by Jeasx:
                 <Code
                   lang="json"
                   source={`"root": [
