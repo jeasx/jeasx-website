@@ -198,8 +198,7 @@ export default {
                   >
                     Fastity-Server options reference
                   </a>
-                  {" / "}
-                  Options applied by Jeasx:
+                  , default options applied by Jeasx:
                   <Code lang="json" source={`{"logger": true}`} />
                 </p>
               </td>
@@ -215,8 +214,7 @@ export default {
                 >
                   Fastify-Static options reference
                 </a>
-                {" / "}
-                Options applied by Jeasx:
+                ,default options applied by Jeasx:
                 <Code
                   lang="json"
                   source={`"root": [
@@ -241,8 +239,7 @@ export default {
                 >
                   Fastify-Multipart options reference
                 </a>
-                {" / "}
-                Options applied by Jeasx:
+                , default options applied by Jeasx:
                 <Code
                   lang="json"
                   source={`{"attachFieldsToBody": "keyValues"}`}
@@ -260,8 +257,7 @@ export default {
                 >
                   Fastify-Cookie options reference
                 </a>
-                {" / "}
-                Options applied by Jeasx:
+                , default options applied by Jeasx:
                 <Code lang="json" source={`{}`} />
               </td>
             </tr>
@@ -276,8 +272,7 @@ export default {
                 >
                   Fastity-Formbody options reference
                 </a>
-                {" / "}
-                Options applied by Jeasx:
+                , default options applied by Jeasx:
                 <Code lang="json" source={`{}`} />
               </td>
             </tr>
