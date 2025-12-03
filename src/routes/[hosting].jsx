@@ -33,12 +33,13 @@ export default function ({}) {
             to keep your application running.
           </p>
           <p>
-            To keep the footprint of Jeasx minimal, it does not include built-in
-            HTTPS support. Therefore, you'll need to deploy a reverse proxy like{" "}
+            In order to minimise the CPU footprint of a Jeasx application, it is
+            highly recommended that SSL termination is offloaded to a reverse
+            proxy, such as{" "}
             <a href="https://caddyserver.com" target="_blank">
               Caddy
-            </a>{" "}
-            in front of Jeasx to handle SSL termination.
+            </a>
+            .
           </p>
           <h2>Container based hosting</h2>
           <p>
