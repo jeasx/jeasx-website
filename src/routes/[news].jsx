@@ -26,105 +26,120 @@ export default function ({}) {
             updates about new features, bug fixes, and general information about
             the project.
           </Lead>
-          <Highlight title="2025-12-01 - Jeasx 2.2.0 released">
+          <Highlight title="2025-12-21 - Jeasx 2.2.1 released">
             <p>
-              🎉 This release introduces a more flexible configuration approach
-              for the underlying Fastify server. You can now customize all
-              Fastify options (including those for all used plugins) according
-              to your needs, without having to use the formerly fixed and very
-              restrictive set of environment variables. This change was made to
-              eliminate the need for increasingly specific environment variables
-              to customise the default behaviour of Jeasx.
+              🎉 Just a patch release with a minor cleanup for explicit path
+              joins in <code>serverless.ts</code>.
             </p>
             <p>
-              <b>Breaking change</b>: The previously supported environment
-              variables (
-              <code>
-                <s>
-                  FASTIFY_​BODY_​LIMIT, FASTIFY_​DISABLE_​REQUEST_​LOGGING,
-                  FASTIFY_​REWRITE_​URL, FASTIFY_​STATIC_​HEADERS,
-                  FASTIFY_​TRUST_​PROXY,
-                  FASTIFY_​MULTIPART_​ATTACH_​FIELDS_​TO_​BODY
-                </s>
-              </code>
-              ) have been completely removed. While this may seem inconvenient
-              for a minor release, the process of migrating your setup to the
-              new configuration approach usually takes less than a minute. This
-              streamlines the code base and documentation, as these features are
-              presumably seldom used.
+              Dependency updates: <code>esbuild@0.27.2</code>,{" "}
+              <code>jsx-async-runtime@2.0.2</code>,
+              <code>@types/node@24.10.4</code>
             </p>
-            <p>
-              To configure Fastify (or a specific plugin), you can now use
-              simple JSON objects which mirror the corresponding Fastify
-              options. Have a look at the linked Fastify documentation for a
-              reference of all existing options:
-            </p>
-            <ul>
-              <li>
-                <a
-                  href="https://fastify.dev/docs/latest/Reference/Server"
-                  target="_blank"
-                >
-                  <code>FASTIFY_SERVER_OPTIONS</code>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/fastify/fastify-cookie#options"
-                  target="_blank"
-                >
-                  <code>FASTIFY_COOKIE_OPTIONS</code>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/fastify/fastify-formbody#options"
-                  target="_blank"
-                >
-                  <code>FASTIFY_FORMBODY_OPTIONS</code>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/fastify/fastify-multipart#options"
-                  target="_blank"
-                >
-                  <code>FASTIFY_MULTIPART_OPTIONS</code>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/fastify/fastify-static#options"
-                  target="_blank"
-                >
-                  <code>FASTIFY_STATIC_OPTIONS</code>
-                </a>
-              </li>
-            </ul>
-            <p>
-              To optimise the developer experience, it is highly recommended
-              that you use the recently introduced <code>.env.js</code> file to
-              provide these configuration options. Alternatively, you can also
-              provide them via <code>.env</code> or your process environment.
-              Jeasx comes with a minimal set of reasonable{" "}
-              <a href="/configuration#FASTIFY_SERVER_OPTIONS">
-                Fastify defaults
-              </a>{" "}
-              but you can also overwrite them if necessary.
-            </p>
-            <p>
-              Some Fastify options, such as <code>rewriteUrl</code> or{" "}
-              <code>setHeaders</code>, take a function as a parameter. Jeasx
-              supports this use case by deserialising the stringified function
-              code when the server starts up.
-            </p>
-            <p>
-              <b>Example configuration:</b>
-            </p>
-            <Code
-              lang="js"
-              source={
-                /*js*/ `const NODE_ENV_IS_DEVELOPMENT = process.env.NODE_ENV === "development";
+          </Highlight>
+          <hr />
+          <h2>Release History</h2>
+          <Definitions>
+            <Definition title="2025-12-01 - Jeasx 2.2.0 released">
+              <p>
+                🎉 This release introduces a more flexible configuration
+                approach for the underlying Fastify server. You can now
+                customize all Fastify options (including those for all used
+                plugins) according to your needs, without having to use the
+                formerly fixed and very restrictive set of environment
+                variables. This change was made to eliminate the need for
+                increasingly specific environment variables to customise the
+                default behaviour of Jeasx.
+              </p>
+              <p>
+                <b>Breaking change</b>: The previously supported environment
+                variables (
+                <code>
+                  <s>
+                    FASTIFY_​BODY_​LIMIT, FASTIFY_​DISABLE_​REQUEST_​LOGGING,
+                    FASTIFY_​REWRITE_​URL, FASTIFY_​STATIC_​HEADERS,
+                    FASTIFY_​TRUST_​PROXY,
+                    FASTIFY_​MULTIPART_​ATTACH_​FIELDS_​TO_​BODY
+                  </s>
+                </code>
+                ) have been completely removed. While this may seem inconvenient
+                for a minor release, the process of migrating your setup to the
+                new configuration approach usually takes less than a minute.
+                This streamlines the code base and documentation, as these
+                features are presumably seldom used.
+              </p>
+              <p>
+                To configure Fastify (or a specific plugin), you can now use
+                simple JSON objects which mirror the corresponding Fastify
+                options. Have a look at the linked Fastify documentation for a
+                reference of all existing options:
+              </p>
+              <ul>
+                <li>
+                  <a
+                    href="https://fastify.dev/docs/latest/Reference/Server"
+                    target="_blank"
+                  >
+                    <code>FASTIFY_SERVER_OPTIONS</code>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/fastify/fastify-cookie#options"
+                    target="_blank"
+                  >
+                    <code>FASTIFY_COOKIE_OPTIONS</code>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/fastify/fastify-formbody#options"
+                    target="_blank"
+                  >
+                    <code>FASTIFY_FORMBODY_OPTIONS</code>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/fastify/fastify-multipart#options"
+                    target="_blank"
+                  >
+                    <code>FASTIFY_MULTIPART_OPTIONS</code>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/fastify/fastify-static#options"
+                    target="_blank"
+                  >
+                    <code>FASTIFY_STATIC_OPTIONS</code>
+                  </a>
+                </li>
+              </ul>
+              <p>
+                To optimise the developer experience, it is highly recommended
+                that you use the recently introduced <code>.env.js</code> file
+                to provide these configuration options. Alternatively, you can
+                also provide them via <code>.env</code> or your process
+                environment. Jeasx comes with a minimal set of reasonable{" "}
+                <a href="/configuration#FASTIFY_SERVER_OPTIONS">
+                  Fastify defaults
+                </a>{" "}
+                but you can also overwrite them if necessary.
+              </p>
+              <p>
+                Some Fastify options, such as <code>rewriteUrl</code> or{" "}
+                <code>setHeaders</code>, take a function as a parameter. Jeasx
+                supports this use case by deserialising the stringified function
+                code when the server starts up.
+              </p>
+              <p>
+                <b>Example configuration:</b>
+              </p>
+              <Code
+                lang="js"
+                source={
+                  /*js*/ `const NODE_ENV_IS_DEVELOPMENT = process.env.NODE_ENV === "development";
 
 export default {
   /** @type import("fastify").FastifyServerOptions */
@@ -149,29 +164,28 @@ export default {
   // FASTIFY_MULTIPART_OPTIONS: {},
 };
 `
-              }
-            />
-            <p>
-              Another improvement has been made by introducing an automatic
-              approach to determine the maximum size of the internal route
-              cache. Depending on the amount of free memory available at
-              startup, the maximum number of cache entries is calculated. This
-              approach strikes a balance, ensuring the cache is large enough for
-              large-scale projects while keeping maximum memory consumption
-              within reasonable limits given the available resources. This means
-              that you no longer need to worry about providing
-              <code>
-                <s>JEASX_ROUTE_CACHE_LIMIT</s>
-              </code>{" "}
-              via the environment.
-            </p>
-            <p>
-              Dependency updates: <code>@types/node@24.10.1</code>
-            </p>
-          </Highlight>
-          <hr />
-          <h2>Release History</h2>
-          <Definitions>
+                }
+              />
+              <p>
+                Another improvement has been made by introducing an automatic
+                approach to determine the maximum size of the internal route
+                cache. Depending on the amount of free memory available at
+                startup, the maximum number of cache entries is calculated. This
+                approach strikes a balance, ensuring the cache is large enough
+                for large-scale projects while keeping maximum memory
+                consumption within reasonable limits given the available
+                resources. This means that you no longer need to worry about
+                providing
+                <code>
+                  <s>JEASX_ROUTE_CACHE_LIMIT</s>
+                </code>{" "}
+                via the environment.
+              </p>
+              <p>
+                Dependency updates: <code>@types/node@24.10.1</code>
+              </p>
+            </Definition>
+
             <Definition title="2025-11-10 - Jeasx 2.1.1 released">
               <p>
                 🎉 Enhanced configuration for @fastify/static, so you can serve
