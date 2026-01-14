@@ -12,7 +12,7 @@ COPY --chown=node:node . ./
 RUN node --run build
 RUN node --run start & \
     sleep 1 && \
-    wget --mirror --page-requisites --no-host-directories --directory-prefix=www http://localhost:3000
+    wget --mirror --page-requisites --no-host-directories --content-on-error --directory-prefix=www http://localhost:3000 http://localhost:3000/404.html
 
 COPY Caddyfile .
 CMD ["caddy","run","--config","Caddyfile"]
