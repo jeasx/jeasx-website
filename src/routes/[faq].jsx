@@ -122,6 +122,38 @@ export default function ({ request, reply }) {
             approach works for SASS too.
           </p>
           <hr />
+          <h2 id="static-site-generator">
+            Can I use Jeasx as a Static Site Generator (SSG)?
+          </h2>
+          <p>
+            Yes, of course. Jeasx is a server side rendering framework at its
+            heart, but it can be easily used to export a static site. In order
+            to do so, simply run your application with <code>npm start</code>{" "}
+            and then execute{" "}
+            <Code
+              source={`wget --mirror --page-requisites --no-host-directories --directory-prefix=www http://localhost:3000`}
+              lang="bash"
+            />
+            to export your site to a <code>www</code>-directory, which can be
+            easily served via a simple file-server.
+          </p>
+          <p>
+            Have a look at the{" "}
+            <a
+              href="https://github.com/jeasx/jeasx-website/blob/main/Dockerfile"
+              target="_blank"
+            >
+              Dockerfile
+            </a>{" "}
+            of this website to see how things can be wired up for serving a
+            static export with{" "}
+            <a href="https://caddyserver.com" target="_blank">
+              Caddy
+            </a>{" "}
+            as file-server.
+          </p>
+          <hr />
+
           <h2 id="browsersync">How to use a Browsersync with Jeasx?</h2>
           <p>
             If you want to reload CSS automagically, start{" "}
@@ -186,6 +218,10 @@ export default function ({ request, reply }) {
           {
             label: "CSS-Frameworks",
             link: "#css-frameworks",
+          },
+          {
+            label: "Static Site Generator",
+            link: "#static-site-generator",
           },
           {
             label: "Browsersync",
