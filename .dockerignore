@@ -1,6 +1,7 @@
 **
 !/public/
 !/src/
+!Caddyfile
 !.env
 !.env.js
 !.npmrc

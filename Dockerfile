@@ -14,4 +14,5 @@ RUN node --run start & \
     sleep 1 && \
     wget --mirror --page-requisites --no-host-directories --directory-prefix=www http://localhost:3000
 
-CMD ["caddy","file-server","--listen",":3000","--root","www"]
+COPY Caddyfile .
+CMD ["caddy","run","--config","Caddyfile"]
