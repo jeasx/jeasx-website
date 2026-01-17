@@ -29,16 +29,16 @@ export default function ({}) {
           <Highlight title="2026-01-17 - Jeasx 2.2.2 released">
             <p>
               🎉 This release now preserves the original status code when a 404
-              page is accessed directly (previously defaulted to 200). This
-              improvement makes it easier to use Jeasx as a static site
-              generator and to fetch the 404 page with common tools for saving
-              it to a file system. While Jeasx is fundamentally a server-side
-              rendering framework, there are valid use cases where serving a
-              static page alone is sufficient.
+              page is accessed directly (defaults to 200). This improvement
+              makes it easier to use Jeasx as a static site generator and to
+              fetch the 404 page with common tools for saving it to a file
+              system.
             </p>
             <p>
-              For example, you can use <code>wget</code> to download a Jeasx
-              website to a www-directory with just a single line:
+              While Jeasx is fundamentally a server-side rendering framework,
+              there are valid use cases where serving a static page alone is
+              sufficient. For example, you can use <code>wget</code> to download
+              a Jeasx website to a www-directory with just a single line:
               <Code
                 source={`wget --mirror --page-requisites --no-host-directories --directory-prefix=www http://localhost:3000 http://localhost:3000/404`}
                 lang="bash"
@@ -53,6 +53,12 @@ export default function ({}) {
                 </a>{" "}
                 of the Jeasx website to see how things can be wired up for
                 serving a static export with Caddy as web server.
+              </p>
+              <p>
+                If you want to restore the old behaviour (directly calling /404
+                resulting in status code 404), you can simple add{" "}
+                <code>reply.status(404)</code> to your existing{" "}
+                <code>/[404]</code> route.
               </p>
             </p>
             <p>
