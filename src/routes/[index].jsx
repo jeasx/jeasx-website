@@ -30,9 +30,9 @@ export default async function ({}) {
             sustainable web experiences and applications.
           </Lead>
           <h2>Breaking News</h2>
-          <Highlight title="2025-12-21 - Jeasx 2.2.1 released">
+          <Highlight title="2026-01-17 - Jeasx 2.2.2 released">
             <p>
-              🎉 Just a patch release with a minor cleanup.{" "}
+              🎉 Improvement and example to use Jeasx as static site generator.{" "}
               <a href="/news">Learn more...</a>
             </p>
           </Highlight>

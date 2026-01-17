@@ -131,7 +131,7 @@ export default function ({ request, reply }) {
             to do so, simply run your application with <code>npm start</code>{" "}
             and then execute{" "}
             <Code
-              source={`wget --mirror --page-requisites --no-host-directories --directory-prefix=www http://localhost:3000`}
+              source={`wget --mirror --page-requisites --no-host-directories --directory-prefix=www http://localhost:3000 http://localhost:3000/404`}
               lang="bash"
             />
             to export your site to a <code>www</code>-directory, which can be

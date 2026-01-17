@@ -26,20 +26,55 @@ export default function ({}) {
             updates about new features, bug fixes, and general information about
             the project.
           </Lead>
-          <Highlight title="2025-12-21 - Jeasx 2.2.1 released">
+          <Highlight title="2026-01-17 - Jeasx 2.2.2 released">
             <p>
-              🎉 Just a patch release with a minor cleanup for explicit path
-              joins in <code>serverless.ts</code>.
+              🎉 This release now preserves the original status code when a 404
+              page is accessed directly (previously defaulted to 200). This
+              improvement makes it easier to use Jeasx as a static site
+              generator and to fetch the 404 page with common tools for saving
+              it to a file system. While Jeasx is fundamentally a server-side
+              rendering framework, there are valid use cases where serving a
+              static page alone is sufficient.
             </p>
             <p>
-              Dependency updates: <code>esbuild@0.27.2</code>,{" "}
-              <code>jsx-async-runtime@2.0.2</code>,
-              <code>@types/node@24.10.4</code>
+              For example, you can use <code>wget</code> to download a Jeasx
+              website to a www-directory with just a single line:
+              <Code
+                source={`wget --mirror --page-requisites --no-host-directories --directory-prefix=www http://localhost:3000 http://localhost:3000/404`}
+                lang="bash"
+              />
+              <p>
+                Have a look at the{" "}
+                <a
+                  href="https://github.com/jeasx/jeasx-website/blob/main/Dockerfile"
+                  target="_blank"
+                >
+                  Dockerfile
+                </a>{" "}
+                of the Jeasx website to see how things can be wired up for
+                serving a static export with Caddy as web server.
+              </p>
+            </p>
+            <p>
+              Dependency updates: <code>fastify@5.7.1</code>,{" "}
+              <code>@fastify/static@9.0.0</code>,
+              <code>@types/node@24.10.9</code>
             </p>
           </Highlight>
           <hr />
           <h2>Release History</h2>
           <Definitions>
+            <Definition title="2025-12-21 - Jeasx 2.2.1 released">
+              <p>
+                🎉 Just a patch release with a minor cleanup for explicit path
+                joins in <code>serverless.ts</code>.
+              </p>
+              <p>
+                Dependency updates: <code>esbuild@0.27.2</code>,{" "}
+                <code>jsx-async-runtime@2.0.2</code>,
+                <code>@types/node@24.10.4</code>
+              </p>
+            </Definition>
             <Definition title="2025-12-01 - Jeasx 2.2.0 released">
               <p>
                 🎉 This release introduces a more flexible configuration
