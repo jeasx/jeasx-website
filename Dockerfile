@@ -10,6 +10,9 @@ RUN npm ci --omit=dev && npm cache clean --force
 COPY --chown=node:node . ./
 
 RUN node --run build
+# CMD ["node","--run","start"]
+
+# Static site export
 RUN node --run start & \
     sleep 1 && \
     wget --mirror --page-requisites --no-host-directories --content-on-error --directory-prefix=www http://localhost:3000 http://localhost:3000/404
