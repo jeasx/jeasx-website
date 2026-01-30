@@ -10,7 +10,7 @@ export default function Feature({
       <div class="relative overflow-hidden rounded-xl p-6">
         {icon}
         <h2 class="font-display mt-4 text-base text-slate-900 dark:text-white">
-          <a href={link} target={link.startsWith("http") ? "_blank" : "_self"}>
+          <a href={link}>
             <span class="absolute -inset-px rounded-xl"></span>
             {headline}
           </a>

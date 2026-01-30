@@ -1,0 +1,40 @@
+import Highlight from "../components/Highlight";
+import Layout from "../components/Layout";
+import Lead from "../components/Lead";
+import Next from "../components/Next";
+
+<Layout
+  title="Philosophy"
+  description="Back to the future: server-side rendering with a modern developer experience"
+  category="Philosophy"
+  headline="Back to the future"
+  next={<Next label="Get Started" link="/quickstart" />}
+>
+<Lead>
+Web applications have historically relied on server-rendered HTML and traditional navigation patterns. However, the evolution of the web platform led to the emergence of technologies like AJAX, enabling dynamic updates without full page reloads.
+</Lead>
+
+As JavaScript advanced, browser-based libraries (React) and frameworks (Angular) transformed the traditional client-server architecture into a more interactive and dynamic approach.
+
+## Full cirlce of JavaScript
+
+In the dynamic world of web development, the prevalence of client-side JavaScript in modern web applications is undeniable. However, the majority of content driven websites and many web applications do not require the complexity of the Single Page Application (SPA) approach. As the industry faces challenges such as SEO limitations and performance issues on mobile devices, a new wave of [static site generators](https://jamstack.org/generators) (SSG) has emerged to tackle these issues head-on, generating new problems like hydration errors and bloated JavaScript bundles along the way. This exhilarating journey culminates with the introduction of [React Server Components](https://nextjs.org/docs/app/building-your-application/rendering/server-components) (RSC), representing a significant shift towards server-side rendering of markup. This brings us full circle to the roots of web development, with a modern twist on rendering markup on the server, providing an enhanced developer experience.
+
+## Less is more
+
+Now is the time to streamline and eliminate the unnecessary complexities that have accumulated during the evolution from AJAX to SSG to RSC. The historical association of server-side rendering with more or less obscure templating technologies has been overcome by leveraging the most powerful feature introduced by React - JSX - in server-side rendering. This streamlined approach simplifies web development, making it more accessible for developers to create powerful and efficient websites.
+
+Projects like [Astro](https://astro.build) and [Fresh](https://fresh.deno.dev) exemplify a new era of learning from the past and exploring innovative approaches, e.g. the [island architecture](https://jasonformat.com/islands-architecture). While these projects offer valuable insights, they may not be perfect from every perspective:
+
+- Astro utilizes a JSX-like syntax for its template files with code blocks separated by dashes, requiring a dedicated IDE plugin and a special compiler for code transformation.
+
+- On the other hand, Fresh relies on Deno, which may not comply with your corporate policies or hosting requirements.
+
+Astro and Fresh are great products, but they try to pack many features into the framework itself. This "all-batteries-included" approach might be convenient at first, but can lead to maintenance problems in the long run since the framework is tightly coupled with the application code.
+
+<Highlight title="Sometimes it's beneficial to have choices...">
+One of the main goals of Jeasx is to focus on the core (about 150 lines of code) and let all customizations be done in userland. This gives you a rock solid foundation with a simple rule: if your code works, it just works. And there's no need to worry about framework updates.
+
+Introducing Jeasx – the server side rendering framework on top of JSX designed for the era of simplicity...
+</Highlight>
+</Layout>

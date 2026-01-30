@@ -66,7 +66,6 @@ export default function Header() {
           class="group"
           aria-label="GitHub"
           href="https://github.com/jeasx/jeasx"
-          target="_blank"
         >
           <svg
             aria-hidden="true"

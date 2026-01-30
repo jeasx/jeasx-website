@@ -1,6 +1,4 @@
-import Article from "../components/Article";
 import Code from "../components/Code";
-import Content from "../components/Content";
 import Feature from "../components/Feature";
 import Features from "../components/Features";
 import Highlight from "../components/Highlight";
@@ -21,83 +19,77 @@ export default async function ({}) {
       title="Homepage"
       description="The Ease of JSX with the power of SSR"
       stage={<HeroStage />}
+      headline="Welcome to Jeasx"
+      next={<Next label="How to get started?" link="/quickstart" />}
     >
-      <Content>
-        <Article headline="Welcome to Jeasx">
-          <Lead>
-            By eliminating unnecessary complexity and providing precise control
-            over HTML, CSS, and JavaScript, Jeasx empowers developers to craft
-            sustainable web experiences and applications.
-          </Lead>
-          <h2>Breaking News</h2>
-          <Highlight title="2026-01-17 - Jeasx 2.2.2 released">
-            <p>
-              🎉 Improvement and example to use Jeasx as static site generator.{" "}
-              <a href="/news">Learn more...</a>
-            </p>
-          </Highlight>
-          <h2>Built on top of a proven tech stack</h2>
-          <p>
-            Jeasx is a sleek and modern framework that leverages tried and
-            tested web technologies to deliver powerful and efficient web
-            solutions.
-          </p>
-          <Features>
-            <Feature
-              headline="jsx-async-runtime"
-              link="https://github.com/jeasx/jsx-async-runtime"
-              icon={<IconInstallation />}
-            >
-              JSX is an outstanding templating technology that simplifies web
-              development. By utilizing an asynchronous JSX runtime, the
-              development process becomes even more straightforward.
-            </Feature>
-            <Feature
-              headline="fastify"
-              link="https://fastify.dev"
-              icon={<IconArchitecture />}
-            >
-              Fastify is a high-performance web framework that excels at
-              delivering an exceptional developer experience with minimal
-              overhead. Fastify stands out as one of the fastest web frameworks
-              available.
-            </Feature>
-            <Feature
-              headline="esbuild"
-              link="https://esbuild.github.io"
-              icon={<IconReference />}
-            >
-              esbuild is a bundler for JavaScript. It is written in Go, which
-              enables it to achieve remarkable performance gains. esbuild
-              supports JSX, TypeScript, tree-shaking and more.
-            </Feature>
-          </Features>
-          <h2>Learn by examples</h2>
-          <p>
-            Exploring a new framework can be a daunting task. There are{" "}
-            <a href="https://expo.jeasx.dev">lots of examples</a> with source
-            code which will help you get started easily.
-          </p>
-          <h2>Philosophy</h2>
-          <p>
-            Jeasx embraces modern HTML and CSS as the core building blocks for
-            web development, complemented by server-side rendered asynchronous
-            JSX. It provides the flexibility to seamlessly enhance functionality
-            using JavaScript, empowering developers to create dynamic web sites
-            with minimal resource consumption.
-          </p>
-          <a href="/philosophy">Read more about our Philosophy</a>
-          <h2>Getting started</h2>
-          <p>
-            Start your project instantly with a single command, enabling
-            seamless development with zero turnarounds. Whether you opt for a
-            Node server, a Docker setup or a serverless environment, Jeasx
-            provides the flexibility to deploy your application according to
-            your preferences.
-          </p>
-        </Article>
-        <Next label="How to get started?" link="/quickstart" />
-      </Content>
+      <Lead>
+        By eliminating unnecessary complexity and providing precise control over
+        HTML, CSS, and JavaScript, Jeasx empowers developers to craft
+        sustainable web experiences and applications.
+      </Lead>
+      <h2>Breaking News</h2>
+      <Highlight title="2026-01-30 - Jeasx 2.3.0 released">
+        <p>
+          🎉 This release features support for MDX and offers a far more
+          powerful configuration. <a href="/news">Learn more...</a>
+        </p>
+      </Highlight>
+      <h2>Built on top of a proven tech stack</h2>
+      <p>
+        Jeasx is a sleek and modern framework that leverages tried and tested
+        web technologies to deliver powerful and efficient web solutions.
+      </p>
+      <Features>
+        <Feature
+          headline="jsx-async-runtime"
+          link="https://github.com/jeasx/jsx-async-runtime"
+          icon={<IconInstallation />}
+        >
+          JSX is an outstanding templating technology that simplifies web
+          development. By utilizing an asynchronous JSX runtime, the development
+          process becomes even more straightforward.
+        </Feature>
+        <Feature
+          headline="fastify"
+          link="https://fastify.dev"
+          icon={<IconArchitecture />}
+        >
+          Fastify is a high-performance web framework that excels at delivering
+          an exceptional developer experience with minimal overhead. Fastify
+          stands out as one of the fastest web frameworks available.
+        </Feature>
+        <Feature
+          headline="esbuild"
+          link="https://esbuild.github.io"
+          icon={<IconReference />}
+        >
+          esbuild is a bundler for JavaScript. It is written in Go, which
+          enables it to achieve remarkable performance gains. esbuild supports
+          JSX, TypeScript, tree-shaking and more.
+        </Feature>
+      </Features>
+      <h2>Learn by examples</h2>
+      <p>
+        Exploring a new framework can be a daunting task. There are{" "}
+        <a href="https://expo.jeasx.dev">lots of examples</a> with source code
+        which will help you get started easily.
+      </p>
+      <h2>Philosophy</h2>
+      <p>
+        Jeasx embraces modern HTML and CSS as the core building blocks for web
+        development, complemented by server-side rendered asynchronous JSX. It
+        provides the flexibility to seamlessly enhance functionality using
+        JavaScript, empowering developers to create dynamic web sites with
+        minimal resource consumption.
+      </p>
+      <a href="/philosophy">Read more about our Philosophy</a>
+      <h2>Getting started</h2>
+      <p>
+        Start your project instantly with a single command, enabling seamless
+        development with zero turnarounds. Whether you opt for a Node server, a
+        Docker setup or a serverless environment, Jeasx provides the flexibility
+        to deploy your application according to your preferences.
+      </p>
     </Layout>
   );
 }
@@ -137,7 +129,6 @@ function HeroStage() {
                 <a
                   class="rounded-full bg-slate-800 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/50 active:text-slate-400"
                   href="https://expo.jeasx.dev"
-                  target="_blank"
                 >
                   Learn by examples
                 </a>

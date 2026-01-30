@@ -1,6 +1,13 @@
+import rehypePrismPlus from "rehype-prism-plus";
+
 const NODE_ENV_IS_DEVELOPMENT = process.env.NODE_ENV === "development";
 
 export default {
+  /** @type import("@mdx-js/esbuild").Options */
+  ESBUILD_MDX_OPTIONS: {
+    rehypePlugins: [rehypePrismPlus],
+  },
+
   /** @type import("fastify").FastifyServerOptions */
   FASTIFY_SERVER_OPTIONS: {
     disableRequestLogging: NODE_ENV_IS_DEVELOPMENT,

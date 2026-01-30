@@ -44,7 +44,7 @@ const NAV_ITEMS = [
   {
     label: "Essentials",
     links: [
-      { label: "JSX & SSR", link: "/jsx" },
+      { label: "JSX & MDX", link: "/jsx" },
       { label: "Routes & Guards", link: "/routes" },
       { label: "CSS & JavaScript", link: "/browser" },
       { label: "Configuration", link: "/configuration" },

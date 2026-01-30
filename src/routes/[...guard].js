@@ -1,3 +1,5 @@
+import { jsxToString } from "jsx-async-runtime";
+
 const BUILD_TIME_PREFIX = `/${process.env.BUILD_TIME}/`;
 
 /**
@@ -12,4 +14,13 @@ export default function ({ request, reply }) {
   // Set the request and reply objects as context
   this.request = request;
   this.reply = reply;
+
+  this.jsxToString = (jsxElement) => {
+    if (jsxElement.type === "tag" && jsxElement.tag === "a") {
+      if (jsxElement.props.href.startsWith("https://")) {
+        jsxElement.props.target = "_blank";
+      }
+    }
+    return jsxToString.call(this, jsxElement);
+  };
 }

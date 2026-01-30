@@ -1,5 +1,3 @@
-import Article from "../components/Article";
-import Content from "../components/Content";
 import Layout from "../components/Layout";
 import Lead from "../components/Lead";
 
@@ -12,18 +10,15 @@ export default function ({}) {
       title="404 - Resource Not Found"
       description="The resource you requested has not been found at the specified
       address."
+      category="404"
+      headline="Resource Not Found"
     >
-      <Content>
-        <Article category="404" headline="Resource Not Found">
-          <Lead>
-            The resource you requested has not been found at the specified
-            address.
-          </Lead>
-          <a href="/" class="button">
-            Go to Homepage
-          </a>
-        </Article>
-      </Content>
+      <Lead>
+        The resource you requested has not been found at the specified address.
+      </Lead>
+      <a href="/" class="button">
+        Go to Homepage
+      </a>
     </Layout>
   );
 }
