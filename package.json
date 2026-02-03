@@ -8,7 +8,6 @@
     "dev": "concurrently -c auto -n dev,css 'jeasx dev' 'npm:css -- --watch'",
     "css": "npx @tailwindcss/cli -i ./src/browser/tailwind/tailwind.css -o ./src/browser/tailwind/output.css"
   },
-  "browserslist": "defaults, not ie <= 11",
   "dependencies": {
     "jeasx": "2.3.0",
     "prismjs": "1.30.0",
@@ -18,8 +17,7 @@
     "@tailwindcss/cli": "4.1.18",
     "@tailwindcss/typography": "0.5.19",
     "concurrently": "9.2.1",
-    "prettier": "3.8.1",
-    "prettier-plugin-tailwindcss": "0.7.2",
     "tailwindcss": "4.1.18"
-  }
+  },
+  "browserslist": "defaults, not ie <= 11"
 }
