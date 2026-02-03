@@ -1,0 +1,58 @@
+import Code from "../components/Code";
+import Highlight from "../components/Highlight";
+import Layout from "../components/Layout";
+import Lead from "../components/Lead";
+import Next from "../components/Next";
+
+<Layout
+  title="Quickstart"
+  description="How to get started with Jeasx"
+  category="Quickstart"
+  headline="How to get started with Jeasx"
+  next={<Next link="/jsx" label="Learn about server-side JSX" />}
+>
+<Lead>
+It's easy to get started. Just use the following commands to set up and start your first project:
+</Lead>
+
+```bash
+npm create jeasx@latest
+cd jeasx-quickstart
+npm run build
+npm run dev
+```
+
+If you want to create a new project with a specific name, you can provide an additional argument:
+
+```bash
+npm create jeasx@latest my-awesome-project
+```
+
+If your project is successfully started, just visit `http://localhost:3000/` in a browser of your choice.
+
+If you want to see the quickstart example in action, you can visit a deployed version of the quickstart template at [https://quickstart.jeasx.dev](https://quickstart.jeasx.dev). The contents of the quickstart template can be found at [GitHub](https://github.com/jeasx/jeasx-quickstart).
+
+<Highlight title="Which JavaScript runtime should I use?">
+Jeasx is developed and tested with the <b>latest LTS</b> version of Node.js (currently Node 24). Older versions are not officially supported, but may work. Newer Node versions should work without problems, but are not recommended for production.
+
+Jeasx is tested against Bun and all [Jeasx examples powered by Bun](https://bun.jeasx.dev) are working without any issues, so Bun can be considered as a stable platform for running Jeasx.
+
+If you encounter any issues, feel free to [report them](https://github.com/jeasx/jeasx/issues).
+</Highlight>
+
+## Install project with Docker support
+
+If you want to use Docker, you can bootstrap a new project with additional resources (`Dockerfile`, `.dockerignore`) via the following flag:
+
+```bash
+npm create jeasx@latest -- --with-docker
+```
+
+## Install project with Vercel support
+
+If you are going to deploy your project on Vercel, you can bootstrap a project with additional resources (`vercel.json`, `api/vercel.js`) via the following flag:
+
+```bash
+npm create jeasx@latest -- --with-vercel
+```
+</Layout>
