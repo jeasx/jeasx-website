@@ -36,23 +36,9 @@ export default function Layout({
           <meta name="referrer" content="same-origin" />
           <meta name="description" content={description} />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="/apple-touch-icon.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="/favicon-32x32.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="/favicon-16x16.png"
-          />
+          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
           <link rel="manifest" href="/site.webmanifest" />
           <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
           <meta name="msapplication-TileColor" content="#da532c" />
@@ -61,14 +47,8 @@ export default function Layout({
             rel="canonical"
             href={`https://www.jeasx.dev${path.endsWith("/") ? path.slice(0, -1) : path}`}
           ></link>
-          <link
-            rel="stylesheet"
-            href={`/${process.env.BUILD_TIME}/index.css`}
-          />
-          <script
-            type="module"
-            src={`/${process.env.BUILD_TIME}/index.js`}
-          ></script>
+          <link rel="stylesheet" href={`/${process.env.BUILD_TIME}/index.css`} />
+          <script type="module" src={`/${process.env.BUILD_TIME}/index.js`}></script>
         </head>
         <body class="flex min-h-full bg-white dark:bg-slate-900">
           <div class="flex w-full flex-col">
@@ -87,9 +67,7 @@ export default function Layout({
                 <article>
                   <header class="mb-9 space-y-1">
                     {category && (
-                      <p class="font-display text-sm font-medium text-sky-500">
-                        {category}
-                      </p>
+                      <p class="font-display text-sm font-medium text-sky-500">{category}</p>
                     )}
                     <h1 class="font-display text-3xl tracking-tight text-slate-900 dark:text-white">
                       {headline}

@@ -19,11 +19,7 @@ export default function MobileNavigation() {
           >
             <div class="min-h-full w-full max-w-xs bg-white px-4 pb-12 pt-5 sm:px-6 dark:bg-slate-900">
               <div class="flex items-center">
-                <button
-                  data-navigation-toggle
-                  type="button"
-                  aria-label="Close navigation"
-                >
+                <button data-navigation-toggle type="button" aria-label="Close navigation">
                   <svg
                     aria-hidden="true"
                     viewBox="0 0 24 24"
@@ -36,18 +32,8 @@ export default function MobileNavigation() {
                   </svg>
                 </button>
                 <a class="ml-6" aria-label="Home page" href="/">
-                  <svg
-                    aria-hidden="true"
-                    viewBox="0 0 36 36"
-                    fill="none"
-                    class="h-9 w-9"
-                  >
-                    <g
-                      fill="none"
-                      stroke="#38BDF8"
-                      stroke-linejoin="round"
-                      stroke-width="3"
-                    >
+                  <svg aria-hidden="true" viewBox="0 0 36 36" fill="none" class="h-9 w-9">
+                    <g fill="none" stroke="#38BDF8" stroke-linejoin="round" stroke-width="3">
                       <path d="M10.308 5L18 17.5 10.308 30 2.615 17.5 10.308 5z"></path>
                       <path d="M18 17.5L10.308 5h15.144l7.933 12.5M18 17.5h15.385L25.452 30H10.308L18 17.5z"></path>
                     </g>

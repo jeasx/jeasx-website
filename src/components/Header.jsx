@@ -4,12 +4,7 @@ export default function Header() {
   return (
     <header class="sticky top-0 z-50 flex flex-none flex-wrap items-center justify-between bg-white px-4 py-5 shadow-md shadow-slate-900/5 transition duration-500 sm:px-6 lg:px-8 dark:bg-transparent dark:shadow-none">
       <div class="mr-6 flex lg:hidden">
-        <button
-          data-navigation-toggle
-          type="button"
-          class="relative"
-          aria-label="Open navigation"
-        >
+        <button data-navigation-toggle type="button" class="relative" aria-label="Open navigation">
           <svg
             aria-hidden="true"
             viewBox="0 0 24 24"
@@ -28,18 +23,8 @@ export default function Header() {
       </div>
       <div class="relative flex flex-grow basis-0 items-center">
         <a aria-label="Home page" href="/">
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 36 36"
-            fill="none"
-            class="inline h-9 w-9"
-          >
-            <g
-              fill="none"
-              stroke="#38BDF8"
-              stroke-linejoin="round"
-              stroke-width="3"
-            >
+          <svg aria-hidden="true" viewBox="0 0 36 36" fill="none" class="inline h-9 w-9">
+            <g fill="none" stroke="#38BDF8" stroke-linejoin="round" stroke-width="3">
               <path d="M10.308 5L18 17.5 10.308 30 2.615 17.5 10.308 5z"></path>
               <path d="M18 17.5L10.308 5h15.144l7.933 12.5M18 17.5h15.385L25.452 30H10.308L18 17.5z"></path>
             </g>
@@ -62,11 +47,7 @@ export default function Header() {
       </div>
       <div class="relative flex basis-0 justify-end gap-6 sm:gap-8 md:flex-grow">
         <div class="h-6 w-6"></div>
-        <a
-          class="group"
-          aria-label="GitHub"
-          href="https://github.com/jeasx/jeasx"
-        >
+        <a class="group" aria-label="GitHub" href="https://github.com/jeasx/jeasx">
           <svg
             aria-hidden="true"
             viewBox="0 0 16 16"

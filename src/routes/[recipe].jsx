@@ -1,4 +1,4 @@
-export default async function ({ request, reply }) {
+export default async function ({ request }) {
   const id = request.query["id"];
   const { name, image, ingredients } = await (
     await fetch(`https://dummyjson.com/recipes/${id}`)

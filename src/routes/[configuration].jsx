@@ -5,10 +5,7 @@ import Layout from "../components/Layout";
 import Lead from "../components/Lead";
 import Next from "../components/Next";
 
-/**
- * @param {import("./types").RouteProps} props
- */
-export default function ({}) {
+export default function () {
   return (
     <Layout
       title="Configuration"
@@ -18,32 +15,26 @@ export default function ({}) {
       next={<Next link="/hosting" label="How to host a Jeasx application?" />}
     >
       <Lead>
-        Jeasx provides sensible defaults to get you started quickly, but it also
-        allows you to override important settings with environment variables.
-        This makes it easy to adapt the framework to your needs.
+        Jeasx provides sensible defaults to get you started quickly, but it also allows you to
+        override important settings with environment variables. This makes it easy to adapt the
+        framework to your needs.
       </Lead>
       <p>
-        To facilitate managing multiple configurations, Jeasx leverages layers
-        of .env-files. This enables the use of different .env-files based on the
-        NODE_ENV value, such as <code>.env.development</code> to override values
-        from <code>.env</code> for development. The order of loading .env-files
-        is the same as it is used by the well-known{" "}
-        <a href="https://github.com/kerimdzhanov/dotenv-flow">dotenv-flow</a>{" "}
-        library. To load the env-files into <code>process.env</code>, Jeasx
-        makes use of the native implementation provided by Node.js via{" "}
+        To facilitate managing multiple configurations, Jeasx leverages layers of .env-files. This
+        enables the use of different .env-files based on the NODE_ENV value, such as{" "}
+        <code>.env.development</code> to override values from <code>.env</code> for development. The
+        order of loading .env-files is the same as it is used by the well-known{" "}
+        <a href="https://github.com/kerimdzhanov/dotenv-flow">dotenv-flow</a> library. To load the
+        env-files into <code>process.env</code>, Jeasx makes use of the native implementation
+        provided by Node.js via{" "}
         <a href="https://nodejs.org/docs/latest/api/process.html#processloadenvfilepath">
           process.loadEnvFile
         </a>{" "}
-        via a custom{" "}
-        <a href="https://github.com/jeasx/jeasx/blob/main/env.js">
-          utility function
-        </a>
-        .
+        via a custom <a href="https://github.com/jeasx/jeasx/blob/main/env.js">utility function</a>.
       </p>
       <ol>
         <li>
-          .env.[NODE_ENV].local{" "}
-          <i>(e.g. .env.development.local or .env.production.local)</i>
+          .env.[NODE_ENV].local <i>(e.g. .env.development.local or .env.production.local)</i>
         </li>
         <li>
           .env.[NODE_ENV] <i>(e.g. .env.development or .env.production)</i>
@@ -54,17 +45,15 @@ export default function ({}) {
         <li>.env.js</li>
       </ol>
       <p>
-        An existing environment variable will not be overwritten by subsequent
-        environment files. The last <code>.env.js</code> file is an exception to
-        this rule: it is a JavaScript file which must export an default object
-        containing the environment variables.{" "}
+        An existing environment variable will not be overwritten by subsequent environment files.
+        The last <code>.env.js</code> file is an exception to this rule: it is a JavaScript file
+        which must export an default object containing the environment variables.{" "}
         <b>
-          All exported variables from <code>.env.js</code> will overwrite
-          already existing variables.
+          All exported variables from <code>.env.js</code> will overwrite already existing
+          variables.
         </b>
-        The configuration object from an <code>.env.js</code> file is imported
-        directly into both the build process and server runtime, allowing you to
-        use package imports seamlessly.
+        The configuration object from an <code>.env.js</code> file is imported directly into both
+        the build process and server runtime, allowing you to use package imports seamlessly.
       </p>
       <Code
         lang="js"
@@ -100,23 +89,17 @@ export default {
         }
       />
       <p>
-        <b>Please note:</b> Jeasx only sets <code>NODE_ENV=development</code>{" "}
-        automatically when running <code>jeasx dev</code>. For production or
-        testing environments, you'll need to set the <code>NODE_ENV</code>{" "}
-        environment variable to the desired value (e.g. <code>production</code>{" "}
-        or <code>test</code>) depending on your requirements and workflows.
+        <b>Please note:</b> Jeasx only sets <code>NODE_ENV=development</code> automatically when
+        running <code>jeasx dev</code>. For production or testing environments, you'll need to set
+        the <code>NODE_ENV</code> environment variable to the desired value (e.g.{" "}
+        <code>production</code> or <code>test</code>) depending on your requirements and workflows.
       </p>
-
-      <Highlight
-        title="Environment variables for client code"
-        icon={<IconAttention />}
-      >
+      <Highlight title="Environment variables for client code" icon={<IconAttention />}>
         <p>
           For security reasons, only environment variables prefixed with{" "}
-          <code>BROWSER_PUBLIC_</code> are accessible in client-side JavaScript
-          to prevent accidental exposure of sensitive data. The values are only
-          updated at build time, so changes to environment variables will
-          require a rebuild to take effect.
+          <code>BROWSER_PUBLIC_</code> are accessible in client-side JavaScript to prevent
+          accidental exposure of sensitive data. The values are only updated at build time, so
+          changes to environment variables will require a rebuild to take effect.
         </p>
       </Highlight>
       <h2>Environment Variables</h2>
@@ -131,9 +114,8 @@ export default {
           </td>
           <td>
             <p>
-              The hostname or IP address that the server should listen on.
-              Defaults to <code>::</code> which allows the server to listen on
-              any interface (IPv4 or IPv6).
+              The hostname or IP address that the server should listen on. Defaults to{" "}
+              <code>::</code> which allows the server to listen on any interface (IPv4 or IPv6).
             </p>
           </td>
         </tr>
@@ -143,8 +125,7 @@ export default {
           </td>
           <td>
             <p>
-              The port number that the server should listen on. Defaults to{" "}
-              <code>3000</code>.
+              The port number that the server should listen on. Defaults to <code>3000</code>.
             </p>
           </td>
         </tr>
@@ -154,9 +135,9 @@ export default {
           </td>
           <td>
             <p>
-              A value set at build time and encoded as <code>base36</code>{" "}
-              (lower case alphabet and digits). Use it to create a cache busting
-              parameter for loading JavaScript and CSS files.
+              A value set at build time and encoded as <code>base36</code> (lower case alphabet and
+              digits). Use it to create a cache busting parameter for loading JavaScript and CSS
+              files.
             </p>
           </td>
         </tr>
@@ -166,13 +147,8 @@ export default {
           </td>
           <td>
             <p>
-              Defaults to{" "}
-              <code>["chrome130", "edge130", "firefox130", "safari18"]</code>,
-              full documentation at{" "}
-              <a href="https://esbuild.github.io/api/#target">
-                esbuild website
-              </a>
-              .
+              Defaults to <code>["chrome130", "edge130", "firefox130", "safari18"]</code>, full
+              documentation at <a href="https://esbuild.github.io/api/#target">esbuild website</a>.
             </p>
           </td>
         </tr>
@@ -187,24 +163,24 @@ export default {
               </a>{" "}
               default options applied by Jeasx:
               <Code
-                source={`{
+                source={
+                  /*js*/ `{
   development: process.env.NODE_ENV === "development",
   jsxImportSource: "jsx-async-runtime",
   elementAttributeNameCase: "html",
   stylePropertyNameCase: "css"
-}`}
+}`
+                }
                 lang="jsx"
               />
             </p>
             <p>
               If you want to{" "}
-              <a href="https://mdxjs.com/docs/extending-mdx">
-                extend MDX with plugins
-              </a>
-              , you can configure them in <code>.env.js</code> after installing
-              them to your project:
+              <a href="https://mdxjs.com/docs/extending-mdx">extend MDX with plugins</a>, you can
+              configure them in <code>.env.js</code> after installing them to your project:
               <Code
-                source={`
+                source={
+                  /*js*/ `
 import rehypePrismPlus from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
 import remarkGFM from "remark-gfm";
@@ -217,7 +193,8 @@ export default {
   }
   // ...
 }
-`}
+`
+                }
                 lang="jsx"
               />
             </p>

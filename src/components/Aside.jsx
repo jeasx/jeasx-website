@@ -20,16 +20,10 @@ export default function Aside({ links }) {
                 </a>
               </h3>
               {links && (
-                <ol
-                  role="list"
-                  class="mt-2 space-y-3 pl-5 text-slate-500 dark:text-slate-400"
-                >
+                <ol role="list" class="mt-2 space-y-3 pl-5 text-slate-500 dark:text-slate-400">
                   {links.map(({ label, link }) => (
                     <li>
-                      <a
-                        class="hover:text-slate-600 dark:hover:text-slate-300"
-                        href={link}
-                      >
+                      <a class="hover:text-slate-600 dark:hover:text-slate-300" href={link}>
                         {label}
                       </a>
                     </li>

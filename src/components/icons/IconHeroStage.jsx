@@ -10,11 +10,7 @@ export default function IconHeroStage() {
     >
       <defs>
         <clipPath id=":R3acq:-clip-path">
-          <path
-            fill="#fff"
-            transform="rotate(-180 334 534.4)"
-            d="M0 0h668v1068.8H0z"
-          ></path>
+          <path fill="#fff" transform="rotate(-180 334 534.4)" d="M0 0h668v1068.8H0z"></path>
         </clipPath>
       </defs>
       <g opacity=".4" clip-path="url(#:R3acq:-clip-path)" stroke-width="4">

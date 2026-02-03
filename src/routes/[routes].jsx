@@ -5,10 +5,7 @@ import Layout from "../components/Layout";
 import Lead from "../components/Lead";
 import Next from "../components/Next";
 
-/**
- * @param {import("./types").RouteProps} props
- */
-export default function ({}) {
+export default function () {
   return (
     <Layout
       title="Routes &amp; Guards"
@@ -17,41 +14,34 @@ export default function ({}) {
       headline="Understanding routes"
       next={<Next link="/browser" label="How to handle browser assets?" />}
     >
-      <Lead>
-        In Jeasx, a file system-based routing system is at the heart of the
-        framework.
-      </Lead>
+      <Lead>In Jeasx, a file system-based routing system is at the heart of the framework.</Lead>
       <p>
-        All server routes must be put anywhere in the <code>src</code> directory
-        with filenames enclosed with brackets (<code>[news].jsx</code>) and must
-        be defined as functions that receive{" "}
-        <a href="https://fastify.dev/docs/latest/Reference/Request">request</a>{" "}
-        and <a href="https://fastify.dev/docs/latest/Reference/Reply">reply</a>{" "}
-        objects from Fastify as props.
+        All server routes must be put anywhere in the <code>src</code> directory with filenames
+        enclosed with brackets (<code>[news].jsx</code>) and must be defined as functions that
+        receive <a href="https://fastify.dev/docs/latest/Reference/Request">request</a> and{" "}
+        <a href="https://fastify.dev/docs/latest/Reference/Reply">reply</a> objects from Fastify as
+        props.
       </p>
       <p>
-        Routes can be written using JSX and MDX, but can also be written in
-        JavaScript and/or TypeScript, so supported extensions are:{" "}
-        <code>.js(x)|.ts(x)|.mdx</code>
+        Routes can be written using JSX and MDX, but can also be written in JavaScript and/or
+        TypeScript, so supported extensions are: <code>.js(x)|.ts(x)|.mdx</code>
       </p>
       <p>
-        A route can return various types of payloads for the client, including
-        HTML (default), JSON, or other formats. If you need to perform
-        asynchronous operations, you can declare your route or imported
-        components as async.
+        A route can return various types of payloads for the client, including HTML (default), JSON,
+        or other formats. If you need to perform asynchronous operations, you can declare your route
+        or imported components as async.
       </p>
       <p>
-        <b>Please note:</b> Jeasx doesn't specify any hardcoded outbase
-        directory for esbuild, so it defaults to the lowest common ancestor
-        directory for all your routes. So when you put <b>all</b> your routes
-        into a dedicated folder (e.g. <code>src/routes</code>),{" "}
+        <b>Please note:</b> Jeasx doesn't specify any hardcoded outbase directory for esbuild, so it
+        defaults to the lowest common ancestor directory for all your routes. So when you put{" "}
+        <b>all</b> your routes into a dedicated folder (e.g. <code>src/routes</code>),{" "}
         <code>routes</code> will be removed from the resulting path.
       </p>
       <h2 id="endpoints">Named routes</h2>
       <p>
-        The only rule for named routes is to enclose the base filename within
-        brackets. This convention allows you to store components, services and
-        utilities besides your routes without exposing them as endpoints.
+        The only rule for named routes is to enclose the base filename within brackets. This
+        convention allows you to store components, services and utilities besides your routes
+        without exposing them as endpoints.
       </p>
       <table>
         <tr>
@@ -85,7 +75,8 @@ export default function ({}) {
       </table>
       <h3>Code example</h3>
       <Code
-        source={`
+        source={
+          /*js*/ `
 export default function ({ request, reply }) {
   return (
     <>
@@ -101,15 +92,15 @@ export default function ({ request, reply }) {
       </html>
     <>
   );
-}`}
+}`
+        }
       />
       <h2 id="paths">Dynamic routes</h2>
       <p>
-        Dynamic routes are wildcards designed to capture all requests for the
-        current folder and its subfolders. They enable the creation of content
-        with a dynamic URL structure, such as pages retrieved from a CMS. If a
-        named route exists in the same folder as dynamic route, the named route
-        will take precedence. The name for a dynamic route is fixed and must be:
+        Dynamic routes are wildcards designed to capture all requests for the current folder and its
+        subfolders. They enable the creation of content with a dynamic URL structure, such as pages
+        retrieved from a CMS. If a named route exists in the same folder as dynamic route, the named
+        route will take precedence. The name for a dynamic route is fixed and must be:
         <code>[...path](.jsx|.js|.tsx|.ts|.mdx)</code>
       </p>
       <table>
@@ -150,12 +141,11 @@ export default function ({ request, reply }) {
       />
       <h2 id="guards">Guards</h2>
       <p>
-        Guards enable you to intercept requests and are inherited from the root
-        to the current folder. They are valuable for controlling access to a
-        route. Typically, a guard does not return any payload, allowing the
-        request to be handled by the next defined route. However, if a guard
-        does return a payload, it will be delivered to the client, and no other
-        route will be executed.
+        Guards enable you to intercept requests and are inherited from the root to the current
+        folder. They are valuable for controlling access to a route. Typically, a guard does not
+        return any payload, allowing the request to be handled by the next defined route. However,
+        if a guard does return a payload, it will be delivered to the client, and no other route
+        will be executed.
       </p>
       <table>
         <tr>
@@ -165,8 +155,8 @@ export default function ({ request, reply }) {
         <tr>
           <td>src/blog/[...guard].jsx</td>
           <td>
-            The code of the guard is executed before named or dynamic routes in
-            the current folder or below.
+            The code of the guard is executed before named or dynamic routes in the current folder
+            or below.
           </td>
         </tr>
       </table>
@@ -191,10 +181,9 @@ export default function ({ request, reply }) {
 `}
       />
       <p>
-        Additionally, a guard has the capability to return an object, which will
-        serve as props for all routes protected by the guard. This feature
-        enables the creation of routes that are entirely independent from the
-        request object, simplifying component testing.
+        Additionally, a guard has the capability to return an object, which will serve as props for
+        all routes protected by the guard. This feature enables the creation of routes that are
+        entirely independent from the request object, simplifying component testing.
       </p>
       <Code
         source={`
@@ -217,29 +206,26 @@ export default function ({ message }) {
       >
         <p>
           The vanilla Fastify request object exposes the current url (e.g.{" "}
-          <code>/json/api/request.json?foo=bar</code>) via{" "}
-          <code>request.url</code>.
+          <code>/json/api/request.json?foo=bar</code>) via <code>request.url</code>.
         </p>
         <p>
-          Jeasx adds two additional attributes to the Fastify request object to
-          improve the developer experience:
+          Jeasx adds two additional attributes to the Fastify request object to improve the
+          developer experience:
           <ul>
             <li>
-              <code>request.path</code> gives you the plain path without any
-              query parameters (e.g. <code>/json/api/request.json</code>)
+              <code>request.path</code> gives you the plain path without any query parameters (e.g.{" "}
+              <code>/json/api/request.json</code>)
             </li>
             <li>
-              <code>request.route</code> provides the path to the current
-              endpoint handler (e.g. <code>/json/[...path]</code>)
+              <code>request.route</code> provides the path to the current endpoint handler (e.g.{" "}
+              <code>/json/[...path]</code>)
             </li>
           </ul>
         </p>
         <p>
           Have a look at the{" "}
-          <a href="https://expo.jeasx.dev/json/api/request.json?foo=bar">
-            JSON example
-          </a>{" "}
-          to see <code>request.url, request.path, request.route</code> at work.
+          <a href="https://expo.jeasx.dev/json/api/request.json?foo=bar">JSON example</a> to see{" "}
+          <code>request.url, request.path, request.route</code> at work.
         </p>
       </Highlight>
     </Layout>
