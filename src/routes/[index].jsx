@@ -23,10 +23,9 @@ export default async function () {
         JavaScript, Jeasx empowers developers to craft sustainable web experiences and applications.
       </Lead>
       <h2>Breaking News</h2>
-      <Highlight title="2026-01-30 - Jeasx 2.3.0 released">
+      <Highlight title="2026-02-04 - Jeasx 2.3.1 released">
         <p>
-          🎉 This release features support for MDX and offers a far more powerful configuration.{" "}
-          <a href="/news">Learn more...</a>
+          🎉 This patch release fixes a security issue in Fastify. <a href="/news">Learn more...</a>
         </p>
       </Highlight>
       <h2>Built on top of a proven tech stack</h2>
