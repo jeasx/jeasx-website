@@ -1,0 +1,148 @@
+import Aside from "../components/Aside";
+import Code from "../components/Code";
+import Layout from "../components/Layout";
+import Lead from "../components/Lead";
+
+<Layout
+  title="FAQ"
+  description="Everything you need to know about Jeasx"
+  category="FAQ"
+  headline="Frequently Asked Questions"
+  aside={
+      <Aside links={[
+            {label: "Pronunciation", link: "#pronunciation"},
+            {label: "Context",link: "#context"},
+            {label: "Error handler",link: "#error-handler"},
+            {label: "Response handler",link: "#response-handler"},
+            {label: "Helmet",link: "#helmet"},
+            {label: "CSS-Frameworks",link: "#css-frameworks"},
+            {label: "Static Site Generator",link: "#static-site-generator"},
+            {label: "Browsersync",link: "#browsersync"},
+            {label: "Vercel",link: "#vercel"},
+      ]}/>
+  }
+>
+<Lead>
+Here you can find some frequently asked questions and recipes to customize Jeasx.
+</Lead>
+
+<a id="pronunciation"></a>
+---
+## How is Jeasx officially pronounced?
+
+Jeasx is a combination of the words "JSX" and "ease". The phonetic transcription is `d͡ʒizɛks`.
+
+<audio src="/jeasx.mp3" autoplay={false} controls />
+
+
+<a id="context"></a>
+---
+## Is there something like a context object similar to React?
+
+Yes, Jeasx provides a context object via `this` which gets automagically propagated to sub-components. You can populate the context in an endpoint (e.g., a guard):
+
+```jsx
+export default function ({ request, reply }) {
+  this.date = new Date();
+}
+```
+
+Later, you can access the context in any sub-component which gets called via an endpoint:
+
+```jsx
+export default function () {
+  return <p>The current date is {this.date.toISOString()}</p>;
+}
+```
+
+Have a look at the [demo](https://expo.jeasx.dev/context) to see how things work using the context as them provider.
+
+
+<a id="error-handler"></a>
+---
+## How can I provide user friendly error messages?
+
+To set up an error handler, simply register it in a route of your choice:
+
+```jsx
+this.errorHandler = async (error) => {
+  // You can decide if you want to create a log entry.
+  // console.error("❌", error);
+  return <h1>Internal server error</h1>;
+}
+```
+
+
+<a id="response-handler"></a>
+---
+## How can I modifiy the resulting response (e.g. post-process HTML)?
+
+For example, if you want to prettify the HTML output, you can wire up a response handler in any endpoint (e.g., a guard). The response handler takes the resulting payload as a parameter and returns the modified payload.
+
+```jsx
+import * as prettier from "prettier";
+...
+export default function ({ request, reply }) {
+  this.responseHandler = async (payload) => {
+return typeof payload === "string" &&
+  String(reply.getHeader("content-type")).startsWith("text/html")
+  ? await prettier.format(payload, { parser: "html" })
+  : payload;
+  };
+}
+```
+
+<a id="helmet"></a>
+---
+## Is there a way to set the document title in a sub-component (aka Helmet)?
+
+Yes, have a look at the [head example](https://expo.jeasx.dev/head) which demonstrates how easily this can be achieved with a guard.
+
+
+<a id="css-frameworks"></a>
+---
+## Is it possible to use CSS-Frameworks like SASS or Tailwind?
+
+Certainly! Please have a look at the [package.json](https://github.com/jeasx/jeasx-website/blob/main/package.json) of this website to see how things should be wired for Tailwind. Same approach works for SASS too.
+
+
+<a id="static-site-generator"></a>
+---
+## Can I use Jeasx as a Static Site Generator (SSG)?
+
+Yes, of course. Jeasx is a server side rendering framework at its heart, but it can be easily used to export a static site. In order to do so, simply run your application with `npm start` and then execute
+
+```bash
+wget --mirror --page-requisites --no-host-directories --directory-prefix=www http://localhost:3000 http://localhost:3000/404
+```
+
+to export your site to a `www`-directory, which can be easily served via a simple file-server.
+
+Have a look at the [Dockerfile](https://github.com/jeasx/jeasx-website/blob/main/Dockerfile) of this
+website to see how things can be wired up for serving a static export with [Caddy](https://caddyserver.com) as file-server.
+
+
+<a id="browsersync"></a>
+---
+## How to use a Browsersync with Jeasx?
+
+If you want to reload CSS automagically, start [Browsersync](https://browsersync.io) in proxy-mode in a second terminal:
+  
+```bash
+npx -y browser-sync start -w -f "dist/**/index.css" -p localhost:3000`}
+```
+
+
+<a id="vercel"></a>
+---
+## How can I apply custom caching rules for the public folder when deploying to Vercel?
+  
+As Vercel configures the public folder as default directory for static assets, you have to specify another directory in your `vercel.json`. For example, create an empty directory named `output` at root level with only a `.gitkeep` in it and register it in your `vercel.json`:
+  
+```json
+ {... "outputDirectory": "output" ...}
+```
+
+This change is only recommended, if your Vercel application applies appropriate cache control headers (`CDN-Cache-Control`) or is proxied via a 3rd-party CDN likeCloudflare. Please visit the [Vercel documentation](https://vercel.com/docs/project-configuration#outputdirectory) for more information.
+
+</Layout>
