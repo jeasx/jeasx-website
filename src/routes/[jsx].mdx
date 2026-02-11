@@ -1,0 +1,203 @@
+import Highlight from "../components/Highlight";
+import IconAttention from "../components/icons/IconAttention";
+import Layout from "../components/Layout";
+import Lead from "../components/Lead";
+import Next from "../components/Next";
+
+<Layout
+  title="JSX & MDX"
+  description="Understanding JSX & MDX"
+  category="JSX & MDX"
+  headline="Server-side rendering of JSX and MDX"
+  next={<Next link="/routes" label="How to create routes (aka pages)?" />}
+>
+<Lead>
+Jeasx is a server-side rendering (SSR) framework based on JSX, which means that all of your code is executed on the server and the resulting HTML is sent to the client. JSX is a great templating technology due to its simplicity if you are familiar with the basics of JavaScript.
+</Lead>
+
+If you are not familiar with JSX, you should read the excellent [introduction to JSX](https://react.dev/learn/writing-markup-with-jsx) at the React homepage.
+
+## JSX in Jeasx is a little bit different
+
+Jeasx uses a syntax similar to React, but there are some important differences. Under the hood an independent asynchronous JSX runtime implementation ([jsx-async-runtime](https://github.com/jeasx/jsx-async-runtime)) is used, which is optimized for performant server-side rendering. As this runtime is mostly intended for creating HTML markup on a server, it tries to stick as close to the HTML standards as possible. It also ships with some convenience rendering implementations which make additional libraries like [classnames](https://github.com/JedWatson/classnames) superfluous.
+
+- You can use asynchronous code out of the box, just mark your component as `async` and feel free to use `await` to resolve promises.
+- Attribute names are the same as in HTML, therefore you must use `class` instead of `className` or `aria-label` instead of `ariaLabel`.
+- When using a <strong>style object</strong> to create inline styles, you have to provide css attribute names as used in CSS, therefore use `background-color` instead of `backgroundColor` (e.g. `<div style={{ "background-color": "red", "margin-top": "1rem" }}>...</div>`)
+- When using an <strong>object for a class</strong> definition, it is automagically translated to a string with all truthy values separated by spaces (e.g. `<h1 class={{ center: true, "my-class": true, "my-other-class": false }}>...</h1>`)
+- When using an <strong>array of strings for a class</strong> definition, it is automatically translated into a single string with values separated by spaces (e.g. `<div class={["v-align","h-align"]}>...</div>`)
+- When using an <strong>object</strong> as value for other JSX attributes than `class` or `style`, it is automatically translated to a JSON string in the resulting markup (e.g. `data-props={{ key: "value" }}` becomes `data-props="{&quot;key&quot;:&quot;value&quot;}"`).
+
+### HTML is escaped by default
+
+With **Jeasx >= v2.x.x** all HTML markup is escaped by default. If you want to include HTML (or other code) snippets, you can provide an object with the key `html` containing the literal code to be included in the rendered result: `{{ html: "<p>Some HTML from a CMS</p>" }}`.
+
+```jsx
+<>
+  {{ html: "<!DOCTYPE html>"}}
+  <html lang="en">
+  <body>
+    <h1>{{ html: "Include <i>literal</i> html from a <b>trusted</b> source" }}</h1>
+  </body>
+  </html>
+<>
+```
+
+If you need to disable HTML escaping globally (e.g. restore the behaviour of Jeasx >= v2.x.x) or for a component and children, you can set `this.jsxEscapeHTML = false` in a JSX component. This feature can be used for advanced patterns (e.g. to create custom HTML components):
+
+```jsx
+export default function Html({ children }) {
+  const $jsxEscapeHTML = this.jsxEscapeHTML;
+
+  const RestoreEscape = () => {
+    this.jsxEscapeHTML = $jsxEscapeHTML;
+    return null;
+  };
+
+  this.jsxEscapeHTML = false;
+  return (
+    <>
+      {children}
+      <RestoreEscape />
+    </>
+  );
+}
+```
+
+Then use it like:
+
+```jsx
+<Html>
+  <section>{"<p>Unescaped text</p>"}</section>
+</Html>
+```
+
+If you need to escape HTML by hand, you can import the existing utility function directly from Jeasx:
+
+```jsx
+import { escapeEntities } from "jsx-async-runtime";
+
+escapeEntities("<p>Hello World</p>");
+```
+
+### Here's an example which shows the differences in a single file:
+
+```jsx
+export default async function () {
+  const { value } = await (await fetch("https://api.chucknorris.io/jokes/random")).json();
+
+  return (
+    <>
+    {{ html: "<!DOCTYPE html>"}}
+    <html lang="en">
+    <head>
+      <title>Jokes</title>
+      <style>{".center {text-align: center;}"}</style>
+    </head>
+    <body class="body" style={{ "background-color": "red", "padding": "1rem" }}>
+      <div class={["v-align","h-align"]} data-props={{ key: "value" }}>
+        <h1
+          class={{ center: true, "my-class": true, "my-other-class": false }}
+          style="color: white"
+        >
+          {value}
+        </h1>
+      </div>
+    </body>
+    </html>
+    </>
+  );
+}
+```
+
+[View the result of the above code](/jsx-jokes)
+
+### Transforming JSX components at runtime
+
+The JSX runtime also provides a way to transform JSX components. This can be useful to patch the markup of 3rd party components or to rewrite existing attributes of components.
+
+The following example adds a build timestamp to all image sources, so each image receives a new URL with each deployment. It works by adding a custom `jsxToString` handler via the `this` context. Just add the following code as `src/[guard].js` to your project:
+
+```jsx
+import { jsxToString } from "jsx-async-runtime";
+
+export default function ({ request, reply }) {
+  this.jsxToString = (jsxElement) => {
+    if (jsxElement.type === "tag" && jsxElement.tag === "img") {
+      jsxElement.props.src = jsxElement.props.src + "?" + process.env.BUILD_TIME;
+    }
+    return jsxToString.call(this, jsxElement);
+  };
+}
+```
+
+<Highlight title="Learn more" icon={<IconAttention />}>
+For all the advanced features provided by the `jsx-async-runtime`, have a look at the [example application](https://github.com/jeasx/jsx-async-runtime/blob/main/example/src/App.jsx) in the GitHub-Repository.
+</Highlight>
+
+## MDX - Markdown for the component era
+
+[MDX](https://mdxjs.com) allows you to use JSX directly within your markdown content. This means you can import JSX components and seamlessly embed them in your text. This makes writing long-form content with dynamic components much more enjoyable and efficient. Markdown often feels more natural to write than HTML or JSX, especially for common elements like emphasis or headings.
+
+To get started with MDX, simply create a file with the `.mdx` extension and begin writing markdown. You can import and use existing JSX components right inside your markdown content. Conversely, it's also possible to import MDX components into JSX files.
+
+<b>Please note:</b> To access props in MDX, you have to use `props` as explicit namespace (e.g. `props.request.path`).
+
+```md
+import Layout from "./Layout"
+
+{
+/**
+  @typedef Props
+  @type {import("../types").RouteProps}
+*/
+}
+
+<Layout title="MDX is the perfect companion for JSX">
+# Heading (rank 1)
+## Heading 2
+
+> Block quote
+
+* Unordered
+* List
+
+1. Ordered
+2. List
+
+A paragraph, introducing a thematic break:
+
+---
+
+You can easily access existing `props` in MDX:
+
+- Path: {props.request.path}
+- Route: {props.request.route}
+- ...
+```
+
+Jeasx supports `this` as context for JSX components. This is not supported in MDX. As a workaround, you can wire up a route guard and submit `this` as additional prop for all guarded routes. Then you can access `this` via `props.this` in MDX.
+
+```jsx
+export default function ({ request, reply }) {
+  return {this: this};
+}
+```
+
+If you want to configure additional MDX plugins (which must be installed in your project beforehand), you can easily do so via the `.env.js` file. Jeasx uses [@mdx-js/esbuild](https://mdxjs.com/packages/esbuild) under the hood to transform MDX to JSX, so have a look at the [documentation for existing plugins](https://mdxjs.com/docs/extending-mdx) and configuration.
+
+```jsx
+import rehypePrismPlus from "rehype-prism-plus";
+import rehypeSlug from "rehype-slug";
+import remarkGFM from "remark-gfm";
+
+export default {
+  /** @type import("@mdx-js/esbuild").Options */
+  ESBUILD_MDX_OPTIONS: {
+    remarkPlugins: [[remarkGFM, { singleTilde: false }]],
+    rehypePlugins: [rehypePrismPlus, [rehypeSlug, { prefix: "jeasx-" }]]
+  }
+  //...
+}
+```
+</Layout>
