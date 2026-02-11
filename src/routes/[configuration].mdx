@@ -1,0 +1,172 @@
+import Code from "../components/Code";
+import Highlight from "../components/Highlight";
+import IconAttention from "../components/icons/IconAttention";
+import Layout from "../components/Layout";
+import Lead from "../components/Lead";
+import Next from "../components/Next";
+
+<Layout
+  title="Configuration"
+  description="How to use environment variables to configure Jeasx"
+  category="Configuration"
+  headline="How to configure Jeasx"
+  next={<Next link="/hosting" label="How to host a Jeasx application?" />}
+>
+<Lead>
+Jeasx provides sensible defaults to get you started quickly, but it also allows you to override important settings with environment variables. This makes it easy to adapt the framework to your needs.
+</Lead>
+
+To facilitate managing multiple configurations, Jeasx leverages layers of .env-files. This enables the use of different .env-files based on the NODE_ENV value, such as `.env.development` to override values from `.env` for development. The order of loading .env-files is the same as it is used by the well-known [dotenv-flow](https://github.com/kerimdzhanov/dotenv-flow) library. To load the env-files into `process.env`, Jeasx makes use of the native implementation provided by Node.js via [process.loadEnvFile](https://nodejs.org/docs/latest/api/process.html#processloadenvfilepath) via a custom [utility function](https://github.com/jeasx/jeasx/blob/main/env.js).
+
+- .env.[NODE_ENV].local *(e.g. .env.development.local or .env.production.local)*
+- .env.[NODE_ENV] *(e.g. .env.development or .env.production)*
+- .env.local
+- .env
+- .env.defaults
+- .env.js
+
+An existing environment variable will not be overwritten by subsequent environment files. The last `.env.js` file is an exception to this rule: it is a JavaScript file which must export an default object containing the environment variables.
+**All exported variables from `.env.js` will overwrite already existing variables.**
+
+The configuration object from an `.env.js` file is imported directly into both the build process and server runtime, allowing you to use package imports seamlessly.
+
+```js
+const NODE_ENV_IS_DEVELOPMENT = process.env.NODE_ENV === "development";
+
+export default {
+  /** @type import("esbuild").BuildOptions["target"] */
+  ESBUILD_BROWSER_TARGET: ["chrome130", "edge130", "firefox130", "safari18"],
+  
+  /** @type import("fastify").FastifyServerOptions */
+  FASTIFY_SERVER_OPTIONS: {
+    disableRequestLogging: NODE_ENV_IS_DEVELOPMENT,
+    bodyLimit: 2 * 1024 * 1024,
+    rewriteUrl: (req) => String(req.url).replace(/\.html(?=\?|$)/, ""),
+  },
+
+  /** @type import("@fastify/static").FastifyStaticOptions */
+  FASTIFY_STATIC_OPTIONS: {
+    maxAge: NODE_ENV_IS_DEVELOPMENT ? 0 : "365d",
+  },
+
+  /** @type import("@fastify/cookie").FastifyCookieOptions */
+  // FASTIFY_COOKIE_OPTIONS: {},
+
+  /** @type import("@fastify/formbody").FastifyFormbodyOptions */
+  // FASTIFY_FORMBODY_OPTIONS: {},
+
+  /** @type import("@fastify/multipart").FastifyMultipartOptions */
+  // FASTIFY_MULTIPART_OPTIONS: {},
+};
+```
+
+**Please note:** Jeasx only sets `NODE_ENV=development` automatically when running `jeasx dev`. For production or testing environments, you'll need to set the `NODE_ENV` environment variable to the desired value (e.g. `production` or `test`) depending on your requirements and workflows.
+
+<Highlight title="Environment variables for client code" icon={<IconAttention />}>
+For security reasons, only environment variables prefixed with `BROWSER_PUBLIC_` are accessible in client-side JavaScript to prevent accidental exposure of sensitive data. The values are only updated at build time, so changes to environment variables will require a rebuild to take effect.
+</Highlight>
+
+---
+
+## Configuration options
+
+It is highly recommended to configure Jeasx via `.env.js`, but you can also use process environment variables if preferred.
+
+### HOST
+
+The hostname or IP address that the server should listen on. Defaults to `::` which allows the server to listen on any interface (IPv4 or IPv6).
+
+### PORT
+
+The port number that the server should listen on. Defaults to `3000`.
+
+### BUILD_TIME 
+
+A value set at build time and encoded as `base36` (lower case alphabet and digits). Use it to create a cache busting parameter for loading JavaScript and CSS files.
+
+### ESBUILD_BROWSER_TARGET
+
+Defaults to `["chrome130", "edge130", "firefox130", "safari18"]`, full documentation at [esbuild website](https://esbuild.github.io/api/#target)
+
+### ESBUILD_MDX_OPTIONS
+
+[MDX compile options reference](https://mdxjs.com/packages/mdx/#compileoptions), default options applied by Jeasx: 
+
+```js
+{
+  development: process.env.NODE_ENV === "development",
+  jsxImportSource: "jsx-async-runtime",
+  elementAttributeNameCase: "html",
+  stylePropertyNameCase: "css"
+}
+```
+
+If you want to [extend MDX with plugins](https://mdxjs.com/docs/extending-mdx), you can configure them in `.env.js` after installing them to your project:
+
+```js
+import rehypePrismPlus from "rehype-prism-plus";
+import rehypeSlug from "rehype-slug";
+import remarkGFM from "remark-gfm";
+
+export default {
+  /** @type import("@mdx-js/esbuild").Options */
+  ESBUILD_MDX_OPTIONS: {
+    remarkPlugins: [[remarkGFM, { singleTilde: false }]],
+    rehypePlugins: [rehypePrismPlus, [rehypeSlug, { prefix: "jeasx-" }]]
+  }
+  // ...
+}
+```
+
+### FASTIFY_SERVER_OPTIONS
+
+[Fastity-Server options reference](https://fastify.dev/docs/latest/Reference/Server), default options applied by Jeasx:
+
+```json
+{
+  "logger": true
+}
+```
+
+### FASTIFY_STATIC_OPTIONS
+
+[Fastify-Static options reference](https://github.com/fastify/fastify-static#options), default options applied by Jeasx:
+
+```json
+{
+  "root": [
+    "/absolute/path/to/public",
+    "/absolute/path/to/dist/browser"
+  ],
+  "prefix": "/",
+  "wildcard": false,
+  "preCompressed": true
+}
+```
+
+### FASTIFY_MULTIPART_OPTIONS
+
+[Fastify-Multipart options reference](https://github.com/fastify/fastify-multipart#options), default options applied by Jeasx:
+
+```json
+{
+  "attachFieldsToBody": "keyValues"
+}
+```
+
+### FASTIFY_COOKIE_OPTIONS
+
+[Fastify-Cookie options reference](https://github.com/fastify/fastify-cookie#options), default options applied by Jeasx:
+
+```json
+{}
+```
+
+### FASTIFY_FORMBODY_OPTIONS
+
+[Fastify-Formbody options reference](https://github.com/fastify/fastify-formbody#options), default options applied by Jeasx:
+
+```json
+{}
+```
+</Layout>
