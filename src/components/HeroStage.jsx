@@ -1,4 +1,4 @@
-import HeroStageCode from "./HeroStageCode.mdx";
+import RecipeExample from "../components/RecipeExample.mdx";
 import IconHeroStage from "./icons/IconHeroStage";
 
 export default function HeroStage() {
@@ -80,7 +80,7 @@ export default function HeroStage() {
                     </div>
                   </div>
                   <div class="flex items-start px-1 py-2.5 text-sm overflow-auto">
-                    <HeroStageCode />
+                    <RecipeExample />
                   </div>
                 </div>
               </div>
