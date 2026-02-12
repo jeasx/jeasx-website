@@ -16,8 +16,11 @@ export default function ({ request, reply }) {
   this.reply = reply;
 
   this.jsxToString = (jsxElement) => {
-    if (jsxElement.type === "tag" && jsxElement.tag === "a") {
-      if (jsxElement.props.href?.startsWith("https://")) {
+    if (jsxElement.type === "tag") {
+      if (jsxElement.tag === "strong") {
+        jsxElement.tag = "b";
+      }
+      if (jsxElement.tag === "a" && jsxElement.props.href?.startsWith("https://")) {
         jsxElement.props.target = "_blank";
       }
     }
