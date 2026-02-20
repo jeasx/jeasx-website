@@ -1,5 +1,5 @@
 import Highlight from "../components/Highlight";
-import IconAttention from "../components/icons/IconAttention";
+import IconAttention from "../components/icons/IconAttention.svg";
 import Layout from "../components/Layout";
 import Lead from "../components/Lead";
 import Next from "../components/Next";
@@ -30,38 +30,23 @@ An existing environment variable will not be overwritten by subsequent environme
 The configuration object from an `.env.js` file is imported directly into both the build process and server runtime, allowing you to use package imports seamlessly.
 
 ```js
-const NODE_ENV_IS_DEVELOPMENT = process.env.NODE_ENV === "development";
-
 export default {
-  /** @type import("esbuild").BuildOptions["target"] */
-  ESBUILD_BROWSER_TARGET: ["chrome130", "edge130", "firefox130", "safari18"],
-  
-  /** @type import("fastify").FastifyServerOptions */
-  FASTIFY_SERVER_OPTIONS: {
-    disableRequestLogging: NODE_ENV_IS_DEVELOPMENT,
-    bodyLimit: 2 * 1024 * 1024,
-    rewriteUrl: (req) => String(req.url).replace(/\.html(?=\?|$)/, ""),
-  },
+  /** @type {() => import("esbuild").BuildOptions} */
+  ESBUILD_BROWSER_OPTIONS: () => ({
+    target: ["chrome130", "edge130", "firefox130", "safari18"]
+  }),
 
-  /** @type import("@fastify/static").FastifyStaticOptions */
-  FASTIFY_STATIC_OPTIONS: {
-    maxAge: NODE_ENV_IS_DEVELOPMENT ? 0 : "365d",
-  },
-
-  /** @type import("@fastify/cookie").FastifyCookieOptions */
-  // FASTIFY_COOKIE_OPTIONS: {},
-
-  /** @type import("@fastify/formbody").FastifyFormbodyOptions */
-  // FASTIFY_FORMBODY_OPTIONS: {},
-
-  /** @type import("@fastify/multipart").FastifyMultipartOptions */
-  // FASTIFY_MULTIPART_OPTIONS: {},
+  /** @type {() => import("fastify").FastifyServerOptions} */
+  FASTIFY_SERVER_OPTIONS: () => ({
+    disableRequestLogging: process.env.NODE_ENV === "development",
+    bodyLimit: 1024 * 1024
+  })
 };
 ```
 
 **Please note:** Jeasx only sets `NODE_ENV=development` automatically when running `jeasx dev`. For production or testing environments, you'll need to set the `NODE_ENV` environment variable to the desired value (e.g. `production` or `test`) depending on your requirements and workflows.
 
-<Highlight title="Environment variables for client code" icon={<IconAttention />}>
+<Highlight title="Environment variables for client code" icon={{ html: IconAttention }}>
 For security reasons, only environment variables prefixed with `BROWSER_PUBLIC_` are accessible in client-side JavaScript to prevent accidental exposure of sensitive data. The values are only updated at build time, so changes to environment variables will require a rebuild to take effect.
 </Highlight>
 
@@ -83,38 +68,57 @@ The port number that the server should listen on. Defaults to `3000`.
 
 A value set at build time and encoded as `base36` (lower case alphabet and digits). Use it to create a cache busting parameter for loading JavaScript and CSS files.
 
-### ESBUILD_BROWSER_TARGET
+### ESBUILD_SERVER_OPTIONS
 
-Defaults to `["chrome130", "edge130", "firefox130", "safari18"]`, full documentation at [esbuild website](https://esbuild.github.io/api/#target)
-
-### ESBUILD_MDX_OPTIONS
-
-[MDX compile options reference](https://mdxjs.com/packages/mdx/#compileoptions), default options applied by Jeasx: 
+Useful to enhance esbuild for compiling server code with existing plugins ([Jeasx config at GitHub](https://github.com/jeasx/jeasx/blob/main/esbuild.config.js)). If you want to [use MDX with plugins](https://mdxjs.com/docs/extending-mdx), you can configure them in `.env.js` after installing them to your project:
 
 ```js
-{
-  development: process.env.NODE_ENV === "development",
-  jsxImportSource: "jsx-async-runtime",
-  elementAttributeNameCase: "html",
-  stylePropertyNameCase: "css"
-}
-```
-
-If you want to [extend MDX with plugins](https://mdxjs.com/docs/extending-mdx), you can configure them in `.env.js` after installing them to your project:
-
-```js
+import mdx from "@mdx-js/esbuild";
 import rehypePrismPlus from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
 import remarkGFM from "remark-gfm";
 
 export default {
-  /** @type import("@mdx-js/esbuild").Options */
-  ESBUILD_MDX_OPTIONS: {
-    remarkPlugins: [[remarkGFM, { singleTilde: false }]],
-    rehypePlugins: [rehypePrismPlus, [rehypeSlug, { prefix: "jeasx-" }]]
-  }
-  // ...
+  /** @type {() => import("esbuild").BuildOptions} */
+  ESBUILD_SERVER_OPTIONS: () => ({
+    plugins: [
+      mdx({
+        development: process.env.NODE_ENV === "development",
+        jsxImportSource: "jsx-async-runtime",
+        elementAttributeNameCase: "html",
+        stylePropertyNameCase: "css",
+        remarkPlugins: [[remarkGFM, { singleTilde: false }]],
+        rehypePlugins: [rehypePrismPlus, [rehypeSlug, { prefix: "jeasx-" }]]
+      })
+    ]
+  })
 }
+```
+
+### ESBUILD_BROWSER_OPTIONS
+
+Useful to configure build options for the browser bundle ([Jeasx config at GitHub](https://github.com/jeasx/jeasx/blob/main/esbuild.config.js)), e.g. reconfigure the browser target of esbuild. Full documentation at [esbuild website](https://esbuild.github.io/api/#target).
+
+```js
+export default {
+  /** @type {() => import("esbuild").BuildOptions} */
+  ESBUILD_BROWSER_OPTIONS: () => ({
+    target: ["chrome130", "edge130", "firefox130", "safari18"]
+  })
+};
+```
+
+### FASTIFY_SERVER
+
+This allows you to enhance the functionality of the underlying [Fastify server](https://fastify.dev/docs/latest/Reference/Server/), e.g. registering plugins.
+
+```js
+import fastifyCompress from "@fastify/compress";
+
+export default {
+  /** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance} */
+  FASTIFY_SERVER: (fastify) => fastify.register(fastifyCompress)
+};
 ```
 
 ### FASTIFY_SERVER_OPTIONS
@@ -138,8 +142,7 @@ export default {
     "/absolute/path/to/dist/browser"
   ],
   "prefix": "/",
-  "wildcard": false,
-  "preCompressed": true
+  "wildcard": false
 }
 ```
 

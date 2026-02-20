@@ -1,5 +1,5 @@
 import Highlight from "../components/Highlight";
-import IconAttention from "../components/icons/IconAttention";
+import IconAttention from "../components/icons/IconAttention.svg";
 import Layout from "../components/Layout";
 import Lead from "../components/Lead";
 import Next from "../components/Next";
@@ -15,9 +15,9 @@ import Next from "../components/Next";
 In Jeasx, a file system-based routing system is at the heart of the framework.
 </Lead>
 
-All server routes must be put anywhere in the `src` directory with filenames enclosed with brackets (`[news].jsx`) and must be defined as functions that receive [request](https://fastify.dev/docs/latest/Reference/Request) and [reply](https://fastify.dev/docs/latest/Reference/Reply) objects from Fastify as props.
+All server routes must be put anywhere in the `src` directory with filenames enclosed with brackets (`[news].jsx`) and should be defined as default exported functions that receive [request](https://fastify.dev/docs/latest/Reference/Request) and [reply](https://fastify.dev/docs/latest/Reference/Reply) objects from Fastify as props.
 
-Routes can be written using JSX and MDX, but can also be written in JavaScript and/or TypeScript, so supported extensions are: `.js(x)|.ts(x)|.mdx`
+Routes can be written using JSX (or MDX if properly installed and configured), but can also be written in JavaScript and/or TypeScript, or any other file type supported by esbuild.
 
 A route can return various types of payloads for the client, including HTML (default), JSON, or other formats. If you need to perform asynchronous operations, you can declare your route or imported components as async.
 
@@ -34,6 +34,7 @@ The only rule for named routes is to enclose the base filename within brackets. 
 <tr><td>src/company/[index].tsx</td><td>/company</td></tr>
 <tr><td>src/images/[logo.svg].js</td><td>/images/logo.svg</td></tr>
 <tr><td>src/api/posts/[update.json].ts</td><td>/api/posts/update.json</td></tr>
+<tr><td>src/api/[health].json</td><td>/api/health</td></tr>
 <tr><td>src/api/posts/utils/format.ts</td><td>This file is not exposed as endpoint.</td></tr>
 </table>
 
@@ -59,7 +60,7 @@ export default function ({ request, reply }) {
 
 ## Dynamic routes
 
-Dynamic routes are wildcards designed to capture all requests for the current folder and its subfolders. They enable the creation of content with a dynamic URL structure, such as pages retrieved from a CMS. If a named route exists in the same folder as dynamic route, the named route will take precedence. The name for a dynamic route is fixed and must be: `[...path](.jsx|.js|.tsx|.ts|.mdx)`
+Dynamic routes are wildcards designed to capture all requests for the current folder and its subfolders. They enable the creation of content with a dynamic URL structure, such as pages retrieved from a CMS. If a named route exists in the same folder as dynamic route, the named route will take precedence. The name for a dynamic route is fixed and must be: `[...path](.jsx|.js|.tsx|.ts)`
 
 <table>
 <tr><th style="width:50%">Route path</th><th style="width:50%">URL</th></tr>
@@ -132,7 +133,7 @@ export default function ({ message }) {
 
 <Highlight
   title="What is the difference between request.url, request.path and request.route?"
-  icon={<IconAttention />}
+  icon={{ html: IconAttention }}
 >
 The vanilla Fastify request object exposes the current url (e.g. `/json/api/request.json?foo=bar`) via `request.url`.
 

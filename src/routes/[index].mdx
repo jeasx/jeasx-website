@@ -2,9 +2,9 @@ import Feature from "../components/Feature";
 import Features from "../components/Features";
 import HeroStage from "../components/HeroStage";
 import Highlight from "../components/Highlight";
-import IconArchitecture from "../components/icons/IconArchitecture";
-import IconInstallation from "../components/icons/IconInstallation";
-import IconReference from "../components/icons/IconReference";
+import IconArchitecture from "../components/icons/IconArchitecture.svg";
+import IconInstallation from "../components/icons/IconInstallation.svg";
+import IconReference from "../components/icons/IconReference.svg";
 import Layout from "../components/Layout";
 import Lead from "../components/Lead";
 import Next from "../components/Next";
@@ -22,8 +22,8 @@ By eliminating unnecessary complexity and providing precise control over HTML, C
 
 ## Breaking News
 
-<Highlight title="2026-02-12 - Jeasx 2.3.2 released">
-🎉 Upgraded to `@types/node@25` to ease the use of Node 25. [Learn more...](/news)
+<Highlight title="2026-02-20 - Jeasx 2.4.0 released">
+🎉 You can now use all existing configuration options and plugins for `esbuild` and `Fastify`. [Learn more...](/news)
 </Highlight>
 
 ## Built on top of a proven tech stack
@@ -32,15 +32,15 @@ Jeasx is a sleek and modern framework that leverages tried and tested web techno
 
 <Features>
 
-<Feature headline="jsx-async-runtime" link="https://github.com/jeasx/jsx-async-runtime" icon={<IconInstallation />}>
+<Feature headline="jsx-async-runtime" link="https://github.com/jeasx/jsx-async-runtime" icon={{ html: IconInstallation }}>
 JSX is an outstanding templating technology that simplifies web development. By utilizing an asynchronous JSX runtime, the development process becomes even more straightforward.
 </Feature>
 
-<Feature headline="fastify" link="https://fastify.dev" icon={<IconArchitecture />}>
+<Feature headline="fastify" link="https://fastify.dev" icon={{ html: IconArchitecture }}>
 Fastify is a high-performance web framework that excels at delivering an exceptional developer experience with minimal overhead. Fastify stands out as one of the fastest web frameworks available.
 </Feature>
 
-<Feature headline="esbuild" link="https://esbuild.github.io" icon={<IconReference />}>
+<Feature headline="esbuild" link="https://esbuild.github.io" icon={{ html: IconReference }}>
 esbuild is a bundler for JavaScript. It is written in Go, which enables it to achieve remarkable performance gains. esbuild supports JSX, TypeScript, tree-shaking and more.
 </Feature>
 

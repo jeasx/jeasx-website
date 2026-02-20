@@ -1,5 +1,5 @@
 import Highlight from "../components/Highlight";
-import IconAttention from "../components/icons/IconAttention";
+import IconAttention from "../components/icons/IconAttention.svg";
 import Layout from "../components/Layout";
 import Lead from "../components/Lead";
 import Next from "../components/Next";
@@ -131,7 +131,7 @@ export default function ({ request, reply }) {
 }
 ```
 
-<Highlight title="Learn more" icon={<IconAttention />}>
+<Highlight title="Learn more" icon={{ html: IconAttention }}>
 For all the advanced features provided by the `jsx-async-runtime`, have a look at the [example application](https://github.com/jeasx/jsx-async-runtime/blob/main/example/src/App.jsx) in the GitHub-Repository.
 </Highlight>
 
@@ -139,7 +139,27 @@ For all the advanced features provided by the `jsx-async-runtime`, have a look a
 
 [MDX](https://mdxjs.com) allows you to use JSX directly within your markdown content. This means you can import JSX components and seamlessly embed them in your text. This makes writing long-form content with dynamic components much more enjoyable and efficient. Markdown often feels more natural to write than HTML or JSX, especially for common elements like emphasis or headings.
 
-To get started with MDX, simply create a file with the `.mdx` extension and begin writing markdown. You can import and use existing JSX components right inside your markdown content. Conversely, it's also possible to import MDX components into JSX files.
+If you want to use MDX with Jeasx, simply run `npm install @mdx-js/esbuild` and add the configuration below to `ESBUILD_SERVER_OPTIONS` in `.env.js`.
+
+```jsx
+import mdx from "@mdx-js/esbuild";
+
+export default {
+  /** @type {() => import("esbuild").BuildOptions} */
+  ESBUILD_SERVER_OPTIONS: () => ({
+    plugins: [
+      mdx({
+        development: process.env.NODE_ENV === "development",
+        jsxImportSource: "jsx-async-runtime",
+        elementAttributeNameCase: "html",
+        stylePropertyNameCase: "css"
+      })
+    ]
+  })
+}
+```
+
+Then simply create a file with the `.mdx` extension and begin writing markdown. You can import and use existing JSX components right inside your markdown content. Conversely, it's also possible to import MDX components into JSX files.
 
 <b>Please note:</b> To access props in MDX, you have to use `props` as explicit namespace (e.g. `props.request.path`).
 
@@ -184,20 +204,28 @@ export default function ({ request, reply }) {
 }
 ```
 
-If you want to configure additional MDX plugins (which must be installed in your project beforehand), you can easily do so via the `.env.js` file. Jeasx uses [@mdx-js/esbuild](https://mdxjs.com/packages/esbuild) under the hood to transform MDX to JSX, so have a look at the [documentation for existing plugins](https://mdxjs.com/docs/extending-mdx) and configuration.
+If you want to configure additional MDX plugins (which must be installed in your project beforehand), you can easily do so via the `.env.js` file. Jeasx uses [@mdx-js/esbuild](https://mdxjs.com/packages/esbuild) under the hood to transform MDX to JSX, so have a look at the [documentation for existing plugins](https://mdxjs.com/docs/extending-mdx) and configurations.
 
 ```jsx
+import mdx from "@mdx-js/esbuild";
 import rehypePrismPlus from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
 import remarkGFM from "remark-gfm";
 
 export default {
-  /** @type import("@mdx-js/esbuild").Options */
-  ESBUILD_MDX_OPTIONS: {
-    remarkPlugins: [[remarkGFM, { singleTilde: false }]],
-    rehypePlugins: [rehypePrismPlus, [rehypeSlug, { prefix: "jeasx-" }]]
-  }
-  //...
+  /** @type {() => import("esbuild").BuildOptions} */
+  ESBUILD_SERVER_OPTIONS: () => ({
+    plugins: [
+      mdx({
+        development: process.env.NODE_ENV === "development",
+        jsxImportSource: "jsx-async-runtime",
+        elementAttributeNameCase: "html",
+        stylePropertyNameCase: "css",
+        remarkPlugins: [[remarkGFM, { singleTilde: false }]],
+        rehypePlugins: [rehypePrismPlus, [rehypeSlug, { prefix: "jeasx-" }]],
+      })
+    ]
+  })
 }
 ```
 </Layout>

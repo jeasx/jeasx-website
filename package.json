@@ -9,15 +9,16 @@
     "css": "npx @tailwindcss/cli -i ./src/browser/tailwind/tailwind.css -o ./src/browser/tailwind/output.css"
   },
   "dependencies": {
-    "jeasx": "2.3.2",
+    "@mdx-js/esbuild": "3.1.1",
+    "jeasx": "2.4.0",
     "prismjs": "1.30.0",
     "rehype-prism-plus": "2.0.2"
   },
   "devDependencies": {
-    "@tailwindcss/cli": "4.1.18",
+    "@tailwindcss/cli": "4.2.0",
     "@tailwindcss/typography": "0.5.19",
     "concurrently": "9.2.1",
-    "tailwindcss": "4.1.18"
+    "tailwindcss": "4.2.0"
   },
   "browserslist": "defaults, not ie <= 11"
 }

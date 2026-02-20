@@ -1,5 +1,5 @@
 import RecipeExample from "../components/RecipeExample.mdx";
-import IconHeroStage from "./icons/IconHeroStage";
+import IconHeroStage from "./icons/IconHeroStage.svg";
 
 export default function HeroStage() {
   return (
@@ -43,7 +43,7 @@ export default function HeroStage() {
           </div>
           <div class="relative lg:static xl:pl-10">
             <div class="absolute inset-x-[-50vw] -top-32 -bottom-48 [mask-image:linear-gradient(transparent,white,white)] lg:-top-32 lg:right-0 lg:-bottom-32 lg:left-[calc(50%+14rem)] lg:[mask-image:none] dark:[mask-image:linear-gradient(transparent,white,transparent)] lg:dark:[mask-image:linear-gradient(white,white,transparent)]">
-              <IconHeroStage />
+              {{ html: IconHeroStage }}
             </div>
             <div class="relative">
               <img
