@@ -83,10 +83,10 @@ import * as prettier from "prettier";
 ...
 export default function ({ request, reply }) {
   this.responseHandler = async (payload) => {
-return typeof payload === "string" &&
-  String(reply.getHeader("content-type")).startsWith("text/html")
-  ? await prettier.format(payload, { parser: "html" })
-  : payload;
+    return typeof payload === "string" &&
+      String(reply.getHeader("content-type")).startsWith("text/html")
+      ? await prettier.format(payload, { parser: "html" })
+      : payload;
   };
 }
 ```
