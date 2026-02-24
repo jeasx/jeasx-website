@@ -10,11 +10,11 @@
         Cache-Control "public, max-age=31536000, immutable"
     }
 
-    @noExt {
+    @html {
         path_regexp noext ^/[^.]+$
     }
 
-    header @noExt {
+    header @html {
         Content-Type "text/html; charset=utf-8"
     }
 

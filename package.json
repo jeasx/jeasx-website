@@ -15,10 +15,10 @@
     "rehype-prism-plus": "2.0.2"
   },
   "devDependencies": {
-    "@tailwindcss/cli": "4.2.0",
+    "@tailwindcss/cli": "4.2.1",
     "@tailwindcss/typography": "0.5.19",
     "concurrently": "9.2.1",
-    "tailwindcss": "4.2.0"
+    "tailwindcss": "4.2.1"
   },
   "browserslist": "defaults, not ie <= 11"
 }
