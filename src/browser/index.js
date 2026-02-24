@@ -1,9 +1,9 @@
-import "prismjs";
-import "prismjs/components/prism-bash";
-import "prismjs/components/prism-docker";
-import "prismjs/components/prism-ini";
-import "prismjs/components/prism-json";
-import "prismjs/components/prism-jsx";
+// import "prismjs";
+// import "prismjs/components/prism-bash";
+// import "prismjs/components/prism-docker";
+// import "prismjs/components/prism-ini";
+// import "prismjs/components/prism-json";
+// import "prismjs/components/prism-jsx";
 
 addEventListener("load", () => {
   document.querySelectorAll("[data-navigation-toggle]").forEach((el) => {

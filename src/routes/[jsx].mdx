@@ -168,16 +168,15 @@ Then simply create a route with the `.mdx` extension and begin writing markdown.
 ```md
 import Layout from "./Layout"
 
-{
-/**
+{/**
   @typedef Props
-  @type {import("../types").RouteProps}
-*/
-}
+  @type {import("./types").RouteProps}
+*/}
 
 <Layout title="MDX is the perfect companion for JSX">
-# Heading (rank 1)
+# Heading 1
 ## Heading 2
+### ...
 
 > Block quote
 
@@ -195,7 +194,7 @@ You can easily access existing `props` in MDX:
 
 - Path: {props.request.path}
 - Route: {props.request.route}
-- ...
+</Layout>
 ```
 
 Jeasx supports `this` as context for JSX components. This is not supported in MDX. As a workaround, you can wire up a route guard and submit `this` as additional prop for all guarded routes. Then you can access `this` via `props.this` in MDX.
