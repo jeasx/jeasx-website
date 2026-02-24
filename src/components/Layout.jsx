@@ -10,11 +10,11 @@ import Navigation from "./Navigation";
 export default function Layout({
   title,
   description,
-  stage,
-  category,
-  headline,
-  next,
-  aside,
+  stage = undefined,
+  category = undefined,
+  headline = undefined,
+  next = undefined,
+  aside = undefined,
   children,
 }) {
   const path = this.request.path;

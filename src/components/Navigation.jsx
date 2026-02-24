@@ -1,14 +1,11 @@
 export default function Navigation() {
   return (
     <nav class="text-base lg:text-sm">
-      <ul role="list" class="space-y-9">
+      <ul class="space-y-9">
         {NAV_ITEMS.map(({ label, links }) => (
           <li>
             <h2 class="font-display font-medium text-slate-900 dark:text-white">{label}</h2>
-            <ul
-              role="list"
-              class="mt-2 space-y-2 border-l-2 border-slate-100 lg:mt-4 lg:space-y-4 lg:border-slate-200 dark:border-slate-800"
-            >
+            <ul class="mt-2 space-y-2 border-l-2 border-slate-100 lg:mt-4 lg:space-y-4 lg:border-slate-200 dark:border-slate-800">
               {links.map(({ label, link }) => (
                 <li class="relative">
                   <a
