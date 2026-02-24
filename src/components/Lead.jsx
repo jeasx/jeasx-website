@@ -1,3 +1,3 @@
-export default function Lead({ children = undefined }) {
+export default function Lead({ children }) {
   return <div class="lead">{children}</div>;
 }

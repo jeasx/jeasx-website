@@ -8,14 +8,14 @@ import Navigation from "./Navigation";
  * @this {import("../routes/types").RouteProps}
  */
 export default function Layout({
-  title = "",
-  description = "",
-  stage = undefined,
-  category = undefined,
-  headline = undefined,
-  next = undefined,
-  aside = undefined,
-  children = undefined,
+  title,
+  description,
+  stage,
+  category,
+  headline,
+  next,
+  aside,
+  children,
 }) {
   const path = this.request.path;
   return (
@@ -24,25 +24,17 @@ export default function Layout({
       <html lang="en" class="light h-full scroll-smooth antialiased">
         <head>
           <title>{title} &raquo; Jeasx - JSX with Ease</title>
-          {process.env.NODE_ENV !== "development" && (
-            <meta
-              http-equiv="content-security-policy"
-              content={`default-src 'none'; script-src 'self'${
-                process.env.NODE_ENV === "development" ? " 'unsafe-inline'" : ""
-              }; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' cdn.dummyjson.com; object-src 'none'; form-action 'self'; base-uri 'self'; manifest-src 'self'; media-src 'self';`}
-            />
-          )}
           <meta charset="utf-8" />
           <meta name="referrer" content="same-origin" />
           <meta name="description" content={description} />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="msapplication-TileColor" content="#da532c" />
+          <meta name="theme-color" content="#ffffff" />
           <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
           <link rel="manifest" href="/site.webmanifest" />
           <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-          <meta name="msapplication-TileColor" content="#da532c" />
-          <meta name="theme-color" content="#ffffff" />
           <link
             rel="canonical"
             href={`https://www.jeasx.dev${path.endsWith("/") ? path.slice(0, -1) : path}`}
@@ -77,9 +69,9 @@ export default function Layout({
                     {children}
                   </div>
                 </article>
-                {next && next}
+                {next}
               </div>
-              {aside && aside}
+              {aside}
             </div>
           </div>
           <MobileNavigation />

@@ -1,6 +1,4 @@
 export default function Header() {
-  const q = this.request.query["q"];
-
   return (
     <header class="sticky top-0 z-50 flex flex-none flex-wrap items-center justify-between bg-white px-4 py-5 shadow-md shadow-slate-900/5 transition duration-500 sm:px-6 lg:px-8 dark:bg-transparent dark:shadow-none">
       <div class="mr-6 flex lg:hidden">

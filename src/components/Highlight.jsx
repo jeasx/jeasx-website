@@ -1,9 +1,4 @@
-export default function Highlight({
-  title = undefined,
-  icon = undefined,
-  variant = false,
-  children = undefined,
-}) {
+export default function Highlight({ title, icon, variant, children }) {
   return (
     <div
       class={
