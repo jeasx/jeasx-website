@@ -1,6 +1,6 @@
 FROM node:current-alpine
 
-RUN apk add --no-cache caddy wget
+RUN apk add --no-cache caddy wget mailcap
 
 USER node
 WORKDIR /home/node
