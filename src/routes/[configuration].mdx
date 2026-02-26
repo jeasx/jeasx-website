@@ -76,7 +76,9 @@ A value set at build time and encoded as `base36` (lower case alphabet and digit
 
 ### ESBUILD_SERVER_OPTIONS
 
-Useful to enhance esbuild for compiling server code with existing plugins ([Jeasx config at GitHub](https://github.com/jeasx/jeasx/blob/main/esbuild.config.js)). If you want to [use MDX with plugins](https://mdxjs.com/docs/extending-mdx), you can configure them in `.env.js` after installing them to your project:
+Useful to enhance esbuild for compiling server code with existing plugins ([Jeasx config at GitHub](https://github.com/jeasx/jeasx/blob/main/esbuild.config.js)). The esbuild website provides a detailed explanation of [all configuration options](https://esbuild.github.io/api/).
+
+If you want to [use MDX with plugins](https://mdxjs.com/docs/extending-mdx), you can configure them in `.env.js` after installing them to your project:
 
 ```js
 import mdx from "@mdx-js/esbuild";
