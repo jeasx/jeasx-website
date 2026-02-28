@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@mdx-js/esbuild": "3.1.1",
-    "@tailwindcss/cli": "4.2.1",
     "@tailwindcss/typography": "0.5.19",
     "esbuild-plugin-tailwindcss": "2.2.0",
     "jeasx": "2.4.0",
