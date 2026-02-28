@@ -1,4 +1,5 @@
-import mdx from "@mdx-js/esbuild";
+import mdxPlugin from "@mdx-js/esbuild";
+import tailwindPlugin from "esbuild-plugin-tailwindcss";
 import rehypePrismPlus from "rehype-prism-plus";
 
 const NODE_ENV_IS_DEVELOPMENT = process.env.NODE_ENV === "development";
@@ -8,7 +9,7 @@ export default {
   ESBUILD_SERVER_OPTIONS: () => ({
     loader: { ".svg": "text" },
     plugins: [
-      mdx({
+      mdxPlugin({
         development: NODE_ENV_IS_DEVELOPMENT,
         jsxImportSource: "jsx-async-runtime",
         elementAttributeNameCase: "html",
@@ -20,6 +21,7 @@ export default {
 
   /** @type {() => import("esbuild").BuildOptions} */
   ESBUILD_BROWSER_OPTIONS: () => ({
+    plugins: [tailwindPlugin()],
     target: ["chrome130", "edge130", "firefox130", "safari18"],
   }),
 

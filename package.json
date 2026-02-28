@@ -5,19 +5,16 @@
     "start": "jeasx start",
     "build": "jeasx build",
     "clean": "jeasx clean",
-    "dev": "concurrently -c auto -n dev,css 'jeasx dev' 'npm:css -- --watch'",
-    "css": "npx @tailwindcss/cli -i ./src/browser/tailwind/tailwind.css -o ./src/browser/tailwind/output.css"
+    "dev": "jeasx dev"
   },
   "dependencies": {
     "@mdx-js/esbuild": "3.1.1",
-    "jeasx": "2.4.0",
-    "prismjs": "1.30.0",
-    "rehype-prism-plus": "2.0.2"
-  },
-  "devDependencies": {
     "@tailwindcss/cli": "4.2.1",
     "@tailwindcss/typography": "0.5.19",
-    "concurrently": "9.2.1",
+    "esbuild-plugin-tailwindcss": "2.2.0",
+    "jeasx": "2.4.0",
+    "prismjs": "1.30.0",
+    "rehype-prism-plus": "2.0.2",
     "tailwindcss": "4.2.1"
   },
   "browserslist": "defaults, not ie <= 11"
