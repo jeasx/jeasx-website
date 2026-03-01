@@ -7,8 +7,11 @@ addEventListener("load", () => {
 
   document.getElementById("search-form").addEventListener("submit", (e) => {
     e.preventDefault();
-    // @ts-ignore
-    const q = document.getElementById("search-input").value;
-    window.open(`https://www.mojeek.com/search?q=jeasx+${encodeURIComponent(q)}`, "_blank").focus();
+    const input = document.getElementById("search-input");
+    if (input instanceof HTMLInputElement) {
+      window
+        .open(`https://www.mojeek.com/search?q=jeasx+${encodeURIComponent(input.value)}`, "_blank")
+        .focus();
+    }
   });
 });
