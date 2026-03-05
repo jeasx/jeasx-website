@@ -21,21 +21,45 @@ Routes can be written using JSX (or MDX if properly installed and configured), b
 
 A route can return various types of payloads for the client, including HTML (default), JSON, or other formats. If you need to perform asynchronous operations, you can declare your route or imported components as async.
 
-*Please note:* Jeasx doesn't specify any hardcoded outbase directory for esbuild, so it defaults to the lowest common ancestor directory for all your routes. So when you put *all* your routes into a dedicated folder (e.g. `src/routes`), `routes` will be removed from the resulting path.
+_Please note:_ Jeasx doesn't specify any hardcoded outbase directory for esbuild, so it defaults to the lowest common ancestor directory for all your routes. So when you put _all_ your routes into a dedicated folder (e.g. `src/routes`), `routes` will be removed from the resulting path.
 
 ## Named routes
 
 The only rule for named routes is to enclose the base filename within brackets. This convention allows you to store components, services and utilities besides your routes without exposing them as endpoints.
 
 <table>
-<tr><th style="width:50%">Route path</th><th style="width:50%">URL</th></tr>
-<tr><td>src/[index].jsx</td><td>/</td></tr>
-<tr><td>src/a/b/[you-name-it].jsx</td><td>/a/b/you-name-it</td></tr>
-<tr><td>src/company/[index].tsx</td><td>/company</td></tr>
-<tr><td>src/images/[logo.svg].js</td><td>/images/logo.svg</td></tr>
-<tr><td>src/api/posts/[update.json].ts</td><td>/api/posts/update.json</td></tr>
-<tr><td>src/api/[health].json</td><td>/api/health</td></tr>
-<tr><td>src/api/posts/utils/format.ts</td><td>This file is not exposed as endpoint.</td></tr>
+  <tr>
+    <th style="width:50%">Route path</th>
+    <th style="width:50%">URL</th>
+  </tr>
+  <tr>
+    <td>src/[index].jsx</td>
+    <td>/</td>
+  </tr>
+  <tr>
+    <td>src/a/b/[you-name-it].jsx</td>
+    <td>/a/b/you-name-it</td>
+  </tr>
+  <tr>
+    <td>src/company/[index].tsx</td>
+    <td>/company</td>
+  </tr>
+  <tr>
+    <td>src/images/[logo.svg].js</td>
+    <td>/images/logo.svg</td>
+  </tr>
+  <tr>
+    <td>src/api/posts/[update.json].ts</td>
+    <td>/api/posts/update.json</td>
+  </tr>
+  <tr>
+    <td>src/api/[health].json</td>
+    <td>/api/health</td>
+  </tr>
+  <tr>
+    <td>src/api/posts/utils/format.ts</td>
+    <td>This file is not exposed as endpoint.</td>
+  </tr>
 </table>
 
 ### Code example
@@ -63,8 +87,18 @@ export default function ({ request, reply }) {
 Dynamic routes are wildcards designed to capture all requests for the current folder and its subfolders. They enable the creation of content with a dynamic URL structure, such as pages retrieved from a CMS. If a named route exists in the same folder as dynamic route, the named route will take precedence. The name for a dynamic route is fixed and must be: `[...path](.jsx|.js|.tsx|.ts)`
 
 <table>
-<tr><th style="width:50%">Route path</th><th style="width:50%">URL</th></tr>
-<tr><td>src/blog/[...path].jsx</td><td>/blog/article1<br />/blog/category/article2</td></tr>
+  <tr>
+    <th style="width:50%">Route path</th>
+    <th style="width:50%">URL</th>
+  </tr>
+  <tr>
+    <td>src/blog/[...path].jsx</td>
+    <td>
+      /blog/article1
+      <br />
+      /blog/category/article2
+    </td>
+  </tr>
 </table>
 
 ### Code example
@@ -93,10 +127,19 @@ export default async function ({ request, reply }) {
 ## Guards
 
 Guards enable you to intercept requests and are inherited from the root to the current folder. They are valuable for controlling access to a route. Typically, a guard does not return any payload, allowing the request to be handled by the next defined route. However, if a guard does return a payload, it will be delivered to the client, and no other route will be executed.
-  
+
 <table>
-<tr><th style="width:50%">Route path</th><th style="width:50%">URL</th></tr>
-<tr><td>src/blog/[...guard].jsx</td><td>The code of the guard is executed before named or dynamic routes in the current folder or below.</td></tr>
+  <tr>
+    <th style="width:50%">Route path</th>
+    <th style="width:50%">URL</th>
+  </tr>
+  <tr>
+    <td>src/blog/[...guard].jsx</td>
+    <td>
+      The code of the guard is executed before named or dynamic routes in the current folder or
+      below.
+    </td>
+  </tr>
 </table>
 
 ### Code example
@@ -143,5 +186,6 @@ Jeasx adds two additional attributes to the Fastify request object to improve th
 - `request.route` provides the path to the current endpoint handler (e.g. `/json/[...path]`)
 
 Have a look at the [JSON example](https://expo.jeasx.dev/json/api/request.json?foo=bar) to see `request.url, request.path, request.route` at work.
+
 </Highlight>
 </Layout>

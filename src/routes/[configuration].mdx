@@ -17,8 +17,8 @@ Jeasx provides sensible defaults to get you started quickly, but it also allows 
 
 To facilitate managing multiple configurations, Jeasx leverages layers of .env-files. This enables the use of different .env-files based on the NODE_ENV value, such as `.env.development` to override values from `.env` for development. The order of loading .env-files is the same as it is used by the well-known [dotenv-flow](https://github.com/kerimdzhanov/dotenv-flow) library. To load the env-files into `process.env`, Jeasx makes use of the native implementation provided by Node.js via [process.loadEnvFile](https://nodejs.org/docs/latest/api/process.html#processloadenvfilepath) via a custom [utility function](https://github.com/jeasx/jeasx/blob/main/env.js).
 
-- .env.[NODE_ENV].local *(e.g. .env.development.local or .env.production.local)*
-- .env.[NODE_ENV] *(e.g. .env.development or .env.production)*
+- .env.[NODE_ENV].local _(e.g. .env.development.local or .env.production.local)_
+- .env.[NODE_ENV] _(e.g. .env.development or .env.production)_
 - .env.local
 - .env
 - .env.defaults
@@ -39,21 +39,23 @@ export default {
 
   /** @type {() => import("esbuild").BuildOptions} */
   ESBUILD_BROWSER_OPTIONS: () => ({
-    target: ["chrome130", "edge130", "firefox130", "safari18"]
+    target: ["chrome130", "edge130", "firefox130", "safari18"],
   }),
 
   /** @type {() => import("fastify").FastifyServerOptions} */
   FASTIFY_SERVER_OPTIONS: () => ({
     disableRequestLogging: process.env.NODE_ENV === "development",
-    bodyLimit: 1024 * 1024
-  })
+    bodyLimit: 1024 * 1024,
+  }),
 };
 ```
 
 **Please note:** Jeasx only sets `NODE_ENV=development` automatically when running `jeasx dev`. For production or testing environments, you'll need to set the `NODE_ENV` environment variable to the desired value (e.g. `production` or `test`) depending on your requirements and workflows.
 
 <Highlight title="Environment variables for client code" icon={{ html: IconAttention }}>
-For security reasons, only environment variables prefixed with `BROWSER_PUBLIC_` are accessible in client-side JavaScript to prevent accidental exposure of sensitive data. The values are only updated at build time, so changes to environment variables will require a rebuild to take effect.
+  For security reasons, only environment variables prefixed with `BROWSER_PUBLIC_` are accessible in
+  client-side JavaScript to prevent accidental exposure of sensitive data. The values are only
+  updated at build time, so changes to environment variables will require a rebuild to take effect.
 </Highlight>
 
 ---
@@ -70,7 +72,7 @@ The hostname or IP address that the server should listen on. Defaults to `::` wh
 
 The port number that the server should listen on. Defaults to `3000`.
 
-### BUILD_TIME 
+### BUILD_TIME
 
 A value set at build time and encoded as `base36` (lower case alphabet and digits). Use it to create a cache busting parameter for loading JavaScript and CSS files.
 
@@ -96,11 +98,11 @@ export default {
         elementAttributeNameCase: "html",
         stylePropertyNameCase: "css",
         remarkPlugins: [[remarkGFM, { singleTilde: false }]],
-        rehypePlugins: [rehypePrismPlus, [rehypeSlug, { prefix: "jeasx-" }]]
-      })
-    ]
-  })
-}
+        rehypePlugins: [rehypePrismPlus, [rehypeSlug, { prefix: "jeasx-" }]],
+      }),
+    ],
+  }),
+};
 ```
 
 ### ESBUILD_BROWSER_OPTIONS
@@ -111,8 +113,8 @@ Useful to configure build options for the browser bundle ([Jeasx config at GitHu
 export default {
   /** @type {() => import("esbuild").BuildOptions} */
   ESBUILD_BROWSER_OPTIONS: () => ({
-    target: ["chrome130", "edge130", "firefox130", "safari18"]
-  })
+    target: ["chrome130", "edge130", "firefox130", "safari18"],
+  }),
 };
 ```
 
@@ -125,7 +127,7 @@ import fastifyCompress from "@fastify/compress";
 
 export default {
   /** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance} */
-  FASTIFY_SERVER: (fastify) => fastify.register(fastifyCompress)
+  FASTIFY_SERVER: (fastify) => fastify.register(fastifyCompress),
 };
 ```
 
@@ -145,10 +147,7 @@ export default {
 
 ```json
 {
-  "root": [
-    "/absolute/path/to/public",
-    "/absolute/path/to/dist/browser"
-  ],
+  "root": ["/absolute/path/to/public", "/absolute/path/to/dist/browser"],
   "prefix": "/",
   "wildcard": false
 }
@@ -179,4 +178,5 @@ export default {
 ```json
 {}
 ```
+
 </Layout>
