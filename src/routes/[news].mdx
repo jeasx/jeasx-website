@@ -1,5 +1,7 @@
+import Highlight from "../components/Highlight";
 import Layout from "../components/Layout";
 import Lead from "../components/Lead";
+import IconAttention from "../components/icons/IconAttention.svg";
 
 <Layout
   title="What are the latest updates and new features in Jeasx?"
@@ -10,6 +12,19 @@ import Lead from "../components/Lead";
 <Lead>
 Welcome to the news section of Jeasx. Here we are going to post updates about new features, bug fixes, and general information about the project.
 </Lead>
+
+<Highlight title="Release policy" icon={{ html: IconAttention }}>
+Jeasx is dedicated to delivering a highly stable platform for web development. It is recommend reviewing the changelog prior to upgrading your project.
+
+The policy outlined below will help you understand what to expect to change from each released version (formatted as `Major.Minor.Patch`):
+
+**Patch:** No changes to your project are typically needed.
+
+**Minor:** Slight adjustments to your project's configuration may be needed, usually through the `.env.js` file, for it to function correctly.
+
+**Major:** Modifications to your actual source code are required (anything within `src/**/*`), otherwise the project will break with an update.
+
+</Highlight>
 
 ## 2026-03-14 - Jeasx 2.4.3 released
 
