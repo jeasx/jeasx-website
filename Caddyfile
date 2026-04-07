@@ -1,4 +1,12 @@
+{
+ log {
+  output stdout
+  format console
+ }
+}
+
 :3000 {
+    log
     root * www
     file_server
 
