@@ -44,7 +44,7 @@ export default {
 
   /** @type {() => import("fastify").FastifyServerOptions} */
   FASTIFY_SERVER_OPTIONS: () => ({
-    disableRequestLogging: process.env.NODE_ENV === "development",
+    logger: { level: process.env.NODE_ENV === "development" ? "error" : "info" },
     bodyLimit: 1024 * 1024,
   }),
 };
@@ -143,50 +143,29 @@ export default {
 
 ### FASTIFY_SERVER_OPTIONS
 
-[Fastity-Server options reference](https://fastify.dev/docs/latest/Reference/Server), default options applied by Jeasx:
-
-```json
-{
-  "logger": true
-}
-```
+[Fastity-Server options reference](https://fastify.dev/docs/latest/Reference/Server).
 
 ### FASTIFY_STATIC_OPTIONS
 
-[Fastify-Static options reference](https://github.com/fastify/fastify-static#options), default options applied by Jeasx:
+[Fastify-Static options reference](https://github.com/fastify/fastify-static#options), essential options applied by Jeasx:
 
 ```json
 {
   "root": ["/absolute/path/to/public", "/absolute/path/to/dist/browser"],
-  "prefix": "/",
   "wildcard": false
-}
-```
-
-### FASTIFY_MULTIPART_OPTIONS
-
-[Fastify-Multipart options reference](https://github.com/fastify/fastify-multipart#options), default options applied by Jeasx:
-
-```json
-{
-  "attachFieldsToBody": "keyValues"
 }
 ```
 
 ### FASTIFY_COOKIE_OPTIONS
 
-[Fastify-Cookie options reference](https://github.com/fastify/fastify-cookie#options), default options applied by Jeasx:
-
-```json
-{}
-```
+[Fastify-Cookie options reference](https://github.com/fastify/fastify-cookie#options).
 
 ### FASTIFY_FORMBODY_OPTIONS
 
-[Fastify-Formbody options reference](https://github.com/fastify/fastify-formbody#options), default options applied by Jeasx:
+[Fastify-Formbody options reference](https://github.com/fastify/fastify-formbody#options).
 
-```json
-{}
-```
+### FASTIFY_MULTIPART_OPTIONS
+
+[Fastify-Multipart options reference](https://github.com/fastify/fastify-multipart#options).
 
 </Layout>
