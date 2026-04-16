@@ -11,7 +11,7 @@
     "@mdx-js/esbuild": "3.1.1",
     "@tailwindcss/typography": "0.5.19",
     "esbuild-plugin-tailwindcss": "2.2.0",
-    "jeasx": "2.5.0",
+    "jeasx": "2.5.1",
     "prismjs": "1.30.0",
     "rehype-prism-plus": "2.0.2",
     "tailwindcss": "4.2.2"
