@@ -15,7 +15,7 @@ RUN node --run build
 # Export static site with wget
 RUN node --run start & \
     sleep 2 && \
-    wget --mirror --page-requisites --no-host-directories --content-on-error --directory-prefix=www \ 
+    wget --mirror --page-requisites --no-host-directories --directory-prefix=www \ 
         http://localhost:3000 http://localhost:3000/404
 
 # Run Caddy server
