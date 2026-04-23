@@ -14,7 +14,7 @@ RUN node --run build
 
 # Export static site with wget
 RUN node --run start & \
-    sleep 2 && \
+    sleep 3 && \
     wget --mirror --page-requisites --no-host-directories --directory-prefix=www \ 
         http://localhost:3000 http://localhost:3000/404
 
