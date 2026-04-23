@@ -41,6 +41,8 @@ export default function Layout({
           ></link>
           <link rel="stylesheet" href={`/${process.env.BUILD_TIME}/index.css`} />
           <script type="module" src={`/${process.env.BUILD_TIME}/index.js`}></script>
+          <link rel="stylesheet" href="/pagefind/pagefind-component-ui.css" />
+          <script type="module" src="/pagefind/pagefind-component-ui.js"></script>
         </head>
         <body class="flex min-h-full bg-white dark:bg-slate-900">
           <div class="flex w-full flex-col">

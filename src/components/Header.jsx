@@ -33,15 +33,7 @@ export default function Header() {
         </a>
       </div>
       <div class="-my-5 mr-6 hidden sm:mr-8 md:mr-0 lg:block">
-        <form id="search-form">
-          <input
-            id="search-input"
-            type="search"
-            name="q"
-            placeholder="🔎 Search Mojeek for Jeasx related topics"
-            class="group flex h-6 w-6 items-center justify-center sm:justify-start md:h-auto md:w-80 md:flex-none md:rounded-lg md:py-2.5 md:pr-3.5 md:pl-4 md:text-sm md:ring-1 md:ring-slate-200 md:hover:ring-slate-300 lg:w-96 dark:md:bg-slate-800/75 dark:md:ring-white/5 dark:md:ring-inset dark:md:hover:bg-slate-700/40 dark:md:hover:ring-slate-500"
-          />
-        </form>
+        <pagefind-searchbox />
       </div>
       <div class="relative flex basis-0 justify-end gap-6 sm:gap-8 md:flex-grow">
         <div class="h-6 w-6"></div>
