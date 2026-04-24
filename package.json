@@ -12,6 +12,7 @@
     "@tailwindcss/typography": "0.5.19",
     "esbuild-plugin-tailwindcss": "2.2.0",
     "jeasx": "2.5.2",
+    "pagefind": "1.5.2",
     "prismjs": "1.30.0",
     "rehype-prism-plus": "2.0.2",
     "tailwindcss": "4.2.4"

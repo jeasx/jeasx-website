@@ -1,5 +1,3 @@
-/* This file is an example. Delete it at will. */
-
 import Header from "./Header";
 import MobileNavigation from "./MobileNavigation";
 import Navigation from "./Navigation";
