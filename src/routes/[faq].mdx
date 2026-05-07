@@ -17,7 +17,6 @@ import Lead from "../components/Lead";
             {label: "CSS-Frameworks",link: "#css-frameworks"},
             {label: "Static Site Generator",link: "#static-site-generator"},
             {label: "Browsersync",link: "#browsersync"},
-            {label: "Vercel",link: "#vercel"},
       ]}/>
   }
 >
@@ -124,17 +123,5 @@ If you want to reload CSS automagically, start [Browsersync](https://browsersync
 ```bash
 npx -y browser-sync start -w -f "dist/**/index.css" -p localhost:3000`}
 ```
-
-## <a id="vercel"></a>
-
-## How can I apply custom caching rules for the public folder when deploying to Vercel?
-
-As Vercel configures the public folder as default directory for static assets, you have to specify another directory in your `vercel.json`. For example, create an empty directory named `output` at root level with only a `.gitkeep` in it and register it in your `vercel.json`:
-
-```json
- {... "outputDirectory": "output" ...}
-```
-
-This change is only recommended, if your Vercel application applies appropriate cache control headers (`CDN-Cache-Control`) or is proxied via a 3rd-party CDN likeCloudflare. Please visit the [Vercel documentation](https://vercel.com/docs/project-configuration#outputdirectory) for more information.
 
 </Layout>
