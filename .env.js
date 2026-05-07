@@ -21,8 +21,9 @@ export default {
 
   /** @type {() => import("esbuild").BuildOptions} */
   ESBUILD_BROWSER_OPTIONS: () => ({
-    plugins: [tailwindPlugin()],
+    external: ["*.woff2"],
     target: ["chrome130", "edge130", "firefox130", "safari18"],
+    plugins: [tailwindPlugin()],
   }),
 
   /** @type {() => import("fastify").FastifyServerOptions} */
