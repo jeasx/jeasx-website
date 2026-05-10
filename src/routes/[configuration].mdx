@@ -60,6 +60,16 @@ To edit `.env.js` with VSCode as JavaScript file, you should add the following c
 }
 ```
 
+To edit `.env.js` with Zed as JavaScript file, you should add the following config to your settings:
+
+```json
+{
+  "file_types": {
+    "JavaScript": [".env.js"]
+  }
+}
+```
+
 **Please note:** Jeasx only sets `NODE_ENV=development` automatically when running `jeasx dev`. For production or testing environments, you'll need to set the `NODE_ENV` environment variable to the desired value (e.g. `production` or `test`) depending on your requirements and workflows.
 
 <Highlight title="Environment variables for client code" icon={{ html: IconAttention }}>
