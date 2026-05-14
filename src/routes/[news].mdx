@@ -635,7 +635,7 @@ CMD ["npm","start"]
 .env.[NODE_ENV].local (e.g. .env.development.local or .env.production.local)
 ```
 
-**Breaking change:** If you use .env-files to configure Jeasx and deploy to Vercel, please update your `vercel.json`. You'll need to change `"includeFiles": "{node_modules,dist,public}/**/*"` to `"includeFiles": "./**/*"to` make sure Vercel includes the .env-files in the deployment.
+**Breaking change:** If you use .env-files to configure Jeasx and deploy to Vercel, please update your `vercel.json`. You'll need to change `"includeFiles": "{node_modules,dist,public}/**/*"` to `"includeFiles": "./**/*"` to make sure Vercel includes the .env-files in the deployment.
 
 Additionally a fix for correctly parsing environment variables to configure Fastify (`FASTIFY_DISABLE_REQUEST_LOGGING, FASTIFY_TRUST_PROXY`) was implemented.
 
