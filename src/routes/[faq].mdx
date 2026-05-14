@@ -17,6 +17,7 @@ import Lead from "../components/Lead";
             {label: "CSS-Frameworks",link: "#css-frameworks"},
             {label: "Static Site Generator",link: "#static-site-generator"},
             {label: "Browsersync",link: "#browsersync"},
+            {label: "Debugger",link: "#debugger"},
       ]}/>
   }
 >
@@ -122,6 +123,19 @@ If you want to reload CSS automagically, start [Browsersync](https://browsersync
 
 ```bash
 npx -y browser-sync start -w -f "dist/**/index.css" -p localhost:3000`}
+```
+
+## <a id="debug"></a>
+
+## How to use debugger with Jeasx?
+
+To enable sourcemaps for debugging your code, configure `ESBUILD_SERVER_OPTIONS` or `ESBUILD_BROWSER_OPTIONS` in your `.env.js` file based on your specific needs. While I recommend using `inline` as the configuration value for simplicity, the optimal choice may depend on your setup and tooling. Please study the [esbuild documentation](https://esbuild.github.io/api/#sourcemap) for the different configuration options.
+
+```js
+/** @type {() => import("esbuild").BuildOptions} */
+ESBUILD_SERVER_OPTIONS: () => ({
+  sourcemap: "inline",
+});
 ```
 
 </Layout>
