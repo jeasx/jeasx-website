@@ -98,7 +98,7 @@ Yes, have a look at the [head example](https://expo.jeasx.dev/head) which demons
 
 ## Is it possible to use CSS-Frameworks like SASS or Tailwind?
 
-Certainly! As Jeasx supports all esbuild plugins, you can use the existing ecosystem. Please have a look at the [.env.js](https://github.com/jeasx/jeasx-website/blob/main/.env.js) of this website to see how things should be wired for Tailwind. Similar approach should work for SASS / SCSS too.
+Certainly! As Jeasx supports all esbuild plugins, you can use the existing ecosystem. Please have a look at the [jeasx.config.js](https://github.com/jeasx/jeasx-website/blob/main/jeasx.config.js) of this website to see how things should be wired for Tailwind. Similar approach should work for SASS / SCSS too.
 
 ## <a id="static-site-generator"></a>
 
@@ -129,7 +129,7 @@ npx -y browser-sync start -w -f "dist/**/index.css" -p localhost:3000`}
 
 ## How to use debugger with Jeasx?
 
-To enable sourcemaps for debugging your code, configure `ESBUILD_SERVER_OPTIONS` or `ESBUILD_BROWSER_OPTIONS` in your `.env.js` file based on your specific needs. While I recommend using `inline` as the configuration value for simplicity, the optimal choice may depend on your setup and tooling. Please study the [esbuild documentation](https://esbuild.github.io/api/#sourcemap) for the different configuration options.
+To enable sourcemaps for debugging your code, configure `ESBUILD_SERVER_OPTIONS` or `ESBUILD_BROWSER_OPTIONS` in your `jeasx.config.js` file based on your specific needs. While I recommend using `inline` as the configuration value for simplicity, the optimal choice may depend on your setup and tooling. Please study the [esbuild documentation](https://esbuild.github.io/api/#sourcemap) for the different configuration options.
 
 ```js
 /** @type {() => import("esbuild").BuildOptions} */

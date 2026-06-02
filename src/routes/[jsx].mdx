@@ -145,7 +145,7 @@ export default function ({ request, reply }) {
 
 A good example for a Jeasx website powered by MDX is this website. Have a look at [GitHub](https://github.com/jeasx/jeasx-website) to see how things are wired up.
 
-If you want to use MDX with Jeasx, simply run `npm install @mdx-js/esbuild` and add the configuration below to `ESBUILD_SERVER_OPTIONS` in `.env.js`.
+If you want to use MDX with Jeasx, simply run `npm install @mdx-js/esbuild` and add the configuration below to `ESBUILD_SERVER_OPTIONS` in `jeasx.config.js`.
 
 ```jsx
 import mdx from "@mdx-js/esbuild";
@@ -207,7 +207,7 @@ export default function ({ request, reply }) {
 }
 ```
 
-If you want to configure additional MDX plugins (which must be installed in your project beforehand), you can easily do so via the `.env.js` file. Jeasx uses [@mdx-js/esbuild](https://mdxjs.com/packages/esbuild) under the hood to transform MDX to JSX, so have a look at the [documentation for existing plugins](https://mdxjs.com/docs/extending-mdx) and configurations.
+If you want to configure additional MDX plugins (which must be installed in your project beforehand), you can easily do so via the `jeasx.config.js` file. Jeasx uses [@mdx-js/esbuild](https://mdxjs.com/packages/esbuild) under the hood to transform MDX to JSX, so have a look at the [documentation for existing plugins](https://mdxjs.com/docs/extending-mdx) and configurations.
 
 ```jsx
 import mdx from "@mdx-js/esbuild";

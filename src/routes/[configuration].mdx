@@ -15,6 +15,8 @@ import Next from "../components/Next";
 Jeasx provides sensible defaults to get you started quickly, but it also allows you to override important settings with environment variables. This makes it easy to adapt the framework to your needs.
 </Lead>
 
+## Environment variables
+
 To facilitate managing multiple configurations, Jeasx leverages layers of .env-files. This enables the use of different .env-files based on the NODE_ENV value, such as `.env.development` to override values from `.env` for development. The order of loading .env-files is the same as it is used by the well-known [dotenv-flow](https://github.com/kerimdzhanov/dotenv-flow) library. To load the env-files into `process.env`, Jeasx makes use of the native implementation provided by Node.js via [process.loadEnvFile](https://nodejs.org/docs/latest/api/process.html#processloadenvfilepath) via a custom [utility function](https://github.com/jeasx/jeasx/blob/main/env.js).
 
 - .env.[NODE_ENV].local _(e.g. .env.development.local or .env.production.local)_
@@ -22,67 +24,12 @@ To facilitate managing multiple configurations, Jeasx leverages layers of .env-f
 - .env.local
 - .env
 - .env.defaults
-- .env.js
 
-An existing environment variable will not be overwritten by subsequent environment files. The last `.env.js` file is an exception to this rule: it is a JavaScript file which must export an default object containing the environment variables.
-**All exported variables from `.env.js` will overwrite already existing variables.**
-
-The configuration object from an `.env.js` file is imported directly into both the build process and server runtime, allowing you to use package imports seamlessly.
-
-```js
-export default {
-  // Typical example env variables
-  RECIPES_ENDPOINT: "https://dummyjson.com/recipes",
-  CACHE_DIRECTORY: "/tmp/cache",
-
-  // Jeasx configurations for esbuild & Fastify
-
-  /** @type {() => import("esbuild").BuildOptions} */
-  ESBUILD_BROWSER_OPTIONS: () => ({
-    target: ["chrome130", "edge130", "firefox130", "safari18"],
-  }),
-
-  /** @type {() => import("fastify").FastifyServerOptions} */
-  FASTIFY_SERVER_OPTIONS: () => ({
-    logger: { level: process.env.NODE_ENV === "development" ? "error" : "info" },
-    bodyLimit: 1024 * 1024,
-  }),
-};
-```
-
-To edit `.env.js` with [VSCode](https://code.visualstudio.com/) as JavaScript file, you should add the following config to your settings:
-
-```json
-{
-  "files.associations": {
-    ".env.js": "javascript"
-  }
-}
-```
-
-To edit `.env.js` with [Zed](https://zed.dev/) as JavaScript file, you should add the following config to your settings:
-
-```json
-{
-  "file_types": {
-    "JavaScript": [".env.js"]
-  }
-}
-```
+An existing environment variable will not be overwritten by subsequent environment files.
 
 **Please note:** Jeasx only sets `NODE_ENV=development` automatically when running `jeasx dev`. For production or testing environments, you'll need to set the `NODE_ENV` environment variable to the desired value (e.g. `production` or `test`) depending on your requirements and workflows.
 
-<Highlight title="Environment variables for client code" icon={{ html: IconAttention }}>
-  For security reasons, only environment variables prefixed with `BROWSER_PUBLIC_` are accessible in
-  client-side JavaScript to prevent accidental exposure of sensitive data. The values are only
-  updated at build time, so changes to environment variables will require a rebuild to take effect.
-</Highlight>
-
----
-
-## Configuration options
-
-It is highly recommended to configure Jeasx via `.env.js`, but you can also use process environment variables if preferred.
+## Fundamental environment variables
 
 ### HOST
 
@@ -96,11 +43,37 @@ The port number that the server should listen on. Defaults to `3000`.
 
 A value set at build time and encoded as `base36` (lower case alphabet and digits). Use it to create a cache busting parameter for loading JavaScript and CSS files.
 
+<Highlight title="Environment variables for client code" icon={{ html: IconAttention }}>
+  For security reasons, only environment variables prefixed with `BROWSER_PUBLIC_` are accessible in
+  client-side JavaScript to prevent accidental exposure of sensitive data. The values are only
+  updated at build time, so changes to environment variables will require a rebuild to take effect.
+</Highlight>
+
+
+## Configuration options via `jeasx.config.js` 
+
+The configuration object from `jeasx.config.js` is imported directly into both the build process and server runtime and provides essential options for `esbuild` and `Fastify`, allowing you to use the full power of JavaScript (e.g package imports) to build your advanved configurations.
+
+```js
+export default {
+  /** @type {() => import("esbuild").BuildOptions} */
+  ESBUILD_BROWSER_OPTIONS: () => ({
+    target: ["chrome130", "edge130", "firefox130", "safari18"],
+  }),
+
+  /** @type {() => import("fastify").FastifyServerOptions} */
+  FASTIFY_SERVER_OPTIONS: () => ({
+    logger: { level: process.env.NODE_ENV === "development" ? "error" : "info" },
+    bodyLimit: 1024 * 1024,
+  }),
+};
+```
+
 ### ESBUILD_SERVER_OPTIONS
 
 Useful to enhance esbuild for compiling server code with existing plugins ([Jeasx config at GitHub](https://github.com/jeasx/jeasx/blob/main/esbuild.config.js)). The esbuild website provides a detailed explanation of [all configuration options](https://esbuild.github.io/api/).
 
-If you want to [use MDX with plugins](https://mdxjs.com/docs/extending-mdx), you can configure them in `.env.js` after installing them to your project:
+If you want to [use MDX with plugins](https://mdxjs.com/docs/extending-mdx), you can configure them in `jeasx.config.js` after installing them to your project:
 
 ```js
 import mdx from "@mdx-js/esbuild";
@@ -162,7 +135,8 @@ export default {
 ```json
 {
   "root": ["/absolute/path/to/public", "/absolute/path/to/dist/browser"],
-  "wildcard": false
+  "wildcard": false,
+  "globIgnore": ["/**/\\[*\\].js?(.map)"], // ignore server routes
 }
 ```
 
