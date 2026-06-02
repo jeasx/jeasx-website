@@ -6,13 +6,13 @@ import Next from "../components/Next";
 
 <Layout
   title="Configuration"
-  description="How to use environment variables to configure Jeasx"
+  description="How to use environment variables and plugin options to configure Jeasx."
   category="Configuration"
   headline="How to configure Jeasx"
   next={<Next link="/hosting" label="How to host a Jeasx application?" />}
 >
 <Lead>
-Jeasx provides sensible defaults to get you started quickly, but it also allows you to override important settings with environment variables. This makes it easy to adapt the framework to your needs.
+Jeasx offers minimal and sensible default settings to help you get started quickly, while also giving you full control to customize key aspects. You can adapt all plugins and configuration options provided by esbuild and Fastify to perfectly match and grow your project’s requirements.
 </Lead>
 
 ## Environment variables
@@ -49,10 +49,9 @@ A value set at build time and encoded as `base36` (lower case alphabet and digit
   updated at build time, so changes to environment variables will require a rebuild to take effect.
 </Highlight>
 
+## Configure esbuild and Fastify via `jeasx.config.js`
 
-## Configure esbuild and Fastify via `jeasx.config.js` 
-
-The configuration object from `jeasx.config.js` is imported directly into both the build process and server runtime and provides essential options for `esbuild` and `Fastify`, allowing you to use the full power of JavaScript (e.g package imports) to build your advanved configurations.
+The configuration object from `jeasx.config.js` is imported directly into both the build process and server runtime and provides essential options for `esbuild` and `Fastify`, allowing you to use the full power of JavaScript (e.g package imports) to build advanced setups.
 
 ```js
 export default {
@@ -136,7 +135,7 @@ export default {
 {
   "root": ["/absolute/path/to/public", "/absolute/path/to/dist/browser"],
   "wildcard": false,
-  "globIgnore": ["/**/\\[*\\].js?(.map)"], // ignore server routes
+  "globIgnore": ["/**/\\[*\\].js?(.map)"] // ignore server routes
 }
 ```
 
