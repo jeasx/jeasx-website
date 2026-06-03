@@ -54,7 +54,7 @@
 @font-face {
   font-style: normal;
   font-weight: 100 900;
-  src: url(/fonts/inter.woff2) format("woff2");
+  src: url(./fonts/inter.woff2) format("woff2");
   font-family: "Inter";
   font-display: swap;
   unicode-range:
@@ -66,7 +66,7 @@
   font-style: normal;
   font-weight: 600;
   font-stretch: 100%;
-  src: url(/fonts/lexend.woff2) format("woff2");
+  src: url(./fonts/lexend.woff2) format("woff2");
   font-family: "Lexend";
   font-display: swap;
   unicode-range:

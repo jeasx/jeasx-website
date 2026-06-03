@@ -21,7 +21,7 @@ export default {
 
   /** @type {() => import("esbuild").BuildOptions} */
   ESBUILD_BROWSER_OPTIONS: () => ({
-    external: ["*.woff2"],
+    loader: { ".woff2": "file" },
     target: ["chrome130", "edge130", "firefox130", "safari18"],
     plugins: [tailwindPlugin()],
   }),
