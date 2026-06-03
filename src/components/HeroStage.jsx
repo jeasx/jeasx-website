@@ -1,5 +1,5 @@
 import RecipeExample from "../components/RecipeExample.mdx";
-import IconHeroStage from "./icons/IconHeroStage.svg";
+import IconHeroStage from "../icons/IconHeroStage.svg";
 
 export default function HeroStage() {
   return (

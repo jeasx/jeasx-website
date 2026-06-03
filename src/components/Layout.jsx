@@ -3,7 +3,7 @@ import MobileNavigation from "./MobileNavigation";
 import Navigation from "./Navigation";
 
 /**
- * @this {import("../routes/types").RouteProps}
+ * @this {import("../types").RouteProps}
  */
 export default function Layout({
   title,
