@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@mdx-js/esbuild": "3.1.1",
-    "@tailwindcss/typography": "0.5.19",
+    "@tailwindcss/typography": "0.5.20",
     "esbuild-plugin-tailwindcss": "2.2.0",
     "jeasx": "2.7.1",
     "pagefind": "1.5.2",
