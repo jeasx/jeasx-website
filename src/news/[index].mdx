@@ -1,0 +1,440 @@
+import Highlight from "../components/Highlight";
+import Layout from "../components/Layout";
+import Lead from "../components/Lead";
+import Next from "../components/Next";
+import IconAttention from "../icons/IconAttention.svg";
+
+<Layout
+  title="What are the latest updates and new features in Jeasx?"
+  description="Here we are going to post updates about new features, bug fixes, and general information about the project."
+  category="News"
+  headline="What are the latest updates and new features in Jeasx?"
+  next={<Next link="/news/2025" label="News 2025" />}
+>
+
+<Lead>
+  Welcome to the news section of Jeasx. Here we are going to post updates about new features, bug
+  fixes, and general information about the project.
+</Lead>
+
+<Highlight title="What to expect to change from each released version?">
+
+To get the most out of a new version, take a moment to browse our release notes before you upgrade. It’s the best way to see what’s new and what’s changed!
+
+**Patch:** No changes to your project are needed.
+
+**Minor:** Depending on your setup, you might need to make a few quick adjustments to your configuration (e.g. via `jeasx.config.js`).
+
+**Major:** Modifications to your actual source code are required (anything within `src/**/*`), otherwise the project will break with an update.
+
+</Highlight>
+
+## 2026-06-10 - Jeasx 2.7.2 released
+
+🎉 This release introduces significant performance and memory optimizations:
+
+- The core `generateRoutes` method has been rewritten to improve execution speed and significantly reduce temporary array creation. This minimizes garbage collection overhead during high-load scenarios.
+
+- The internal cache has been migrated from a `Map` to a plain object to leverage engine-level optimizations for small, read-heavy collections. I've also added a missing type definition for the module cache.
+
+- The `.js` extension is now stripped from route export metadata during the build process, reducing the number of string operations required when resolving modules from the cache.
+
+## 2026-06-07 - Jeasx 2.7.1 released
+
+🎉 This patch release requires no changes to your project but introduces significant improvements to internal module handling: Previously, a dynamic runtime cache was used to resolve modules for routes. This cache stored entries for both existing and non-existent routes, leading to potential growth over time - despite a predefined maximum cache size.
+
+With this update, the cache strategy has been optimized for more efficient and sustainable memory usage: This release leverages [esbuild’s metadata](https://esbuild.github.io/api/#build-metadata) to generate a static metadata file at build time, containing all existing routes. This metadata is loaded during server startup, ensuring that only modules included in the routes list are loaded on the first request.
+
+The result? Fast cold starts, efficient handling of existing and non-existent routes (without caching overhead), and enhanced security. Since only modules generated at build time can be loaded, even in the unlikely case where a malformed request could bypass Fastify’s strict request sanitation, it cannot escape the `dist` directory.
+
+The changes above have no impact on your development workflow. You can continue creating new routes or modifying existing ones - your updates will be loaded automatically, without requiring a restart of the application.
+
+Dependency updates: `@types/node@25.9.2`
+
+## 2026-06-02 - Jeasx 2.7.0 released
+
+🎉 This release introduces an explicit configuration file named `jeasx.config.js`, replacing the previously used `.env.js`. This change improves clarity and usability for configuring `esbuild` and `Fastify` options, which could no longer be passed as environment variables in recent releases.
+
+To upgrade:
+
+- If you used `.env.js` before, just rename it to `jeasx.config.js`.
+- If you didn’t use `.env.js`, create a new file called `jeasx.config.js` in your project folder. Add the following code as default to get a reminder of all available configuration options:
+
+```js
+export default {
+  /** @type {() => import("esbuild").BuildOptions} */
+  // ESBUILD_SERVER_OPTIONS: () => ({}),
+  /** @type {() => import("esbuild").BuildOptions} */
+  // ESBUILD_BROWSER_OPTIONS: () => ({}),
+  /** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance} */
+  // FASTIFY_SERVER: (fastify) => fastify,
+  /** @type {() => import("fastify").FastifyServerOptions} */
+  // FASTIFY_SERVER_OPTIONS: () => ({}),
+  /** @type {() => import("@fastify/static").FastifyStaticOptions} */
+  // FASTIFY_STATIC_OPTIONS: () => ({}),
+  /** @type {() => import("@fastify/cookie").FastifyCookieOptions} */
+  // FASTIFY_COOKIE_OPTIONS: () => ({}),
+  /** @type {() => import("@fastify/formbody").FastifyFormbodyOptions} */
+  // FASTIFY_FORMBODY_OPTIONS: () => ({}),
+  /** @type {() => import("@fastify/multipart").FastifyMultipartOptions} */
+  // FASTIFY_MULTIPART_OPTIONS: () => ({}),
+};
+```
+
+If you’re using Docker, make sure to create an entry for `jeasx.config.js` in your `.dockerignore` file.
+
+**Please note:** Support for `.env.js` has been discontinued in this release to streamline and simplify the codebase. If you previously used `.env.js` to set or modify environment variables besides the existing configuration options, you can now do this directly in `jeasx.config.js` by modifying `process.env` using JavaScript.
+
+```js
+process.env.API_ENDPOINT = "https://expo.jeasx.dev/jokes/api/";
+
+export default {
+  /* ... */
+};
+```
+
+Dependency updates: `@types/node@25.9.1`
+
+## 2026-05-14 - Jeasx 2.6.2 released
+
+🎉 This release moves the configuration for esbuild’s sourcemap settings from core to userland. Since there is no universal default that fits all environments and policies, this change allows for greater flexibility.
+
+To enable sourcemaps for debugging your code, configure `ESBUILD_SERVER_OPTIONS` or `ESBUILD_BROWSER_OPTIONS` in your `.env.js` file based on your specific needs. While I recommend using `inline` as the configuration value for simplicity, the optimal choice may depend on your setup and tooling.
+
+Please study the [esbuild documentation](https://esbuild.github.io/api/#sourcemap) for the different configuration options.
+
+```js
+/** @type {() => import("esbuild").BuildOptions} */
+ESBUILD_SERVER_OPTIONS: () => ({
+  sourcemap: "inline",
+});
+```
+
+## 2026-05-12 - Jeasx 2.6.1 released
+
+🎉 This release includes a small update to the `tsconfig.json` file: The `types` attribute has been adjusted from `["*"]` to `["node"]` to align with the TypeScript team’s best practices. This change ensures better type resolution and resolves a warning that appeared when using Zed as the editor.
+
+Dependency updates: `@types/node@25.7.0`
+
+## 2026-05-08 - Jeasx 2.6.0 released
+
+🎉 Back in the early days, Jeasx enforced a strict separation between browser and server code. This meant developers had to organize their projects into specific directories like `browser` and `routes`. Over time, this limitation was lifted, allowing for more flexible project structures. While you could freely arrange your application code in the `src` directory, the `dist` directory still maintained the separation between browser and server files.
+
+This created a significant challenge: [esbuild loaders](https://esbuild.github.io/api/#loader) (such as those for importing files or using CSS modules) couldn’t be applied to server routes. The reason? Assets generated for the server and stored in `dist/server` were inaccessible to the browser, making it impossible to leverage these powerful tools in server-side code.
+
+Here are the good news: everything in the `dist` folder is now organized exactly as you’ve structured your application, hard coded sub-directories for `browser` and `server` are gone for good. All files in the `dist` directory are delivered directly to the browser via `@fastify/static`, except the code for server routes (JavaScript files enclosed in square brackets) - this code is still handled on the server. Now you are free to utilize esbuild loaders for your routes and enjoy all the advanced esbuild configurations for bundling server-side code.
+
+### ⚠️ Required updates to `.env.js`
+
+Previously, common browser asset extensions (e.g., `.ttf, .woff2, .svg, .jpg`) were automatically treated as `external` by Jeasx. This meant they were excluded from the bundling process by esbuild. For example, font files or icons stored in the `public` directory and referenced in your bundled CSS files would not be processed by esbuild.
+
+Now, no extensions are marked as `external` by default anymore. If your build fails with an error like `ERROR: No loader is configured for ".woff2"`, you’ll need to explicitly mark the missing extensions as `external` in your `.env.js` configuration by updating the `ESBUILD_BROWSER_OPTIONS`.
+
+Also Jeasx no longer sets a default value for the esbuild `target` option. I recommend configuring it explicitly based on your project’s needs. If you don’t specify a value, esbuild will default to `esnext`.
+
+The example below restores the former esbuild settings used by Jeasx, ensuring a smooth transition to the current release.
+
+```js
+/** @type {() => import("esbuild").BuildOptions} */
+ESBUILD_BROWSER_OPTIONS: () => ({
+  // It’s best to start with an empty list and
+  // only add extensions that cause build errors.
+  external: [
+    "*.avif",
+    "*.gif",
+    "*.jpg",
+    "*.jpeg",
+    "*.png",
+    "*.svg",
+    "*.webp",
+    "*.eot",
+    "*.ttf",
+    "*.otf",
+    "*.woff",
+    "*.woff2",
+  ],
+  target: ["chrome130", "edge130", "firefox130", "safari18"],
+});
+```
+
+After the update, you should start using the [esbuild loader](https://esbuild.github.io/api/#loader) to handle assets. To help you get started, here’s an example of how you can import images directly in your server routes. Simply configure the `file` loader for `.jpg` files in your `.env.js` file:
+
+```js
+/** @type {() => import("esbuild").BuildOptions} */
+ESBUILD_SERVER_OPTIONS: () => ({
+  loader: { ".jpg": "file" },
+});
+```
+
+You can now import an image located next to your server route and reference it in your code. This way esbuild automatically hashes the image path, so you don’t need to manually update references - even with caching headers applied.
+
+```jsx
+import Image from "./image.jpg";
+
+export default function () {
+  return (
+    <figure>
+      <img src={Image} alt="Example image" />
+    </figure>
+  );
+}
+```
+
+If you encounter a TypeScript warning for the import, you can resolve it by adding a definition file (e.g., `jpg.d.ts`) to specify the correct typing.
+
+```ts
+declare module "*.jpg" {
+  const content: string;
+  export default content;
+}
+```
+
+Dependency updates: `jsx-async-runtime@2.1.2`, `@types/node@25.6.2`
+
+## 2026-04-24 - Jeasx 2.5.3 released
+
+🎉 Just dependency updates...
+
+Dependency updates: `@fastify/static@9.1.3`
+
+## 2026-04-20 - Jeasx 2.5.2 released
+
+🎉 This release resolves an issue where existing routes failed to load if a JavaScript error occurred during initialization (for example, when setting up a global scoped variable). Previously, this error was masked by returning a 404 route, causing the route to never be re-evaluated.
+
+## 2026-04-16 - Jeasx 2.5.1 released
+
+🎉 Upgrade to latest `@fastify/static` to fix [CVE-2026-6410](https://github.com/fastify/fastify-static/security/advisories/GHSA-pr96-94w5-mx2h) and [CVE-2026-6414](https://github.com/fastify/fastify-static/security/advisories/GHSA-x428-ghpx-8j92).
+
+Dependency updates: `@fastify/static@9.1.1`
+
+## 2026-04-15 - Jeasx 2.5.0 released
+
+🎉 This release removes all non-essential Fastify configuration options from the Jeasx core, aligning it more closely with Fastify’s well-chosen default settings.
+
+To maintain your previous behavior, I recommend making minor adjustments to your configuration via `.env.js`:
+
+```js
+export default {
+  // ...
+
+  FASTIFY_SERVER_OPTIONS: () => ({
+    logger: { level: process.env.NODE_ENV === "development" ? "error" : "info" },
+    // 'disableRequestLogging' should be removed.
+  }),
+
+  FASTIFY_MULTIPART_OPTIONS: () => ({
+    // Only relevant if you use file uploads in your project.
+    attachFieldsToBody: "keyValues",
+  }),
+
+  // ...
+};
+```
+
+Additionally, the configured Fastify logger is now used for error logging, replacing the previous use of `console.error`.
+
+This release also addresses [CVE-2026-33806](https://github.com/fastify/fastify/security/advisories/GHSA-247c-9743-5963) by upgrading to the latest Fastify version.
+
+Dependency updates: `fastify@5.8.5`, `@types/node@25.6.0`
+
+## 2026-04-09 - Jeasx 2.4.8 released
+
+🎉 Just some dependency updates...
+
+Dependency updates: `@fastify/multipart@10.0.0`, `@fastify/static@9.1.0`
+
+## 2026-04-04 - Jeasx 2.4.7 released
+
+🎉 Just some dependency updates...
+
+Dependency updates: `jsx-async-runtime@2.1.1`, `esbuild@0.28.0`, `@types/node@25.5.2`
+
+## 2026-04-02 - Jeasx 2.4.6 released
+
+🎉 This release updates the `tsconfig.json` settings to fully support the latest TypeScript 6 changes. Now, the latest version of VSCode runs smoothly without any warnings.
+
+Dependency updates: `esbuild@0.27.7`
+
+## 2026-03-25 - Jeasx 2.4.5 released
+
+🎉 Just a patch update to stay synced with latest `jsx-async-runtime`.
+
+Dependency updates: `jsx-async-runtime@2.1.0`
+
+## 2026-03-23 - Jeasx 2.4.4 released
+
+🎉 Just a patch release to update Fastify to fix [CVE-2026-3635](https://github.com/fastify/fastify/security/advisories/GHSA-444r-cwp2-x5xf).
+
+Dependency updates: `fastify@5.8.4`
+
+## 2026-03-14 - Jeasx 2.4.3 released
+
+🎉 Just some dependency updates...
+
+Dependency updates: `fastify@5.8.2`, `esbuild@0.27.4`, `@types/node@25.5.0`
+
+## 2026-03-05 - Jeasx 2.4.2 released
+
+🎉 Just a patch release to update Fastify to fix [CVE-2026-3419](https://github.com/fastify/fastify/security/advisories/GHSA-573f-x89g-hqp9).
+
+Jeasx uses from now on [trusted publishing for npm packages](https://docs.npmjs.com/trusted-publishers) to release new versions.
+
+Dependency updates: `fastify@5.8.1`, `jsx-async-runtime@2.0.3`
+
+## 2026-03-02 - Jeasx 2.4.1 released
+
+🎉 This release introduces route prop inheritance from guards. Guards can return objects whose entries are used as additional props for your routes. Previously, only props from the closest guard were used. With this update, props from all guards along the route are collected and passed down. If multiple guards provide props with the same key, the value from the guard nearest to the route takes precedence and overwrites earlier ones.
+
+Dependency updates: `@types/node@25.3.3`
+
+## 2026-02-20 - Jeasx 2.4.0 released
+
+🎉 This release is both a step forward and a step back: the recently introduced support for MDX has been removed from the core project. Jeasx aims to keep its core as lean as possible, so this change aligns with the project's overall goals. Since MDX is not essential for every Jeasx website or application, it makes sense to move it out of the core.
+
+Another key goal of Jeasx is to empower users to implement their own custom solutions in userland, providing the right tools to do so. In short, while MDX remains a fantastic technology for content-driven websites, Jeasx now lets you configure MDX support yourself through a much improved configuration system for its base technologies like esbuild and Fastify.
+
+For esbuild, two new configuration options are available: `ESBUILD_SERVER_OPTIONS` and `ESBUILD_BROWSER_OPTIONS`. These can be defined as functions in `.env.js` that return additional configuration settings for esbuild.
+
+Why use functions instead of plain objects for the configuration? Because using functions allows configurations to be created lazily - only when needed - which is especially helpful for more complex setups over time.
+
+If you want to use MDX with Jeasx, simply run `npm install @mdx-js/esbuild` and add the configuration below to `ESBUILD_SERVER_OPTIONS` in `.env.js`.
+
+If you've used `ESBUILD_BROWSER_TARGET` in the past, you have to move this configuration to `ESBUILD_BROWSER_OPTIONS` as shown below.
+
+```jsx
+import mdx from "@mdx-js/esbuild";
+
+export default {
+  /** @type {() => import("esbuild").BuildOptions} */
+  ESBUILD_SERVER_OPTIONS: () => ({
+    plugins: [
+      mdx({
+        development: process.env.NODE_ENV === "development",
+        jsxImportSource: "jsx-async-runtime",
+        elementAttributeNameCase: "html",
+        stylePropertyNameCase: "css",
+      }),
+    ],
+  }),
+
+  /** @type {() => import("esbuild").BuildOptions} */
+  ESBUILD_BROWSER_OPTIONS: () => ({
+    target: ["chrome130", "edge130", "firefox130", "safari18"],
+  }),
+};
+```
+
+The existing configuration options for Fastify (such as `FASTIFY_SERVER_OPTIONS`, `FASTIFY_COOKIE_OPTIONS`, `FASTIFY_MULTIPART_OPTIONS`, `FASTIFY_STATIC_OPTIONS`) now require a minor change: they must be defined as functions instead of plain objects.
+
+Additionally, you can now customize the Fastify server instance using the optional `FASTIFY_SERVER` function. This function receives the created server instance and should return the modified version. This feature is especially useful when integrating existing Fastify plugins like `@fastify/compress`, as demonstrated below.
+
+```jsx
+import fastifyCompress from "@fastify/compress";
+
+const NODE_ENV_IS_DEVELOPMENT = process.env.NODE_ENV === "development";
+
+export default {
+  /** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance} */
+  FASTIFY_SERVER: (fastify) => fastify.register(fastifyCompress),
+
+  /** @type {() => import("fastify").FastifyServerOptions} */
+  FASTIFY_SERVER_OPTIONS: () => ({
+    disableRequestLogging: NODE_ENV_IS_DEVELOPMENT,
+    bodyLimit: 1024 * 1024,
+  }),
+
+  /** @type {() => import("@fastify/static").FastifyStaticOptions} */
+  FASTIFY_STATIC_OPTIONS: () => ({
+    immutable: !NODE_ENV_IS_DEVELOPMENT,
+    maxAge: NODE_ENV_IS_DEVELOPMENT ? 0 : "365d",
+  }),
+};
+```
+
+Another notable change is that the fallback content-type (`text/html`) for routes is now set as late as possible. This means you can return plain JavaScript objects from routes, which will be automatically sent as `application/json` by default - without needing to explicitly specify the content-type in your code. This update brings Jeasx in line with Fastify’s default behavior.
+
+Additionally, you can now define routes directly from simple `*.json` or `*.txt` files - perfect for creating static endpoints like a health check or a `robots.txt` file right in your routes folder.
+
+Dependency updates: `@types/node@25.3.0`
+
+## 2026-02-12 - Jeasx 2.3.2 released
+
+🎉 Upgraded to @types/node@25, enabling seamless development with Node 25 while maintaining compatibility for Node 24 users.
+
+Dependency updates: `esbuild@0.27.3`, `@types/node@25.2.3`
+
+## 2026-02-04 - Jeasx 2.3.1 released
+
+🎉 Just a patch release to update Fastify to fix [CVE-2026-25224](https://github.com/fastify/fastify/security/advisories/GHSA-mrq3-vjjr-p77c).
+
+Additionally, I performed minor refactorings identified by [oxlint](https://oxc.rs/docs/guide/usage/linter.html) and replaced `prettier` with [oxfmt](https://oxc.rs/docs/guide/usage/formatter), a high-performance formatter optimized for the JavaScript ecosystem.
+
+Dependency updates: `fastify@5.7.4`, `@types/node@24.10.10`
+
+## 2026-01-30 - Jeasx 2.3.0 released
+
+🎉 This release introduces support for [MDX](https://mdxjs.com), enabling you to seamlessly embed JSX within Markdown content. Just create a route with a `.mdx` extension, and you’re all set to enhance your websites and blogs with Markdown enriched by dynamic JSX components.
+
+```jsx
+import Layout from "./Layout";
+
+<Layout title="MDX - Markdown for the component era">
+  # MDX as content companion alongside JSX You can easily access existing `props` in MDX: - Current
+  url: {props.request.url}
+</Layout>;
+```
+
+You can also create MDX-based components for use within JSX by importing them with their full `.mdx` file extension into your JSX routes or components.
+
+Since MDX supports a variety of plugins - and Jeasx provides only the MDX core to stay focused on infrastructure while letting users handle customization - the overall configuration for Jeasx has been significantly improved. Now, the configuration object from an `.env.js` file is imported directly into both the build process and server runtime, allowing you to use package imports seamlessly. Previously, (de)serializing the configuration via `process.env` restricted this capability and limited advanced setups.
+
+**Please note:** Variables loaded from `.env.js` now consistently overwrite any existing environment variables. This ensures predictable and consistent behavior across your configuration.
+
+Here’s an example of how to configure the MDX engine: if you want to enable GitHub-flavored Markdown (`remark-gfm`), add syntax highlighting (`rehype-prism-plus`), and generate IDs for your headings (`rehype-slug`), you can install and configure these plugins accordingly in `.env.js`.
+
+```js
+import rehypePrismPlus from "rehype-prism-plus";
+import rehypeSlug from "rehype-slug";
+import remarkGFM from "remark-gfm";
+
+export default {
+  /** @type import("@mdx-js/esbuild").Options */
+  ESBUILD_MDX_OPTIONS: {
+    remarkPlugins: [[remarkGFM, { singleTilde: false }]],
+    rehypePlugins: [rehypePrismPlus, [rehypeSlug, { prefix: "jeasx-" }]],
+  },
+  //...
+};
+```
+
+For a full overview of available configuration options and plugins, check out the excellent documentation of [@mdx-js/esbuild](https://mdxjs.com/packages/esbuild).
+
+**Please note:** The update to the Jeasx configuration introduced a minor change in how `ESBUILD_BROWSER_TARGET` is specified to ensure consistency across the configuration. Previously, a comma-separated string was accepted and parsed as customization. Going forward, you must provide a proper JSON array (or its stringified form when using traditional `.env` files or the process environment).
+
+```js
+export default {
+  /** @type import("esbuild").BuildOptions["target"] */
+  ESBUILD_BROWSER_TARGET: ["chrome130", "edge130", "firefox130", "safari18"],
+  //...
+};
+```
+
+Dependency updates: `fastify@5.7.2`, `@fastify/multipart@9.4.0`
+
+## 2026-01-17 - Jeasx 2.2.2 released
+
+🎉 This release now preserves the original status code when a 404 page is accessed directly (defaults to 200). This improvement makes it easier to use Jeasx as a static site generator and to fetch the 404 page with common tools for saving it to a file system.
+
+While Jeasx is fundamentally a server-side rendering framework, there are valid use cases where serving a static page alone is sufficient. For example, you can use `wget` to download a Jeasx website to a www-directory with just a single line:
+
+```bash
+wget --mirror --page-requisites --no-host-directories --directory-prefix=www http://localhost:3000 http://localhost:3000/404
+```
+
+Have a look at the [Dockerfile](https://github.com/jeasx/jeasx-website/blob/main/Dockerfile) of the Jeasx website to see how things can be wired up for serving a static export with Caddy as web server.
+
+If you want to restore the old behaviour (directly calling /404 resulting in status code 404), you can simple add `reply.status(404)` to your `/[404]` handler.
+
+Dependency updates: `fastify@5.7.1`, `@fastify/static@9.0.0`, `@types/node@24.10.9`
+
+</Layout>
