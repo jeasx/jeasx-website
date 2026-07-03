@@ -17,11 +17,11 @@ In Jeasx, a file system-based routing system is at the heart of the framework.
 
 All server routes must be put anywhere in the `src` directory with filenames enclosed with brackets (`[news].jsx`) and should be defined as default exported functions that receive [request](https://fastify.dev/docs/latest/Reference/Request) and [reply](https://fastify.dev/docs/latest/Reference/Reply) objects from Fastify as props.
 
-Routes can be written using JSX (or MDX if properly installed and configured), but can also be written in JavaScript and/or TypeScript, or any other file type supported by esbuild.
+Routes can be written using JSX (or MDX if properly installed and configured), but can also be written in JavaScript and/or TypeScript, or any other file type supported by `esbuild`.
 
 A route can return various types of payloads for the client, including HTML (default), JSON, or other formats. If you need to perform asynchronous operations, you can declare your route or imported components as async.
 
-_Please note:_ Jeasx doesn't specify any hardcoded outbase directory for esbuild, so it defaults to the lowest common ancestor directory for all your routes. So when you put _all_ your routes into a dedicated folder (e.g. `src/routes`), `routes` will be removed from the resulting path.
+_Please note:_ Jeasx doesn't specify any hardcoded outbase directory for `esbuild`, so it defaults to the lowest common ancestor directory for all your routes. So when you put _all_ your routes into a dedicated folder (e.g. `src/routes`), `routes` will be removed from the resulting path.
 
 ## Named routes
 

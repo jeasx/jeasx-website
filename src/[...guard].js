@@ -1,3 +1,4 @@
+import fastifySend from "@fastify/send";
 import { jsxToString } from "jsx-async-runtime";
 
 const BUILD_TIME_PREFIX = `/${process.env.BUILD_TIME}/`;
@@ -5,10 +6,17 @@ const BUILD_TIME_PREFIX = `/${process.env.BUILD_TIME}/`;
 /**
  * @param {import("./types").RouteProps} props
  */
-export default function ({ request, reply }) {
+export default async function ({ request, reply }) {
   // Handle static assets prefixed with build time
-  if (request.url.startsWith(BUILD_TIME_PREFIX)) {
-    return reply.sendFile(request.url.slice(BUILD_TIME_PREFIX.length));
+  if (request.path.startsWith(BUILD_TIME_PREFIX)) {
+    const result = await fastifySend(request.raw, request.path.slice(BUILD_TIME_PREFIX.length), {
+      root: "dist",
+    });
+    if (result) {
+      reply.headers(result.headers);
+      reply.status(result.statusCode);
+      return result.stream;
+    }
   }
 
   // Set the request and reply objects as context

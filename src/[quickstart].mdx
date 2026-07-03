@@ -17,11 +17,19 @@ It's easy to get started. Just use the following commands to set up and start yo
 ```bash
 npm create jeasx@latest
 cd jeasx-quickstart
-npm run build
 npm run dev
 ```
 
-If you want to create a new project with a specific name, you can provide an additional argument:
+Hot reloading is enabled in `development mode`, allowing modified files to be automatically recompiled.
+
+To run your project in `production mode`, you'll need to perform a build to export required metadata before starting the server:
+
+```bash
+npm run build
+npm start
+```
+
+You can create a new project with a specific name by providing an additional argument:
 
 ```bash
 npm create jeasx@latest my-awesome-project
@@ -29,7 +37,7 @@ npm create jeasx@latest my-awesome-project
 
 If your project is successfully started, just visit `http://localhost:3000/` in a browser of your choice.
 
-If you want to see the quickstart example in action, you can visit a deployed version of the quickstart template at [https://quickstart.jeasx.dev](https://quickstart.jeasx.dev). The contents of the quickstart template can be found at [GitHub](https://github.com/jeasx/jeasx-quickstart).
+You can visit a deployed version of the quickstart template at [https://quickstart.jeasx.dev](https://quickstart.jeasx.dev). The contents of the quickstart template can be found at [GitHub](https://github.com/jeasx/jeasx-quickstart).
 
 <Highlight title="Learning by examples" variant={true}>
   The best way to get to know Jeasx is by exploring the [Expo](https://expo.jeasx.dev), which

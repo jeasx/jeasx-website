@@ -32,7 +32,7 @@ Jeasx uses a syntax similar to React, but there are some important differences. 
 
 ### HTML is escaped by default
 
-With **Jeasx >= v2.x.x** all HTML markup is escaped by default. If you want to include HTML (or other code) snippets, you can provide an object with the key `html` containing the literal code to be included in the rendered result: `{{ html: "<p>Some HTML from a CMS</p>" }}`.
+With Jeasx all HTML markup is escaped by default. If you want to include HTML (or other code) snippets, you can provide an object with the key `html` containing the literal code to be included in the rendered result: `{{ html: "<p>Some HTML from a CMS</p>" }}`.
 
 ```jsx
 <>
@@ -45,7 +45,7 @@ With **Jeasx >= v2.x.x** all HTML markup is escaped by default. If you want to i
 <>
 ```
 
-If you need to disable HTML escaping globally (e.g. restore the behaviour of Jeasx >= v2.x.x) or for a component and children, you can set `this.jsxEscapeHTML = false` in a JSX component. This feature can be used for advanced patterns (e.g. to create custom HTML components):
+If you need to disable HTML escaping globally or for a component and children, you can set `this.jsxEscapeHTML = false` in a JSX component. This feature can be used for advanced patterns (e.g. to create custom HTML components):
 
 ```jsx
 export default function Html({ children }) {
