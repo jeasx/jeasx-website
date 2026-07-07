@@ -59,4 +59,25 @@ _Please note:_ Jeasx doesn't specify any hardcoded outbase directory for esbuild
 
 _Please note:_ as JavaScript or TypeScript is compiled to [ECMAScript modules (ESM) via esbuild](https://esbuild.github.io/api/#format-esm), you should add `type="module"` to your script tags to avoid subtle errors.
 
+## Intercept static assets with `reply.file`
+
+All static files - whether stored in the `public` directory or the `dist` folder - are delivered via the Jeasx route pipeline immediately following the guard processing stage. This architecture allows you to intercept static file requests seamlessly. You can access static file metadata directly within guards via `reply.file`. If a file exists at the requested path, this object is pre-populated with `headers`, `statusCode`, and `stream`. This enables you to apply or bypass authentication, modify headers, or replace content on the fly.
+
+```js
+export default async function ({ request, reply }) {
+  if (reply.file) {
+    console.log(reply.file.statusCode, reply.file.headers, reply.file.stream);
+    // Delete header
+    delete reply.file.headers["ETag"];
+    // Overwrite existing header
+    reply.file.headers["Cache-Control"] = "public, no-cache";
+  }
+
+  // Don't respond with static "/robots.txt"
+  if (request.path === "/robots.txt") {
+    reply.file = undefined;
+  }
+}
+```
+
 </Layout>
