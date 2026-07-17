@@ -11,11 +11,11 @@
     "@mdx-js/esbuild": "3.1.1",
     "@tailwindcss/typography": "0.5.20",
     "esbuild-plugin-tailwindcss": "2.2.0",
-    "jeasx": "2.8.1",
+    "jeasx": "2.9.0",
     "pagefind": "1.5.2",
     "prismjs": "1.30.0",
     "rehype-prism-plus": "2.0.2",
-    "tailwindcss": "4.3.2"
+    "tailwindcss": "4.3.3"
   },
   "allowScripts": {
     "esbuild": true
