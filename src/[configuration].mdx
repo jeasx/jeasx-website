@@ -131,4 +131,36 @@ export default {
 
 [Fastify-Send options reference](https://github.com/fastify/send#options).
 
+## Recommended Fastify plugins
+
+Jeasx is built on the philosophy of providing a powerful core while pushing customizations to the user level. By avoiding opinionated defaults, Jeasx gives you the freedom to build a setup that is uniquely your own.
+
+Need more features? No problem! Jeasx makes it easy to customize Fastify. Here are some Fastify plugins which help you to use common features in web development:
+
+- Install `@fastify/formbody` if your project requires _POST_ form support.
+- Install `@fastify/cookie` if you need to handle HTTP cookies.
+- Install `@fastify/multipart` if your project handles file uploads.
+
+```bash
+npm install @fastify/formbody @fastify/cookie @fastify/multipart
+```
+
+Next, update your `jeasx.config.js` with the following configuration to customize your Fastify server instance:
+
+```js
+/** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance} */
+FASTIFY_SERVER: (fastify) =>
+  fastify
+    .register(import("@fastify/formbody"), {/* formbody options */})
+    .register(import("@fastify/multipart"), {/* multipart options */})
+    .register(import("@fastify/cookie"), {/* cookie options */});
+```
+
+Because plugins like `@fastify/cookie` and `@fastify/multipart` extend the `request` and `reply` objects, you should add the following imports to `src/types.d.ts` (or a similar definition file in your project) to ensure proper TypeScript support for your editor:
+
+```js
+import "@fastify/cookie";
+import "@fastify/multipart";
+```
+
 </Layout>
