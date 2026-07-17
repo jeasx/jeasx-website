@@ -80,21 +80,21 @@ import rehypePrismPlus from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
 import remarkGFM from "remark-gfm";
 
-export default {
-  /** @type {() => import("esbuild").BuildOptions} */
-  ESBUILD_SERVER_OPTIONS: () => ({
-    plugins: [
-      mdx({
-        development: process.env.NODE_ENV === "development",
-        jsxImportSource: "jsx-async-runtime",
-        elementAttributeNameCase: "html",
-        stylePropertyNameCase: "css",
-        remarkPlugins: [[remarkGFM, { singleTilde: false }]],
-        rehypePlugins: [rehypePrismPlus, [rehypeSlug, { prefix: "jeasx-" }]],
-      }),
-    ],
-  }),
-};
+// ...
+
+/** @type {() => import("esbuild").BuildOptions} */
+ESBUILD_SERVER_OPTIONS: () => ({
+  plugins: [
+    mdx({
+      development: process.env.NODE_ENV === "development",
+      jsxImportSource: "jsx-async-runtime",
+      elementAttributeNameCase: "html",
+      stylePropertyNameCase: "css",
+      remarkPlugins: [[remarkGFM, { singleTilde: false }]],
+      rehypePlugins: [rehypePrismPlus, [rehypeSlug, { prefix: "jeasx-" }]],
+    }),
+  ],
+});
 ```
 
 ### ESBUILD_BROWSER_OPTIONS
@@ -102,25 +102,19 @@ export default {
 Useful to configure build options for the browser bundle ([Jeasx config at GitHub](https://github.com/jeasx/jeasx/blob/main/build.js)), e.g. reconfigure the browser target of esbuild. Full documentation at [esbuild website](https://esbuild.github.io/api/#target).
 
 ```js
-export default {
-  /** @type {() => import("esbuild").BuildOptions} */
-  ESBUILD_BROWSER_OPTIONS: () => ({
-    target: ["chrome130", "edge130", "firefox130", "safari18"],
-  }),
-};
+/** @type {() => import("esbuild").BuildOptions} */
+ESBUILD_BROWSER_OPTIONS: () => ({
+  target: ["chrome130", "edge130", "firefox130", "safari18"],
+});
 ```
 
 ### FASTIFY_SERVER
 
-This allows you to enhance the functionality of the underlying [Fastify server](https://fastify.dev/docs/latest/Reference/Server/), e.g. registering plugins.
+This allows you to enhance the functionality of the underlying [Fastify server](https://fastify.dev/docs/latest/Reference/Server/), e.g. installing and registering plugins.
 
 ```js
-import fastifyCompress from "@fastify/compress";
-
-export default {
-  /** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance} */
-  FASTIFY_SERVER: (fastify) => fastify.register(fastifyCompress),
-};
+/** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance} */
+FASTIFY_SERVER: (fastify) => fastify.register(import("@fastify/compress"));
 ```
 
 ### FASTIFY_SERVER_OPTIONS
@@ -137,9 +131,9 @@ Jeasx is built on the philosophy of providing a powerful core while pushing cust
 
 Need more features? No problem! Jeasx makes it easy to customize Fastify. Here are some Fastify plugins which help you to use common features in web development:
 
-- Install `@fastify/formbody` if your project requires _POST_ form support.
-- Install `@fastify/cookie` if you need to handle HTTP cookies.
-- Install `@fastify/multipart` if your project handles file uploads.
+- Install [@fastify/formbody](https://github.com/fastify/fastify-formbody) if your project requires _POST_ form support.
+- Install [@fastify/cookie](https://github.com/fastify/fastify-cookie) if you need to handle HTTP cookies.
+- Install [@fastify/multipart](https://github.com/fastify/fastify-multipart) if your project handles file uploads.
 
 ```bash
 npm install @fastify/formbody @fastify/cookie @fastify/multipart
