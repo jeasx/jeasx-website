@@ -157,4 +157,26 @@ import "@fastify/cookie";
 import "@fastify/multipart";
 ```
 
+## Handle form submissions without `@fastify/formbody`
+
+Although `@fastify/formbody` is commonly used for processing POST form data, Fastify provides the flexibility to define custom content type parsers manually. The following configuration demonstrates this approach:
+
+```js
+import querystring from "node:querystring";
+
+// ...
+
+/** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance} */
+FASTIFY_SERVER: (fastify) =>
+  fastify.addContentTypeParser(
+    "application/x-www-form-urlencoded",
+    { parseAs: "string" },
+    async (_request, body) => querystring.parse(body),
+  );
+```
+
+This configuration allows you to remove `@fastify/formbody` as a dependency.
+
+**Please note:** The native Node.js querystring parser may have slightly higher latency than `@fastify/formbody`, but for the majority of applications, this performance trade-off is insignificant.
+
 </Layout>
