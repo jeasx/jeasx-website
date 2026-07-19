@@ -56,15 +56,19 @@ The configuration object from `jeasx.config.js` is imported directly into both t
 ```js
 export default {
   /** @type {() => import("esbuild").BuildOptions} */
-  ESBUILD_BROWSER_OPTIONS: () => ({
-    target: ["chrome130", "edge130", "firefox130", "safari18"],
-  }),
+  ESBUILD_SERVER_OPTIONS: () => ({}),
+
+  /** @type {() => import("esbuild").BuildOptions} */
+  ESBUILD_BROWSER_OPTIONS: () => ({}),
+
+  /** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance} */
+  FASTIFY_SERVER: (fastify) => fastify,
 
   /** @type {() => import("fastify").FastifyServerOptions} */
-  FASTIFY_SERVER_OPTIONS: () => ({
-    logger: { level: process.env.NODE_ENV === "development" ? "error" : "info" },
-    bodyLimit: 1024 * 1024,
-  }),
+  FASTIFY_SERVER_OPTIONS: () => ({}),
+
+  /** @type {() => import("@fastify/send").SendOptions} */
+  FASTIFY_SEND_OPTIONS: () => ({}),
 };
 ```
 
@@ -80,21 +84,21 @@ import rehypePrismPlus from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
 import remarkGFM from "remark-gfm";
 
-// ...
-
-/** @type {() => import("esbuild").BuildOptions} */
-ESBUILD_SERVER_OPTIONS: () => ({
-  plugins: [
-    mdx({
-      development: process.env.NODE_ENV === "development",
-      jsxImportSource: "jsx-async-runtime",
-      elementAttributeNameCase: "html",
-      stylePropertyNameCase: "css",
-      remarkPlugins: [[remarkGFM, { singleTilde: false }]],
-      rehypePlugins: [rehypePrismPlus, [rehypeSlug, { prefix: "jeasx-" }]],
-    }),
-  ],
-});
+export default {
+  /** @type {() => import("esbuild").BuildOptions} */
+  ESBUILD_SERVER_OPTIONS: () => ({
+    plugins: [
+      mdx({
+        development: process.env.NODE_ENV === "development",
+        jsxImportSource: "jsx-async-runtime",
+        elementAttributeNameCase: "html",
+        stylePropertyNameCase: "css",
+        remarkPlugins: [[remarkGFM, { singleTilde: false }]],
+        rehypePlugins: [rehypePrismPlus, [rehypeSlug, { prefix: "jeasx-" }]],
+      }),
+    ],
+  }),
+};
 ```
 
 ### ESBUILD_BROWSER_OPTIONS
@@ -102,28 +106,52 @@ ESBUILD_SERVER_OPTIONS: () => ({
 Useful to configure build options for the browser bundle ([Jeasx config at GitHub](https://github.com/jeasx/jeasx/blob/main/build.js)), e.g. reconfigure the browser target of esbuild. Full documentation at [esbuild website](https://esbuild.github.io/api/#target).
 
 ```js
-/** @type {() => import("esbuild").BuildOptions} */
-ESBUILD_BROWSER_OPTIONS: () => ({
-  target: ["chrome130", "edge130", "firefox130", "safari18"],
-});
+export default {
+  /** @type {() => import("esbuild").BuildOptions} */
+  ESBUILD_BROWSER_OPTIONS: () => ({
+    target: ["chrome130", "edge130", "firefox130", "safari18"],
+  }),
+};
 ```
 
 ### FASTIFY_SERVER
 
-This allows you to enhance the functionality of the underlying [Fastify server](https://fastify.dev/docs/latest/Reference/Server/), e.g. installing and registering plugins.
+This allows you to enhance the functionality of the underlying [Fastify server](https://fastify.dev/docs/latest/Reference/Server/), e.g. registering plugins.
 
 ```js
-/** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance} */
-FASTIFY_SERVER: (fastify) => fastify.register(import("@fastify/compress"));
+export default {
+  /** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance} */
+  FASTIFY_SERVER: (fastify) => fastify.register(import("@fastify/compress")),
+};
 ```
 
 ### FASTIFY_SERVER_OPTIONS
 
 [Fastity-Server options reference](https://fastify.dev/docs/latest/Reference/Server).
 
+```js
+export default {
+  /** @type {() => import("fastify").FastifyServerOptions} */
+  FASTIFY_SERVER_OPTIONS: () => ({
+    logger: { level: process.env.NODE_ENV == "development" ? "error" : "info" },
+    bodyLimit: 2 * 1024 * 1024,
+  }),
+};
+```
+
 ### FASTIFY_SEND_OPTIONS
 
 [Fastify-Send options reference](https://github.com/fastify/send#options).
+
+```js
+export default {
+  /** @type {() => import("@fastify/send").SendOptions} */
+  FASTIFY_SEND_OPTIONS: () => ({
+    immutable: process.env.NODE_ENV !== "development",
+    maxAge: process.env.NODE_ENV == "development" ? 0 : "365d",
+  }),
+};
+```
 
 ## Recommended Fastify plugins
 
@@ -142,12 +170,14 @@ npm install @fastify/formbody @fastify/cookie @fastify/multipart
 Next, update your `jeasx.config.js` with the following configuration to customize your Fastify server instance:
 
 ```js
-/** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance} */
-FASTIFY_SERVER: (fastify) =>
-  fastify
-    .register(import("@fastify/formbody"), {/* formbody options */})
-    .register(import("@fastify/multipart"), {/* multipart options */})
-    .register(import("@fastify/cookie"), {/* cookie options */});
+export default {
+  /** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance} */
+  FASTIFY_SERVER: (fastify) =>
+    fastify
+      .register(import("@fastify/formbody"), {/* formbody options */})
+      .register(import("@fastify/multipart"), {/* multipart options */})
+      .register(import("@fastify/cookie"), {/* cookie options */}),
+};
 ```
 
 Because plugins like `@fastify/cookie` and `@fastify/multipart` extend the `request` and `reply` objects, you should add the following imports to `src/types.d.ts` (or a similar definition file in your project) to ensure proper TypeScript support for your editor:
@@ -164,15 +194,15 @@ Although `@fastify/formbody` is commonly used for processing POST form data, Fas
 ```js
 import querystring from "node:querystring";
 
-// ...
-
-/** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance} */
-FASTIFY_SERVER: (fastify) =>
-  fastify.addContentTypeParser(
-    "application/x-www-form-urlencoded",
-    { parseAs: "string" },
-    async (_request, body) => querystring.parse(body),
-  );
+export default {
+  /** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance} */
+  FASTIFY_SERVER: (fastify) =>
+    fastify.addContentTypeParser(
+      "application/x-www-form-urlencoded",
+      { parseAs: "string" },
+      async (_request, body) => querystring.parse(body),
+    ),
+};
 ```
 
 This configuration allows you to remove `@fastify/formbody` as a dependency.
