@@ -36,13 +36,4 @@ export default {
     immutable: !NODE_ENV_IS_DEVELOPMENT,
     maxAge: NODE_ENV_IS_DEVELOPMENT ? 0 : "365d",
   }),
-
-  /** @type import("@fastify/cookie").FastifyCookieOptions */
-  // FASTIFY_COOKIE_OPTIONS: {},
-
-  /** @type import("@fastify/formbody").FastifyFormbodyOptions */
-  // FASTIFY_FORMBODY_OPTIONS: {},
-
-  /** @type import("@fastify/multipart").FastifyMultipartOptions */
-  // FASTIFY_MULTIPART_OPTIONS: {},
 };
