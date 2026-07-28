@@ -29,6 +29,8 @@ export default {
   /** @type {() => import("fastify").FastifyServerOptions} */
   FASTIFY_SERVER_OPTIONS: () => ({
     logger: { level: NODE_ENV_IS_DEVELOPMENT ? "error" : "info" },
+    // Remove Cache-Buster from url (e.g. /index~ms51921e.js)
+    rewriteUrl: (req) => req.url.replace(/~[a-z0-9]*\./, "."),
   }),
 
   /** @type {() => import("@fastify/send").SendOptions} */

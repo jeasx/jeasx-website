@@ -2,6 +2,8 @@ import Header from "./Header";
 import MobileNavigation from "./MobileNavigation";
 import Navigation from "./Navigation";
 
+const BUILD_TIME = process.env.BUILD_TIME;
+
 /**
  * @this {import("../types").RouteProps}
  */
@@ -37,16 +39,10 @@ export default function Layout({
             rel="canonical"
             href={`https://www.jeasx.dev${path.endsWith("/") ? path.slice(0, -1) : path}`}
           ></link>
-          <link rel="stylesheet" href={`/${process.env.BUILD_TIME}/index.css`} />
-          <script type="module" src={`/${process.env.BUILD_TIME}/index.js`}></script>
-          <link
-            rel="stylesheet"
-            href={`/pagefind/pagefind-component-ui.css?${process.env.BUILD_TIME}`}
-          />
-          <script
-            type="module"
-            src={`/pagefind/pagefind-component-ui.js?${process.env.BUILD_TIME}`}
-          ></script>
+          <link rel="stylesheet" href={`/index~${BUILD_TIME}.css`} />
+          <script type="module" src={`/index~${BUILD_TIME}.js`}></script>
+          <link rel="stylesheet" href={`/pagefind/pagefind-component-ui.css?${BUILD_TIME}`} />
+          <script type="module" src={`/pagefind/pagefind-component-ui.js?${BUILD_TIME}`}></script>
         </head>
         <body class="flex min-h-full bg-white dark:bg-slate-900">
           <div class="flex w-full flex-col">
