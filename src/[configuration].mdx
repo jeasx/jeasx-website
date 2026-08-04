@@ -39,16 +39,6 @@ The hostname or IP address that the server should listen on. Defaults to `::` wh
 
 The port number that the server should listen on. Defaults to `3000`.
 
-### BUILD_TIME
-
-A value set at build time and encoded as `base36` (lower case alphabet and digits). Use it to create a cache busting parameter for loading JavaScript and CSS files.
-
-<Highlight title="Environment variables for client code" icon={{ html: IconAttention }}>
-  For security reasons, only environment variables prefixed with `BROWSER_PUBLIC_` are accessible in
-  client-side JavaScript to prevent accidental exposure of sensitive data. The values are only
-  updated at build time, so changes to environment variables will require a rebuild to take effect.
-</Highlight>
-
 ## Configure esbuild and Fastify via `jeasx.config.js`
 
 The configuration object from `jeasx.config.js` is imported directly into both the build process and server runtime and provides essential options for `esbuild` and `Fastify`, allowing you to use the full power of JavaScript (e.g package imports) to build advanced setups.
@@ -113,6 +103,20 @@ export default {
   }),
 };
 ```
+
+<Highlight title="Environment variables for client code" icon={{ html: IconAttention }}>
+  If you want to use environment variables in client-side JavaScript, you have to configure them at build time via [ESBUILD_BROWSER_OPTIONS#define](https://esbuild.github.io/api/#define):
+
+```js
+export default {
+  /** @type {() => import("esbuild").BuildOptions} */
+  ESBUILD_BROWSER_OPTIONS: () => ({
+    define: { "process.env.API_ENDPOINT": `"https://expo.jeasx.dev/jokes/api/programming"` },
+  }),
+};
+```
+
+</Highlight>
 
 ### FASTIFY_SERVER
 

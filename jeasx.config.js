@@ -7,6 +7,7 @@ const NODE_ENV_IS_DEVELOPMENT = process.env.NODE_ENV === "development";
 export default {
   /** @type {() => import("esbuild").BuildOptions} */
   ESBUILD_SERVER_OPTIONS: () => ({
+    define: { "process.env.BUILD_ID": `"${Date.now().toString(36)}"` },
     loader: { ".svg": "text" },
     plugins: [
       mdxPlugin({

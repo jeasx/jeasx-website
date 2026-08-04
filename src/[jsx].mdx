@@ -118,15 +118,17 @@ export default async function () {
 
 The JSX runtime also provides a way to transform JSX components. This can be useful to patch the markup of 3rd party components or to rewrite existing attributes of components.
 
-The following example adds a build timestamp to all image sources, so each image receives a new URL with each deployment. It works by adding a custom `jsxToString` handler via the `this` context. Just add the following code as `src/[guard].js` to your project:
+The following example adds a timestamp to all image sources, so each image receives a new URL with each deployment. It works by adding a custom `jsxToString` handler via the `this` context. Just add the following code as `src/[guard].js` to your project:
 
 ```jsx
 import { jsxToString } from "jsx-async-runtime";
 
+const REVISION = Date.now().toString(36);
+
 export default function ({ request, reply }) {
   this.jsxToString = (jsxElement) => {
     if (jsxElement.type === "tag" && jsxElement.tag === "img") {
-      jsxElement.props.src = jsxElement.props.src + "?" + process.env.BUILD_TIME;
+      jsxElement.props.src = jsxElement.props.src + "?" + REVISION;
     }
     return jsxToString.call(this, jsxElement);
   };
