@@ -29,6 +29,11 @@ An existing environment variable will not be overwritten by subsequent environme
 
 **Please note:** Jeasx only sets `NODE_ENV=development` automatically when running `jeasx dev`. For production or testing environments, you'll need to set the `NODE_ENV` environment variable to the desired value (e.g. `production` or `test`) depending on your requirements and workflows.
 
+<Highlight title="Environment variables for client code" icon={{ html: IconAttention }}>
+  For security reasons, environment variables are not accessible in frontend JavaScript by default.
+  To expose specific variables, use the `ESBUILD_BROWSER_OPTIONS` configuration (see below).
+</Highlight>
+
 ## Fundamental environment variables
 
 ### HOST
@@ -93,30 +98,17 @@ export default {
 
 ### ESBUILD_BROWSER_OPTIONS
 
-Useful to configure build options for the browser bundle ([Jeasx config at GitHub](https://github.com/jeasx/jeasx/blob/main/build.js)), e.g. reconfigure the browser target of esbuild. Full documentation at [esbuild website](https://esbuild.github.io/api/#target).
+Useful to configure build options for the browser bundle ([Jeasx config at GitHub](https://github.com/jeasx/jeasx/blob/main/build.js)), e.g. reconfigure the browser target of esbuild or define environment variables for JavaScript bundles. Full documentation at [esbuild website](https://esbuild.github.io/api/#target).
 
 ```js
 export default {
   /** @type {() => import("esbuild").BuildOptions} */
   ESBUILD_BROWSER_OPTIONS: () => ({
     target: ["chrome130", "edge130", "firefox130", "safari18"],
+    define: { "process.env.JOKES_API": `"https://expo.jeasx.dev/jokes/api/programming"` },
   }),
 };
 ```
-
-<Highlight title="Environment variables for client code" icon={{ html: IconAttention }}>
-  If you want to use environment variables in client-side JavaScript, you have to configure them at build time via [ESBUILD_BROWSER_OPTIONS#define](https://esbuild.github.io/api/#define):
-
-```js
-export default {
-  /** @type {() => import("esbuild").BuildOptions} */
-  ESBUILD_BROWSER_OPTIONS: () => ({
-    define: { "process.env.API_ENDPOINT": `"https://expo.jeasx.dev/jokes/api/programming"` },
-  }),
-};
-```
-
-</Highlight>
 
 ### FASTIFY_SERVER
 
