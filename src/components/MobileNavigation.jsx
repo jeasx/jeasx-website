@@ -2,7 +2,7 @@ import Navigation from "./Navigation";
 
 export default function MobileNavigation() {
   return (
-    <div hidden id="mobile-navigation">
+    <div id="mobile-navigation">
       <div>
         <button
           type="button"
