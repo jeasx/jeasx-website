@@ -2,7 +2,7 @@ import Navigation from "./Navigation";
 
 export default function MobileNavigation() {
   return (
-    <div class="hidden" id="mobile-navigation">
+    <div hidden id="mobile-navigation">
       <div>
         <button
           type="button"
@@ -11,14 +11,14 @@ export default function MobileNavigation() {
         ></button>
         <div>
           <div
-            class="fixed inset-0 z-50 flex items-start overflow-y-auto bg-slate-900/50 pr-10 backdrop-blur lg:hidden"
+            class="mobile-nav"
             aria-label="Navigation"
             role="dialog"
             tabindex="-1"
             aria-modal="true"
           >
-            <div class="min-h-full w-full max-w-xs bg-white px-4 pb-12 pt-5 sm:px-6 dark:bg-slate-900">
-              <div class="flex items-center">
+            <div class="mobile-nav-panel">
+              <div class="mobile-nav-header">
                 <button data-navigation-toggle type="button" aria-label="Close navigation">
                   <svg
                     aria-hidden="true"
@@ -26,13 +26,13 @@ export default function MobileNavigation() {
                     fill="none"
                     stroke-width="2"
                     stroke-linecap="round"
-                    class="h-6 w-6 stroke-slate-500"
+                    class="menu-icon"
                   >
                     <path d="M5 5l14 14M19 5l-14 14"></path>
                   </svg>
                 </button>
-                <a class="ml-6" aria-label="Home page" href="/">
-                  <svg aria-hidden="true" viewBox="0 0 36 36" fill="none" class="h-9 w-9">
+                <a class="mobile-nav-home" aria-label="Home page" href="/">
+                  <svg aria-hidden="true" viewBox="0 0 36 36" fill="none" class="logo">
                     <g fill="none" stroke="#38BDF8" stroke-linejoin="round" stroke-width="3">
                       <path d="M10.308 5L18 17.5 10.308 30 2.615 17.5 10.308 5z"></path>
                       <path d="M18 17.5L10.308 5h15.144l7.933 12.5M18 17.5h15.385L25.452 30H10.308L18 17.5z"></path>
@@ -40,7 +40,7 @@ export default function MobileNavigation() {
                   </svg>
                 </a>
               </div>
-              <div class="mt-5 px-1">
+              <div class="mobile-nav-body">
                 <Navigation />
               </div>
             </div>

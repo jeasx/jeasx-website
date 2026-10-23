@@ -1,0 +1,56 @@
+.highlight {
+  display: flex;
+  margin-block: 2rem;
+  border-radius: 1.5rem;
+  background-color: var(--color-sky-50);
+  padding: 1.5rem;
+
+  .highlight-title {
+    color: var(--color-sky-900);
+  }
+
+  /* Highlight content uses the neutral gray typography palette */
+  .prose {
+    --prose-headings: oklch(21% 0.034 264.665);
+    --prose-bold: oklch(21% 0.034 264.665);
+    --prose-counters: oklch(55.1% 0.027 264.364);
+    --prose-bullets: oklch(87.2% 0.01 258.338);
+    --prose-body: var(--color-sky-800);
+    --prose-links: var(--color-sky-900);
+    --prose-code: var(--color-sky-900);
+    --prose-background: var(--color-sky-50);
+  }
+}
+
+.highlight-warning {
+  background-color: var(--color-amber-50);
+
+  .highlight-title {
+    color: var(--color-amber-900);
+  }
+
+  .prose {
+    --prose-body: var(--color-amber-800);
+    --prose-links: var(--color-amber-900);
+    --prose-code: var(--color-amber-900);
+    --prose-background: var(--color-amber-50);
+    --prose-underline: var(--color-amber-400);
+  }
+}
+
+.highlight-content {
+  flex: auto;
+  margin-left: 1rem;
+  width: 100%;
+}
+
+.highlight-title {
+  font-size: 1.25rem;
+  line-height: 2rem;
+  font-family: var(--font-display);
+  font-feature-settings: "ss01";
+
+  + .highlight-body {
+    margin-top: 0.625rem;
+  }
+}

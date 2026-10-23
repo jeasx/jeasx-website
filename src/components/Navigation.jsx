@@ -1,19 +1,16 @@
 export default function Navigation() {
   return (
-    <nav class="text-base lg:text-sm">
-      <ul class="space-y-9">
+    <nav class="nav">
+      <ul class="nav-sections">
         {NAV_ITEMS.map(({ label, links }) => (
           <li>
-            <h2 class="font-display font-medium text-slate-900 dark:text-white">{label}</h2>
-            <ul class="mt-2 space-y-2 border-l-2 border-slate-100 lg:mt-4 lg:space-y-4 lg:border-slate-200 dark:border-slate-800">
+            <h2 class="nav-heading">{label}</h2>
+            <ul class="nav-links">
               {links.map(({ label, link }) => (
-                <li class="relative">
+                <li>
                   <a
-                    class={
-                      this.request.path === link
-                        ? "block w-full pl-3.5 font-semibold text-sky-500 before:pointer-events-none before:absolute before:top-1/2 before:-left-1 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full before:bg-sky-500"
-                        : "block w-full pl-3.5 text-slate-500 before:pointer-events-none before:absolute before:top-1/2 before:-left-1 before:hidden before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
-                    }
+                    class="nav-link"
+                    aria-current={this.request.path === link ? "page" : undefined}
                     href={link}
                   >
                     {label}

@@ -1,5 +1,4 @@
 import mdxPlugin from "@mdx-js/esbuild";
-import tailwindPlugin from "esbuild-plugin-tailwindcss";
 import rehypePrismPlus from "rehype-prism-plus";
 
 const NODE_ENV_IS_DEVELOPMENT = process.env.NODE_ENV === "development";
@@ -24,7 +23,6 @@ export default {
   ESBUILD_BROWSER_OPTIONS: () => ({
     loader: { ".woff2": "file" },
     target: ["chrome130", "edge130", "firefox130", "safari18"],
-    plugins: [tailwindPlugin()],
   }),
 
   /** @type {() => import("fastify").FastifyServerOptions} */

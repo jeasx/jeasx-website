@@ -1,0 +1,41 @@
+.mobile-nav {
+  display: flex;
+  position: fixed;
+  align-items: flex-start;
+  z-index: 50;
+  backdrop-filter: blur(8px);
+  inset: 0;
+  background-color: color-mix(in oklab, var(--color-slate-900) 50%, transparent);
+  padding-right: 2.5rem;
+  overflow-y: auto;
+
+  @media (width >= 64rem) {
+    display: none;
+  }
+}
+
+.mobile-nav-panel {
+  background-color: var(--color-white);
+  padding: 1.25rem 1rem 3rem;
+  width: 100%;
+  max-width: 20rem;
+  min-height: 100%;
+
+  @media (width >= 40rem) {
+    padding-inline: 1.5rem;
+  }
+}
+
+.mobile-nav-header {
+  display: flex;
+  align-items: center;
+}
+
+.mobile-nav-home {
+  margin-left: 1.5rem;
+}
+
+.mobile-nav-body {
+  margin-top: 1.25rem;
+  padding-inline: 0.25rem;
+}

@@ -1,0 +1,22 @@
+.icon {
+  --icon-background: var(--color-white);
+  --icon-foreground: var(--color-slate-900);
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+
+  .fill-bg {
+    fill: var(--icon-background);
+  }
+  .fill-fg {
+    fill: var(--icon-foreground);
+  }
+  .stroke-fg {
+    stroke: var(--icon-foreground);
+  }
+}
+
+.icon-warning {
+  --icon-background: var(--color-amber-100);
+  --icon-foreground: var(--color-amber-900);
+}
