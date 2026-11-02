@@ -346,7 +346,6 @@ export default function ({ request }) {
     <Layout title={book.title}>
       <a href="/">&laquo; All books</a>
       <article class="book">
-        <img src={`https://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg`} alt="" width="180" />
         <div>
           <h1 style={`view-transition-name: book-${book.id}`}>{book.title}</h1>
           <p>
@@ -354,6 +353,12 @@ export default function ({ request }) {
           </p>
           <BookDetails isbn={book.isbn} />
         </div>
+        <img
+          src={`https://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg`}
+          alt=""
+          width="180"
+          class="cover"
+        />
       </article>
     </Layout>
   );
@@ -908,18 +913,66 @@ header nav a[aria-current="page"],
   box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 0.2);
 }
 
-.book dl {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.25rem 1rem;
+/* Skeleton shown while the cover image loads: a fake book with spine,
+   title and author lines, and a diagonal shine sweeping across it. */
+.cover {
+  --bar: color-mix(in srgb, var(--surface) 55%, transparent);
+  /* 2:3 while loading, then the cover's own proportions */
+  aspect-ratio: auto 2 / 3;
+  align-self: flex-start;
+  background:
+    linear-gradient(110deg, transparent 40%, rgb(255 255 255 / 0.35) 50%, transparent 60%) 100% 0 /
+      250% 100% no-repeat,
+    linear-gradient(var(--bar), var(--bar)) 50% 32% / 70% 6% no-repeat,
+    linear-gradient(var(--bar), var(--bar)) 50% 41% / 50% 6% no-repeat,
+    linear-gradient(var(--bar), var(--bar)) 50% 83% / 40% 4% no-repeat,
+    linear-gradient(90deg, rgb(0 0 0 / 0.18) 0 6%, rgb(255 255 255 / 0.12) 6% 7%, transparent 7%),
+    linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--accent) 35%, var(--surface)),
+      color-mix(in srgb, var(--accent) 12%, var(--surface))
+    );
+  animation:
+    cover-shine 1.6s ease-in-out infinite,
+    cover-float 3s ease-in-out infinite;
 }
 
-.book dt {
-  color: var(--muted);
+.cover.loaded {
+  background: none;
+  animation: cover-reveal 0.5s ease-out;
 }
 
-.book dd {
-  margin: 0;
+@keyframes cover-shine {
+  to {
+    background-position:
+      0 0,
+      50% 32%,
+      50% 41%,
+      50% 83%,
+      0 0,
+      0 0;
+  }
+}
+
+@keyframes cover-float {
+  50% {
+    transform: translateY(-4px) rotate(-1deg);
+  }
+}
+
+@keyframes cover-reveal {
+  from {
+    opacity: 0.3;
+    filter: blur(8px);
+    transform: scale(0.96);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cover,
+  .cover.loaded {
+    animation: none;
+  }
 }
 
 /* Forms */
@@ -1037,9 +1090,22 @@ document.querySelectorAll("form[data-confirm]").forEach((form) => {
     }
   });
 });
+
+// Remove the skeleton animation once a cover image has loaded (or failed).
+document.querySelectorAll("img.cover").forEach((img) => {
+  const done = () => img.classList.add("loaded");
+  if (img.complete) {
+    done();
+  } else {
+    img.addEventListener("load", done);
+    img.addEventListener("error", done);
+  }
+});
 ```
 
-Your layout already links both files. As all browser assets live in `src/browser`, Jeasx removes the folder from the URL, so they are served at `/index.css` and `/index.js`. Reload the page to see the styles. In the admin area, the CSS selector `:target` now highlights the book you've just updated, and deleting a book asks for confirmation first.
+Your layout already links both files. They are served at `/index.css` and `/index.js`, without `browser` in the URL. Why? esbuild builds all `index.*` files below `src` and keeps their folder structure, but relative to the deepest folder they all have in common. As both files live in `src/browser`, this common folder is `src/browser` itself, so it doesn't show up in the URL. The folder name `browser` is just a convention: you could also put your assets directly in `src` or in any other folder. Just keep in mind that the URLs change once your assets are spread over several folders. If you add `src/admin/index.js`, for example, the common folder becomes `src`, and your files are served at `/browser/index.css`, `/browser/index.js` and `/admin/index.js`. That's why it's a good idea to keep all browser assets in one folder.
+
+Reload the page to see the styles. In the admin area, the CSS selector `:target` now highlights the book you've just updated, and deleting a book asks for confirmation first. On the detail page, an animated placeholder is shown while the cover image loads. Once the image has loaded, the script adds the class `loaded` and the cover fades in.
 
 Opening a book is animated now, too. `@view-transition` turns on [view transitions](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) between the pages of your site. The link in the list and the heading on the detail page share the same `view-transition-name` (e.g. `book-2`), so the browser moves the title from the list into the heading while the rest of the page cross-fades. Two details: in Jeasx, the `style` attribute takes a plain string, and the link is an `inline-block`, because a title which wraps over several lines can't be animated. Browsers without support for view transitions simply open the page as usual.
 
