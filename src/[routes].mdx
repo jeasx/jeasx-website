@@ -1,3 +1,4 @@
+import { html } from "jsx-async-runtime";
 import Highlight from "./components/Highlight";
 import Layout from "./components/Layout";
 import Lead from "./components/Lead";
@@ -15,7 +16,7 @@ import IconAttention from "./icons/IconAttention.svg";
 In Jeasx, a file system-based routing system is at the heart of the framework.
 </Lead>
 
-All server routes must be put anywhere in the `src` directory with filenames enclosed with brackets (`[news].jsx`) and should be defined as default exported functions that receive [request](https://fastify.dev/docs/latest/Reference/Request) and [reply](https://fastify.dev/docs/latest/Reference/Reply) objects from Fastify as props.
+All server routes can be put anywhere in the `src` directory with filenames enclosed with brackets (`[news].jsx`) and should be defined as default exported functions that receive [request](https://fastify.dev/docs/latest/Reference/Request) and [reply](https://fastify.dev/docs/latest/Reference/Reply) objects from Fastify as props.
 
 Routes can be written using JSX (or MDX if properly installed and configured), but can also be written in JavaScript and/or TypeScript, or any other file type supported by `esbuild`.
 
@@ -65,10 +66,12 @@ The only rule for named routes is to enclose the base filename within brackets. 
 ### Code example
 
 ```jsx
+import { html } from "jsx-async-runtime";
+
 export default function ({ request, reply }) {
   return (
     <>
-      {{ html: "<!DOCTYPE html>" }}
+      {html("<!DOCTYPE html>")}
       <html lang="en">
         <head>
           <base href={`${request.path.endsWith("/") ? request.path : request.path + "/"}`} />
@@ -85,7 +88,7 @@ export default function ({ request, reply }) {
 
 ## Dynamic routes
 
-Dynamic routes are wildcards designed to capture all requests for the current folder and its subfolders. They enable the creation of content with a dynamic URL structure, such as pages retrieved from a CMS. If a named route exists in the same folder as dynamic route, the named route will take precedence. The name for a dynamic route is fixed and must be: `[...path](.jsx|.js|.tsx|.ts)`
+Dynamic routes are wildcards designed to capture all requests for the current folder and its subfolders. They enable the creation of content with a dynamic URL structure, such as pages retrieved from a CMS. If a named route exists in the same folder as a dynamic route, the named route takes precedence. The name for a dynamic route is fixed and must be: `[...path](.jsx|.js|.tsx|.ts)`
 
 <table>
   <tr>
@@ -102,8 +105,9 @@ Dynamic routes are wildcards designed to capture all requests for the current fo
 
 ```jsx
 export default async function ({ request, reply }) {
-  const segments = request.path.split("/");
-  const product = await (await fetch(`https://dummyjson.com/product/${segments[1]}`)).json();
+  // e.g. /blog/1 => "1"
+  const id = request.path.split("/").at(-1);
+  const product = await (await fetch(`https://dummyjson.com/product/${id}`)).json();
 
   if (product.message) {
     reply.status(404);
@@ -123,7 +127,7 @@ export default async function ({ request, reply }) {
 
 ## Guards
 
-Guards enable you to intercept requests and are inherited from the root to the current folder. They are valuable for controlling access to a route. Typically, a guard does not return any payload, allowing the request to be handled by the next defined route. However, if a guard does return a payload, it will be delivered to the client, and no other route will be executed.
+Guards enable you to intercept requests and are inherited from the root to the current folder. They are valuable for controlling access to a route. Typically, a guard does not return any payload, allowing the request to be handled by the next guard or route. However, if a guard does return a payload, it will be delivered to the client, and no other route will be executed.
 
 <table>
   <tr>
@@ -145,7 +149,7 @@ Guards enable you to intercept requests and are inherited from the root to the c
 export default function ({ request, reply }) {
   const authorization = request.headers["authorization"];
   if (authorization !== `Basic ${Buffer.from("demo:demo").toString("base64")}`) {
-    reply.header("WWW-Authenticate", 'Basic realm="Restricted Area');
+    reply.header("WWW-Authenticate", 'Basic realm="Restricted Area"');
     reply.status(401);
     return (
       <Layout title="Error 401">
@@ -163,6 +167,7 @@ Additionally, a guard has the capability to return an object, which will serve a
 export default function ({ request }) {
   const body = request.body || {};
   return { message: body["message"] };
+}
 ```
 
 ```jsx
@@ -171,15 +176,17 @@ export default function ({ message }) {
 }
 ```
 
+Special routes like `[index]`, `[...path]`, `[...guard]` or `[404]` can't be requested by their file name (e.g. `/[...guard]` is rejected). Requests with invalid URL encoding, null bytes or `.`/`..` segments are answered with status `400`.
+
 <Highlight
   title="What is the difference between request.url, request.path and request.route?"
-  icon={{ html: IconAttention }}
+  icon={html(IconAttention)}
 >
 The vanilla Fastify request object exposes the current url (e.g. `/json/api/request.json?foo=bar`) via `request.url`.
 
 Jeasx adds two additional attributes to the Fastify request object to improve the developer experience:
 
-- `request.path` gives you the plain path without any query parameters (e.g. `/json/api/request.json`)
+- `request.path` gives you the URL-decoded path without any query parameters (e.g. `/json/api/request.json`). Backslashes become slashes and repeated slashes are collapsed, so don't decode it again with `decodeURIComponent`. Use `request.url` if you need the raw path.
 - `request.route` provides the path to the current endpoint handler (e.g. `/json/[...path]`)
 
 Have a look at the [JSON example](https://expo.jeasx.dev/json/api/request.json?foo=bar) to see `request.url, request.path, request.route` at work.

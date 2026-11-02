@@ -53,33 +53,64 @@ export default function () {
 }
 ```
 
-Have a look at the [demo](https://expo.jeasx.dev/context) to see how things work using the context as them provider.
+Have a look at the [demo](https://expo.jeasx.dev/context) to see how things work using the context as theme provider.
 
 ## <a id="error-handler"></a>
 
 ## How can I provide user friendly error messages?
 
-To set up an error handler, simply register it in a route of your choice:
+Register a Fastify error handler in `jeasx.config.js`. It runs for errors from all routes and guards:
 
-```jsx
-this.errorHandler = async (error) => {
-  // You can decide if you want to create a log entry.
-  // console.error("❌", error);
-  return <h1>Internal server error</h1>;
+```js
+// jeasx.config.js
+export default {
+  FASTIFY_SERVER: (fastify) =>
+    fastify.setErrorHandler(async (error, request, reply) => {
+      request.log.error(error);
+      reply.status(error.statusCode ?? 500).type("text/html; charset=utf-8");
+      return "<h1>Internal server error</h1>";
+    }),
 };
 ```
 
+Without your own handler, Fastify answers with a JSON error. Please note that `jeasx.config.js` is not compiled by esbuild by default, so it can't contain JSX. If you want JSX in your config, write it as `jeasx.config.jsx` and compile it with your own npm script:
+
+```sh
+esbuild jeasx.config.jsx --outfile=jeasx.config.js --platform=node --format=esm --jsx=automatic --jsx-import-source=jsx-async-runtime
+```
+
+The error handler only runs for errors thrown before the first chunk of the page is sent, e.g. in a guard or before the route returns its JSX. Once streaming has started, an error thrown by an async component cuts the page off. Wrap risky components in an error boundary that renders them to a string first:
+
+```jsx
+import { html, jsxToString } from "jsx-async-runtime";
+
+export default async function ErrorBoundary({ fallback, children }) {
+  try {
+    return html(await jsxToString.call(this, children));
+  } catch (error) {
+    this.request.log.error(error);
+    return fallback;
+  }
+}
+```
+
+Have a look at the [error handler demo](https://expo.jeasx.dev/error-handler) to see all cases at work.
+
 ## <a id="response-handler"></a>
 
-## How can I modifiy the resulting response (e.g. post-process HTML)?
+## How can I modify the resulting response (e.g. post-process HTML)?
 
-For example, if you want to prettify the HTML output, you can wire up a response handler in any endpoint (e.g., a guard). The response handler takes the resulting payload as a parameter and returns the modified payload.
+For example, if you want to prettify the HTML output, you can wire up a response handler in any endpoint (e.g., a guard). The response handler takes the resulting payload as a parameter and returns the modified payload. For JSX routes, the payload is a `ReadableStream`, so read it into a string before changing it. Pages that are post-processed this way are not streamed to the browser.
 
 ```jsx
 import * as prettier from "prettier";
 ...
 export default function ({ request, reply }) {
   this.responseHandler = async (payload) => {
+    // JSX responses are streamed, so read the stream into a string first
+    if (payload instanceof ReadableStream) {
+      payload = (await Array.fromAsync(payload)).join("");
+    }
     return typeof payload === "string" &&
       String(reply.getHeader("content-type")).startsWith("text/html")
       ? await prettier.format(payload, { parser: "html" })
@@ -117,7 +148,7 @@ website to see how things can be wired up for serving a static export with [Cadd
 
 ## <a id="browsersync"></a>
 
-## How to use a Browsersync with Jeasx?
+## How to use Browsersync with Jeasx?
 
 If you want to reload CSS automagically, start [Browsersync](https://browsersync.io) in proxy-mode in a second terminal:
 
@@ -127,7 +158,7 @@ npx -y browser-sync start -w -f "dist/**/index.css" -p localhost:3000
 
 ## <a id="debugger"></a>
 
-## How to use debugger with Jeasx?
+## How to use a debugger with Jeasx?
 
 To enable sourcemaps for debugging your code, configure `ESBUILD_SERVER_OPTIONS` or `ESBUILD_BROWSER_OPTIONS` in your `jeasx.config.js` file based on your specific needs. While I recommend using `inline` as the configuration value for simplicity, the optimal choice may depend on your setup and tooling. Please study the [esbuild documentation](https://esbuild.github.io/api/#sourcemap) for the different configuration options.
 

@@ -1,3 +1,4 @@
+import { html } from "jsx-async-runtime";
 import Highlight from "./components/Highlight";
 import Layout from "./components/Layout";
 import Lead from "./components/Lead";
@@ -29,7 +30,7 @@ An existing environment variable will not be overwritten by subsequent environme
 
 **Please note:** Jeasx only sets `NODE_ENV=development` automatically when running `jeasx dev`. For production or testing environments, you'll need to set the `NODE_ENV` environment variable to the desired value (e.g. `production` or `test`) depending on your requirements and workflows.
 
-<Highlight title="Environment variables for client code" icon={{ html: IconAttention }}>
+<Highlight title="Environment variables for client code" icon={html(IconAttention)}>
   For security reasons, environment variables are not accessible in frontend JavaScript by default.
   To expose specific variables, use the `ESBUILD_BROWSER_OPTIONS` configuration (see below).
 </Highlight>
@@ -38,7 +39,7 @@ An existing environment variable will not be overwritten by subsequent environme
 
 ### HOST
 
-The hostname or IP address that the server should listen on. Defaults to `::` which allows the server to listen on any interface (IPv4 or IPv6).
+The hostname or IP address that the server should listen on. `jeasx start` defaults to `::`, which listens on all interfaces (IPv4 and IPv6). `jeasx dev` defaults to `localhost`, so other machines can't reach the dev server. If you run `jeasx dev` in a container or VM, or want to test from another device, set `HOST=::`.
 
 ### PORT
 
@@ -46,7 +47,13 @@ The port number that the server should listen on. Defaults to `3000`.
 
 ## Configure esbuild and Fastify via `jeasx.config.js`
 
-The configuration object from `jeasx.config.js` is imported directly into both the build process and server runtime and provides essential options for `esbuild` and `Fastify`, allowing you to use the full power of JavaScript (e.g package imports) to build advanced setups.
+The configuration object from `jeasx.config.js` is imported directly into both the build process and server runtime and provides essential options for `esbuild` and `Fastify`, allowing you to use the full power of JavaScript (e.g. package imports) to build advanced setups. All options can also be async functions, e.g. to import build-only plugins lazily, so they aren't loaded in production.
+
+**Please note:** `jeasx.config.js` is not compiled by esbuild by default, so it can't contain JSX or TypeScript. If you need them, write your config as `jeasx.config.jsx` (or `.tsx`) and compile it with your own npm script:
+
+```sh
+esbuild jeasx.config.jsx --outfile=jeasx.config.js --platform=node --format=esm --jsx=automatic --jsx-import-source=jsx-async-runtime
+```
 
 ```js
 export default {
@@ -74,24 +81,43 @@ Useful to enhance esbuild for compiling server code with existing plugins ([Jeas
 If you want to [use MDX with plugins](https://mdxjs.com/docs/extending-mdx), you can configure them in `jeasx.config.js` after installing them to your project:
 
 ```js
-import mdx from "@mdx-js/esbuild";
-import rehypePrismPlus from "rehype-prism-plus";
-import rehypeSlug from "rehype-slug";
-import remarkGFM from "remark-gfm";
-
 export default {
-  /** @type {() => import("esbuild").BuildOptions} */
-  ESBUILD_SERVER_OPTIONS: () => ({
-    plugins: [
-      mdx({
-        development: process.env.NODE_ENV === "development",
-        jsxImportSource: "jsx-async-runtime",
-        elementAttributeNameCase: "html",
-        stylePropertyNameCase: "css",
-        remarkPlugins: [[remarkGFM, { singleTilde: false }]],
-        rehypePlugins: [rehypePrismPlus, [rehypeSlug, { prefix: "jeasx-" }]],
-      }),
-    ],
+  /** @type {() => Promise<import("esbuild").BuildOptions>} */
+  ESBUILD_SERVER_OPTIONS: async () => {
+    const [
+      { default: mdx },
+      { default: rehypePrismPlus },
+      { default: rehypeSlug },
+      { default: remarkGFM },
+    ] = await Promise.all([
+      import("@mdx-js/esbuild"),
+      import("rehype-prism-plus"),
+      import("rehype-slug"),
+      import("remark-gfm"),
+    ]);
+    return {
+      plugins: [
+        mdx({
+          development: process.env.NODE_ENV === "development",
+          jsxImportSource: "jsx-async-runtime",
+          elementAttributeNameCase: "html",
+          stylePropertyNameCase: "css",
+          remarkPlugins: [[remarkGFM, { singleTilde: false }]],
+          rehypePlugins: [rehypePrismPlus, [rehypeSlug, { prefix: "jeasx-" }]],
+        }),
+      ],
+    };
+  },
+};
+```
+
+Async options are useful for plugins that are only needed for the build:
+
+```js
+export default {
+  /** @type {() => Promise<import("esbuild").BuildOptions>} */
+  ESBUILD_BROWSER_OPTIONS: async () => ({
+    plugins: [(await import("esbuild-sass-plugin")).sassPlugin()],
   }),
 };
 ```
@@ -112,7 +138,7 @@ export default {
 
 ### FASTIFY_SERVER
 
-This allows you to enhance the functionality of the underlying [Fastify server](https://fastify.dev/docs/latest/Reference/Server/), e.g. registering plugins.
+This allows you to enhance the functionality of the underlying [Fastify server](https://fastify.dev/docs/latest/Reference/Server/), e.g. registering plugins or an [error handler](/faq#error-handler).
 
 ```js
 export default {
@@ -125,7 +151,7 @@ export default {
 
 Use these options to define the central configuration for the Fastify server.
 
-[Fastity-Server options reference](https://fastify.dev/docs/latest/Reference/Server).
+[Fastify-Server options reference](https://fastify.dev/docs/latest/Reference/Server).
 
 ```js
 export default {
@@ -152,6 +178,8 @@ export default {
   }),
 };
 ```
+
+The `root` option is always set to the project directory by Jeasx, so don't set it yourself. Dotfiles (e.g. `public/.well-known/security.txt`) are ignored by default. Set `dotfiles: "allow"` if you want to serve them.
 
 ## Recommended Fastify plugins
 

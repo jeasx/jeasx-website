@@ -7,7 +7,7 @@ import Next from "./components/Next";
   description="How to handle assets for use in a web browser"
   category="CSS & JavaScript"
   headline="How to handle assets for use in a web browser"
-  next={<Next link="/configuration" label="How to configure Jease via environment?" />}
+  next={<Next link="/configuration" label="How to configure Jeasx?" />}
 >
 <Lead>
 Browser assets are stored in two distinct folders, based on whether these assets require processing or not.
@@ -15,7 +15,7 @@ Browser assets are stored in two distinct folders, based on whether these assets
 
 ## Static Assets
 
-Any assets that do not require processing (e.g., fonts, robots.txt, icons) should be placed in the `/public` directory. They will be served as static files from the root directory.
+Any assets that do not require processing (e.g., fonts, robots.txt, icons) should be placed in the `/public` directory. They will be served as static files from the root directory. Dotfiles (e.g. `public/.well-known/security.txt`) are only served if you allow them via `FASTIFY_SEND_OPTIONS` (see [configuration](/configuration)).
 
 <table>
   <tr>
@@ -53,15 +53,17 @@ _Please note:_ Jeasx doesn't specify any hardcoded outbase directory for esbuild
   </tr>
   <tr>
     <td>src/utils/date.js</td>
-    <td>This file will be not available via an url.</td>
+    <td>This file is not available via a URL.</td>
   </tr>
 </table>
+
+_Please note:_ the `dist` directory is cleaned before every build, so never put files into `dist` by hand. Use `public` instead. If a file exists in both `dist` and `public`, the file from `dist` wins.
 
 _Please note:_ as JavaScript or TypeScript is compiled to [ECMAScript modules (ESM) via esbuild](https://esbuild.github.io/api/#format-esm), you should add `type="module"` to your script tags to avoid subtle errors.
 
 ## Intercept static assets with `reply.file`
 
-All static files - whether stored in the `public` directory or the `dist` folder - are delivered via the Jeasx route pipeline immediately following the guard processing stage. This architecture allows you to intercept static file requests seamlessly. You can access static file metadata directly within guards via `reply.file`. If a file exists at the requested path, this object is pre-populated with `headers`, `statusCode`, and `stream`. This enables you to apply or bypass authentication, modify headers, or replace content on the fly.
+All static files - whether stored in the `public` or the `dist` directory - are delivered via the Jeasx route pipeline immediately following the guard processing stage. This architecture allows you to intercept static file requests seamlessly. You can access static file metadata directly within guards via `reply.file`. If a file exists at the requested path, this object is pre-populated with `headers`, `statusCode`, and `stream`. This enables you to apply or bypass authentication, modify headers, or replace content on the fly.
 
 ```js
 export default async function ({ request, reply }) {

@@ -9,11 +9,11 @@ export default async function ({ request, reply }) {
   this.reply = reply;
 
   this.jsxToString = (jsxElement) => {
-    if (jsxElement.type === "tag") {
+    if (jsxElement?.type === "tag") {
       if (jsxElement.tag === "strong") {
         jsxElement.tag = "b";
       }
-      if (jsxElement.tag === "a" && jsxElement.props.href?.startsWith("https://")) {
+      if (jsxElement.tag === "a" && String(jsxElement.props.href).startsWith("https://")) {
         jsxElement.props.target = "_blank";
       }
     }

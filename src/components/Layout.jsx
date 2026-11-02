@@ -1,3 +1,4 @@
+import { html } from "jsx-async-runtime";
 import Header from "./Header";
 import MobileNavigation from "./MobileNavigation";
 import Navigation from "./Navigation";
@@ -18,7 +19,7 @@ export default function Layout({
   const path = this.request.path;
   return (
     <>
-      {{ html: "<!DOCTYPE html>" }}
+      {html("<!DOCTYPE html>")}
       <html lang="en">
         <head>
           <title>{title} &raquo; Jeasx - JSX with Ease</title>
@@ -62,16 +63,10 @@ export default function Layout({
               <div class="content">
                 <article>
                   <header class="page-header">
-                    {category && (
-                      <p class="page-category">{category}</p>
-                    )}
-                    <h1 class="page-title">
-                      {headline}
-                    </h1>
+                    {category && <p class="page-category">{category}</p>}
+                    <h1 class="page-title">{headline}</h1>
                   </header>
-                  <div class="prose">
-                    {children}
-                  </div>
+                  <div class="prose">{children}</div>
                 </article>
                 {next}
               </div>

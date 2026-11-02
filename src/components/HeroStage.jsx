@@ -1,3 +1,4 @@
+import { html } from "jsx-async-runtime";
 import IconHeroStage from "../icons/IconHeroStage.svg";
 import RecipeExample from "./RecipeExample.mdx";
 
@@ -34,7 +35,7 @@ export default function HeroStage() {
             </div>
           </div>
           <div class="hero-example">
-            <div class="hero-stage">{{ html: IconHeroStage }}</div>
+            <div class="hero-stage">{html(IconHeroStage)}</div>
             <div class="hero-window">
               <img
                 alt=""

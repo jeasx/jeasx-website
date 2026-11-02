@@ -1,23 +1,27 @@
-import mdxPlugin from "@mdx-js/esbuild";
-import rehypePrismPlus from "rehype-prism-plus";
-
 const NODE_ENV_IS_DEVELOPMENT = process.env.NODE_ENV === "development";
 
 export default {
-  /** @type {() => import("esbuild").BuildOptions} */
-  ESBUILD_SERVER_OPTIONS: () => ({
-    define: { "process.env.BUILD_ID": `"${Date.now().toString(36)}"` },
-    loader: { ".svg": "text" },
-    plugins: [
-      mdxPlugin({
-        development: NODE_ENV_IS_DEVELOPMENT,
-        jsxImportSource: "jsx-async-runtime",
-        elementAttributeNameCase: "html",
-        stylePropertyNameCase: "css",
-        rehypePlugins: [rehypePrismPlus],
-      }),
-    ],
-  }),
+  /** @type {() => Promise<import("esbuild").BuildOptions>} */
+  ESBUILD_SERVER_OPTIONS: async () => {
+    const [{ default: mdxPlugin }, { default: rehypePrismPlus }] =
+      await Promise.all([
+        import("@mdx-js/esbuild"),
+        import("rehype-prism-plus"),
+      ]);
+    return {
+      define: { "process.env.BUILD_ID": `"${Date.now().toString(36)}"` },
+      loader: { ".svg": "text" },
+      plugins: [
+        mdxPlugin({
+          development: NODE_ENV_IS_DEVELOPMENT,
+          jsxImportSource: "jsx-async-runtime",
+          elementAttributeNameCase: "html",
+          stylePropertyNameCase: "css",
+          rehypePlugins: [rehypePrismPlus],
+        }),
+      ],
+    };
+  },
 
   /** @type {() => import("esbuild").BuildOptions} */
   ESBUILD_BROWSER_OPTIONS: () => ({

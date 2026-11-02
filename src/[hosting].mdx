@@ -19,7 +19,7 @@ In order to minimise the CPU footprint of a Jeasx application, it is highly reco
 
 ### Running Jeasx with docker compose
 
-To keep things simple and maintainable, I highly recommend to use [docker compose](https://docs.docker.com/compose) as lightweight infastructure for running Jeasx applications on your own VPS. The Jeasx website along with the expo and other projects are hosted this way with minimal costs and efforts.
+To keep things simple and maintainable, I highly recommend using [docker compose](https://docs.docker.com/compose) as lightweight infrastructure for running Jeasx applications on your own VPS. The Jeasx website along with the expo and other projects are hosted this way with minimal costs and efforts.
 
 Below is a minimal `compose.yml` to get you started with a Jeasx application and Caddy. Caddy automatically creates SSL certificates for your domain with [Let's Encrypt](https://letsencrypt.org) and compresses your payloads.
 
@@ -70,7 +70,7 @@ quickstart.jeasx.dev {
 
 ## Container based hosting
 
-An powerful self-hosted option is to install [Dokploy](https://dokploy.com) on your server. Dokploy uses Docker under the hood and comes with a nice user interface to create deployments directly from GitHub.
+A powerful self-hosted option is to install [Dokploy](https://dokploy.com) on your server. Dokploy uses Docker under the hood and comes with a nice user interface to create deployments directly from GitHub.
 
 For straightforward Node.js-based hosting, platforms like [Railway](https://railway.app) and [Koyeb](https://www.koyeb.com) are excellent choices. Both support deploying Docker containers, which I highly recommend as the default builders (e.g., Railpack / Buildpack) create containers that use significantly more resources than the optimized Dockerfile provided via the quickstart template.
 

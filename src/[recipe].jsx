@@ -1,16 +1,20 @@
-export default async function ({ request }) {
-  const id = request.query["id"];
-  const { name, image, ingredients } = await (
-    await fetch(`https://dummyjson.com/recipes/${id}`)
-  ).json();
+export default ({ request }) => (
+  <main>
+    <h1>Recipe of the day</h1>
+    <Recipe id={request.query["id"]} />
+  </main>
+);
 
+async function Recipe({ id }) {
+  const res = await fetch(`https://dummyjson.com/recipes/${id}`);
+  const { name, image, ingredients } = await res.json();
   return (
-    <article class="recipe">
-      <h1>{name}</h1>
+    <article>
+      <h2>{name}</h2>
       <img src={image} alt={name} />
       <ul>
-        {ingredients.map((ingredient) => (
-          <li>{ingredient}</li>
+        {ingredients.map((i) => (
+          <li>{i}</li>
         ))}
       </ul>
     </article>

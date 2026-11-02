@@ -1,3 +1,4 @@
+import { html } from "jsx-async-runtime";
 import Feature from "./components/Feature";
 import Features from "./components/Features";
 import HeroStage from "./components/HeroStage";
@@ -22,8 +23,8 @@ By eliminating unnecessary complexity and providing precise control over HTML, C
 
 ## Breaking News
 
-<Highlight title="2026-10-23 - Jeasx 2.10.7 released">
-  🎉 Improved attribute rendering performance. [Learn more...](/news)
+<Highlight title="2026-11-02 - Jeasx 3.0.0 released">
+  🎉 The promise you made. Await anything, stream everything. [Learn more...](/news)
 </Highlight>
 
 ## Built on top of a proven tech stack
@@ -35,19 +36,19 @@ Jeasx is a sleek and modern framework that leverages tried and tested web techno
 <Feature
   headline="jsx-async-runtime"
   link="https://github.com/jeasx/jsx-async-runtime"
-  icon={{ html: IconInstallation }}
+  icon={html(IconInstallation)}
 >
   JSX is an outstanding templating technology that simplifies web development. By utilizing an
   asynchronous JSX runtime, the development process becomes even more straightforward.
 </Feature>
 
-<Feature headline="fastify" link="https://fastify.dev" icon={{ html: IconArchitecture }}>
+<Feature headline="fastify" link="https://fastify.dev" icon={html(IconArchitecture)}>
   Fastify is a high-performance web framework that excels at delivering an exceptional developer
   experience with minimal overhead. Fastify stands out as one of the fastest web frameworks
   available.
 </Feature>
 
-<Feature headline="esbuild" link="https://esbuild.github.io" icon={{ html: IconReference }}>
+<Feature headline="esbuild" link="https://esbuild.github.io" icon={html(IconReference)}>
   esbuild is a bundler for JavaScript. It is written in Go, which enables it to achieve remarkable
   performance gains. esbuild supports JSX, TypeScript, tree-shaking and more.
 </Feature>
@@ -66,6 +67,6 @@ Jeasx embraces modern HTML and CSS as the core building blocks for web developme
 
 ## Getting started
 
-Start your project instantly with a single command, enabling seamless development with zero turnarounds. Whether you opt for a Node server a Docker setup or a serverless environment, Jeasx provides the flexibility to deploy your application according to your preferences.
+Start your project instantly with a single command, enabling seamless development with zero turnarounds. Whether you opt for a Node server, a Docker setup or a serverless environment, Jeasx provides the flexibility to deploy your application according to your preferences.
 
 </Layout>
