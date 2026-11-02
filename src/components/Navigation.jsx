@@ -31,6 +31,7 @@ const NAV_ITEMS = [
     links: [
       { label: "Philosophy", link: "/philosophy" },
       { label: "Getting started", link: "/quickstart" },
+      { label: "Tutorial", link: "/tutorial" },
     ],
   },
   {
