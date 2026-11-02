@@ -88,7 +88,7 @@ export default function ({ request, reply }) {
 
 ## Dynamic routes
 
-Dynamic routes are wildcards designed to capture all requests for the current folder and its subfolders. They enable the creation of content with a dynamic URL structure, such as pages retrieved from a CMS. If a named route exists in the same folder as a dynamic route, the named route takes precedence. The name for a dynamic route is fixed and must be: `[...path](.jsx|.js|.tsx|.ts)`
+Dynamic routes are wildcards designed to capture all requests for the current folder and its subfolders. They enable the creation of content with a dynamic URL structure, such as pages retrieved from a CMS. If a named route exists in the same folder as a dynamic route, the named route takes precedence. The name for a dynamic route is fixed and must be `[...path]`, with any file extension supported by your build (e.g. `[...path].jsx`, `[...path].ts` or `[...path].mdx`).
 
 <table>
   <tr>
@@ -104,8 +104,11 @@ Dynamic routes are wildcards designed to capture all requests for the current fo
 ### Code example
 
 ```jsx
+import Layout from "../components/Layout";
+
+// src/products/[...path].jsx
 export default async function ({ request, reply }) {
-  // e.g. /blog/1 => "1"
+  // e.g. /products/1 => "1"
   const id = request.path.split("/").at(-1);
   const product = await (await fetch(`https://dummyjson.com/product/${id}`)).json();
 
@@ -125,7 +128,7 @@ export default async function ({ request, reply }) {
 }
 ```
 
-If a dynamic route returns nothing (like above after `reply.status(404)`), the request is passed on to the next `[...path]` or `[404]` route.
+If a route returns nothing (like above after `reply.status(404)`), the request is passed on to the next matching route, e.g. the next `[...path]` or `[404]` route. This works for named and `[index]` routes, too.
 
 <a id="404-routes"></a>
 
@@ -201,7 +204,22 @@ export default function ({ message }) {
 }
 ```
 
-Special routes like `[index]`, `[...path]` or `[...guard]` can't be called by their names: requests like `/index`, `/...guard` or `/[...guard]` don't run these routes and end up as a `404`. The only exception is `/404` (see [404 routes](#404-routes)). Requests with invalid URL encoding, null bytes or `.`/`..` segments are answered with status `400`.
+Special routes like `[index]`, `[...path]` or `[...guard]` can't be called by their names: requests like `/index`, `/...guard` or `/[...guard]` don't run these routes, but are handled like any other unknown URL (by a `[...path]` or `[404]` route, or answered with an empty `404`). The only exception is `/404` (see [404 routes](#404-routes)). Requests with invalid URL encoding, null bytes or `.`/`..` segments are answered with status `400`.
+
+<a id="order-of-execution"></a>
+
+## Order of execution
+
+For each request, Jeasx tries the possible routes in a fixed order. Guards always run first. After that, the first route which answers wins. For a request to `/a/b/c`, the order is:
+
+1. Guards from the root to the current folder: `/[...guard]`, `/a/[...guard]`, `/a/b/[...guard]`, `/a/b/c/[...guard]`
+2. A static file from `public` or `dist` (see [CSS & JavaScript](/browser))
+3. The named route `/a/b/[c]`
+4. The index route `/a/b/c/[index]`
+5. Dynamic routes from the current folder to the root: `/a/b/c/[...path]`, `/a/b/[...path]`, `/a/[...path]`, `/[...path]`
+6. 404 routes from the current folder to the root: `/a/b/c/[404]`, `/a/b/[404]`, `/a/[404]`, `/[404]`
+
+So a static file wins over a named route with the same path, and `src/a/b/[c].jsx` wins over `src/a/b/c/[index].jsx`.
 
 <Highlight
   title="What is the difference between request.url, request.path and request.route?"

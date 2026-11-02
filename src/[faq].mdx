@@ -94,6 +94,8 @@ export default async function ErrorBoundary({ fallback, children }) {
 }
 ```
 
+The example uses `this.request` for logging, so it expects a guard which puts the request into the [context](#context) (e.g. `this.request = request` in `src/[...guard].js`).
+
 Have a look at the [error handler demo](https://expo.jeasx.dev/error-handler) to see all cases at work.
 
 ## <a id="response-handler"></a>
@@ -111,8 +113,11 @@ export default function ({ request, reply }) {
     if (payload instanceof ReadableStream) {
       payload = (await Array.fromAsync(payload)).join("");
     }
+    // Jeasx sets the default content type (text/html) after the response handler,
+    // so a missing content type means HTML, too.
+    const type = reply.getHeader("content-type");
     return typeof payload === "string" &&
-      String(reply.getHeader("content-type")).startsWith("text/html")
+      (type === undefined || String(type).startsWith("text/html"))
       ? await prettier.format(payload, { parser: "html" })
       : payload;
   };

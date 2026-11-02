@@ -18,7 +18,7 @@ Jeasx offers minimal and sensible default settings to help you get started quick
 
 ## Environment variables
 
-To facilitate managing multiple configurations, Jeasx leverages layers of .env-files. This enables the use of different .env-files based on the NODE_ENV value, such as `.env.development` to override values from `.env` for development. The order of loading .env-files is the same as it is used by the well-known [dotenv-flow](https://github.com/kerimdzhanov/dotenv-flow) library. To load the env-files into `process.env`, Jeasx makes use of the native implementation provided by Node.js via [process.loadEnvFile](https://nodejs.org/docs/latest/api/process.html#processloadenvfilepath) via a custom [utility function](https://github.com/jeasx/jeasx/blob/main/env.js).
+To facilitate managing multiple configurations, Jeasx leverages layers of .env-files. This enables the use of different .env-files based on the NODE_ENV value, such as `.env.development` to override values from `.env` for development. The order of loading .env-files is similar to the well-known [dotenv-flow](https://github.com/kerimdzhanov/dotenv-flow) library (unlike dotenv-flow, `.env.local` is also loaded for `NODE_ENV=test`). To load the env-files into `process.env`, Jeasx makes use of the native implementation provided by Node.js via [process.loadEnvFile](https://nodejs.org/docs/latest/api/process.html#processloadenvfilepath) via a custom [utility function](https://github.com/jeasx/jeasx/blob/main/env.js).
 
 - .env.[NODE_ENV].local _(e.g. .env.development.local or .env.production.local)_
 - .env.[NODE_ENV] _(e.g. .env.development or .env.production)_
@@ -27,6 +27,8 @@ To facilitate managing multiple configurations, Jeasx leverages layers of .env-f
 - .env.defaults
 
 An existing environment variable will not be overwritten by subsequent environment files.
+
+`NODE_ENV` itself must be set in the environment (e.g. by `jeasx dev` or your server). The files to load are chosen before any of them is read, so a `NODE_ENV` defined in a `.env` file doesn't select `.env.[NODE_ENV]` or `.env.[NODE_ENV].local`.
 
 **Please note:** Jeasx only sets `NODE_ENV=development` automatically when running `jeasx dev`. For production or testing environments, you'll need to set the `NODE_ENV` environment variable to the desired value (e.g. `production` or `test`) depending on your requirements and workflows.
 

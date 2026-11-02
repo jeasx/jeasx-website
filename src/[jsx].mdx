@@ -26,7 +26,7 @@ Jeasx uses a syntax similar to React, but there are some important differences. 
 
 - You can use asynchronous code out of the box: mark your component as `async` and use `await` to resolve promises. You can also pass promises directly as children or attribute values (e.g. `<div>{fetchUser()}</div>` or `<img src={loadImageUrl()} />`).
 - Attribute names are the same as in HTML, therefore you must use `class` instead of `className` or `aria-label` instead of `ariaLabel`.
-- The `class` and `style` attributes must be <strong>strings</strong>. Objects and arrays are not converted, so use a helper like [clsx](https://github.com/lukeed/clsx) for conditional classes (e.g. `<h1 class={clsx("center", { active })} style="color: red; margin-top: 1rem">...</h1>`).
+- The `class` and `style` attributes must be <strong>strings</strong>. Objects and arrays are not converted to class lists or CSS, but rendered as JSON like any other attribute (see below), so use a helper like [clsx](https://github.com/lukeed/clsx) for conditional classes (e.g. `<h1 class={clsx("center", { active })} style="color: red; margin-top: 1rem">...</h1>`).
 - `children` are passed as written: a single child as is, several children as an array, and no `children` prop at all without children. Normalize with `[children ?? []].flat()` before calling array methods.
 - Iterables (e.g. `Set` or generators), async iterables and `ReadableStream` can be used as children. They are rendered in order as items arrive.
 - Pages are streamed to the browser while they are still rendering, so the browser receives the first bytes while slow parts of the page (e.g. awaited data) are still loading.
