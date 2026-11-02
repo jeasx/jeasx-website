@@ -162,7 +162,12 @@ The `NavLink` component needs the current path to highlight the active link. Ins
 Have a look at `src/[...guard].js` from the template:
 
 ```js
+/**
+ * @param {import("./types").RouteProps} props
+ */
 export default function ({ request, reply }) {
+  // Guards run before every route in this directory and below.
+  // Provide request/reply via 'this' in components (e.g. Layout.jsx).
   this.request = request;
   this.reply = reply;
 }
@@ -248,7 +253,7 @@ export function deleteBook(id) {
  */
 export function updateStatus(id, status) {
   const book = getBook(id);
-  if (book && status in STATUS) {
+  if (book && Object.hasOwn(STATUS, status)) {
     book.status = status;
   }
 }
@@ -353,12 +358,7 @@ export default function ({ request }) {
           </p>
           <BookDetails isbn={book.isbn} />
         </div>
-        <img
-          src={`https://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg`}
-          alt=""
-          width="180"
-          class="cover"
-        />
+        <img src={`https://covers.openlibrary.org/b/isbn/${encodeURIComponent(book.isbn)}-M.jpg`} alt="" width="180" class="cover" />
       </article>
     </Layout>
   );
@@ -370,7 +370,7 @@ export default function ({ request }) {
 async function BookDetails({ isbn }) {
   try {
     const response = await fetch(
-      `https://openlibrary.org/search.json?isbn=${isbn}&fields=first_publish_year,number_of_pages_median,subject&limit=1`,
+      `https://openlibrary.org/search.json?isbn=${encodeURIComponent(isbn)}&fields=first_publish_year,number_of_pages_median,subject&limit=1`,
     );
     const [details] = (await response.json()).docs;
     return (
@@ -532,6 +532,7 @@ A guard can do three things:
 Create the login page at `src/admin/[login].jsx`. If the password is correct, it sets the signed cookie and redirects you to the admin page:
 
 ```jsx
+import { createHash, timingSafeEqual } from "node:crypto";
 import Layout from "../components/Layout";
 
 /**
@@ -541,15 +542,16 @@ export default function ({ request, reply }) {
   let error = "";
 
   if (request.method === "POST") {
-    const { password } = /** @type {Record<string, string>} */ (request.body);
+    const { password } = /** @type {Record<string, string>} */ (request.body ?? {});
 
-    if (password === process.env.ADMIN_PASSWORD) {
+    if (isValidPassword(password)) {
       reply.setCookie("user", "admin", {
         path: "/admin",
         signed: true, // Signed with COOKIE_SECRET, so it can't be faked.
         httpOnly: true, // Not readable by JavaScript in the browser.
         sameSite: "lax", // Not sent with forms posted from other sites.
         secure: "auto", // Only sent via HTTPS, if the site uses HTTPS.
+        maxAge: 60 * 60 * 8, // Log out automatically after 8 hours.
       });
       return reply.redirect("/admin", 303);
     }
@@ -571,7 +573,23 @@ export default function ({ request, reply }) {
     </Layout>
   );
 }
+
+/**
+ * Compare in constant time, and never accept a login if no password is configured.
+ * @param {unknown} password
+ */
+function isValidPassword(password) {
+  const expected = process.env.ADMIN_PASSWORD;
+  if (!expected || typeof password !== "string") {
+    return false;
+  }
+  // Hash both sides so they have equal length, as timingSafeEqual requires.
+  const hash = (/** @type {string} */ value) => createHash("sha256").update(value).digest();
+  return timingSafeEqual(hash(password), hash(expected));
+}
 ```
+
+`isValidPassword` compares the passwords in constant time with `timingSafeEqual`, so an attacker can't guess the password from how long the check takes. It also refuses every login if `ADMIN_PASSWORD` isn't set. Thanks to `maxAge`, the cookie expires after 8 hours, so you are logged out automatically.
 
 Logging out is even simpler. Create `src/admin/[logout].js`, which removes the cookie and sends you back to the home page:
 
@@ -605,7 +623,7 @@ import { addBook, deleteBook, getBooks, STATUS, updateStatus } from "../lib/book
  */
 export default function ({ request, reply, user }) {
   if (request.method === "POST") {
-    const form = /** @type {Record<string, string>} */ (request.body);
+    const form = /** @type {Record<string, string>} */ (request.body ?? {});
 
     if (form.action === "delete") {
       deleteBook(Number(form.id));
@@ -618,8 +636,9 @@ export default function ({ request, reply, user }) {
       const id = addBook({
         title: form.title.trim(),
         author: form.author.trim(),
-        isbn: form.isbn?.replaceAll("-", "").trim() ?? "",
-        status: form.status in STATUS ? form.status : "to-read",
+        // Keep only characters that can appear in an ISBN.
+        isbn: form.isbn?.replace(/[^0-9X]/gi, "").toUpperCase() ?? "",
+        status: Object.hasOwn(STATUS, form.status) ? form.status : "to-read",
       });
       // Jump to the new book, so you can see it was added.
       return reply.redirect(`/admin?added=${id}#book-${id}`, 303);
@@ -921,8 +940,8 @@ header nav a[aria-current="page"],
   aspect-ratio: auto 2 / 3;
   align-self: flex-start;
   background:
-    linear-gradient(110deg, transparent 40%, rgb(255 255 255 / 0.35) 50%, transparent 60%) 100% 0 /
-      250% 100% no-repeat,
+    linear-gradient(110deg, transparent 40%, rgb(255 255 255 / 0.35) 50%, transparent 60%)
+      100% 0 / 250% 100% no-repeat,
     linear-gradient(var(--bar), var(--bar)) 50% 32% / 70% 6% no-repeat,
     linear-gradient(var(--bar), var(--bar)) 50% 41% / 50% 6% no-repeat,
     linear-gradient(var(--bar), var(--bar)) 50% 83% / 40% 4% no-repeat,
@@ -944,13 +963,7 @@ header nav a[aria-current="page"],
 
 @keyframes cover-shine {
   to {
-    background-position:
-      0 0,
-      50% 32%,
-      50% 41%,
-      50% 83%,
-      0 0,
-      0 0;
+    background-position: 0 0, 50% 32%, 50% 41%, 50% 83%, 0 0, 0 0;
   }
 }
 
