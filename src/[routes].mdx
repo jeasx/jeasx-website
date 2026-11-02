@@ -125,9 +125,34 @@ export default async function ({ request, reply }) {
 }
 ```
 
+If a dynamic route returns nothing (like above after `reply.status(404)`), the request is passed on to the next `[...path]` or `[404]` route.
+
+<a id="404-routes"></a>
+
+## 404 routes
+
+A `[404]` route answers all requests that no other route has answered. Like dynamic routes, `[404]` routes are looked up from the current folder up to the root, so you can provide a different 404 page for a section of your site. The status code is set to `404` automatically, unless your route sets another one. If no `[404]` route exists, Jeasx answers with an empty `404`.
+
+<table>
+  <tr>
+    <th style="width:50%">Route path</th>
+    <th style="width:50%">URL</th>
+  </tr>
+  <tr>
+    <td>src/blog/[404].jsx</td>
+    <td>Unknown URLs below /blog, e.g. /blog/unknown</td>
+  </tr>
+  <tr>
+    <td>src/[404].jsx</td>
+    <td>All other unknown URLs</td>
+  </tr>
+</table>
+
+If you request a 404 page directly (e.g. `/404` answered by `src/[404].jsx` or `/blog/404` answered by `src/blog/[404].jsx`), it keeps status `200`. This makes it easy to export a 404 page for a [static site](/faq#static-site-generator). If a `[404]` route from a parent folder answers instead, the status is `404`.
+
 ## Guards
 
-Guards enable you to intercept requests and are inherited from the root to the current folder. They are valuable for controlling access to a route. Typically, a guard does not return any payload, allowing the request to be handled by the next guard or route. However, if a guard does return a payload, it will be delivered to the client, and no other route will be executed.
+Guards enable you to intercept requests and are inherited from the root to the current folder. They are valuable for controlling access to a route. Typically, a guard does not return any payload, allowing the request to be handled by the next guard or route. However, if a guard returns a response (e.g. JSX, a string or a stream), it will be delivered to the client, and no other route will be executed. A plain object is not sent as a response, but used as props (see below).
 
 <table>
   <tr>
@@ -161,7 +186,7 @@ export default function ({ request, reply }) {
 }
 ```
 
-Additionally, a guard has the capability to return an object, which will serve as props for all routes protected by the guard. This feature enables the creation of routes that are entirely independent from the request object, simplifying component testing.
+Additionally, a guard has the capability to return an object, which will serve as props for all routes protected by the guard. This feature enables the creation of routes that are entirely independent from the request object, simplifying component testing. These objects are never sent to the client, even if no route answers the request.
 
 ```jsx
 export default function ({ request }) {
@@ -176,7 +201,7 @@ export default function ({ message }) {
 }
 ```
 
-Special routes like `[index]`, `[...path]`, `[...guard]` or `[404]` can't be requested by their file name (e.g. `/[...guard]` is rejected). Requests with invalid URL encoding, null bytes or `.`/`..` segments are answered with status `400`.
+Special routes like `[index]`, `[...path]` or `[...guard]` can't be called by their names: requests like `/index`, `/...guard` or `/[...guard]` don't run these routes and end up as a `404`. The only exception is `/404` (see [404 routes](#404-routes)). Requests with invalid URL encoding, null bytes or `.`/`..` segments are answered with status `400`.
 
 <Highlight
   title="What is the difference between request.url, request.path and request.route?"

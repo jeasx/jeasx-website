@@ -280,17 +280,11 @@ e.g. through parsed JSON with an `html` key.
 
 ```jsx
 // Before
-{
-  {
-    html: "<!DOCTYPE html>";
-  }
-}
+<>{{ html: "<!DOCTYPE html>" }}</>;
 
 // After
 import { html } from "jsx-async-runtime";
-{
-  html("<!DOCTYPE html>");
-}
+<>{html("<!DOCTYPE html>")}</>;
 ```
 
 **Escaping can't be turned off**

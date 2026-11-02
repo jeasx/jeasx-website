@@ -56,6 +56,7 @@ esbuild jeasx.config.jsx --outfile=jeasx.config.js --platform=node --format=esm 
 ```
 
 ```js
+// Every option may also be an async function returning a Promise.
 export default {
   /** @type {() => import("esbuild").BuildOptions} */
   ESBUILD_SERVER_OPTIONS: () => ({}),
@@ -63,7 +64,7 @@ export default {
   /** @type {() => import("esbuild").BuildOptions} */
   ESBUILD_BROWSER_OPTIONS: () => ({}),
 
-  /** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance} */
+  /** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance | Promise<import("fastify").FastifyInstance>} */
   FASTIFY_SERVER: (fastify) => fastify,
 
   /** @type {() => import("fastify").FastifyServerOptions} */

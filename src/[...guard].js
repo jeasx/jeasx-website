@@ -1,4 +1,4 @@
-import { jsxToString } from "jsx-async-runtime";
+import { isJsxNode, jsxToString } from "jsx-async-runtime";
 
 /**
  * @param {import("./types").RouteProps} props
@@ -9,7 +9,7 @@ export default async function ({ request, reply }) {
   this.reply = reply;
 
   this.jsxToString = (jsxElement) => {
-    if (jsxElement?.type === "tag") {
+    if (isJsxNode(jsxElement)) {
       if (jsxElement.tag === "strong") {
         jsxElement.tag = "b";
       }
