@@ -33,7 +33,7 @@ export default function Layout({
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
           <link rel="manifest" href="/site.webmanifest" />
-          <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+          <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0ea5e9" />
           <link
             rel="canonical"
             href={`https://www.jeasx.dev${path.endsWith("/") ? path.slice(0, -1) : path}`}
