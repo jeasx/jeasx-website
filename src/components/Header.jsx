@@ -24,7 +24,10 @@ export default function Header() {
       <div class="brand">
         <a aria-label="Home page" href="/">
           <Logo />
-          <span class="brand-name">Jeasx &ndash; JSX with Ease</span>
+          <span class="brand-name">
+            <span class="brand-title">Jeasx</span>
+            <span class="brand-claim">JSX with Ease</span>
+          </span>
         </a>
       </div>
       <div class="search">
