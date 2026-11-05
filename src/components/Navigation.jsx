@@ -32,6 +32,7 @@ const NAV_ITEMS = [
       { label: "Philosophy", link: "/philosophy" },
       { label: "Getting started", link: "/quickstart" },
       { label: "Tutorial", link: "/tutorial" },
+      { label: "Manual setup", link: "/setup" },
     ],
   },
   {

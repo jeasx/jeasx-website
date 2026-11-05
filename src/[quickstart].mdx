@@ -1,3 +1,4 @@
+import Aside from "./components/Aside";
 import Highlight from "./components/Highlight";
 import Layout from "./components/Layout";
 import Lead from "./components/Lead";
@@ -8,10 +9,12 @@ import Next from "./components/Next";
   description="How to get started with Jeasx"
   category="Quickstart"
   headline="How to get started with Jeasx"
-  next={<Next link="/tutorial" label="Build your first app step by step" />}
+  next={<Next link="/tutorial" label="How to build your first app step by step?" />}
 >
+<a id="getting-started"></a>
+
 <Lead>
-It's easy to get started. Just use the following commands to set up and start your first project:
+  It's easy to get started. Just use the following commands to set up and start your first project:
 </Lead>
 
 ```bash
@@ -55,6 +58,8 @@ Jeasx is tested occasionally against [Bun](https://bun.sh) (`bun -b run [build|d
 
 </Highlight>
 
+## <a id="docker"></a>
+
 ## Install project with Docker support
 
 If you want to use Docker, you can bootstrap a new project with additional resources (`Dockerfile`, `.dockerignore`) via the following flag:
@@ -62,6 +67,8 @@ If you want to use Docker, you can bootstrap a new project with additional resou
 ```bash
 npm create jeasx@latest -- --with-docker
 ```
+
+## <a id="vercel"></a>
 
 ## Install project with Vercel support
 

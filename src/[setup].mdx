@@ -1,0 +1,174 @@
+import Aside from "./components/Aside";
+import Layout from "./components/Layout";
+import Lead from "./components/Lead";
+import Next from "./components/Next";
+
+<Layout
+  title="Manual setup"
+  description="Set up a Jeasx project by hand with a minimal amount of files"
+  category="Quickstart"
+  headline="Set up Jeasx manually"
+  next={<Next link="/jsx" label="How to write server-side JSX?" />}
+  aside={
+    <Aside links={[
+      {label: "1. Create package.json", link: "#package"},
+      {label: "2. Create jeasx.config.js", link: "#config"},
+      {label: "3. Create tsconfig.json", link: "#tsconfig"},
+      {label: "4. Create your first route", link: "#route"},
+      {label: "5. Add a stylesheet", link: "#css"},
+      {label: "6. Start the dev server", link: "#start"},
+    ]}/>
+  }
+>
+<Lead>
+If you prefer to understand every piece of your project, you can set up Jeasx by hand. A minimal project consists of only five files:
+</Lead>
+
+```
+my-project/
+├── jeasx.config.js
+├── package.json
+├── tsconfig.json
+└── src/
+    ├── [index].jsx
+    └── index.css
+```
+
+## <a id="package"></a>
+
+## Step 1: Create `package.json`
+
+Create a new project folder and add a `package.json` with Jeasx as dependency and scripts for development and production:
+
+```json
+{
+  "name": "my-project",
+  "type": "module",
+  "scripts": {
+    "dev": "jeasx dev",
+    "build": "jeasx build",
+    "start": "jeasx start"
+  },
+  "dependencies": {
+    "jeasx": "3.0.0"
+  },
+  "allowScripts": {
+    "esbuild": true
+  }
+}
+```
+
+Then install the dependencies:
+
+```bash
+npm install
+```
+
+## <a id="config"></a>
+
+## Step 2: Create `jeasx.config.js`
+
+Jeasx expects a configuration file in the project root. The following defaults are a good starting point and give you type hints in your editor (see [configuration](/configuration) for details):
+
+```js
+// Every option may also be an async function returning a Promise.
+export default {
+  /** @type {() => import("esbuild").BuildOptions} */
+  ESBUILD_SERVER_OPTIONS: () => ({}),
+
+  /** @type {() => import("esbuild").BuildOptions} */
+  ESBUILD_BROWSER_OPTIONS: () => ({}),
+
+  /** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance | Promise<import("fastify").FastifyInstance>} */
+  FASTIFY_SERVER: (fastify) => fastify,
+
+  /** @type {() => import("fastify").FastifyServerOptions} */
+  FASTIFY_SERVER_OPTIONS: () => ({}),
+
+  /** @type {() => import("@fastify/send").SendOptions} */
+  FASTIFY_SEND_OPTIONS: () => ({}),
+};
+```
+
+## <a id="tsconfig"></a>
+
+## Step 3: Create `tsconfig.json`
+
+This tells esbuild (and your editor) how to compile JSX. Simply extend the configuration shipped with Jeasx:
+
+```json
+{
+  "extends": "jeasx/tsconfig.json"
+}
+```
+
+## <a id="route"></a>
+
+## Step 4: Create your first route `src/[index].jsx`
+
+Every file in `src` wrapped in brackets becomes a route. `[index].jsx` handles requests to `/`:
+
+```jsx
+import { html } from "jsx-async-runtime";
+
+export default function Index({ request, reply }) {
+  // Redirect to a default greeting if no name is given
+  if (!request.query.name) {
+    return reply.redirect("/?name=World");
+  }
+
+  return (
+    <>
+      {html("<!DOCTYPE html>")}
+      <html lang="en">
+        <head>
+          <title>Hello Jeasx</title>
+          <link rel="stylesheet" href="/index.css" />
+        </head>
+        <body>
+          <h1>Hello {request.query.name}</h1>
+        </body>
+      </html>
+    </>
+  );
+}
+```
+
+Each route receives the incoming `request` and the outgoing `reply` from [Fastify](https://fastify.dev). Use `request` to read query parameters, headers or the body, and `reply` to set the status code, headers or redirects before the page is rendered.
+
+Jeasx escapes all strings by default, so the doctype is wrapped with the `html` helper to render it as literal markup.
+
+## <a id="css"></a>
+
+## Step 5: Create a stylesheet `src/index.css`
+
+Files named `index.css` or `index.js` in `src` are bundled by esbuild for the browser. The stylesheet is served at `/index.css`:
+
+```css
+:root {
+  color-scheme: light dark;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  max-width: 48rem;
+}
+
+h1 {
+  color: light-dark(#0f766e, #2dd4bf);
+}
+```
+
+## <a id="start"></a>
+
+## Step 6: Start the dev server
+
+```bash
+npm run dev
+```
+
+Now visit `http://localhost:3000/?name=Jeasx` and you should see your greeting. From here on, you can add more routes, components and a `public` folder for static assets.
+
+</Layout>

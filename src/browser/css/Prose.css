@@ -144,6 +144,15 @@
   }
 
   /* Headings */
+  /* Anchor targets used by the aside navigation, offset below the sticky header */
+  & :where(a[id]) {
+    scroll-margin-top: calc(var(--header-height) + 6rem);
+
+    @media (width >= 64rem) {
+      scroll-margin-top: calc(var(--header-height) + 8rem);
+    }
+  }
+
   & :where(h1, h2, h3, h4, h5, h6, th):where(:not(.not-prose *)) {
     scroll-margin-top: 7rem;
     font-weight: 400;
