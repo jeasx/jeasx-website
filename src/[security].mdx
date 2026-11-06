@@ -1,0 +1,168 @@
+import Aside from "./components/Aside";
+import Layout from "./components/Layout";
+import Lead from "./components/Lead";
+import Next from "./components/Next";
+
+<Layout
+  title="Security"
+  description="Security measures of Jeasx and jsx-async-runtime and what to watch out for"
+  category="Security"
+  headline="How does Jeasx keep your application safe?"
+  next={<Next link="/hosting" label="How to host a Jeasx application?" />}
+  aside={
+    <Aside links={[
+      { label: "Rendering", link: "#rendering" },
+      { label: "Routing & files", link: "#routing" },
+      { label: "Server & build", link: "#server" },
+      { label: "Watch out", link: "#watch-out" },
+      { label: "Checklist", link: "#checklist" },
+    ]}/>
+  }
+>
+<Lead>
+Jeasx renders everything on the server, so no secrets or business logic leak into the browser by accident. On top of that, Jeasx and its JSX runtime [jsx-async-runtime](https://github.com/jeasx/jsx-async-runtime) ship with safe defaults that close the most common holes of web applications. This page explains these measures and the things you still have to take care of yourself.
+</Lead>
+
+## <a id="rendering"></a>
+
+## Safe rendering with jsx-async-runtime
+
+### HTML is always escaped
+
+Every string, number or object rendered as a child or attribute value is escaped (`&`, `<`, `>`, `"` and `'`). User input like `<script>alert(1)</script>` is shown as text and never executed. Escaping can't be turned off.
+
+```jsx
+const name = request.query.name; // "<script>alert(1)</script>"
+<h1>Hello {name}</h1>; // <h1>Hello &lt;script&gt;alert(1)&lt;/script&gt;</h1>
+```
+
+### Raw markup only via `html()`
+
+Only markup created by the `html()` function is rendered unescaped. Objects that just look like markup (e.g. `{ html: "..." }` from parsed JSON) render nothing, so a malicious API response or request body can't sneak raw HTML into your page.
+
+### Elements can't be forged
+
+JSX elements carry a private `Symbol` marker. JSON look-alikes such as `{"type":"tag","tag":"script",...}` render nothing, so data from a database or a request can never turn into a real element.
+
+### Invalid tag and attribute names are skipped
+
+Attribute names containing whitespace, quotes, `<`, `>`, `/`, `=`, `&` or control characters are skipped. Invalid tag names are skipped together with their children. This prevents breaking out of a tag when names come from data, e.g. when spreading an object into props.
+
+### Protection against prototype pollution
+
+Attributes inherited from a polluted `Object.prototype` (e.g. by a naive deep merge of a request body somewhere in your app or a dependency) are ignored, so they can't inject attributes like `onmouseover` into every element.
+
+### No leaked source code
+
+Functions and symbols used as attribute values are skipped, so an event handler doesn't print its server-side source code into the markup. Nested elements and other non-serializable values in object attributes are dropped as well.
+
+### Isolated render contexts
+
+Every request gets its own context object (`this`), so data of one request never leaks into the render of another one. Rejected promises are reported to the render instead of crashing the Node process, and unread streams are closed when rendering fails or the client disconnects.
+
+## <a id="routing"></a>
+
+## Routing and static files
+
+### Only build outputs can be loaded
+
+In production, all routes and static files are collected into a lookup table at build time. A request can only resolve to an entry of this table, so even a malformed request that slipped through path sanitizing can't load modules or files outside of `dist` and `public`.
+
+### Malformed paths are rejected
+
+Paths with invalid URL encoding, null bytes or `.` / `..` segments are rejected with a `400` status. Repeated slashes are collapsed, so `//evil.com` can't be mistaken for another host (e.g. in a `<base>` tag or a redirect).
+
+### Special routes can't be requested directly
+
+Requests like `/[index]`, `/[...guard]`, `/[...path]` or `/[--metadata--]` never call these routes directly, no matter how they are cased. Guards always run, also for requests to static files, so you can protect files with a guard as well.
+
+### Server code is never served
+
+Compiled routes, their sourcemaps and other outputs (e.g. `[index].css`) are never served as static files, neither in development nor in production. This includes Windows tricks like `/[index].js.` or `/[index].js::$DATA`.
+
+### Lookups ignore inherited keys
+
+Route and file lookups use objects without a prototype, so a path like `/constructor` or `/__proto__` doesn't match anything.
+
+### Dotfiles are ignored by default
+
+Files like `public/.env` or `public/.git/config` aren't served unless you explicitly allow dotfiles via the `dotfiles` option of `FASTIFY_SEND_OPTIONS`.
+
+## <a id="server"></a>
+
+## Server and build
+
+- **Fastify:** Jeasx is built on top of [Fastify](https://fastify.dev), a mature and battle-tested web server with strict request validation. Security updates of Fastify are released promptly as Jeasx patch releases.
+- **Dev server is local:** `jeasx dev` only listens on `localhost`, so your development server isn't reachable from the network unless you set `HOST`.
+- **Clean builds:** `dist` is deleted before every build, so outputs of deleted routes can't be served anymore.
+- **No env vars in the browser:** environment variables are never exposed to browser bundles automatically. You decide explicitly via `define` in `ESBUILD_BROWSER_OPTIONS` which values the browser gets.
+- **Graceful shutdown:** the server closes cleanly on `SIGINT` and `SIGTERM`, which avoids broken responses when containers are stopped.
+
+## <a id="watch-out"></a>
+
+## Things to watch out for
+
+Jeasx protects you from the most common mistakes, but it can't know what your data means. Keep the following in mind:
+
+### Never pass untrusted input to `html()`
+
+`html()` renders its input as is. Use it only for markup from trusted sources (e.g. your own templates or a CMS you control). If you have to render user-provided HTML (e.g. from a rich text editor), sanitize it first with a library like [DOMPurify](https://github.com/cure53/DOMPurify) or [sanitize-html](https://github.com/apostrophecms/sanitize-html).
+
+### Escaping doesn't validate URLs
+
+Escaping prevents breaking out of an attribute, but a value like `javascript:alert(1)` is still a valid `href`. Validate URLs from users and allow only safe protocols like `https:` and `mailto:`.
+
+```jsx
+const safeUrl = /^(https?:|mailto:|\/)/i.test(url) ? url : "#";
+<a href={safeUrl}>Profile</a>;
+```
+
+### Don't spread untrusted objects into props
+
+Valid but dangerous names like `onmouseover`, `onerror` or `srcdoc` are still rendered. Never spread a request body or other untrusted object directly into an element (`<div {...request.body} />`). Allowlist attributes (and tags) when they come from input.
+
+### Escaping is for HTML, not for scripts and styles
+
+Content inside `<script>` and `<style>` is escaped like any other text, which protects HTML, but not JavaScript or CSS semantics. Don't build scripts or styles from user input. To pass data to browser code, use a `data-*` attribute (objects are serialized to escaped JSON automatically) and read it with `JSON.parse(element.dataset.props)`.
+
+### Overrides of `jsxToString` are your responsibility
+
+A custom `this.jsxToString` handler can return any string, which is rendered without escaping. Make sure your override only returns trusted markup or escapes values with `escapeEntities()`.
+
+### Set security headers
+
+Jeasx doesn't set HTTP security headers like `Content-Security-Policy`, `Strict-Transport-Security` or `X-Content-Type-Options` for you. Set them in your root guard, a reverse proxy, or with [@fastify/helmet](https://github.com/fastify/fastify-helmet) (see the [FAQ](/faq#helmet)). A strict Content-Security-Policy is the best second line of defense against XSS.
+
+### Handle forms and cookies with care
+
+Jeasx doesn't include sessions, authentication or CSRF protection. When you accept form submissions or use cookies, add CSRF tokens (e.g. with [@fastify/csrf-protection](https://github.com/fastify/csrf-protection)) and set cookies with `HttpOnly`, `Secure` and `SameSite` flags.
+
+### Limit and validate input
+
+Validate all request parameters, bodies and headers before you use them, e.g. in database queries (use parameterized queries to prevent SQL injection) or when building file paths. Consider rate limiting (e.g. with [@fastify/rate-limit](https://github.com/fastify/fastify-rate-limit)) for expensive routes and login forms.
+
+### Keep secrets out of `public` and browser bundles
+
+Everything in `public` and everything imported by browser code (`index.js`, `index.css`) is publicly available. Keep secrets in environment variables, never commit `.env` files, and only `define` values for the browser that are meant to be public.
+
+### Don't leak error details
+
+Stack traces help during development, but reveal internals in production. Use a custom error handler (see the [FAQ](/faq#error-handler)) to show a generic error page and log the details on the server.
+
+### Keep dependencies up to date
+
+Update Jeasx and your other dependencies regularly to get the latest security fixes. Run `npm audit` and watch the [news](/news) for security releases.
+
+## <a id="checklist"></a>
+
+## Checklist for production
+
+- Use `html()` only for trusted markup, sanitize everything else.
+- Validate URLs, allowlist attributes and never spread untrusted objects into props.
+- Set security headers, especially a Content-Security-Policy.
+- Add CSRF protection and secure cookie flags if you handle forms or sessions.
+- Terminate TLS with a reverse proxy (e.g. [Caddy](https://caddyserver.com)), see [Hosting](/hosting).
+- Show generic error pages and keep secrets out of `public` and browser bundles.
+- Keep Jeasx and all dependencies up to date.
+
+</Layout>

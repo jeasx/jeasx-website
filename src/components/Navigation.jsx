@@ -42,6 +42,7 @@ const NAV_ITEMS = [
       { label: "Routes & Guards", link: "/routes" },
       { label: "CSS & JavaScript", link: "/browser" },
       { label: "Configuration", link: "/configuration" },
+      { label: "Security", link: "/security" },
       { label: "Hosting", link: "/hosting" },
     ],
   },
