@@ -16,7 +16,7 @@
   z-index: 50;
   backdrop-filter: blur(8px);
   inset: 0;
-  background-color: color-mix(in oklab, var(--color-slate-900) 50%, transparent);
+  background-color: oklch(10% 0.02 265 / 0.6);
   padding-right: 2.5rem;
   overflow-y: auto;
   opacity: 0;
@@ -32,7 +32,8 @@
 }
 
 .mobile-nav-panel {
-  background-color: var(--color-white);
+  border-right: 1px solid var(--color-border);
+  background-color: var(--color-bg);
   padding: 1.25rem 1rem 3rem;
   width: 100%;
   max-width: 20rem;

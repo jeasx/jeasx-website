@@ -1,39 +1,33 @@
 .highlight {
   display: flex;
   margin-block: 2rem;
+  border: 1px solid oklch(74.6% 0.16 232.661 / 0.2);
   border-radius: 1.5rem;
-  background-color: var(--color-sky-50);
+  background-color: oklch(74.6% 0.16 232.661 / 0.07);
   padding: 1.5rem;
 
   .highlight-title {
-    color: var(--color-sky-900);
+    color: var(--color-sky-300);
   }
 
-  /* Highlight content uses the neutral gray typography palette */
   .prose {
-    --prose-headings: oklch(21% 0.034 264.665);
-    --prose-bold: oklch(21% 0.034 264.665);
-    --prose-counters: oklch(55.1% 0.027 264.364);
-    --prose-bullets: oklch(87.2% 0.01 258.338);
-    --prose-body: var(--color-sky-800);
-    --prose-links: var(--color-sky-900);
-    --prose-code: var(--color-sky-900);
-    --prose-background: var(--color-sky-50);
+    --prose-links: var(--color-sky-200);
+    --prose-code: var(--color-sky-200);
+    --prose-background: transparent;
   }
 }
 
 .highlight-warning {
-  background-color: var(--color-amber-50);
+  border-color: oklch(82.8% 0.189 84.429 / 0.2);
+  background-color: oklch(82.8% 0.189 84.429 / 0.07);
 
   .highlight-title {
-    color: var(--color-amber-900);
+    color: var(--color-amber-400);
   }
 
   .prose {
-    --prose-body: var(--color-amber-800);
-    --prose-links: var(--color-amber-900);
-    --prose-code: var(--color-amber-900);
-    --prose-background: var(--color-amber-50);
+    --prose-links: var(--color-amber-100);
+    --prose-code: var(--color-amber-100);
     --prose-underline: var(--color-amber-400);
   }
 }

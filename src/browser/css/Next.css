@@ -1,7 +1,7 @@
 .next {
   display: flex;
   margin-top: 3rem;
-  border-top: 1px solid var(--color-slate-200);
+  border-top: 1px solid var(--color-border);
   padding-top: 1.5rem;
 }
 
@@ -11,7 +11,7 @@
 }
 
 .next-label {
-  color: var(--color-slate-900);
+  color: var(--color-heading);
   font-weight: 500;
   font-size: 0.875rem;
   line-height: 1.5rem;
@@ -27,14 +27,14 @@
   display: flex;
   column-gap: 0.25rem;
   align-items: center;
-  color: var(--color-slate-500);
+  color: var(--color-muted);
   font-weight: 600;
   font-size: 1rem;
   line-height: 2rem;
 
   @media (hover: hover) {
     &:hover {
-      color: var(--color-slate-600);
+      color: var(--color-slate-200);
     }
   }
 }
