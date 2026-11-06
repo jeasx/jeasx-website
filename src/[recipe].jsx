@@ -1,5 +1,5 @@
 export default ({ request }) => (
-  <main>
+  <main class="recipe">
     <h1>Recipe of the day</h1>
     <Recipe id={request.query["id"]} />
   </main>
