@@ -21,11 +21,14 @@ Static files are only served for `GET` and `HEAD` requests. Other methods (e.g. 
 
 _Please note:_ in production, `jeasx build` creates an index of all files in `public` and `dist`. Only files that existed at build time are served, so files added to `public` later (e.g. uploads) aren't available until the next build. Symbolic links are skipped in production builds.
 
-<table>
-  <tr>
-    <th style="width:50%">File path</th>
-    <th style="width:50%">URL</th>
-  </tr>
+<table class="route-table">
+  <thead>
+    <tr>
+      <th>File path</th>
+      <th>URL</th>
+    </tr>
+  </thead>
+  <tbody>
   <tr>
     <td>public/robots.txt</td>
     <td>/robots.txt</td>
@@ -34,6 +37,7 @@ _Please note:_ in production, `jeasx build` creates an index of all files in `pu
     <td>public/fonts/ubuntu.woff2</td>
     <td>/fonts/ubuntu.woff2</td>
   </tr>
+  </tbody>
 </table>
 
 ## CSS & JavaScript
@@ -42,11 +46,14 @@ CSS, JavaScript, or TypeScript files that require processing and minification sh
 
 _Please note:_ Jeasx doesn't specify any hardcoded outbase directory for esbuild, so it defaults to the lowest common ancestor directory for all your browser assets. So when you put _all_ your assets into a dedicated folder (e.g. `src/browser`), `browser` will be removed from the resulting path.
 
-<table>
-  <tr>
-    <th style="width:50%">File path</th>
-    <th style="width:50%">URL</th>
-  </tr>
+<table class="route-table">
+  <thead>
+    <tr>
+      <th>File path</th>
+      <th>URL</th>
+    </tr>
+  </thead>
+  <tbody>
   <tr>
     <td>src/index.css</td>
     <td>/index.css</td>
@@ -59,6 +66,7 @@ _Please note:_ Jeasx doesn't specify any hardcoded outbase directory for esbuild
     <td>src/utils/date.js</td>
     <td>This file is not available via a URL.</td>
   </tr>
+  </tbody>
 </table>
 
 _Please note:_ the `dist` directory is cleaned before every build, so never put files into `dist` by hand. Use `public` instead. If a file exists in both `dist` and `public`, the file from `dist` wins.

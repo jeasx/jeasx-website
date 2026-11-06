@@ -1,0 +1,79 @@
+.prose :where(table.route-table) {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: var(--color-surface);
+  font-size: 0.875em;
+}
+
+.prose .route-table thead {
+  border: 0;
+  background: color-mix(in oklab, var(--color-accent) 10%, transparent);
+}
+
+.prose .route-table th {
+  width: 50%;
+  padding: 0.75em 1.25em;
+  font-size: 0.75em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.prose .route-table td {
+  padding: 0.75em 1.25em;
+  vertical-align: top;
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 0.15s;
+}
+
+.prose .route-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.prose .route-table tbody tr:hover td {
+  background: oklch(100% 0 0 / 0.03);
+}
+
+/* Route file: monospace, highlighted */
+.prose .route-table td:first-child {
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--prose-code);
+  white-space: nowrap;
+}
+
+/* Arrow pointing from file to URL */
+.prose .route-table td:first-child::after {
+  content: "→";
+  position: absolute;
+  right: -0.5em;
+  top: 0.75em;
+  color: var(--color-slate-600);
+  font-family: var(--font-sans);
+}
+
+.prose .route-table td:last-child {
+  color: var(--prose-body);
+}
+
+@media (max-width: 40rem) {
+  .prose .route-table td:first-child {
+    white-space: normal;
+    word-break: break-all;
+  }
+}
+
+.prose .route-table :is(th, td) {
+  vertical-align: top;
+}
+
+/* MDX wraps multi-line cell content in <p>; drop its margins */
+.prose .route-table :is(th, td) > p {
+  margin: 0;
+}

@@ -45,3 +45,15 @@ pre[class*="language-"] {
 .token.combinator {
   color: var(--color-slate-400);
 }
+
+.token.key,
+.token.atrule {
+  color: var(--color-pink-400);
+}
+
+.token.number,
+.token.boolean,
+.token.datetime {
+  color: var(--color-teal-200);
+}
+

@@ -28,11 +28,14 @@ _Please note:_ Jeasx doesn't specify any hardcoded outbase directory for `esbuil
 
 The only rule for named routes is to enclose the base filename within brackets. This convention allows you to store components, services and utilities besides your routes without exposing them as endpoints.
 
-<table>
-  <tr>
-    <th style="width:50%">Route path</th>
-    <th style="width:50%">URL</th>
-  </tr>
+<table class="route-table">
+  <thead>
+    <tr>
+      <th>Route path</th>
+      <th>URL</th>
+    </tr>
+  </thead>
+  <tbody>
   <tr>
     <td>src/[index].jsx</td>
     <td>/</td>
@@ -61,6 +64,7 @@ The only rule for named routes is to enclose the base filename within brackets. 
     <td>src/api/posts/utils/format.ts</td>
     <td>This file is not exposed as endpoint.</td>
   </tr>
+  </tbody>
 </table>
 
 ### Code example
@@ -90,15 +94,19 @@ export default function ({ request, reply }) {
 
 Dynamic routes are wildcards designed to capture all requests for the current folder and its subfolders. They enable the creation of content with a dynamic URL structure, such as pages retrieved from a CMS. If a named route exists in the same folder as a dynamic route, the named route takes precedence. The name for a dynamic route is fixed and must be `[...path]`, with any file extension supported by your build (e.g. `[...path].jsx`, `[...path].ts` or `[...path].mdx`).
 
-<table>
-  <tr>
-    <th style="width:50%">Route path</th>
-    <th style="width:50%">URL</th>
-  </tr>
+<table class="route-table">
+  <thead>
+    <tr>
+      <th>Route path</th>
+      <th>URL</th>
+    </tr>
+  </thead>
+  <tbody>
   <tr>
     <td>src/blog/[...path].jsx</td>
     <td>/blog/article1, /blog/category/article2, /blog/**/*</td>
   </tr>
+  </tbody>
 </table>
 
 ### Code example
@@ -136,11 +144,14 @@ If a route returns nothing (like above after `reply.status(404)`), the request i
 
 A `[404]` route answers all requests that no other route has answered. Like dynamic routes, `[404]` routes are looked up from the current folder up to the root, so you can provide a different 404 page for a section of your site. The status code is set to `404` automatically, unless your route sets another one. If no `[404]` route exists, Jeasx answers with an empty `404`.
 
-<table>
-  <tr>
-    <th style="width:50%">Route path</th>
-    <th style="width:50%">URL</th>
-  </tr>
+<table class="route-table">
+  <thead>
+    <tr>
+      <th>Route path</th>
+      <th>URL</th>
+    </tr>
+  </thead>
+  <tbody>
   <tr>
     <td>src/blog/[404].jsx</td>
     <td>Unknown URLs below /blog, e.g. /blog/unknown</td>
@@ -149,6 +160,7 @@ A `[404]` route answers all requests that no other route has answered. Like dyna
     <td>src/[404].jsx</td>
     <td>All other unknown URLs</td>
   </tr>
+  </tbody>
 </table>
 
 If you request a 404 page directly (e.g. `/404` answered by `src/[404].jsx` or `/blog/404` answered by `src/blog/[404].jsx`), it keeps status `200`. This makes it easy to export a 404 page for a [static site](/faq#static-site-generator). If a `[404]` route from a parent folder answers instead, the status is `404`.
@@ -157,11 +169,14 @@ If you request a 404 page directly (e.g. `/404` answered by `src/[404].jsx` or `
 
 Guards enable you to intercept requests and are inherited from the root to the current folder. They are valuable for controlling access to a route. Typically, a guard does not return any payload, allowing the request to be handled by the next guard or route. However, if a guard returns a response (e.g. JSX, a string or a stream), it will be delivered to the client, and no other route will be executed. A plain object is not sent as a response, but used as props (see below).
 
-<table>
-  <tr>
-    <th style="width:50%">Route path</th>
-    <th style="width:50%">URL</th>
-  </tr>
+<table class="route-table">
+  <thead>
+    <tr>
+      <th>Route path</th>
+      <th>URL</th>
+    </tr>
+  </thead>
+  <tbody>
   <tr>
     <td>src/blog/[...guard].jsx</td>
     <td>
@@ -169,6 +184,7 @@ Guards enable you to intercept requests and are inherited from the root to the c
       below.
     </td>
   </tr>
+  </tbody>
 </table>
 
 ### Code example
