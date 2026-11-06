@@ -1,34 +1,33 @@
-import Highlight from "./components/Highlight";
 import Layout from "./components/Layout";
 import Lead from "./components/Lead";
 import Next from "./components/Next";
 
 <Layout
-  title="What are the latest updates and new features in Jeasx?"
-  description="Here we are going to post updates about new features, bug fixes, and general information about the project."
+  title="What's new in Jeasx?"
+  description="All Jeasx releases with their highlights, changes and upgrade notes, newest first."
   category="News"
-  headline="What are the latest updates and new features in Jeasx?"
+  headline="What's new in Jeasx?"
   next={<Next link="/news-2025" label="What was new in 2025?" />}
+  aside={
+    <div class="aside">
+      <section class="aside-nav">
+        <h2 class="aside-title">What does a release mean?</h2>
+        <p class="semver-intro">
+          Jeasx follows <a href="https://semver.org">semantic versioning</a>. Always check the release notes before upgrading.
+        </p>
+        <ol class="semver">
+          <li class="semver-patch"><span class="semver-tag">x.y.<b>Z</b></span><span>Bug fixes. Just update.</span></li>
+          <li class="semver-minor"><span class="semver-tag">x.<b>Y</b>.0</span><span>New features. Nothing breaks.</span></li>
+          <li class="semver-major"><span class="semver-tag"><b>X</b>.0.0</span><span>Breaking changes. Follow the migration steps.</span></li>
+        </ol>
+      </section>
+    </div>
+  }
 >
 
 <Lead>
-  Welcome to the news section of Jeasx. Here we are going to post updates about new features, bug
-  fixes, and general information about the project.
+  All releases with their highlights, changes and upgrade notes, newest first.
 </Lead>
-
-<Highlight title="What to expect to change from each released version?">
-
-To get the most out of a new version, take a moment to browse our release notes before you upgrade. It’s the best way to see what’s new and what’s changed!
-
-Jeasx follows [Semantic Versioning](https://semver.org) (`MAJOR.MINOR.PATCH`):
-
-**Patch (x.y.Z):** Backwards-compatible bug fixes. No changes to your project are needed.
-
-**Minor (x.Y.0):** New functionality added in a backwards-compatible manner. Your existing code keeps working without changes.
-
-**Major (X.0.0):** Breaking changes. You might need to update your configuration (e.g. via `jeasx.config.js`) and/or your source code (anything within `src/**/*`). Check the release notes for migration steps.
-
-</Highlight>
 
 ## 2026-11-02 - Jeasx 3.0.0 released
 
