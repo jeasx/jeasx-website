@@ -17,6 +17,8 @@ export default function Layout({
   children,
 }) {
   const path = this.request.path;
+  const url = `https://www.jeasx.dev${path.endsWith("/") ? path.slice(0, -1) : path}`;
+  const fullTitle = `${title} » Jeasx - JSX with Ease`;
   return (
     <>
       {html("<!DOCTYPE html>")}
@@ -34,10 +36,23 @@ export default function Layout({
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
           <link rel="manifest" href="/site.webmanifest" />
           <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0ea5e9" />
-          <link
-            rel="canonical"
-            href={`https://www.jeasx.dev${path.endsWith("/") ? path.slice(0, -1) : path}`}
-          ></link>
+          <link rel="canonical" href={url}></link>
+          <meta property="og:type" content="website" />
+          <meta property="og:site_name" content="Jeasx" />
+          <meta property="og:locale" content="en_US" />
+          <meta property="og:url" content={url} />
+          <meta property="og:title" content={fullTitle} />
+          <meta property="og:description" content={description} />
+          <meta property="og:image" content="https://www.jeasx.dev/og-image.png" />
+          <meta property="og:image:type" content="image/png" />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta property="og:image:alt" content="Jeasx - JSX with Ease" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={fullTitle} />
+          <meta name="twitter:description" content={description} />
+          <meta name="twitter:image" content="https://www.jeasx.dev/og-image.png" />
+          <meta name="twitter:image:alt" content="Jeasx - JSX with Ease" />
           <link rel="stylesheet" href={`/index~${process.env.BUILD_ID}.css`} />
           <script type="module" src={`/index~${process.env.BUILD_ID}.js`}></script>
           <link
