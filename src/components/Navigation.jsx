@@ -30,6 +30,7 @@ const NAV_ITEMS = [
     label: "Introduction",
     links: [
       { label: "Philosophy", link: "/philosophy" },
+      { label: "Comparison", link: "/comparison" },
       { label: "Getting started", link: "/quickstart" },
       { label: "Tutorial", link: "/tutorial" },
       { label: "Manual setup", link: "/setup" },
