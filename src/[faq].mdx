@@ -59,44 +59,7 @@ Have a look at the [demo](https://expo.jeasx.dev/context) to see how things work
 
 ## How can I provide user friendly error messages?
 
-Register a Fastify error handler in `jeasx.config.js`. It runs for errors from all routes and guards:
-
-```js
-// jeasx.config.js
-export default {
-  FASTIFY_SERVER: (fastify) =>
-    fastify.setErrorHandler(async (error, request, reply) => {
-      request.log.error(error);
-      reply.status(error.statusCode ?? 500).type("text/html; charset=utf-8");
-      return "<h1>Internal server error</h1>";
-    }),
-};
-```
-
-Without your own handler, Fastify answers with a JSON error. Please note that `jeasx.config.js` is not compiled by esbuild by default, so it can't contain JSX. If you want JSX in your config, write it as `jeasx.config.jsx` and compile it with your own npm script:
-
-```sh
-esbuild jeasx.config.jsx --outfile=jeasx.config.js --platform=node --format=esm --jsx=automatic --jsx-import-source=jsx-async-runtime
-```
-
-The error handler only runs for errors thrown before the first chunk of the page is sent, e.g. in a guard or before the route returns its JSX. Once streaming has started, an error thrown by an async component cuts the page off. Wrap risky components in an error boundary that renders them to a string first:
-
-```jsx
-import { html, jsxToString } from "jsx-async-runtime";
-
-export default async function ErrorBoundary({ fallback, children }) {
-  try {
-    return html(await jsxToString.call(this, children));
-  } catch (error) {
-    this.request.log.error(error);
-    return fallback;
-  }
-}
-```
-
-The example uses `this.request` for logging, so it expects a guard which puts the request into the [context](#context) (e.g. `this.request = request` in `src/[...guard].js`).
-
-Have a look at the [error handler demo](https://expo.jeasx.dev/error-handler) to see all cases at work.
+Register a Fastify error handler via `setErrorHandler` in `jeasx.config.js` and add a `[404]` route for unknown URLs. Errors thrown while a page is already streaming need an error boundary. The [Error handling](/errors) page explains all cases in detail.
 
 ## <a id="response-handler"></a>
 

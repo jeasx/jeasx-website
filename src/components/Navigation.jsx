@@ -41,23 +41,26 @@ const NAV_ITEMS = [
     links: [
       { label: "JSX & MDX", link: "/jsx" },
       { label: "Routes & Guards", link: "/routes" },
+      { label: "Requests & Responses", link: "/requests" },
+      { label: "Data & Async", link: "/data" },
+      { label: "Error Handling", link: "/errors" },
       { label: "CSS & JavaScript", link: "/browser" },
+    ],
+  },
+  {
+    label: "Production",
+    links: [
       { label: "Configuration", link: "/configuration" },
       { label: "Security", link: "/security" },
       { label: "Hosting", link: "/hosting" },
     ],
   },
   {
-    label: "Resources",
+    label: "Community",
     links: [
       { label: "FAQ", link: "/faq" },
       { label: "News", link: "/news" },
       { label: "Showcases", link: "/showcases" },
-    ],
-  },
-  {
-    label: "Contributing",
-    links: [
       { label: "Contact", link: "/contact" },
       { label: "License", link: "/license" },
     ],

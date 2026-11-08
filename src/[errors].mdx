@@ -1,0 +1,193 @@
+import { html } from "jsx-async-runtime";
+import Aside from "./components/Aside";
+import Highlight from "./components/Highlight";
+import Layout from "./components/Layout";
+import Lead from "./components/Lead";
+import Next from "./components/Next";
+import IconAttention from "./icons/IconAttention.svg";
+import IconWarning from "./icons/IconWarning.svg";
+
+<Layout
+  title="Error Handling"
+  description="How to handle errors and show user friendly error pages with Jeasx"
+  category="Error Handling"
+  headline="Handling errors gracefully"
+  next={<Next link="/browser" label="How to handle browser assets?" />}
+  aside={
+    <Aside links={[
+      { label: "Error flow", link: "#flow" },
+      { label: "Not found", link: "#not-found" },
+      { label: "Error handler", link: "#error-handler" },
+      { label: "Error pages with JSX", link: "#jsx" },
+      { label: "Status codes", link: "#status-codes" },
+      { label: "Streaming errors", link: "#streaming" },
+      { label: "Logging", link: "#logging" },
+    ]}/>
+  }
+>
+<Lead>
+Things go wrong: pages don't exist, databases go down, APIs time out. Jeasx leaves error handling to Fastify, so you decide in one place how errors are logged and what your visitors see.
+</Lead>
+
+## <a id="flow"></a>
+
+## How errors flow
+
+There are three cases you should plan for:
+
+1. **Nothing found:** no route answers the request. Jeasx runs your `[404]` route or answers with an empty `404`.
+2. **An error before the page is sent:** a guard, route or async component throws before the first byte is sent. Fastify passes the error to your error handler.
+3. **An error while streaming:** an async component throws after parts of the page have already been sent. The status code can't be changed anymore, so the page is cut off.
+
+## <a id="not-found"></a>
+
+## Not found pages
+
+Create a `[404]` route to show a friendly page for unknown URLs. Jeasx sets the status `404` automatically:
+
+```jsx
+// src/[404].jsx
+import Layout from "./components/Layout";
+
+export default function ({ request }) {
+  return (
+    <Layout title="Page not found">
+      <h1>Page not found</h1>
+      <p>Sorry, there is nothing at {request.path}.</p>
+      <a href="/">Back to the home page</a>
+    </Layout>
+  );
+}
+```
+
+If a route finds no data (e.g. an unknown product id), set the status to `404` and return nothing. The request is then passed on to your `[404]` route. See [404 routes](/routes#404-routes) for section specific 404 pages.
+
+## <a id="error-handler"></a>
+
+## The error handler
+
+Register a Fastify error handler in `jeasx.config.js`. It runs for errors thrown in all guards and routes:
+
+```js
+// jeasx.config.js
+export default {
+  /** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance} */
+  FASTIFY_SERVER: (fastify) =>
+    fastify.setErrorHandler(async (error, request, reply) => {
+      request.log.error(error);
+      reply.status(error.statusCode ?? 500).type("text/html; charset=utf-8");
+      return "<h1>Something went wrong</h1><p>Please try again later.</p>";
+    }),
+};
+```
+
+Without your own handler, Fastify answers with a JSON error, which isn't what visitors of a website expect.
+
+<Highlight title="Never show error details in production" icon={html(IconWarning)} variant={true}>
+
+Error messages and stack traces can reveal file paths, queries or secrets. Show them only during development, e.g. with `process.env.NODE_ENV === "development"`, and log them on the server instead.
+
+</Highlight>
+
+## <a id="jsx"></a>
+
+## Error pages with JSX
+
+`jeasx.config.js` isn't compiled by esbuild, so it can't contain JSX. To render your error page with your layout, write the config as `jeasx.config.jsx` and compile it with your own npm script:
+
+```sh
+esbuild jeasx.config.jsx --bundle --packages=external --outfile=jeasx.config.js --platform=node --format=esm --jsx=automatic --jsx-import-source=jsx-async-runtime
+```
+
+`--bundle` includes your imported components in the compiled config. The error handler can then render JSX to a string with `jsxToString`:
+
+```jsx
+// jeasx.config.jsx
+import { jsxToString } from "jsx-async-runtime";
+import ErrorPage from "./src/components/ErrorPage";
+
+export default {
+  FASTIFY_SERVER: (fastify) =>
+    fastify.setErrorHandler(async (error, request, reply) => {
+      request.log.error(error);
+      const status = error.statusCode ?? 500;
+      reply.status(status).type("text/html; charset=utf-8");
+      return await jsxToString(<ErrorPage status={status} />);
+    }),
+};
+```
+
+## <a id="status-codes"></a>
+
+## Status codes
+
+The error handler above uses the `statusCode` of the error, so you can throw errors with a matching status anywhere in your guards and routes:
+
+```js
+export class HttpError extends Error {
+  constructor(statusCode, message) {
+    super(message);
+    this.statusCode = statusCode;
+  }
+}
+
+// e.g. in a guard
+if (!user) {
+  throw new HttpError(403, "Access denied");
+}
+```
+
+For expected cases like a missing page or a failed login, it's often simpler to set the status with `reply.status()` and return the page directly. Reserve thrown errors for things that really went wrong.
+
+## <a id="streaming"></a>
+
+## Errors while streaming
+
+Pages are streamed to the browser while they render. The error handler only runs for errors thrown before the first chunk is sent. Once streaming has started, an error thrown by an async component cuts the page off.
+
+So load data that can fail and that decides about the status code in the route, before returning JSX (see [Data & Async](/data#not-found)). For optional parts like a widget calling an unreliable API, wrap the component in an error boundary which renders it to a string first and shows a fallback if it fails:
+
+```jsx
+// src/components/ErrorBoundary.jsx
+import { html, jsxToString } from "jsx-async-runtime";
+
+export default async function ErrorBoundary({ fallback, children }) {
+  try {
+    return html(await jsxToString.call(this, children));
+  } catch (error) {
+    this.request.log.error(error);
+    return fallback;
+  }
+}
+```
+
+```jsx
+<ErrorBoundary fallback={<p>The weather is currently unavailable.</p>}>
+  <Weather city="Hamburg" />
+</ErrorBoundary>
+```
+
+The example uses `this.request` for logging, so it expects a guard which puts the request into the [context](/faq#context) (e.g. `this.request = request` in `src/[...guard].js`). As the boundary renders its children to a string first, they aren't streamed, so use it only where you need it.
+
+## <a id="logging"></a>
+
+## Logging
+
+Use `request.log` to log errors. It's the [Pino](https://getpino.io) logger of Fastify and adds the request id to every entry, so you can find all log entries of a failing request. Configure the log level via `FASTIFY_SERVER_OPTIONS` (see [Configuration](/configuration)):
+
+```js
+// jeasx.config.js
+export default {
+  FASTIFY_SERVER_OPTIONS: () => ({
+    logger: { level: process.env.NODE_ENV === "development" ? "error" : "info" },
+  }),
+};
+```
+
+<Highlight title="See it in action" icon={html(IconAttention)}>
+
+Have a look at the [error handler demo](https://expo.jeasx.dev/error-handler) to see all cases at work.
+
+</Highlight>
+
+</Layout>

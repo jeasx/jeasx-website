@@ -46,6 +46,15 @@
         <loc>https://www.jeasx.dev/routes</loc>
     </url>
     <url>
+        <loc>https://www.jeasx.dev/requests</loc>
+    </url>
+    <url>
+        <loc>https://www.jeasx.dev/data</loc>
+    </url>
+    <url>
+        <loc>https://www.jeasx.dev/errors</loc>
+    </url>
+    <url>
         <loc>https://www.jeasx.dev/tutorial</loc>
     </url>
     <url>

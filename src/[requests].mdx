@@ -1,0 +1,238 @@
+import { html } from "jsx-async-runtime";
+import Aside from "./components/Aside";
+import Highlight from "./components/Highlight";
+import Layout from "./components/Layout";
+import Lead from "./components/Lead";
+import Next from "./components/Next";
+import IconAttention from "./icons/IconAttention.svg";
+
+<Layout
+  title="Requests & Responses"
+  description="How to read requests and send responses with Jeasx"
+  category="Requests & Responses"
+  headline="Working with requests and responses"
+  next={<Next link="/data" label="How to load data with async components?" />}
+  aside={
+    <Aside links={[
+      { label: "Reading requests", link: "#reading" },
+      { label: "HTTP methods", link: "#methods" },
+      { label: "Forms", link: "#forms" },
+      { label: "Return values", link: "#return-values" },
+      { label: "Status & headers", link: "#status-headers" },
+      { label: "Redirects", link: "#redirects" },
+      { label: "Cookies", link: "#cookies" },
+      { label: "JSON APIs", link: "#json" },
+    ]}/>
+  }
+>
+<Lead>
+Every route receives the [request](https://fastify.dev/docs/latest/Reference/Request) and [reply](https://fastify.dev/docs/latest/Reference/Reply) objects from Fastify as props. Everything Fastify offers is available, so there is no extra API to learn.
+</Lead>
+
+## <a id="reading"></a>
+
+## Reading the request
+
+The most useful properties of the `request` object:
+
+- `request.method`: the HTTP method, e.g. `GET` or `POST`
+- `request.path`: the decoded path without query string, e.g. `/blog/hello` (added by Jeasx, see [Routes](/routes#order-of-execution))
+- `request.query`: the parsed query string as object, e.g. `{ page: "2" }` for `?page=2`
+- `request.headers`: all request headers in lower case, e.g. `request.headers["accept-language"]`
+- `request.body`: the parsed request body for `POST`, `PUT` or `PATCH` requests
+- `request.ip`, `request.hostname` and `request.protocol`: details about the client and the connection
+
+```jsx
+// src/[search].jsx
+export default function ({ request }) {
+  const term = request.query.q ?? "";
+  return <p>You searched for: {term}</p>;
+}
+```
+
+Query values always arrive as strings (or arrays of strings if a parameter is repeated), so convert and validate them before use, e.g. `Number.parseInt(request.query.page) || 1`.
+
+## <a id="methods"></a>
+
+## Handling HTTP methods
+
+A route answers all HTTP methods. Check `request.method` to handle them differently, and answer methods you don't support with status `405`:
+
+```jsx
+// src/[subscribe].jsx
+export default async function ({ request, reply }) {
+  switch (request.method) {
+    case "GET":
+      return <SubscribeForm />;
+    case "POST":
+      await saveSubscription(request.body);
+      return <p>Thanks for subscribing!</p>;
+    default:
+      reply.status(405).header("allow", "GET, POST");
+      return "Method not allowed";
+  }
+}
+```
+
+Static files from `public` and `dist` are only served for `GET` and `HEAD`, so a `POST` to the same path reaches your routes.
+
+## <a id="forms"></a>
+
+## Forms
+
+Fastify parses JSON bodies out of the box. For classic HTML forms (`application/x-www-form-urlencoded`), register [@fastify/formbody](https://github.com/fastify/fastify-formbody) or a small parser in `jeasx.config.js` (see [Configuration](/configuration#fastify-plugins)). The fields are then available as `request.body`:
+
+```jsx
+// src/[contact].jsx
+export default async function ({ request, reply }) {
+  const errors = {};
+
+  if (request.method === "POST") {
+    const { email = "", message = "" } = request.body ?? {};
+    if (!email.includes("@")) errors.email = "Please enter a valid email address.";
+    if (!message.trim()) errors.message = "Please enter a message.";
+
+    if (Object.keys(errors).length === 0) {
+      await sendMail(email, message);
+      // Redirect after a successful POST, so a reload doesn't submit the form again.
+      return reply.redirect("/contact?sent=1", 303);
+    }
+  }
+
+  return (
+    <form method="post">
+      {request.query.sent && <p>Thanks, your message was sent.</p>}
+      <input type="email" name="email" value={request.body?.email} />
+      {errors.email && <p class="error">{errors.email}</p>}
+      <textarea name="message">{request.body?.message}</textarea>
+      {errors.message && <p class="error">{errors.message}</p>}
+      <button>Send</button>
+    </form>
+  );
+}
+```
+
+Values from the request are escaped automatically when you render them, so the form can safely show the submitted input again. For file uploads, use [@fastify/multipart](https://github.com/fastify/fastify-multipart). Don't forget CSRF protection if your forms change data for logged-in users (see [Security](/security)).
+
+## <a id="return-values"></a>
+
+## What a route can return
+
+The return value of a route becomes the response:
+
+<table class="route-table">
+  <thead>
+    <tr>
+      <th>Return value</th>
+      <th>Response</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>JSX</td>
+    <td>Rendered and streamed as HTML</td>
+  </tr>
+  <tr>
+    <td>String, Buffer or stream</td>
+    <td>Sent as is, as <code>text/html</code> unless you set another content type</td>
+  </tr>
+  <tr>
+    <td>Plain object or array</td>
+    <td>Serialized as JSON by Fastify</td>
+  </tr>
+  <tr>
+    <td>A <code>Response</code> (e.g. from <code>fetch</code>)</td>
+    <td>Sent with its status, headers and body</td>
+  </tr>
+  <tr>
+    <td>Nothing (<code>undefined</code>)</td>
+    <td>The next matching route is tried, e.g. a <code>[...path]</code> or <code>[404]</code> route</td>
+  </tr>
+  </tbody>
+</table>
+
+Guards are the exception: an object returned by a guard isn't sent, but passed as props to the routes below (see [Guards](/routes#guards)).
+
+## <a id="status-headers"></a>
+
+## Status codes and headers
+
+Set the status and headers on `reply` before you return the payload. The methods can be chained:
+
+```jsx
+// src/[feed.xml].js
+export default async function ({ reply }) {
+  const posts = await loadPosts();
+  reply
+    .status(200)
+    .type("application/rss+xml; charset=utf-8")
+    .header("cache-control", "public, max-age=600");
+  return renderFeed(posts);
+}
+```
+
+`reply.type()` sets the content type. Without it, strings and streams are sent as `text/html; charset=utf-8`.
+
+## <a id="redirects"></a>
+
+## Redirects
+
+Return `reply.redirect()` to send the browser somewhere else. The default status is `302`; pass `301` for permanent moves or `303` after a form submission:
+
+```jsx
+// src/[old-page].jsx
+export default function ({ reply }) {
+  return reply.redirect("/new-page", 301);
+}
+```
+
+Once a reply is sent (by `reply.redirect()` or `reply.send()`), Jeasx stops and doesn't try any other route. Never redirect to a URL taken unchecked from the request (e.g. `?next=https://evil.example`), only to paths you allow.
+
+## <a id="cookies"></a>
+
+## Cookies
+
+Register [@fastify/cookie](https://github.com/fastify/fastify-cookie) in `jeasx.config.js`. Then read cookies via `request.cookies` and set them with `reply.setCookie()`:
+
+```jsx
+// src/[theme].jsx
+export default function ({ request, reply }) {
+  const theme = request.query.theme === "dark" ? "dark" : "light";
+  reply.setCookie("theme", theme, {
+    path: "/",
+    httpOnly: true,
+    secure: true,
+    sameSite: "lax",
+    maxAge: 60 * 60 * 24 * 365,
+  });
+  return reply.redirect("/", 303);
+}
+```
+
+A guard is a good place to read cookies (e.g. a session) once and pass the result to all routes via the [context](/faq#context) or as props.
+
+## <a id="json"></a>
+
+## JSON APIs
+
+Return a plain object or array and Fastify sends it as JSON. Putting the extension into the route name (e.g. `[posts.json].js`) keeps your URLs self-explanatory:
+
+```js
+// src/api/[posts.json].js
+export default async function ({ request, reply }) {
+  if (request.method === "POST") {
+    const post = await createPost(request.body);
+    reply.status(201);
+    return post;
+  }
+  return await listPosts();
+}
+```
+
+<Highlight title="Plain JavaScript routes" icon={html(IconAttention)}>
+
+Routes don't have to be JSX. For APIs, feeds or generated files, a plain `.js` or `.ts` route that returns an object, a string or a stream is often the simplest choice.
+
+</Highlight>
+
+</Layout>
