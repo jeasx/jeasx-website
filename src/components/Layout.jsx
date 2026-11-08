@@ -75,7 +75,7 @@ export default function Layout({
                   <Navigation />
                 </div>
               </div>
-              <div class="content">
+              <main class="content">
                 <article>
                   <header class="page-header">
                     {category && <p class="page-category">{category}</p>}
@@ -84,7 +84,7 @@ export default function Layout({
                   <div class="prose">{children}</div>
                 </article>
                 {next}
-              </div>
+              </main>
               {aside}
             </div>
           </div>
