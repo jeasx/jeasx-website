@@ -27,6 +27,11 @@ export default function HeroStage() {
           </div>
           <div class="hero-example">
             <div class="hero-stage">{html(IconHeroStage)}</div>
+            <div class="hero-tabs">
+              <div class="hero-tab">
+                <div class="hero-tab-label">[recipe].jsx</div>
+              </div>
+            </div>
             <div class="hero-window">
               <div class="hero-blur hero-blur-cyan"></div>
               <div class="hero-blur hero-blur-indigo"></div>
@@ -36,11 +41,6 @@ export default function HeroStage() {
                 <div class="hero-panel-line-top"></div>
                 <div class="hero-panel-line-bottom"></div>
                 <div class="hero-panel-body">
-                  <div class="hero-tabs">
-                    <div class="hero-tab">
-                      <div class="hero-tab-label">[recipe].jsx</div>
-                    </div>
-                  </div>
                   <div class="hero-code">
                     <RecipeExample />
                   </div>

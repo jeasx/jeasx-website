@@ -276,13 +276,16 @@
 }
 
 .hero-panel-body {
-  padding: 0.5rem 0 0.5rem 1rem;
+  padding: 1.25rem 0 0.5rem 1rem;
 }
 
 .hero-tabs {
+  position: relative;
+  z-index: 10;
   display: flex;
   column-gap: 0.5rem;
-  margin-top: 1rem;
+  margin-bottom: -0.75rem;
+  padding-left: 1rem;
   font-size: 0.75rem;
   line-height: 1rem;
 }
@@ -317,4 +320,9 @@
   overflow: auto;
   font-size: 0.875rem;
   line-height: 1.5rem;
+}
+
+.hero-code .copy-code {
+  flex: 1;
+  min-width: 0;
 }
