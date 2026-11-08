@@ -19,16 +19,18 @@
   color: var(--color-sky-300);
 }
 
-.highlight .icon {
+.feature .icon {
   width: 1.5rem;
   height: 1.5rem;
 }
 
+.highlight .icon {
+  padding: 0.4rem;
+  width: 1rem;
+  height: 1rem;
+}
+
 .highlight .icon-warning {
-  background: linear-gradient(
-    135deg,
-    oklch(82.8% 0.189 84.429 / 0.25),
-    oklch(70% 0.19 50 / 0.2)
-  );
+  background: linear-gradient(135deg, oklch(82.8% 0.189 84.429 / 0.25), oklch(70% 0.19 50 / 0.2));
   color: var(--color-amber-400);
 }

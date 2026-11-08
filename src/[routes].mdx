@@ -1,4 +1,5 @@
 import { html } from "jsx-async-runtime";
+import Aside from "./components/Aside";
 import Highlight from "./components/Highlight";
 import Layout from "./components/Layout";
 import Lead from "./components/Lead";
@@ -11,6 +12,15 @@ import IconAttention from "./icons/IconAttention.svg";
   category="Routes & Guards"
   headline="Understanding routes"
   next={<Next link="/browser" label="How to handle browser assets?" />}
+  aside={
+    <Aside links={[
+      { label: "Named routes", link: "#named-routes" },
+      { label: "Dynamic routes", link: "#dynamic-routes" },
+      { label: "404 routes", link: "#404-routes" },
+      { label: "Guards", link: "#guards" },
+      { label: "Order of execution", link: "#order-of-execution" },
+    ]}/>
+  }
 >
 <Lead>
 In Jeasx, a file system-based routing system is at the heart of the framework.
@@ -23,6 +33,8 @@ Routes can be written using JSX (or MDX if properly installed and configured), b
 A route can return various types of payloads for the client, including HTML (default), JSON, or other formats. If you need to perform asynchronous operations, you can declare your route or imported components as async.
 
 _Please note:_ Jeasx doesn't specify any hardcoded outbase directory for `esbuild`, so it defaults to the lowest common ancestor directory for all your routes. So when you put _all_ your routes into a dedicated folder (e.g. `src/routes`), `routes` will be removed from the resulting path.
+
+## <a id="named-routes"></a>
 
 ## Named routes
 
@@ -89,6 +101,8 @@ export default function ({ request, reply }) {
   );
 }
 ```
+
+## <a id="dynamic-routes"></a>
 
 ## Dynamic routes
 
@@ -164,6 +178,8 @@ A `[404]` route answers all requests that no other route has answered. Like dyna
 </table>
 
 If you request a 404 page directly (e.g. `/404` answered by `src/[404].jsx` or `/blog/404` answered by `src/blog/[404].jsx`), it keeps status `200`. This makes it easy to export a 404 page for a [static site](/faq#static-site-generator). If a `[404]` route from a parent folder answers instead, the status is `404`.
+
+## <a id="guards"></a>
 
 ## Guards
 

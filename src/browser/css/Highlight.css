@@ -1,5 +1,6 @@
 .highlight {
   display: flex;
+  position: relative;
   margin-block: 2rem;
   border: 1px solid oklch(74.6% 0.16 232.661 / 0.2);
   border-radius: 1.5rem;
@@ -34,15 +35,25 @@
 
 .highlight-content {
   flex: auto;
-  margin-left: 1rem;
   width: 100%;
 }
 
+.highlight-icon {
+  display: flex;
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  translate: -50% -50%;
+  border-radius: 9999px;
+  background-color: var(--color-bg);
+  padding: 0.25rem;
+}
+
 .highlight-title {
+  font-weight: 600;
   font-size: 1.25rem;
   line-height: 2rem;
   font-family: var(--font-display);
-  font-weight: 600;
   font-feature-settings: "ss01";
 
   + .highlight-body {

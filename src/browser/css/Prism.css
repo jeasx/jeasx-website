@@ -26,7 +26,8 @@ pre[class*="language-"] {
 .token.attr-value,
 .token.class,
 .token.string,
-.token.property {
+.token.property,
+.token.parameter {
   color: var(--color-sky-300);
 }
 

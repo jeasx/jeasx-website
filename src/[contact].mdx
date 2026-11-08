@@ -1,5 +1,8 @@
+import { html } from "jsx-async-runtime";
+import Highlight from "./components/Highlight";
 import Layout from "./components/Layout";
 import Lead from "./components/Lead";
+import IconMail from "./icons/IconMail.svg";
 
 <Layout
   title="Contact"
@@ -29,8 +32,10 @@ Pull requests are welcome. For larger changes, please open an issue first, so we
 
 Have you built a public website with Jeasx? Let me know, and I'll consider adding it to the [showcases](/showcases).
 
-## Everything else
+<Highlight title="Contact me" icon={html(IconMail)}>
 
 For questions, feedback, or anything that doesn't fit into a public issue, feel free to contact me directly: [mail@jeasx.dev](mailto:mail@jeasx.dev)
+
+</Highlight>
 
 </Layout>

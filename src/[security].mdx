@@ -1,7 +1,10 @@
+import { html } from "jsx-async-runtime";
 import Aside from "./components/Aside";
+import Highlight from "./components/Highlight";
 import Layout from "./components/Layout";
 import Lead from "./components/Lead";
 import Next from "./components/Next";
+import IconChecklist from "./icons/IconChecklist.svg";
 
 <Layout
   title="Security"
@@ -155,7 +158,7 @@ Update Jeasx and your other dependencies regularly to get the latest security fi
 
 ## <a id="checklist"></a>
 
-## Checklist for production
+<Highlight title="Checklist for production" icon={html(IconChecklist)}>
 
 - Use `html()` only for trusted markup, sanitize everything else.
 - Validate URLs, allowlist attributes and never spread untrusted objects into props.
@@ -164,5 +167,7 @@ Update Jeasx and your other dependencies regularly to get the latest security fi
 - Terminate TLS with a reverse proxy (e.g. [Caddy](https://caddyserver.com)), see [Hosting](/hosting).
 - Show generic error pages and keep secrets out of `public` and browser bundles.
 - Keep Jeasx and all dependencies up to date.
+
+</Highlight>
 
 </Layout>

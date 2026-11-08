@@ -1,4 +1,5 @@
 import { html } from "jsx-async-runtime";
+import Aside from "./components/Aside";
 import Highlight from "./components/Highlight";
 import Layout from "./components/Layout";
 import Lead from "./components/Lead";
@@ -13,12 +14,23 @@ import IconAttention from "./icons/IconAttention.svg";
   category="JSX & MDX"
   headline="Server-side rendering of JSX and MDX"
   next={<Next link="/routes" label="How to create routes (aka pages)?" />}
+  aside={
+    <Aside links={[
+      { label: "JSX differences", link: "#jsx-differences" },
+      { label: "Escaping", link: "#escaping" },
+      { label: "Example", link: "#example" },
+      { label: "Transforming at runtime", link: "#transforming" },
+      { label: "MDX", link: "#mdx" },
+    ]}/>
+  }
 >
 <Lead>
 Jeasx is a server-side rendering (SSR) framework based on JSX, which means that all of your code is executed on the server and the resulting HTML is sent to the client. JSX is a great templating technology due to its simplicity if you are familiar with the basics of JavaScript.
 </Lead>
 
 If you are not familiar with JSX, you should read the excellent [introduction to JSX](https://react.dev/learn/writing-markup-with-jsx) at the React homepage.
+
+## <a id="jsx-differences"></a>
 
 ## JSX in Jeasx is a little bit different
 
@@ -31,6 +43,8 @@ Jeasx uses a syntax similar to React, but there are some important differences. 
 - Iterables (e.g. `Set` or generators), async iterables and `ReadableStream` can be used as children. They are rendered in order as items arrive.
 - Pages are streamed to the browser while they are still rendering, so the browser receives the first bytes while slow parts of the page (e.g. awaited data) are still loading.
 - When using an <strong>object</strong> as value for an attribute, it is translated to a JSON string in the resulting markup (e.g. `data-props={{ key: "value" }}` becomes `data-props="{&quot;key&quot;:&quot;value&quot;}"`).
+
+## <a id="escaping"></a>
 
 ### HTML is escaped by default
 
@@ -58,6 +72,8 @@ import { escapeEntities } from "jsx-async-runtime";
 
 escapeEntities("<p>Hello World</p>");
 ```
+
+## <a id="example"></a>
 
 ### Here's an example which shows the differences in a single file
 
@@ -90,6 +106,8 @@ export default async function () {
 
 [View the result of the above code](/jsx-jokes)
 
+## <a id="transforming"></a>
+
 ### Transforming JSX components at runtime
 
 The JSX runtime also provides a way to transform JSX components. This can be useful to patch the markup of 3rd party components or to rewrite existing attributes of components.
@@ -118,6 +136,8 @@ _Please note:_ an override renders everything below it to a string, so the affec
   application](https://github.com/jeasx/jsx-async-runtime/blob/main/example/src/App.jsx) in the
   GitHub-Repository.
 </Highlight>
+
+## <a id="mdx"></a>
 
 ## MDX - Markdown for the component era
 

@@ -1,5 +1,13 @@
+import { html } from "jsx-async-runtime";
+import Feature from "./components/Feature";
+import Features from "./components/Features";
+import Highlight from "./components/Highlight";
 import Layout from "./components/Layout";
 import Lead from "./components/Lead";
+import IconDocument from "./icons/IconDocument.svg";
+import IconScale from "./icons/IconScale.svg";
+import IconUnlock from "./icons/IconUnlock.svg";
+import IconWarning from "./icons/IconWarning.svg";
 
 <Layout
   title="MIT License"
@@ -8,11 +16,54 @@ import Lead from "./components/Lead";
   headline="MIT License"
 >
 <Lead>
-Copyright (c) 2024-2026 Maik Jablonski (mail@jeasx.dev)
+Jeasx is free and open source under the MIT License, one of the shortest and most permissive licenses out there. Use it for anything, from side projects to commercial products.
 </Lead>
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+## In a nutshell
+
+<Features>
+
+<Feature
+  headline="Permissions"
+  link="#license-text"
+  icon={html(IconUnlock)}
+>
+  Use, copy, modify, merge, publish, distribute, sublicense and sell the software, privately or
+  commercially, free of charge.
+</Feature>
+
+<Feature
+  headline="Conditions"
+  link="#license-text"
+  icon={html(IconDocument)}
+>
+  Include the copyright notice and the license text in all copies or substantial portions of the
+  software.
+</Feature>
+
+<Feature
+  headline="Limitations"
+  link="#license-text"
+  icon={html(IconWarning)}
+>
+  The software comes as is, without warranty. The authors aren't liable for any damages arising
+  from its use.
+</Feature>
+
+</Features>
+
+## <a id="license-text"></a>
+
+<Highlight title="The MIT License" icon={html(IconScale)}>
+
+Copyright (c) 2024-2026 Maik Jablonski (mail@jeasx.dev)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+</Highlight>
 
 </Layout>

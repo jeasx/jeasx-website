@@ -1,3 +1,4 @@
+import Aside from "./components/Aside";
 import Layout from "./components/Layout";
 import Lead from "./components/Lead";
 import Next from "./components/Next";
@@ -8,10 +9,19 @@ import Next from "./components/Next";
   category="CSS & JavaScript"
   headline="How to handle assets for use in a web browser"
   next={<Next link="/configuration" label="How to configure Jeasx?" />}
+  aside={
+    <Aside links={[
+      { label: "Static assets", link: "#static-assets" },
+      { label: "CSS & JavaScript", link: "#css-javascript" },
+      { label: "Intercept with reply.file", link: "#reply-file" },
+    ]}/>
+  }
 >
 <Lead>
 Browser assets are stored in two distinct folders, based on whether these assets require processing or not.
 </Lead>
+
+## <a id="static-assets"></a>
 
 ## Static Assets
 
@@ -39,6 +49,8 @@ _Please note:_ in production, `jeasx build` creates an index of all files in `pu
   </tr>
   </tbody>
 </table>
+
+## <a id="css-javascript"></a>
 
 ## CSS & JavaScript
 
@@ -72,6 +84,8 @@ _Please note:_ Jeasx doesn't specify any hardcoded outbase directory for esbuild
 _Please note:_ the `dist` directory is cleaned before every build, so never put files into `dist` by hand. Use `public` instead. If a file exists in both `dist` and `public`, the file from `dist` wins.
 
 _Please note:_ as JavaScript or TypeScript is compiled to [ECMAScript modules (ESM) via esbuild](https://esbuild.github.io/api/#format-esm), you should add `type="module"` to your script tags to avoid subtle errors.
+
+## <a id="reply-file"></a>
 
 ## Intercept static assets with `reply.file`
 

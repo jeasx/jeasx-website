@@ -59,7 +59,7 @@
   }
 }
 
-.content {
+main.content {
   flex: auto;
   padding: 4rem 1rem;
   min-width: 0;
