@@ -7,6 +7,9 @@
         <loc>https://www.jeasx.dev/browser</loc>
     </url>
     <url>
+        <loc>https://www.jeasx.dev/comparison</loc>
+    </url>
+    <url>
         <loc>https://www.jeasx.dev/configuration</loc>
     </url>
     <url>
@@ -44,6 +47,12 @@
     </url>
     <url>
         <loc>https://www.jeasx.dev/tutorial</loc>
+    </url>
+    <url>
+        <loc>https://www.jeasx.dev/security</loc>
+    </url>
+    <url>
+        <loc>https://www.jeasx.dev/setup</loc>
     </url>
     <url>
         <loc>https://www.jeasx.dev/showcases</loc>
