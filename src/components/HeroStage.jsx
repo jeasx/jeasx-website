@@ -8,16 +8,7 @@ export default function HeroStage() {
       <div class="hero-inner">
         <div class="hero-grid">
           <div class="hero-intro">
-            <img
-              alt=""
-              fetchPriority="high"
-              width="530"
-              height="530"
-              decoding="async"
-              class="hero-blur hero-blur-intro"
-              style="color: transparent"
-              src="/images/blur-cyan.avif"
-            />
+            <div class="hero-blur hero-blur-intro"></div>
             <div class="hero-text">
               <p class="hero-title">The Ease of JSX with the power of SSR</p>
               <p class="hero-lead">
@@ -37,26 +28,8 @@ export default function HeroStage() {
           <div class="hero-example">
             <div class="hero-stage">{html(IconHeroStage)}</div>
             <div class="hero-window">
-              <img
-                alt=""
-                fetchPriority="high"
-                width="530"
-                height="530"
-                decoding="async"
-                class="hero-blur hero-blur-cyan"
-                style="color: transparent"
-                src="/images/blur-cyan.avif"
-              />
-              <img
-                alt=""
-                fetchPriority="high"
-                width="567"
-                height="567"
-                decoding="async"
-                class="hero-blur hero-blur-indigo"
-                style="color: transparent"
-                src="/images/blur-indigo.avif"
-              />
+              <div class="hero-blur hero-blur-cyan"></div>
+              <div class="hero-blur hero-blur-indigo"></div>
               <div class="hero-glow hero-glow-blurred"></div>
               <div class="hero-glow"></div>
               <div class="hero-panel">

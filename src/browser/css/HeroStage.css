@@ -57,16 +57,37 @@
   opacity: 0.5;
   margin-right: -18rem;
   margin-bottom: -14rem;
+  width: 530px;
+  height: 530px;
+  background-image: radial-gradient(
+    closest-side in oklab,
+    color-mix(in oklab, var(--color-sky-400) 35%, transparent),
+    transparent
+  );
 }
 
 .hero-blur-cyan {
   top: -16rem;
   right: -16rem;
+  width: 530px;
+  height: 530px;
+  background-image: radial-gradient(
+    closest-side in oklab,
+    color-mix(in oklab, var(--color-sky-400) 35%, transparent),
+    transparent
+  );
 }
 
 .hero-blur-indigo {
   right: -11rem;
   bottom: -10rem;
+  width: 567px;
+  height: 567px;
+  background-image: radial-gradient(
+    closest-side in oklab,
+    color-mix(in oklab, var(--color-indigo-400) 35%, transparent),
+    transparent
+  );
 }
 
 .hero-text {
