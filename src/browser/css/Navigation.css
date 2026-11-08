@@ -16,7 +16,7 @@
 
 .nav-heading {
   color: var(--color-heading);
-  font-weight: 500;
+  font-weight: 600;
   font-family: var(--font-display);
   font-feature-settings: "ss01";
 }
