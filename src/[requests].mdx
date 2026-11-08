@@ -199,7 +199,7 @@ export default function ({ request, reply }) {
   reply.setCookie("theme", theme, {
     path: "/",
     httpOnly: true,
-    secure: true,
+    secure: "auto", // Only sent via HTTPS, if the site uses HTTPS.
     sameSite: "lax",
     maxAge: 60 * 60 * 24 * 365,
   });

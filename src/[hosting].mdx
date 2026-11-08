@@ -11,6 +11,7 @@ import Next from "./components/Next";
   next={<Next link="/faq" label="Any questions left?" />}
   aside={
     <Aside links={[
+      { label: "Before you deploy", link: "#checklist" },
       { label: "VPS", link: "#vps" },
       { label: "Docker compose", link: "#docker-compose" },
       { label: "Container", link: "#container" },
@@ -21,6 +22,19 @@ import Next from "./components/Next";
 <Lead>
 Jeasx supports various hosting modes tailored to different needs and preferences. You can host Jeasx on a dedicated server or VPS, deploy it via a Docker container, or opt for a serverless approach.
 </Lead>
+
+<a id="checklist"></a>
+
+## Before you deploy
+
+Wherever you host your application, the same basics apply:
+
+- **Build first:** run `npm run build` and start the server with `NODE_ENV=production npm start`. Only routes and files that exist at build time are served.
+- **HOST & PORT:** `jeasx start` listens on all interfaces (`::`) and port `3000` by default. Set `PORT` if your platform expects another port (see [configuration](/configuration#host-port)).
+- **Health check:** let your platform or load balancer check a cheap route, e.g. a `src/[health].json` file containing `{ "status": "ok" }`, which is served at `/health`.
+- **Graceful shutdown:** Jeasx closes the server cleanly on `SIGINT` and `SIGTERM`, so running requests can finish when a container is stopped or replaced.
+- **Secrets:** pass secrets as environment variables of your platform and don't ship `.env` files with secrets in your image.
+- **Security:** terminate TLS in a reverse proxy and go through the [security checklist](/security#checklist).
 
 <a id="vps"></a>
 

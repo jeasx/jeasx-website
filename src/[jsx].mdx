@@ -167,6 +167,48 @@ export default function () {
 
 Have a look at the [demo](https://expo.jeasx.dev/context) to see how things work using the context as theme provider.
 
+**Please note:** `this` only works in components declared with `function`. Arrow functions don't have their own `this`, so `const Nav = () => <a>{this.request.path}</a>` fails. Also render components as JSX (`<Nav />`) instead of calling them directly (`Nav()`), otherwise they don't receive the context.
+
+To get type hints for your context in your editor, describe it in `src/types.d.ts` and annotate your components with `@this`:
+
+```jsx
+/**
+ * @this {import("./types").ThisContext}
+ */
+export default function Nav() {
+  return <a href="/" aria-current={this.request.path === "/" ? "page" : undefined}>Home</a>;
+}
+```
+
+<a id="context-properties"></a>
+
+### Special context properties
+
+You can put anything into the context. A few names have a special meaning for Jeasx:
+
+<table class="route-table">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><code>this.jsxToString</code></td>
+    <td>Custom render function to transform JSX nodes (see <a href="#transforming">transforming JSX</a>)</td>
+  </tr>
+  <tr>
+    <td><code>this.responseHandler</code></td>
+    <td>Receives the final payload of the route and returns the payload to send, e.g. to post-process HTML (see <a href="/faq#response-handler">FAQ</a>)</td>
+  </tr>
+  <tr>
+    <td><code>this.request</code> / <code>this.reply</code></td>
+    <td>Not set by Jeasx, but a common convention: put them into the context in your root guard to use them in every component</td>
+  </tr>
+  </tbody>
+</table>
+
 <a id="mdx"></a>
 
 ## MDX - Markdown for the component era

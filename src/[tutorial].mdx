@@ -470,6 +470,9 @@ npm install @fastify/cookie
 Then register the plugin in `jeasx.config.js`. The template already registers a parser for HTML forms there, which makes submitted forms available via `request.body`. Just add the plugin to the chain:
 
 ```js
+import querystring from "node:querystring"; // already at the top of the template
+
+// ...
 FASTIFY_SERVER: (fastify) =>
   // Required only if you want to process form submissions via POST requests.
   fastify

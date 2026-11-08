@@ -86,17 +86,18 @@ A route doesn't have to export a function: if the default export is a value (e.g
 ```jsx
 import { html } from "jsx-async-runtime";
 
-export default function ({ request, reply }) {
+// src/[hello].jsx => /hello?name=Jeasx
+export default function ({ request }) {
+  const name = request.query.name ?? "World";
   return (
     <>
       {html("<!DOCTYPE html>")}
       <html lang="en">
         <head>
-          <base href={`${request.path.endsWith("/") ? request.path : request.path + "/"}`} />
-          <title>Hello World</title>
+          <title>Hello {name}</title>
         </head>
         <body>
-          <h1>Hello World</h1>
+          <h1>Hello {name}</h1>
         </body>
       </html>
     </>
@@ -198,8 +199,8 @@ Guards enable you to intercept requests and are inherited from the root to the c
   <tr>
     <td>src/blog/[...guard].jsx</td>
     <td>
-      The code of the guard is executed before named or dynamic routes in the current folder or
-      below.
+      The code of the guard is executed before everything in the current folder or below: static
+      files, named, index, dynamic and 404 routes.
     </td>
   </tr>
   </tbody>

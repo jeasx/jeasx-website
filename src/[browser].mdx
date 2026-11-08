@@ -13,6 +13,8 @@ import Next from "./components/Next";
     <Aside links={[
       { label: "Static assets", link: "#static-assets" },
       { label: "CSS & JavaScript", link: "#css-javascript" },
+      { label: "Cache busting", link: "#cache-busting" },
+      { label: "Interactivity", link: "#interactivity" },
       { label: "Intercept with reply.file", link: "#reply-file" },
     ]}/>
   }
@@ -84,6 +86,58 @@ CSS, JavaScript, or TypeScript files that require processing and minification sh
 **Please note:** the `dist` directory is cleaned before every build, so never put files into `dist` by hand. Use `public` instead. If a file exists in both `dist` and `public`, the file from `dist` wins.
 
 **Please note:** as JavaScript or TypeScript is compiled to [ECMAScript modules (ESM) via esbuild](https://esbuild.github.io/api/#format-esm), you should add `type="module"` to your script tags to avoid subtle errors.
+
+<a id="cache-busting"></a>
+
+## Cache busting
+
+For best performance, let browsers cache your assets for a long time via `FASTIFY_SEND_OPTIONS` (e.g. `immutable: true` and `maxAge: "365d"`, see [configuration](/configuration#jeasx-config)). Then you need a new URL for each deployment, so browsers load the new files. Jeasx doesn't add one for you, but a build id is easy to define in `jeasx.config.js`:
+
+```js
+export default {
+  /** @type {() => import("esbuild").BuildOptions} */
+  ESBUILD_SERVER_OPTIONS: () => ({
+    // A new value for each build, available in all routes and components.
+    define: { "process.env.BUILD_ID": `"${Date.now().toString(36)}"` },
+  }),
+};
+```
+
+Append it to your asset URLs, e.g. in your layout:
+
+```jsx
+<link rel="stylesheet" href={`/index.css?v=${process.env.BUILD_ID}`} />
+<script type="module" src={`/index.js?v=${process.env.BUILD_ID}`}></script>
+```
+
+Static files ignore the query string, so no further setup is needed. Assets referenced from your CSS (e.g. fonts or images loaded via esbuild's `file` loader) get a content hash from esbuild anyway.
+
+<a id="interactivity"></a>
+
+## Interactivity in the browser
+
+Jeasx renders HTML on the server and sends no JavaScript by default. For interactive parts, pick the smallest tool that does the job:
+
+- **Plain JavaScript** in `index.js` for small enhancements, e.g. a confirmation dialog (see the [tutorial](/tutorial#browser)).
+- **[HTMX](https://htmx.org)** to update parts of a page with HTML fragments rendered by your routes. This fits Jeasx very well, as every route can return a fragment.
+- **Islands** with a client-side library like [Preact](https://preactjs.com) for rich widgets. Render a placeholder on the server and mount the widget in the browser.
+
+Pass data from the server to browser code via `data-*` attributes. Objects are serialized to escaped JSON automatically:
+
+```jsx
+// Server: render a placeholder with initial data
+<div class="counter" data-props={{ start: 5 }}></div>
+```
+
+```js
+// Browser: src/browser/index.js
+document.querySelectorAll(".counter").forEach((element) => {
+  const { start } = JSON.parse(element.dataset.props);
+  // mount your widget here
+});
+```
+
+The [Expo](https://expo.jeasx.dev) shows complete examples for HTMX, Preact and more.
 
 <a id="reply-file"></a>
 

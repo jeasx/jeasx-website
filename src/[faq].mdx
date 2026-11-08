@@ -18,6 +18,7 @@ import Lead from "./components/Lead";
             {label: "Static site generator",link: "#static-site-generator"},
             {label: "Browsersync",link: "#browsersync"},
             {label: "Debugger",link: "#debugger"},
+            {label: "Testing",link: "#testing"},
       ]}/>
   }
 >
@@ -75,7 +76,19 @@ export default function ({ request, reply }) {
 
 ## Is there a way to set the document title in a sub-component (aka Helmet)?
 
-Yes, have a look at the [head example](https://expo.jeasx.dev/head) which demonstrates how easily this can be achieved with a guard.
+In most cases, you don't need one: pass the title and description as props to your layout, as the route knows best what it renders:
+
+```jsx
+export default function ({ request }) {
+  return (
+    <Layout title="My books" description="All books on my reading list">
+      ...
+    </Layout>
+  );
+}
+```
+
+Jeasx renders the page in order, so the `<head>` is already sent when a nested component runs. If a deeply nested component has to change the title, have a look at the [head example](https://expo.jeasx.dev/head), which shows how this can be achieved with a guard.
 
 <a id="css-frameworks"></a>
 
@@ -122,5 +135,26 @@ export default {
   }),
 };
 ```
+
+<a id="testing"></a>
+
+## How can I test my routes and components?
+
+Routes and components are plain functions, so you can call them with props you create yourself and render the result to a string with `jsxToString`. Guards that return props help here: routes which receive their data as props don't need a real request at all.
+
+```jsx
+// src/components/Greeting.test.jsx
+import assert from "node:assert/strict";
+import { test } from "node:test";
+import { jsxToString } from "jsx-async-runtime";
+import Greeting from "./Greeting";
+
+test("escapes the name", async () => {
+  const html = await jsxToString(<Greeting name="<b>Bob</b>" />);
+  assert.match(html, /&lt;b&gt;Bob&lt;\/b&gt;/);
+});
+```
+
+Test files contain JSX, so run them with a test runner that compiles JSX with `jsx-async-runtime` as import source or bundle them with esbuild first. For end-to-end tests, start your app with `npm run build && npm start` and use a tool like [Playwright](https://playwright.dev). Test files without brackets in their names are never exposed as routes.
 
 </Layout>

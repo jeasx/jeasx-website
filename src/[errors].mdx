@@ -166,7 +166,7 @@ export default async function ErrorBoundary({ fallback, children }) {
 </ErrorBoundary>
 ```
 
-The example uses `this.request` for logging, so it expects a guard which puts the request into the [context](/jsx#context) (see the pattern there) (e.g. `this.request = request` in `src/[...guard].js`). As the boundary renders its children to a string first, they aren't streamed, so use it only where you need it.
+The example uses `this.request` for logging, so it expects a guard which puts the request into the [context](/jsx#context), e.g. `this.request = request` in `src/[...guard].js`. As the boundary renders its children to a string first, they aren't streamed, so use it only where you need it.
 
 <a id="logging"></a>
 

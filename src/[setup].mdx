@@ -38,7 +38,7 @@ my-project/
 
 ## Step 1: Create `package.json`
 
-Create a new project folder and add a `package.json` with Jeasx as dependency and scripts for development and production:
+Create a new project folder and add a `package.json` with scripts for development and production:
 
 ```json
 {
@@ -49,19 +49,18 @@ Create a new project folder and add a `package.json` with Jeasx as dependency an
     "build": "jeasx build",
     "start": "jeasx start"
   },
-  "dependencies": {
-    "jeasx": "3.0.0"
-  },
   "allowScripts": {
     "esbuild": true
   }
 }
 ```
 
-Then install the dependencies:
+`allowScripts` permits the install script of esbuild, which downloads its native binary, for package managers that block install scripts by default.
+
+Then install the latest version of Jeasx:
 
 ```bash
-npm install
+npm install jeasx
 ```
 
 <a id="config"></a>
