@@ -115,7 +115,7 @@ There are many great tools for building websites with JavaScript. Jeasx delibera
 [Next.js](https://nextjs.org) is a full-stack React framework. With React Server Components it moved towards server-side rendering, but it still ships the React runtime to the browser and mixes server and client code in one component tree.
 
 - Jeasx has no hydration, no client/server boundary (`"use client"`) and no hydration errors.
-- Jeasx components are just async functions returning strings, without hooks or a virtual DOM.
+- Jeasx components are plain (async) functions returning JSX, without hooks or a virtual DOM.
 - Jeasx has no complex caching layers: a request is rendered, the response is sent. Caching is up to you (e.g. via HTTP headers or a reverse proxy).
 - Next.js has a huge ecosystem and is a better fit for highly interactive, app-like user interfaces.
 

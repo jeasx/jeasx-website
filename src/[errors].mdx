@@ -166,7 +166,7 @@ export default async function ErrorBoundary({ fallback, children }) {
 </ErrorBoundary>
 ```
 
-The example uses `this.request` for logging, so it expects a guard which puts the request into the [context](/jsx#context) (e.g. `this.request = request` in `src/[...guard].js`). As the boundary renders its children to a string first, they aren't streamed, so use it only where you need it.
+The example uses `this.request` for logging, so it expects a guard which puts the request into the [context](/jsx#context) (see the pattern there) (e.g. `this.request = request` in `src/[...guard].js`). As the boundary renders its children to a string first, they aren't streamed, so use it only where you need it.
 
 <a id="logging"></a>
 
@@ -178,6 +178,7 @@ Use `request.log` to log errors. It's the [Pino](https://getpino.io) logger of F
 // jeasx.config.js
 export default {
   FASTIFY_SERVER_OPTIONS: () => ({
+    // Keep the dev console quiet, log all requests in production.
     logger: { level: process.env.NODE_ENV === "development" ? "error" : "info" },
   }),
 };

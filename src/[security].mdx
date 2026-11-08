@@ -77,7 +77,7 @@ Paths with invalid URL encoding, null bytes or `.` / `..` segments are rejected 
 
 ### Special routes can't be requested directly
 
-Requests like `/[index]`, `/[...guard]`, `/[...path]` or `/[--metadata--]` never call these routes directly, no matter how they are cased. Guards always run, also for requests to static files, so you can protect files with a guard as well.
+Requests like `/[index]`, `/[...guard]`, `/[...path]` or `/[--metadata--]` never call these routes directly, no matter how they are cased. The only exception is `/404`, which renders your `[404]` route with status `200` (see [404 routes](/routes#404-routes)). Guards always run, also for requests to static files, so you can protect files with a guard as well.
 
 ### Server code is never served
 

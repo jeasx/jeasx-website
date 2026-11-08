@@ -149,6 +149,14 @@ export default function ({ request, reply }) {
 }
 ```
 
+A common pattern is to put the request into the context in your root guard (`src/[...guard].js`), so every component can read e.g. `this.request.path` or log via `this.request.log`:
+
+```js
+export default function ({ request }) {
+  this.request = request;
+}
+```
+
 Later, you can access the context in any sub-component which gets called via an endpoint:
 
 ```jsx

@@ -99,17 +99,6 @@ Useful to enhance esbuild for compiling server code with existing plugins ([Jeas
 
 If you want to use MDX (with or without plugins), see [MDX](/jsx#mdx) for a complete configuration.
 
-Async options are useful for plugins that are only needed for the build:
-
-```js
-export default {
-  /** @type {() => Promise<import("esbuild").BuildOptions>} */
-  ESBUILD_BROWSER_OPTIONS: async () => ({
-    plugins: [(await import("esbuild-sass-plugin")).sassPlugin()],
-  }),
-};
-```
-
 ### ESBUILD_BROWSER_OPTIONS
 
 Useful to configure build options for the browser bundle ([Jeasx config at GitHub](https://github.com/jeasx/jeasx/blob/main/build.js)), e.g. reconfigure the browser target of esbuild or define environment variables for JavaScript bundles. Full documentation at [esbuild website](https://esbuild.github.io/api/#target).
@@ -120,6 +109,17 @@ export default {
   ESBUILD_BROWSER_OPTIONS: () => ({
     target: ["chrome130", "edge130", "firefox130", "safari18"],
     define: { "process.env.JOKES_API": `"https://expo.jeasx.dev/jokes/api/programming"` },
+  }),
+};
+```
+
+Async options are useful for plugins that are only needed for the build, e.g. a Sass plugin:
+
+```js
+export default {
+  /** @type {() => Promise<import("esbuild").BuildOptions>} */
+  ESBUILD_BROWSER_OPTIONS: async () => ({
+    plugins: [(await import("esbuild-sass-plugin")).sassPlugin()],
   }),
 };
 ```
@@ -145,6 +145,7 @@ Use these options to define the central configuration for the Fastify server.
 export default {
   /** @type {() => import("fastify").FastifyServerOptions} */
   FASTIFY_SERVER_OPTIONS: () => ({
+    // Keep the dev console quiet, log all requests in production.
     logger: { level: process.env.NODE_ENV === "development" ? "error" : "info" },
     bodyLimit: 2 * 1024 * 1024,
   }),
