@@ -1,10 +1,8 @@
-import { html } from "jsx-async-runtime";
 import Aside from "./components/Aside";
 import Highlight from "./components/Highlight";
 import Layout from "./components/Layout";
 import Lead from "./components/Lead";
 import Next from "./components/Next";
-import IconAttention from "./icons/IconAttention.svg";
 
 <Layout
   title="Requests & Responses"
@@ -36,7 +34,7 @@ Every route receives the [request](https://fastify.dev/docs/latest/Reference/Req
 The most useful properties of the `request` object:
 
 - `request.method`: the HTTP method, e.g. `GET` or `POST`
-- `request.path`: the decoded path without query string, e.g. `/blog/hello` (added by Jeasx, see [Routes](/routes#order-of-execution))
+- `request.path`: the decoded path without query string, e.g. `/blog/hello` (added by Jeasx, see [Routes](/routes#request-path))
 - `request.query`: the parsed query string as object, e.g. `{ page: "2" }` for `?page=2`
 - `request.headers`: all request headers in lower case, e.g. `request.headers["accept-language"]`
 - `request.body`: the parsed request body for `POST`, `PUT` or `PATCH` requests
@@ -229,7 +227,7 @@ export default async function ({ request, reply }) {
 }
 ```
 
-<Highlight title="Plain JavaScript routes" icon={html(IconAttention)}>
+<Highlight title="Plain JavaScript routes">
 
 Routes don't have to be JSX. For APIs, feeds or generated files, a plain `.js` or `.ts` route that returns an object, a string or a stream is often the simplest choice.
 

@@ -49,7 +49,7 @@ Register a Fastify error handler via `setErrorHandler` in `jeasx.config.js` and 
 
 ## How can I modify the resulting response (e.g. post-process HTML)?
 
-For example, if you want to prettify the HTML output, you can wire up a response handler in any endpoint (e.g., a guard). The response handler takes the resulting payload as a parameter and returns the modified payload. For JSX routes, the payload is a `ReadableStream`, so read it into a string before changing it. Pages that are post-processed this way are not streamed to the browser.
+For example, if you want to prettify the HTML output, you can wire up a response handler in any endpoint (e.g. a guard). The response handler takes the resulting payload as a parameter and returns the modified payload. For JSX routes, the payload is a `ReadableStream`, so read it into a string before changing it. Pages that are post-processed this way are not streamed to the browser.
 
 ```jsx
 import * as prettier from "prettier";

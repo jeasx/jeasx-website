@@ -7,7 +7,7 @@ import Next from "./components/Next";
   title="Hosting"
   description="How to host a Jeasx application"
   category="Hosting"
-  headline="What are the hosting options for a Jeasx project?"
+  headline="Hosting options for Jeasx"
   next={<Next link="/faq" label="Any questions left?" />}
   aside={
     <Aside links={[
@@ -28,11 +28,11 @@ Jeasx supports various hosting modes tailored to different needs and preferences
 
 Typically, a Jeasx application requires less than 50 MB of RAM and a single (v)CPU. Therefore the smallest server should get you started. Running Jeasx on a server involves installing Node.js, building the application with `npm run build` and starting it with `npm start`.
 
-In order to minimise the CPU footprint of a Jeasx application, it is highly recommended that TLS termination is offloaded to a reverse proxy, such as [Caddy](https://caddyserver.com).
+In order to minimize the CPU footprint of a Jeasx application, it is highly recommended that TLS termination is offloaded to a reverse proxy, such as [Caddy](https://caddyserver.com).
 
 <a id="docker-compose"></a>
 
-### Running Jeasx with Docker Compose
+## Running Jeasx with Docker Compose
 
 To keep things simple and maintainable, [Docker Compose](https://docs.docker.com/compose) is a great lightweight infrastructure for running Jeasx applications on your own VPS. The Jeasx website along with the expo and other projects are hosted this way with minimal costs and efforts.
 
@@ -88,7 +88,7 @@ quickstart.jeasx.dev {
 
 A powerful self-hosted option is to install [Dokploy](https://dokploy.com) on your server. Dokploy uses Docker under the hood and comes with a nice user interface to create deployments directly from GitHub.
 
-For straightforward Node.js-based hosting, platforms like [Railway](https://railway.com) and [Koyeb](https://www.koyeb.com) are excellent choices. Both support deploying Docker containers, which is the recommended option, as the default builders (e.g., Railpack / Buildpack) create containers that use significantly more resources than the optimized Dockerfile provided via the quickstart template.
+For straightforward Node.js-based hosting, platforms like [Railway](https://railway.com) and [Koyeb](https://www.koyeb.com) are excellent choices. Both support deploying Docker containers, which is the recommended option, as the default builders (e.g. Railpack / Buildpack) create containers that use significantly more resources than the optimized Dockerfile provided via the quickstart template.
 
 If you prefer Docker containers exclusively with a fixed pricing model, [Sliplane](https://sliplane.io) is a viable option.
 

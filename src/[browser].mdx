@@ -25,7 +25,7 @@ Browser assets are stored in two distinct folders, based on whether these assets
 
 ## Static assets
 
-Any assets that do not require processing (e.g., fonts, robots.txt, icons) should be placed in the `/public` directory. They will be served as static files from the root directory. Dotfiles (e.g. `public/.well-known/security.txt`) are only served if you allow them via `FASTIFY_SEND_OPTIONS` (see [configuration](/configuration)).
+Any assets that do not require processing (e.g. fonts, robots.txt, icons) should be placed in the `public` directory. They will be served as static files from the root directory. Dotfiles (e.g. `public/.well-known/security.txt`) are only served if you allow them via `FASTIFY_SEND_OPTIONS` (see [configuration](/configuration)).
 
 Static files are only served for `GET` and `HEAD` requests. Other methods (e.g. a `POST` to `/form`) go to your routes, even if a file with that path exists. If a file is missing or ignored, your routes answer instead. Static files are checked right after the guards, so a file wins over a named route with the same path (see [order of execution](/routes#order-of-execution)).
 

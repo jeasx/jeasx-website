@@ -30,7 +30,7 @@ Jeasx offers minimal and sensible default settings to help you get started quick
 
 ## Environment variables
 
-To facilitate managing multiple configurations, Jeasx leverages layers of .env-files. This enables the use of different .env-files based on the NODE_ENV value, such as `.env.development` to override values from `.env` for development. The order of loading .env-files is similar to the well-known [dotenv-flow](https://github.com/kerimdzhanov/dotenv-flow) library (unlike dotenv-flow, `.env.local` is also loaded for `NODE_ENV=test`). To load the env-files into `process.env`, Jeasx makes use of the native implementation provided by Node.js via [process.loadEnvFile](https://nodejs.org/docs/latest/api/process.html#processloadenvfilepath) via a custom [utility function](https://github.com/jeasx/jeasx/blob/main/env.js).
+To facilitate managing multiple configurations, Jeasx leverages layers of .env-files. This enables the use of different .env-files based on the NODE_ENV value, such as `.env.development` to override values from `.env` for development. The order of loading .env-files is similar to the well-known [dotenv-flow](https://github.com/kerimdzhanov/dotenv-flow) library (unlike dotenv-flow, `.env.local` is also loaded for `NODE_ENV=test`). To load the env-files into `process.env`, Jeasx makes use of the native implementation provided by Node.js via [process.loadEnvFile](https://nodejs.org/docs/latest/api/process.html#processloadenvfilepath) and a custom [utility function](https://github.com/jeasx/jeasx/blob/main/env.js).
 
 - .env.[NODE_ENV].local _(e.g. .env.development.local or .env.production.local)_
 - .env.[NODE_ENV] _(e.g. .env.development or .env.production)_

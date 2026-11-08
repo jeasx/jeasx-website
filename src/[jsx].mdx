@@ -4,7 +4,6 @@ import Highlight from "./components/Highlight";
 import Layout from "./components/Layout";
 import Lead from "./components/Lead";
 import Next from "./components/Next";
-import IconAttention from "./icons/IconAttention.svg";
 
 {/** @typedef {import("./types").RouteProps} Props */}
 
@@ -132,7 +131,7 @@ export default function ({ request, reply }) {
 
 **Please note:** an override renders everything below it to a string, so the affected part of the page is sent as one chunk instead of being streamed. An override set in a root guard (like above) turns off streaming for the whole page, so only use overrides where you really need them.
 
-<Highlight title="Learn more" icon={html(IconAttention)}>
+<Highlight title="Learn more">
   For all the advanced features provided by the `jsx-async-runtime`, have a look at the [example
   application](https://github.com/jeasx/jsx-async-runtime/blob/main/example/src/App.jsx) in the
   GitHub-Repository.
