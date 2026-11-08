@@ -102,11 +102,16 @@
   letter-spacing: var(--tracking-tight);
 }
 
-/* Thin, subtle scrollbars for navigation panels */
+/* Thin, dark scrollbars everywhere (code blocks, tables, ...) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-slate-700) transparent;
+}
+
+/* Navigation panels: only show the scrollbar on hover or focus */
 .sidebar-content,
 .aside,
 .mobile-nav {
-  scrollbar-width: thin;
   scrollbar-color: transparent transparent;
   transition: scrollbar-color 0.2s;
 
