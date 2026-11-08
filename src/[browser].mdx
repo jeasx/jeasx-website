@@ -89,7 +89,7 @@ CSS, JavaScript, or TypeScript files that require processing and minification sh
 
 ## Intercept static assets with `reply.file`
 
-All static files - whether stored in the `public` or the `dist` directory - are delivered via the Jeasx route pipeline immediately following the guard processing stage. This architecture allows you to intercept static file requests seamlessly. You can access static file metadata directly within guards via `reply.file`. If a file exists at the requested path, this object is pre-populated with `headers`, `statusCode`, and `stream`. This enables you to apply or bypass authentication, modify headers, or replace content on the fly.
+All static files - whether stored in the `public` or the `dist` directory - are delivered via the Jeasx route pipeline immediately following the guard processing stage. This architecture allows you to intercept static file requests seamlessly. You can access static file metadata directly within guards via `reply.file`. If a file exists at the requested path, this object is pre-populated with `headers`, `statusCode`, and `stream`. This enables you to apply or bypass authentication, modify headers, or replace content on the fly. The header names in `reply.file.headers` use the capitalization of [@fastify/send](https://github.com/fastify/send) (e.g. `ETag`, `Cache-Control`, `Last-Modified`), so use the exact spelling when you change or delete them.
 
 ```js
 export default async function ({ request, reply }) {
