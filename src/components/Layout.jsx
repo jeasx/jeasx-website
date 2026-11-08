@@ -58,6 +58,8 @@ export default function Layout({
           <link
             rel="stylesheet"
             href={`/pagefind/pagefind-component-ui.css?${process.env.BUILD_ID}`}
+            media="print"
+            onload="this.media='all'"
           />
           <script
             type="module"
