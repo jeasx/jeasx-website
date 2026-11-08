@@ -8,9 +8,9 @@ import IconAttention from "./icons/IconAttention.svg";
 import IconWarning from "./icons/IconWarning.svg";
 
 <Layout
-  title="Error Handling"
+  title="Error handling"
   description="How to handle errors and show user friendly error pages with Jeasx"
-  category="Error Handling"
+  category="Error handling"
   headline="Handling errors gracefully"
   next={<Next link="/browser" label="How to handle browser assets?" />}
   aside={
@@ -29,7 +29,7 @@ import IconWarning from "./icons/IconWarning.svg";
 Things go wrong: pages don't exist, databases go down, APIs time out. Jeasx leaves error handling to Fastify, so you decide in one place how errors are logged and what your visitors see.
 </Lead>
 
-## <a id="flow"></a>
+<a id="flow"></a>
 
 ## How errors flow
 
@@ -39,7 +39,7 @@ There are three cases you should plan for:
 2. **An error before the page is sent:** a guard, route or async component throws before the first byte is sent. Fastify passes the error to your error handler.
 3. **An error while streaming:** an async component throws after parts of the page have already been sent. The status code can't be changed anymore, so the page is cut off.
 
-## <a id="not-found"></a>
+<a id="not-found"></a>
 
 ## Not found pages
 
@@ -62,7 +62,7 @@ export default function ({ request }) {
 
 If a route finds no data (e.g. an unknown product id), set the status to `404` and return nothing. The request is then passed on to your `[404]` route. See [404 routes](/routes#404-routes) for section specific 404 pages.
 
-## <a id="error-handler"></a>
+<a id="error-handler"></a>
 
 ## The error handler
 
@@ -71,7 +71,7 @@ Register a Fastify error handler in `jeasx.config.js`. It runs for errors thrown
 ```js
 // jeasx.config.js
 export default {
-  /** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance} */
+  /** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance | Promise<import("fastify").FastifyInstance>} */
   FASTIFY_SERVER: (fastify) =>
     fastify.setErrorHandler(async (error, request, reply) => {
       request.log.error(error);
@@ -89,7 +89,7 @@ Error messages and stack traces can reveal file paths, queries or secrets. Show 
 
 </Highlight>
 
-## <a id="jsx"></a>
+<a id="jsx"></a>
 
 ## Error pages with JSX
 
@@ -117,7 +117,7 @@ export default {
 };
 ```
 
-## <a id="status-codes"></a>
+<a id="status-codes"></a>
 
 ## Status codes
 
@@ -139,7 +139,7 @@ if (!user) {
 
 For expected cases like a missing page or a failed login, it's often simpler to set the status with `reply.status()` and return the page directly. Reserve thrown errors for things that really went wrong.
 
-## <a id="streaming"></a>
+<a id="streaming"></a>
 
 ## Errors while streaming
 
@@ -167,9 +167,9 @@ export default async function ErrorBoundary({ fallback, children }) {
 </ErrorBoundary>
 ```
 
-The example uses `this.request` for logging, so it expects a guard which puts the request into the [context](/faq#context) (e.g. `this.request = request` in `src/[...guard].js`). As the boundary renders its children to a string first, they aren't streamed, so use it only where you need it.
+The example uses `this.request` for logging, so it expects a guard which puts the request into the [context](/jsx#context) (e.g. `this.request = request` in `src/[...guard].js`). As the boundary renders its children to a string first, they aren't streamed, so use it only where you need it.
 
-## <a id="logging"></a>
+<a id="logging"></a>
 
 ## Logging
 

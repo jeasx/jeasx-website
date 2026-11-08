@@ -32,9 +32,9 @@ Routes can be written using JSX (or MDX if properly installed and configured), b
 
 A route can return various types of payloads for the client, including HTML (default), JSON, or other formats. If you need to perform asynchronous operations, you can declare your route or imported components as async.
 
-_Please note:_ Jeasx doesn't specify any hardcoded outbase directory for `esbuild`, so it defaults to the lowest common ancestor directory for all your routes. So when you put _all_ your routes into a dedicated folder (e.g. `src/routes`), `routes` will be removed from the resulting path.
+**Please note:** Jeasx doesn't specify any hardcoded outbase directory for `esbuild`, so it defaults to the lowest common ancestor directory for all your routes. So when you put _all_ your routes into a dedicated folder (e.g. `src/routes`), `routes` will be removed from the resulting path.
 
-## <a id="named-routes"></a>
+<a id="named-routes"></a>
 
 ## Named routes
 
@@ -79,6 +79,8 @@ The only rule for named routes is to enclose the base filename within brackets. 
   </tbody>
 </table>
 
+A route doesn't have to export a function: if the default export is a value (e.g. the object esbuild creates from `[health].json`), it is sent as response as is.
+
 ### Code example
 
 ```jsx
@@ -102,7 +104,7 @@ export default function ({ request, reply }) {
 }
 ```
 
-## <a id="dynamic-routes"></a>
+<a id="dynamic-routes"></a>
 
 ## Dynamic routes
 
@@ -179,7 +181,7 @@ A `[404]` route answers all requests that no other route has answered. Like dyna
 
 If you request a 404 page directly (e.g. `/404` answered by `src/[404].jsx` or `/blog/404` answered by `src/blog/[404].jsx`), it keeps status `200`. This makes it easy to export a 404 page for a [static site](/faq#static-site-generator). If a `[404]` route from a parent folder answers instead, the status is `404`.
 
-## <a id="guards"></a>
+<a id="guards"></a>
 
 ## Guards
 

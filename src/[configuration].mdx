@@ -26,7 +26,7 @@ import IconAttention from "./icons/IconAttention.svg";
 Jeasx offers minimal and sensible default settings to help you get started quickly, while also giving you full control to customize key aspects. You can adapt all plugins and configuration options provided by esbuild and Fastify to perfectly match and grow your project’s requirements.
 </Lead>
 
-## <a id="environment-variables"></a>
+<a id="environment-variables"></a>
 
 ## Environment variables
 
@@ -49,7 +49,7 @@ An existing environment variable will not be overwritten by subsequent environme
   To expose specific variables, use the `ESBUILD_BROWSER_OPTIONS` configuration (see below).
 </Highlight>
 
-## <a id="host-port"></a>
+<a id="host-port"></a>
 
 ## Fundamental environment variables
 
@@ -61,7 +61,7 @@ The hostname or IP address that the server should listen on. `jeasx start` defau
 
 The port number that the server should listen on. Defaults to `3000`.
 
-## <a id="jeasx-config"></a>
+<a id="jeasx-config"></a>
 
 ## Configure esbuild and Fastify via `jeasx.config.js`
 
@@ -70,7 +70,7 @@ The configuration object from `jeasx.config.js` is imported directly into both t
 **Please note:** `jeasx.config.js` is not compiled by esbuild by default, so it can't contain JSX or TypeScript. If you need them, write your config as `jeasx.config.jsx` (or `.tsx`) and compile it with your own npm script:
 
 ```sh
-esbuild jeasx.config.jsx --outfile=jeasx.config.js --platform=node --format=esm --jsx=automatic --jsx-import-source=jsx-async-runtime
+esbuild jeasx.config.jsx --bundle --packages=external --outfile=jeasx.config.js --platform=node --format=esm --jsx=automatic --jsx-import-source=jsx-async-runtime
 ```
 
 ```js
@@ -97,38 +97,7 @@ export default {
 
 Useful to enhance esbuild for compiling server code with existing plugins ([Jeasx config at GitHub](https://github.com/jeasx/jeasx/blob/main/build.js)). The esbuild website provides a detailed explanation of [all configuration options](https://esbuild.github.io/api/).
 
-If you want to [use MDX with plugins](https://mdxjs.com/docs/extending-mdx), you can configure them in `jeasx.config.js` after installing them to your project:
-
-```js
-export default {
-  /** @type {() => Promise<import("esbuild").BuildOptions>} */
-  ESBUILD_SERVER_OPTIONS: async () => {
-    const [
-      { default: mdx },
-      { default: rehypePrismPlus },
-      { default: rehypeSlug },
-      { default: remarkGFM },
-    ] = await Promise.all([
-      import("@mdx-js/esbuild"),
-      import("rehype-prism-plus"),
-      import("rehype-slug"),
-      import("remark-gfm"),
-    ]);
-    return {
-      plugins: [
-        mdx({
-          development: process.env.NODE_ENV === "development",
-          jsxImportSource: "jsx-async-runtime",
-          elementAttributeNameCase: "html",
-          stylePropertyNameCase: "css",
-          remarkPlugins: [[remarkGFM, { singleTilde: false }]],
-          rehypePlugins: [rehypePrismPlus, [rehypeSlug, { prefix: "jeasx-" }]],
-        }),
-      ],
-    };
-  },
-};
-```
+If you want to use MDX (with or without plugins), see [MDX](/jsx#mdx) for a complete configuration.
 
 Async options are useful for plugins that are only needed for the build:
 
@@ -161,7 +130,7 @@ This allows you to enhance the functionality of the underlying [Fastify server](
 
 ```js
 export default {
-  /** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance} */
+  /** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance | Promise<import("fastify").FastifyInstance>} */
   FASTIFY_SERVER: (fastify) => fastify.register(import("@fastify/compress")),
 };
 ```
@@ -176,7 +145,7 @@ Use these options to define the central configuration for the Fastify server.
 export default {
   /** @type {() => import("fastify").FastifyServerOptions} */
   FASTIFY_SERVER_OPTIONS: () => ({
-    logger: { level: process.env.NODE_ENV == "development" ? "error" : "info" },
+    logger: { level: process.env.NODE_ENV === "development" ? "error" : "info" },
     bodyLimit: 2 * 1024 * 1024,
   }),
 };
@@ -193,14 +162,14 @@ export default {
   /** @type {() => import("@fastify/send").SendOptions} */
   FASTIFY_SEND_OPTIONS: () => ({
     immutable: process.env.NODE_ENV !== "development",
-    maxAge: process.env.NODE_ENV == "development" ? 0 : "365d",
+    maxAge: process.env.NODE_ENV === "development" ? 0 : "365d",
   }),
 };
 ```
 
 The `root` option is always set to the project directory by Jeasx, so don't set it yourself. Dotfiles (e.g. `public/.well-known/security.txt`) are ignored by default. Set `dotfiles: "allow"` if you want to serve them.
 
-## <a id="fastify-plugins"></a>
+<a id="fastify-plugins"></a>
 
 ## Recommended Fastify plugins
 
@@ -220,7 +189,7 @@ Next, update your `jeasx.config.js` with the following configuration to customiz
 
 ```js
 export default {
-  /** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance} */
+  /** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance | Promise<import("fastify").FastifyInstance>} */
   FASTIFY_SERVER: (fastify) =>
     fastify
       .register(import("@fastify/formbody"), {/* formbody options */})
@@ -236,7 +205,7 @@ import "@fastify/cookie";
 import "@fastify/multipart";
 ```
 
-## <a id="form-submissions"></a>
+<a id="form-submissions"></a>
 
 ## Handle form submissions without `@fastify/formbody`
 
@@ -246,7 +215,7 @@ Although `@fastify/formbody` is commonly used for processing POST form data, Fas
 import querystring from "node:querystring";
 
 export default {
-  /** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance} */
+  /** @type {(fastify: import("fastify").FastifyInstance) => import("fastify").FastifyInstance | Promise<import("fastify").FastifyInstance>} */
   FASTIFY_SERVER: (fastify) =>
     fastify.addContentTypeParser(
       "application/x-www-form-urlencoded",

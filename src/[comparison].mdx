@@ -26,7 +26,7 @@ import Next from "./components/Next";
 There are many great tools for building websites with JavaScript. Jeasx deliberately does less than most of them: it renders JSX on the server, bundles your browser assets with esbuild and gets out of your way. This page shows where Jeasx differs from popular alternatives, so you can pick the right tool for your project.
 </Lead>
 
-## <a id="overview"></a>
+<a id="overview"></a>
 
 ## Overview
 
@@ -97,7 +97,7 @@ There are many great tools for building websites with JavaScript. Jeasx delibera
   </table>
 </div>
 
-## <a id="astro"></a>
+<a id="astro"></a>
 
 ## Jeasx vs. Astro
 
@@ -108,7 +108,7 @@ There are many great tools for building websites with JavaScript. Jeasx delibera
 - **Islands:** Astro can hydrate React, Vue, Svelte or Solid components in the browser. Jeasx doesn't ship a client framework, but you can add whatever you like (htmx, Alpine.js, Web Components or even React) via the browser bundle.
 - **Scope:** Astro includes content collections, image optimization, view transitions and a rich integration ecosystem. Jeasx keeps the core small and leaves these decisions to userland.
 
-## <a id="nextjs"></a>
+<a id="nextjs"></a>
 
 ## Jeasx vs. Next.js
 
@@ -119,13 +119,13 @@ There are many great tools for building websites with JavaScript. Jeasx delibera
 - Jeasx has no complex caching layers: a request is rendered, the response is sent. Caching is up to you (e.g. via HTTP headers or a reverse proxy).
 - Next.js has a huge ecosystem and is a better fit for highly interactive, app-like user interfaces.
 
-## <a id="fresh"></a>
+<a id="fresh"></a>
 
 ## Jeasx vs. Fresh
 
 [Fresh](https://fresh.deno.dev) renders Preact on the server and hydrates islands in the browser. It is conceptually close to Jeasx, but relies on Deno, which may not fit your corporate policies or hosting environment. Jeasx runs on plain Node.js and the npm ecosystem.
 
-## <a id="templates"></a>
+<a id="templates"></a>
 
 ## Jeasx vs. template engines
 
@@ -134,13 +134,13 @@ Classic template engines like EJS, Handlebars, Pug or Nunjucks (often used with 
 - Components are JavaScript functions, so you can use imports, types and refactoring tools.
 - Routing, bundling of CSS & JavaScript and hot reloading are already set up for you.
 
-## <a id="htmx"></a>
+<a id="htmx"></a>
 
 ## Jeasx with htmx & Alpine.js
 
 [htmx](https://htmx.org) and [Alpine.js](https://alpinejs.dev) are not alternatives, but perfect companions for Jeasx. Jeasx renders HTML fragments on the server, htmx swaps them into the page, and Alpine.js adds small bits of interactivity. Together they cover many use cases of single page applications with a fraction of the complexity.
 
-## <a id="when"></a>
+<a id="when"></a>
 
 ## When to choose Jeasx
 

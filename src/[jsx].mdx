@@ -6,7 +6,7 @@ import Lead from "./components/Lead";
 import Next from "./components/Next";
 import IconAttention from "./icons/IconAttention.svg";
 
-{/* * @typedef {import("./types").RouteProps} Props */}
+{/** @typedef {import("./types").RouteProps} Props */}
 
 <Layout
   title="JSX & MDX"
@@ -20,6 +20,7 @@ import IconAttention from "./icons/IconAttention.svg";
       { label: "Escaping", link: "#escaping" },
       { label: "Example", link: "#example" },
       { label: "Transforming at runtime", link: "#transforming" },
+      { label: "Context", link: "#context" },
       { label: "MDX", link: "#mdx" },
     ]}/>
   }
@@ -30,7 +31,7 @@ Jeasx is a server-side rendering (SSR) framework based on JSX, which means that 
 
 If you are not familiar with JSX, you should read the excellent [introduction to JSX](https://react.dev/learn/writing-markup-with-jsx) at the React homepage.
 
-## <a id="jsx-differences"></a>
+<a id="jsx-differences"></a>
 
 ## JSX in Jeasx is a little bit different
 
@@ -44,7 +45,7 @@ Jeasx uses a syntax similar to React, but there are some important differences. 
 - Pages are streamed to the browser while they are still rendering, so the browser receives the first bytes while slow parts of the page (e.g. awaited data) are still loading.
 - When using an <strong>object</strong> as value for an attribute, it is translated to a JSON string in the resulting markup (e.g. `data-props={{ key: "value" }}` becomes `data-props="{&quot;key&quot;:&quot;value&quot;}"`).
 
-## <a id="escaping"></a>
+<a id="escaping"></a>
 
 ### HTML is escaped by default
 
@@ -73,7 +74,7 @@ import { escapeEntities } from "jsx-async-runtime";
 escapeEntities("<p>Hello World</p>");
 ```
 
-## <a id="example"></a>
+<a id="example"></a>
 
 ### Here's an example which shows the differences in a single file
 
@@ -106,7 +107,7 @@ export default async function () {
 
 [View the result of the above code](/jsx-jokes)
 
-## <a id="transforming"></a>
+<a id="transforming"></a>
 
 ### Transforming JSX components at runtime
 
@@ -129,7 +130,7 @@ export default function ({ request, reply }) {
 }
 ```
 
-_Please note:_ an override renders everything below it to a string, so the affected part of the page is sent as one chunk instead of being streamed. An override set in a root guard (like above) turns off streaming for the whole page, so only use overrides where you really need them.
+**Please note:** an override renders everything below it to a string, so the affected part of the page is sent as one chunk instead of being streamed. An override set in a root guard (like above) turns off streaming for the whole page, so only use overrides where you really need them.
 
 <Highlight title="Learn more" icon={html(IconAttention)}>
   For all the advanced features provided by the `jsx-async-runtime`, have a look at the [example
@@ -137,7 +138,29 @@ _Please note:_ an override renders everything below it to a string, so the affec
   GitHub-Repository.
 </Highlight>
 
-## <a id="mdx"></a>
+<a id="context"></a>
+
+## Sharing data via the context
+
+Jeasx provides a context object via `this`, which is passed on to all sub-components automatically, similar to the context in React. Every request gets its own context. You can populate it in an endpoint (e.g. a guard):
+
+```jsx
+export default function ({ request, reply }) {
+  this.date = new Date();
+}
+```
+
+Later, you can access the context in any sub-component which gets called via an endpoint:
+
+```jsx
+export default function () {
+  return <p>The current date is {this.date.toISOString()}</p>;
+}
+```
+
+Have a look at the [demo](https://expo.jeasx.dev/context) to see how things work using the context as theme provider.
+
+<a id="mdx"></a>
 
 ## MDX - Markdown for the component era
 
@@ -170,7 +193,7 @@ export default {
 
 Then simply create a route with the `.mdx` extension and begin writing markdown. You can import and use existing JSX components right inside your markdown content. Conversely, it's also possible to import MDX components into JSX files.
 
-<b>Please note:</b> To access props in MDX, you have to use `props` as explicit namespace (e.g.
+**Please note:** To access props in MDX, you have to use `props` as explicit namespace (e.g.
 `props.request.path`).
 
 ```markdown

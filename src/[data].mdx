@@ -7,7 +7,7 @@ import Next from "./components/Next";
 import IconSpeed from "./icons/IconSpeed.svg";
 
 <Layout
-  title="Data & Async Components"
+  title="Data & Async"
   description="How to load data with async components in Jeasx"
   category="Data & Async"
   headline="Loading data with async components"
@@ -29,7 +29,7 @@ import IconSpeed from "./icons/IconSpeed.svg";
 In Jeasx, every component can be async. There are no loaders, hooks or special data APIs: you simply `await` your data where you need it, and the page is streamed to the browser while it renders.
 </Lead>
 
-## <a id="async-components"></a>
+<a id="async-components"></a>
 
 ## Async components
 
@@ -69,7 +69,7 @@ export default function () {
 
 You can also pass promises directly as children or attribute values, e.g. `<p>{loadGreeting()}</p>` or `<img src={loadAvatarUrl(user)} />`. They are awaited automatically.
 
-## <a id="where"></a>
+<a id="where"></a>
 
 ## Where to load data
 
@@ -78,9 +78,9 @@ You have two good options, and you can mix them freely:
 - **In the route**: load all data up front, decide about status codes (e.g. `404`) and pass the data down as props. This keeps components simple and easy to test.
 - **In the component**: let a component load its own data. This is handy for self-contained parts like a sidebar with the latest posts that appear on many pages.
 
-Data that many components need (e.g. the current user or site settings) can be loaded once in a guard and put into the [context](/faq#context) via `this`, so you don't have to pass it through every component.
+Data that many components need (e.g. the current user or site settings) can be loaded once in a guard and put into the [context](/jsx#context) via `this`, so you don't have to pass it through every component.
 
-## <a id="parallel"></a>
+<a id="parallel"></a>
 
 ## Loading data in parallel
 
@@ -110,7 +110,7 @@ async function UserCard({ user }) {
 
 If you need all values at once, `Promise.all` works as usual: `const [user, orders] = await Promise.all([loadUser(id), loadOrders(id)]);`. Starting promises early is safe: if one fails before it is rendered, the error is reported where the promise is rendered or awaited.
 
-## <a id="streaming"></a>
+<a id="streaming"></a>
 
 ## Streaming
 
@@ -134,7 +134,7 @@ export default function () {
 }
 ```
 
-## <a id="databases"></a>
+<a id="databases"></a>
 
 ## Databases
 
@@ -155,7 +155,7 @@ export function findBook(id) {
 
 Because the file name isn't enclosed in brackets, it is never exposed as a route. Keep credentials in [environment variables](/configuration#environment-variables), never in your code. The [tutorial](/tutorial#data) shows a complete example of storing and loading data.
 
-## <a id="not-found"></a>
+<a id="not-found"></a>
 
 ## Handling missing data
 
@@ -177,7 +177,7 @@ export default function ({ request, reply }) {
 
 Once streaming has started, the status code has already been sent and can't be changed anymore. So don't decide about a `404` inside a nested component.
 
-## <a id="errors"></a>
+<a id="errors"></a>
 
 ## Errors and timeouts
 
@@ -189,7 +189,7 @@ A request that never answers keeps the page waiting forever. Give external calls
 const response = await fetch(url, { signal: AbortSignal.timeout(5000) });
 ```
 
-## <a id="caching"></a>
+<a id="caching"></a>
 
 ## Caching
 

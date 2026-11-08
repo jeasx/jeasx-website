@@ -14,8 +14,8 @@ import Lead from "./components/Lead";
             {label: "Error handler",link: "#error-handler"},
             {label: "Response handler",link: "#response-handler"},
             {label: "Helmet",link: "#helmet"},
-            {label: "CSS-Frameworks",link: "#css-frameworks"},
-            {label: "Static Site Generator",link: "#static-site-generator"},
+            {label: "CSS frameworks",link: "#css-frameworks"},
+            {label: "Static site generator",link: "#static-site-generator"},
             {label: "Browsersync",link: "#browsersync"},
             {label: "Debugger",link: "#debugger"},
       ]}/>
@@ -25,7 +25,7 @@ import Lead from "./components/Lead";
 Here you can find some frequently asked questions and recipes to customize Jeasx.
 </Lead>
 
-## <a id="pronunciation"></a>
+<a id="pronunciation"></a>
 
 ## How is Jeasx officially pronounced?
 
@@ -33,35 +33,19 @@ Jeasx is a combination of the words "JSX" and "ease". The phonetic transcription
 
 <audio src="/jeasx.mp3" autoplay={false} controls />
 
-## <a id="context"></a>
+<a id="context"></a>
 
 ## Is there something like a context object similar to React?
 
-Yes, Jeasx provides a context object via `this` which gets automagically propagated to sub-components. You can populate the context in an endpoint (e.g., a guard):
+Yes, Jeasx provides a context object via `this`, which is passed on to all sub-components automatically. See [context](/jsx#context) for details.
 
-```jsx
-export default function ({ request, reply }) {
-  this.date = new Date();
-}
-```
-
-Later, you can access the context in any sub-component which gets called via an endpoint:
-
-```jsx
-export default function () {
-  return <p>The current date is {this.date.toISOString()}</p>;
-}
-```
-
-Have a look at the [demo](https://expo.jeasx.dev/context) to see how things work using the context as theme provider.
-
-## <a id="error-handler"></a>
+<a id="error-handler"></a>
 
 ## How can I provide user friendly error messages?
 
 Register a Fastify error handler via `setErrorHandler` in `jeasx.config.js` and add a `[404]` route for unknown URLs. Errors thrown while a page is already streaming need an error boundary. The [Error handling](/errors) page explains all cases in detail.
 
-## <a id="response-handler"></a>
+<a id="response-handler"></a>
 
 ## How can I modify the resulting response (e.g. post-process HTML)?
 
@@ -87,19 +71,19 @@ export default function ({ request, reply }) {
 }
 ```
 
-## <a id="helmet"></a>
+<a id="helmet"></a>
 
 ## Is there a way to set the document title in a sub-component (aka Helmet)?
 
 Yes, have a look at the [head example](https://expo.jeasx.dev/head) which demonstrates how easily this can be achieved with a guard.
 
-## <a id="css-frameworks"></a>
+<a id="css-frameworks"></a>
 
-## Is it possible to use CSS-Frameworks like SASS or Tailwind?
+## Is it possible to use CSS frameworks like Sass or Tailwind?
 
 Certainly! As Jeasx supports all [esbuild plugins](https://github.com/esbuild/community-plugins), you can use the existing ecosystem.
 
-## <a id="static-site-generator"></a>
+<a id="static-site-generator"></a>
 
 ## Can I use Jeasx as a Static Site Generator (SSG)?
 
@@ -114,7 +98,7 @@ to export your site to a `www`-directory, which can be easily served via a simpl
 Have a look at the [Dockerfile](https://github.com/jeasx/jeasx-website/blob/main/Dockerfile) of this
 website to see how things can be wired up for serving a static export with [Caddy](https://caddyserver.com) as file-server.
 
-## <a id="browsersync"></a>
+<a id="browsersync"></a>
 
 ## How to use Browsersync with Jeasx?
 
@@ -124,11 +108,11 @@ If you want to reload CSS automagically, start [Browsersync](https://browsersync
 npx -y browser-sync start -w -f "dist/**/index.css" -p localhost:3000
 ```
 
-## <a id="debugger"></a>
+<a id="debugger"></a>
 
 ## How to use a debugger with Jeasx?
 
-To enable sourcemaps for debugging your code, configure `ESBUILD_SERVER_OPTIONS` or `ESBUILD_BROWSER_OPTIONS` in your `jeasx.config.js` file based on your specific needs. While I recommend using `inline` as the configuration value for simplicity, the optimal choice may depend on your setup and tooling. Please study the [esbuild documentation](https://esbuild.github.io/api/#sourcemap) for the different configuration options.
+To enable sourcemaps for debugging your code, configure `ESBUILD_SERVER_OPTIONS` or `ESBUILD_BROWSER_OPTIONS` in your `jeasx.config.js` file based on your specific needs. While `inline` is recommended as the configuration value for simplicity, the optimal choice may depend on your setup and tooling. Please study the [esbuild documentation](https://esbuild.github.io/api/#sourcemap) for the different configuration options.
 
 ```js
 export default {

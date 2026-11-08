@@ -26,7 +26,7 @@ import IconChecklist from "./icons/IconChecklist.svg";
 Jeasx renders everything on the server, so no secrets or business logic leak into the browser by accident. On top of that, Jeasx and its JSX runtime [jsx-async-runtime](https://github.com/jeasx/jsx-async-runtime) ship with safe defaults that close the most common holes of web applications. This page explains these measures and the things you still have to take care of yourself.
 </Lead>
 
-## <a id="rendering"></a>
+<a id="rendering"></a>
 
 ## Safe rendering with jsx-async-runtime
 
@@ -63,7 +63,7 @@ Functions and symbols used as attribute values are skipped, so an event handler 
 
 Every request gets its own context object (`this`), so data of one request never leaks into the render of another one. Rejected promises are reported to the render instead of crashing the Node process, and unread streams are closed when rendering fails or the client disconnects.
 
-## <a id="routing"></a>
+<a id="routing"></a>
 
 ## Routing and static files
 
@@ -91,7 +91,7 @@ Route and file lookups use objects without a prototype, so a path like `/constru
 
 Files like `public/.env` or `public/.git/config` aren't served unless you explicitly allow dotfiles via the `dotfiles` option of `FASTIFY_SEND_OPTIONS`.
 
-## <a id="server"></a>
+<a id="server"></a>
 
 ## Server and build
 
@@ -101,7 +101,7 @@ Files like `public/.env` or `public/.git/config` aren't served unless you explic
 - **No env vars in the browser:** environment variables are never exposed to browser bundles automatically. You decide explicitly via `define` in `ESBUILD_BROWSER_OPTIONS` which values the browser gets.
 - **Graceful shutdown:** the server closes cleanly on `SIGINT` and `SIGTERM`, which avoids broken responses when containers are stopped.
 
-## <a id="watch-out"></a>
+<a id="watch-out"></a>
 
 ## Things to watch out for
 
@@ -134,7 +134,7 @@ A custom `this.jsxToString` handler can return any string, which is rendered wit
 
 ### Set security headers
 
-Jeasx doesn't set HTTP security headers like `Content-Security-Policy`, `Strict-Transport-Security` or `X-Content-Type-Options` for you. Set them in your root guard, a reverse proxy, or with [@fastify/helmet](https://github.com/fastify/fastify-helmet) (see the [FAQ](/faq#helmet)). A strict Content-Security-Policy is the best second line of defense against XSS.
+Jeasx doesn't set HTTP security headers like `Content-Security-Policy`, `Strict-Transport-Security` or `X-Content-Type-Options` for you. Set them in your root guard, a reverse proxy, or with [@fastify/helmet](https://github.com/fastify/fastify-helmet). A strict Content-Security-Policy is the best second line of defense against XSS.
 
 ### Handle forms and cookies with care
 
@@ -156,7 +156,7 @@ Stack traces help during development, but reveal internals in production. Use a 
 
 Update Jeasx and your other dependencies regularly to get the latest security fixes. Run `npm audit` and watch the [news](/news) for security releases.
 
-## <a id="checklist"></a>
+<a id="checklist"></a>
 
 <Highlight title="Checklist for production" icon={html(IconChecklist)}>
 

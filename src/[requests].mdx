@@ -29,7 +29,7 @@ import IconAttention from "./icons/IconAttention.svg";
 Every route receives the [request](https://fastify.dev/docs/latest/Reference/Request) and [reply](https://fastify.dev/docs/latest/Reference/Reply) objects from Fastify as props. Everything Fastify offers is available, so there is no extra API to learn.
 </Lead>
 
-## <a id="reading"></a>
+<a id="reading"></a>
 
 ## Reading the request
 
@@ -52,7 +52,7 @@ export default function ({ request }) {
 
 Query values always arrive as strings (or arrays of strings if a parameter is repeated), so convert and validate them before use, e.g. `Number.parseInt(request.query.page) || 1`.
 
-## <a id="methods"></a>
+<a id="methods"></a>
 
 ## Handling HTTP methods
 
@@ -76,7 +76,7 @@ export default async function ({ request, reply }) {
 
 Static files from `public` and `dist` are only served for `GET` and `HEAD`, so a `POST` to the same path reaches your routes.
 
-## <a id="forms"></a>
+<a id="forms"></a>
 
 ## Forms
 
@@ -114,7 +114,7 @@ export default async function ({ request, reply }) {
 
 Values from the request are escaped automatically when you render them, so the form can safely show the submitted input again. For file uploads, use [@fastify/multipart](https://github.com/fastify/fastify-multipart). Don't forget CSRF protection if your forms change data for logged-in users (see [Security](/security)).
 
-## <a id="return-values"></a>
+<a id="return-values"></a>
 
 ## What a route can return
 
@@ -153,7 +153,7 @@ The return value of a route becomes the response:
 
 Guards are the exception: an object returned by a guard isn't sent, but passed as props to the routes below (see [Guards](/routes#guards)).
 
-## <a id="status-headers"></a>
+<a id="status-headers"></a>
 
 ## Status codes and headers
 
@@ -173,7 +173,7 @@ export default async function ({ reply }) {
 
 `reply.type()` sets the content type. Without it, strings and streams are sent as `text/html; charset=utf-8`.
 
-## <a id="redirects"></a>
+<a id="redirects"></a>
 
 ## Redirects
 
@@ -188,7 +188,7 @@ export default function ({ reply }) {
 
 Once a reply is sent (by `reply.redirect()` or `reply.send()`), Jeasx stops and doesn't try any other route. Never redirect to a URL taken unchecked from the request (e.g. `?next=https://evil.example`), only to paths you allow.
 
-## <a id="cookies"></a>
+<a id="cookies"></a>
 
 ## Cookies
 
@@ -209,9 +209,9 @@ export default function ({ request, reply }) {
 }
 ```
 
-A guard is a good place to read cookies (e.g. a session) once and pass the result to all routes via the [context](/faq#context) or as props.
+A guard is a good place to read cookies (e.g. a session) once and pass the result to all routes via the [context](/jsx#context) or as props.
 
-## <a id="json"></a>
+<a id="json"></a>
 
 ## JSON APIs
 

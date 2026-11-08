@@ -43,7 +43,7 @@ const NAV_ITEMS = [
       { label: "Routes & Guards", link: "/routes" },
       { label: "Requests & Responses", link: "/requests" },
       { label: "Data & Async", link: "/data" },
-      { label: "Error Handling", link: "/errors" },
+      { label: "Error handling", link: "/errors" },
       { label: "CSS & JavaScript", link: "/browser" },
     ],
   },

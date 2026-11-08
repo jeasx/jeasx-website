@@ -1,12 +1,14 @@
 import Aside from "./components/Aside";
 import Layout from "./components/Layout";
 import Lead from "./components/Lead";
+import Next from "./components/Next";
 
 <Layout
   title="Hosting"
   description="How to host a Jeasx application"
   category="Hosting"
   headline="What are the hosting options for a Jeasx project?"
+  next={<Next link="/faq" label="Any questions left?" />}
   aside={
     <Aside links={[
       { label: "VPS", link: "#vps" },
@@ -20,21 +22,21 @@ import Lead from "./components/Lead";
 Jeasx supports various hosting modes tailored to different needs and preferences. You can host Jeasx on a dedicated server or VPS, deploy it via a Docker container, or opt for a serverless approach.
 </Lead>
 
-## <a id="vps"></a>
+<a id="vps"></a>
 
 ## Hosting on a dedicated / virtual private server (VPS)
 
 Typically, a Jeasx application requires less than 50 MB of RAM and a single (v)CPU. Therefore the smallest server should get you started. Running Jeasx on a server involves installing Node.js, building the application with `npm run build` and starting it with `npm start`.
 
-In order to minimise the CPU footprint of a Jeasx application, it is highly recommended that SSL termination is offloaded to a reverse proxy, such as [Caddy](https://caddyserver.com).
+In order to minimise the CPU footprint of a Jeasx application, it is highly recommended that TLS termination is offloaded to a reverse proxy, such as [Caddy](https://caddyserver.com).
 
-## <a id="docker-compose"></a>
+<a id="docker-compose"></a>
 
-### Running Jeasx with docker compose
+### Running Jeasx with Docker Compose
 
-To keep things simple and maintainable, I highly recommend using [docker compose](https://docs.docker.com/compose) as lightweight infrastructure for running Jeasx applications on your own VPS. The Jeasx website along with the expo and other projects are hosted this way with minimal costs and efforts.
+To keep things simple and maintainable, [Docker Compose](https://docs.docker.com/compose) is a great lightweight infrastructure for running Jeasx applications on your own VPS. The Jeasx website along with the expo and other projects are hosted this way with minimal costs and efforts.
 
-Below is a minimal `compose.yml` to get you started with a Jeasx application and Caddy. Caddy automatically creates SSL certificates for your domain with [Let's Encrypt](https://letsencrypt.org) and compresses your payloads.
+Below is a minimal `compose.yml` to get you started with a Jeasx application and Caddy. Caddy automatically creates TLS certificates for your domain with [Let's Encrypt](https://letsencrypt.org) and compresses your payloads.
 
 ```yml
 services:
@@ -80,22 +82,22 @@ quickstart.jeasx.dev {
 }
 ```
 
-## <a id="container"></a>
+<a id="container"></a>
 
 ## Container based hosting
 
 A powerful self-hosted option is to install [Dokploy](https://dokploy.com) on your server. Dokploy uses Docker under the hood and comes with a nice user interface to create deployments directly from GitHub.
 
-For straightforward Node.js-based hosting, platforms like [Railway](https://railway.com) and [Koyeb](https://www.koyeb.com) are excellent choices. Both support deploying Docker containers, which I highly recommend as the default builders (e.g., Railpack / Buildpack) create containers that use significantly more resources than the optimized Dockerfile provided via the quickstart template.
+For straightforward Node.js-based hosting, platforms like [Railway](https://railway.com) and [Koyeb](https://www.koyeb.com) are excellent choices. Both support deploying Docker containers, which is the recommended option, as the default builders (e.g., Railpack / Buildpack) create containers that use significantly more resources than the optimized Dockerfile provided via the quickstart template.
 
 If you prefer Docker containers exclusively with a fixed pricing model, [Sliplane](https://sliplane.io) is a viable option.
 
-## <a id="serverless"></a>
+<a id="serverless"></a>
 
 ## Serverless hosting
 
 For a serverless setup, [Vercel](https://vercel.com) is an option, as Jeasx can be bootstrapped with the necessary configurations via the quickstart template. Have a look at the [Jeasx expo running at Vercel](https://vercel.jeasx.dev).
 
-Other serverless platforms should work with additional configurations, but I haven't tested any of them.
+Other serverless platforms should work with additional configurations, but haven't been tested.
 
 </Layout>

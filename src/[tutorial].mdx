@@ -43,7 +43,7 @@ All you need is a recent [Node.js](https://nodejs.org/) (latest LTS) and an edit
 
 Want to skip ahead or compare your code? See the finished app in action in the [live preview](https://tutorial.jeasx.dev/). Its source code is available on GitHub: [jeasx/jeasx-tutorial](https://github.com/jeasx/jeasx-tutorial). Clone it with `git clone https://github.com/jeasx/jeasx-tutorial.git`, then run `npm install` and `npm run dev`.
 
-## <a id="create"></a>
+<a id="create"></a>
 
 ## Step 1: Create the project
 
@@ -96,7 +96,7 @@ jeasx-tutorial
 
 The most important rule is already visible here: **filenames in brackets are routes**. Everything else (components, libraries, ...) is just code you can import. Learn more about [routes](/routes).
 
-## <a id="layout"></a>
+<a id="layout"></a>
 
 ## Step 2: Create a layout and use the context
 
@@ -175,7 +175,7 @@ export default function ({ request, reply }) {
 
 A **guard** runs before all routes in its folder and below. Because this guard lives in `src`, it runs for every request, so `this.request` is available everywhere. Every route and guard gets the Fastify `request` and `reply` objects as props.
 
-## <a id="data"></a>
+<a id="data"></a>
 
 ## Step 3: Store your books
 
@@ -269,7 +269,7 @@ As the filename has no brackets, this module is not exposed as a route. It's jus
   books in a database instead, so they survive a restart of the server.
 </Highlight>
 
-## <a id="home"></a>
+<a id="home"></a>
 
 ## Step 4: Build the home page
 
@@ -324,7 +324,7 @@ Open `http://localhost:3000/` and click the filters. Some things to notice:
 - Query parameters are available via `request.query`, e.g. `/?status=reading`.
 - There is no client-side JavaScript involved. Jeasx renders plain HTML on the server, so the page is fast and works everywhere.
 
-## <a id="dynamic"></a>
+<a id="dynamic"></a>
 
 ## Step 5: Show book details with a dynamic route
 
@@ -402,7 +402,7 @@ Click on a book on the home page to see the result. Two essential features are a
 
 Because the page has already been sent in part, an error in `BookDetails` can't turn into a nice error page anymore. That's why the component catches its own errors and shows a fallback. Learn more about this in [Error handling](/errors#streaming).
 
-## <a id="not-found"></a>
+<a id="not-found"></a>
 
 ## Step 6: Add a 404 page
 
@@ -427,7 +427,7 @@ export default function ({ request }) {
 
 Now visit `http://localhost:3000/books/99` or any other unknown URL. Jeasx sets the status code `404` for you. You can also put a `[404]` route into a subfolder to show a different page for a section of your site.
 
-## <a id="api"></a>
+<a id="api"></a>
 
 ## Step 7: Provide a JSON API
 
@@ -453,7 +453,7 @@ curl http://localhost:3000/api/books.json
 
 The `[health].json` route from the template shows an even simpler way: a JSON file with brackets is served as is at `/health`.
 
-## <a id="admin"></a>
+<a id="admin"></a>
 
 ## Step 8: Add a protected admin area
 
@@ -741,9 +741,9 @@ function StatusSelect({ value }) {
 
 Open `http://localhost:3000/admin`. As you are not logged in yet, you are redirected to the login page. Log in with the password `secret`, add your favorite book and change the status of another one. After adding a book or saving a status, the redirect jumps to the book via its anchor in the URL (e.g. `#book-2`) and passes `?added=2` or `?updated=2`, so the page can confirm the change. You'll see your changes on the home page and in the JSON API. When you're done, click "Log out".
 
-This is the Jeasx way: a lean core, plus the full power of [Fastify](https://fastify.dev) and [esbuild](https://esbuild.github.io) if you need more. Need file uploads, rate limiting or sessions? Just register another [Fastify plugin](/configuration#recommended-fastify-plugins).
+This is the Jeasx way: a lean core, plus the full power of [Fastify](https://fastify.dev) and [esbuild](https://esbuild.github.io) if you need more. Need file uploads, rate limiting or sessions? Just register another [Fastify plugin](/configuration#fastify-plugins).
 
-## <a id="browser"></a>
+<a id="browser"></a>
 
 ## Step 9: Add CSS and JavaScript
 
@@ -1170,7 +1170,7 @@ Opening a book is animated now, too. `@view-transition` turns on [view transitio
 
 You can import CSS from other files, use npm packages in your scripts or add esbuild plugins (e.g. for Sass or Tailwind) in `jeasx.config.js`. Files which don't need processing, like images or `robots.txt`, belong in the `public` folder. See [CSS & JavaScript](/browser) for more details.
 
-## <a id="production"></a>
+<a id="production"></a>
 
 ## Step 10: Run in production
 
