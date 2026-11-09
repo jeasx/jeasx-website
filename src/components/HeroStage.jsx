@@ -1,6 +1,6 @@
 import { html } from "jsx-async-runtime";
 import IconHeroStage from "../icons/IconHeroStage.svg";
-import RecipeExample from "./RecipeExample.mdx";
+import HeroExample from "./HeroExample.mdx";
 
 export default function HeroStage() {
   return (
@@ -29,7 +29,7 @@ export default function HeroStage() {
             <div class="hero-stage">{html(IconHeroStage)}</div>
             <div class="hero-tabs">
               <div class="hero-tab">
-                <div class="hero-tab-label">[recipe].jsx</div>
+                <div class="hero-tab-label">[quote].jsx</div>
               </div>
             </div>
             <div class="hero-window">
@@ -42,7 +42,7 @@ export default function HeroStage() {
                 <div class="hero-panel-line-bottom"></div>
                 <div class="hero-panel-body">
                   <div class="hero-code">
-                    <RecipeExample />
+                    <HeroExample />
                   </div>
                 </div>
               </div>
