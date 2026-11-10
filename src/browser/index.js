@@ -5,6 +5,13 @@ addEventListener("load", () => {
     });
   });
 
+  // Open external links in a new tab
+  document.querySelectorAll("a").forEach((a) => {
+    if (a.href && /^https?:$/.test(a.protocol) && a.origin !== location.origin) {
+      a.target = "_blank";
+    }
+  });
+
   // Add a "copy to clipboard" button to every code block
   document.querySelectorAll("pre").forEach((pre) => {
     const wrapper = document.createElement("div");

@@ -3,7 +3,6 @@
   --prose-headings: var(--color-white);
   --prose-lead: var(--color-slate-400);
   --prose-links: var(--color-white);
-  --prose-bold: var(--color-white);
   --prose-counters: var(--color-slate-400);
   --prose-bullets: var(--color-slate-600);
   --prose-hr: var(--color-border);
@@ -51,15 +50,6 @@
         --prose-underline-size: 0.5em;
       }
     }
-  }
-
-  & :where(strong:not(.not-prose *)) {
-    color: var(--prose-bold);
-    font-weight: 600;
-  }
-
-  & :where(a strong, blockquote strong, thead th strong):where(:not(.not-prose *)) {
-    color: inherit;
   }
 
   & :where(ol:not(.not-prose *)) {
