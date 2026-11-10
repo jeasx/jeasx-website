@@ -172,6 +172,7 @@ type RouteProps = {
   reply: FastifyReply;
 };
 
+// Assumes your root guard puts request and reply into the context
 type ThisContext = RouteProps & {
   // Add your own context properties here
 };

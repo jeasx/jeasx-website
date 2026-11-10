@@ -30,7 +30,7 @@ All server routes can be put anywhere in the `src` directory with filenames encl
 
 Routes can be written using JSX (or MDX if properly installed and configured), but can also be written in JavaScript and/or TypeScript, or any other file type supported by `esbuild`.
 
-A route can return various types of payloads for the client, including HTML (default), JSON, or other formats. If you need to perform asynchronous operations, you can declare your route or imported components as async.
+A route can return various types of payloads for the client, including HTML (default), JSON, or other formats (see [what a route can return](/requests#return-values)). If you need to perform asynchronous operations, you can declare your route or imported components as async.
 
 **Please note:** Jeasx doesn't specify any hardcoded outbase directory for `esbuild`, so it defaults to the lowest common ancestor directory for all your routes. So when you put _all_ your routes into a dedicated folder (e.g. `src/routes`), `routes` will be removed from the resulting path.
 

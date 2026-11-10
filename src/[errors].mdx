@@ -92,13 +92,7 @@ Error messages and stack traces can reveal file paths, queries or secrets. Show 
 
 ## Error pages with JSX
 
-`jeasx.config.js` isn't compiled by esbuild, so it can't contain JSX. To render your error page with your layout, write the config as `jeasx.config.jsx` and compile it with your own npm script:
-
-```sh
-esbuild jeasx.config.jsx --bundle --packages=external --outfile=jeasx.config.js --platform=node --format=esm --jsx=automatic --jsx-import-source=jsx-async-runtime
-```
-
-`--bundle` includes your imported components in the compiled config. The error handler can then render JSX to a string with `jsxToString`:
+`jeasx.config.js` isn't compiled by esbuild, so it can't contain JSX. To render your error page with your layout, write the config as `jeasx.config.jsx` and compile it to `jeasx.config.js` with your own npm script (see [configuration](/configuration#jeasx-config) for the esbuild command). The error handler can then render JSX to a string with `jsxToString`:
 
 ```jsx
 // jeasx.config.jsx
@@ -145,9 +139,7 @@ For expected cases like a missing page or a failed login, it's often simpler to 
 
 ## Errors while streaming
 
-Pages are streamed to the browser while they render. The error handler only runs for errors thrown before the first chunk is sent. Once streaming has started, an error thrown by an async component cuts the page off.
-
-So load data that can fail and that decides about the status code in the route, before returning JSX (see [Data & Async](/data#not-found)). For optional parts like a widget calling an unreliable API, use an error boundary which shows a fallback instead. See [errors while streaming](/streaming#errors) for an example.
+The error handler only runs for errors thrown before the first chunk is sent. Load data that can fail in the route, before returning JSX, and wrap optional parts (e.g. a widget calling an unreliable API) in an error boundary that shows a fallback. See [errors while streaming](/streaming#errors) for details and an example.
 
 <a id="logging"></a>
 

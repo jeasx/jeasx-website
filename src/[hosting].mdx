@@ -40,7 +40,7 @@ Wherever you host your application, the same basics apply:
 
 ## Hosting on a dedicated / virtual private server (VPS)
 
-Typically, a Jeasx application requires less than 50 MB of RAM and a single (v)CPU. Therefore the smallest server should get you started. Running Jeasx on a server involves installing Node.js, setting `NODE_ENV=production`, building the application with `npm run build` and starting it with `npm start` (see [environment variables](/configuration#environment-variables)).
+Typically, a Jeasx application requires less than 50 MB of RAM and a single (v)CPU. Therefore the smallest server should get you started. Install Node.js, then build and start your application as described [above](#checklist).
 
 In order to minimize the CPU footprint of a Jeasx application, it is highly recommended that TLS termination is offloaded to a reverse proxy, such as [Caddy](https://caddyserver.com).
 

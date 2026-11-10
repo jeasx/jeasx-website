@@ -141,7 +141,7 @@ Jeasx escapes all strings by default, so the doctype is wrapped with the `html` 
 
 ## Step 5: Create a stylesheet `src/index.css`
 
-Files named `index.css` or `index.js` in `src` are bundled by esbuild for the browser. The stylesheet is served at `/index.css`:
+Files named `index.css` or `index.js` (or `.ts`, `.jsx`, `.tsx`) in `src` are bundled by esbuild for the browser (see [CSS & JavaScript](/browser#css-javascript)). The stylesheet is served at `/index.css`:
 
 ```css
 :root {
