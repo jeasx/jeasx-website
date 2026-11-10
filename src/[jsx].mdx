@@ -178,7 +178,7 @@ Have a look at the [demo](https://expo.jeasx.dev/context) to see how things work
 
 **Please note:** `this` only works in components declared with `function`. Arrow functions don't have their own `this`, so `const Nav = () => <a>{this.request.path}</a>` fails. Also render components as JSX (`<Nav />`) instead of calling them directly (`Nav()`), otherwise they don't receive the context.
 
-To get type hints for your context in your editor, describe it in `src/types.d.ts` and annotate your components with `@this`:
+To get type hints for your context in your editor, describe it in `src/types.d.ts` (see [TypeScript](/faq#typescript)) and annotate your components with `@this`:
 
 ```jsx
 /**

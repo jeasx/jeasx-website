@@ -44,7 +44,7 @@ An existing environment variable will not be overwritten by subsequent environme
 
 <Highlight title="Environment variables for client code" icon={html(IconAttention)}>
   For security reasons, environment variables are not accessible in frontend JavaScript by default.
-  To expose specific variables, use the `ESBUILD_BROWSER_OPTIONS` configuration (see below).
+  To expose specific variables, use [`ESBUILD_BROWSER_OPTIONS`](#esbuild-browser-options).
 </Highlight>
 
 <a id="host-port"></a>
@@ -98,6 +98,8 @@ export default {
 Useful to enhance esbuild for compiling server code with existing plugins ([Jeasx config at GitHub](https://github.com/jeasx/jeasx/blob/main/build.js)). The esbuild website provides a detailed explanation of [all configuration options](https://esbuild.github.io/api/).
 
 If you want to use MDX (with or without plugins), see [MDX](/jsx#mdx) for a complete configuration.
+
+<a id="esbuild-browser-options"></a>
 
 ### ESBUILD_BROWSER_OPTIONS
 

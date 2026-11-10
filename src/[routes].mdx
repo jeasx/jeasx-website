@@ -28,7 +28,7 @@ In Jeasx, a file system-based routing system is at the heart of the framework.
 
 All server routes can be put anywhere in the `src` directory with filenames enclosed with brackets (`[news].jsx`) and should be defined as default exported functions that receive [request](https://fastify.dev/docs/latest/Reference/Request) and [reply](https://fastify.dev/docs/latest/Reference/Reply) objects from Fastify as props.
 
-Routes can be written using JSX (or MDX if properly installed and configured), but can also be written in JavaScript and/or TypeScript, or any other file type supported by `esbuild`.
+Routes can be written using JSX (or [MDX](/jsx#mdx) if installed and configured), but can also be written in JavaScript and/or TypeScript, or any other file type supported by `esbuild`.
 
 A route can return various types of payloads for the client, including HTML (default), JSON, or other formats (see [what a route can return](/requests#return-values)). If you need to perform asynchronous operations, you can declare your route or imported components as async.
 
@@ -209,6 +209,9 @@ Guards enable you to intercept requests and are inherited from the root to the c
 ### Code example
 
 ```jsx
+import Layout from "../components/Layout";
+
+// src/blog/[...guard].jsx
 export default function ({ request, reply }) {
   const authorization = request.headers["authorization"];
   if (authorization !== `Basic ${Buffer.from("demo:demo").toString("base64")}`) {

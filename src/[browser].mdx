@@ -157,13 +157,12 @@ export default async function ({ request, reply }) {
 
   // Don't respond with static "/robots.txt"
   if (request.path === "/robots.txt" && reply.file) {
-    // The file is already opened, so close it before you drop it.
     reply.file.stream.destroy();
     reply.file = undefined;
   }
 }
 ```
 
-**Please note:** the file stream in `reply.file.stream` is opened before your guards run. If you remove or replace `reply.file`, destroy its stream first, otherwise the file handle stays open.
+**Please note:** the file stream in `reply.file.stream` is opened before your guards run. If you remove or replace `reply.file` (like above), destroy its stream first, otherwise the file handle stays open.
 
 </Layout>

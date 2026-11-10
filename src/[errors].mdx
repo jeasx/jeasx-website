@@ -145,7 +145,7 @@ The error handler only runs for errors thrown before the first chunk is sent. Lo
 
 ## Logging
 
-Use `request.log` to log errors. It's the [Pino](https://getpino.io) logger of Fastify and adds the request id to every entry, so you can find all log entries of a failing request. Logging is turned off by default, so enable the logger and set its level via `FASTIFY_SERVER_OPTIONS` (see [Configuration](/configuration#fastify-server-options)). Otherwise, your error handler logs nothing:
+Use `request.log` to log errors. It's the [Pino](https://getpino.io) logger of Fastify and adds the request id to every entry, so you can find all log entries of a failing request. Logging is turned off by default, so your error handler logs nothing until you enable the logger via `FASTIFY_SERVER_OPTIONS` (see [Configuration](/configuration#fastify-server-options)):
 
 ```js
 // jeasx.config.js
