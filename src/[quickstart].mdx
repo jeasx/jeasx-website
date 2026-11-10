@@ -27,11 +27,12 @@ Hot reloading is enabled in `development mode`, allowing modified files to be au
 To run your project in `production mode`, you'll need to perform a build to export required metadata before starting the server:
 
 ```bash
+export NODE_ENV=production
 npm run build
 npm start
 ```
 
-In production, set `NODE_ENV=production` yourself (see [environment variables](/configuration#environment-variables)).
+Jeasx doesn't set `NODE_ENV=production` for you, so set it yourself for both the build and the server (see [environment variables](/configuration#environment-variables)).
 
 You can create a new project with a specific name by providing an additional argument:
 

@@ -135,6 +135,8 @@ export default {
 };
 ```
 
+<a id="fastify-server-options"></a>
+
 ### FASTIFY_SERVER_OPTIONS
 
 Use these options to define the central configuration for the Fastify server.
@@ -151,6 +153,8 @@ export default {
   }),
 };
 ```
+
+**Please note:** logging is turned off by default, as Jeasx passes no options to Fastify unless you configure them. Without the `logger` option, `request.log` and `fastify.log` write nothing, not even errors. The quickstart template already enables the logger as shown above.
 
 ### FASTIFY_SEND_OPTIONS
 

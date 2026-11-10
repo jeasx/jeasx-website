@@ -1180,11 +1180,12 @@ You can import CSS from other files, use npm packages in your scripts or add esb
 So far, you've used the dev server. For production, build your app once and start the server:
 
 ```bash
+export NODE_ENV=production
 npm run build
 npm start
 ```
 
-The build minifies your code and creates an index of all routes and files, so the server starts quickly and doesn't scan your project for each request. Remember to set `NODE_ENV=production` on your server, so `.env.production` files are used and Fastify logs requests (see `jeasx.config.js`).
+The build minifies your code and creates an index of all routes and files, so the server starts quickly and doesn't scan your project for each request. Set `NODE_ENV=production` for both the build and the server, so `.env.production` files are used and Fastify logs requests (see `jeasx.config.js`).
 
 <Highlight title="Where to deploy?">
   A Jeasx app is a regular Node.js server, so you can run it nearly everywhere: on a VPS, in a

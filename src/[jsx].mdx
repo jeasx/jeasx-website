@@ -65,6 +65,15 @@ import { html } from "jsx-async-runtime";
 
 Escaping can't be turned off. Only markup created by `html()` is rendered raw, so use it for trusted sources only. Objects that just look like markup (e.g. `{ html: "..." }` from parsed JSON) render nothing.
 
+This also applies to the content of `<script>` and `<style>` tags: it is escaped like any other text, so `<style>{"a > b {}"}</style>` renders `a &gt; b {}`, which breaks your CSS. Wrap inline scripts and styles in `html()`:
+
+```jsx
+<style>{html("a > span { color: red; }")}</style>
+<script>{html("if (a < b) { console.log('ok'); }")}</script>
+```
+
+Never put untrusted input into inline scripts or styles. To pass data to browser code, use a `data-*` attribute instead (see [CSS & JavaScript](/browser#interactivity)).
+
 If you need to escape HTML by hand, you can import the utility function from `jsx-async-runtime`:
 
 ```jsx
@@ -89,7 +98,7 @@ export default async function () {
       <html lang="en">
         <head>
           <title>Jokes</title>
-          <style>{".center {text-align: center;}"}</style>
+          <style>{html(".center {text-align: center;}")}</style>
         </head>
         <body class="body" style="background-color: red; padding: 1rem">
           <div class="v-align h-align" data-props={{ key: "value" }}>

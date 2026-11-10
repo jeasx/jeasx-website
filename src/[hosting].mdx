@@ -29,7 +29,7 @@ Jeasx supports various hosting modes tailored to different needs and preferences
 
 Wherever you host your application, the same basics apply:
 
-- **Build first:** run `npm run build` and start the server with `NODE_ENV=production npm start`. Only routes and files that exist at build time are served.
+- **Build first:** set `NODE_ENV=production`, run `npm run build` and start the server with `npm start`. Set it for the build, too, as the build reads `jeasx.config.js` and your `.env.production` file. Only routes and files that exist at build time are served.
 - **HOST & PORT:** `jeasx start` listens on all interfaces (`::`) and port `3000` by default. Set `PORT` if your platform expects another port (see [configuration](/configuration#host-port)).
 - **Health check:** let your platform or load balancer check a cheap route, e.g. a `src/[health].json` file containing `{ "status": "ok" }`, which is served at `/health`.
 - **Graceful shutdown:** Jeasx closes the server cleanly on `SIGINT` and `SIGTERM`, so running requests can finish when a container is stopped or replaced.
@@ -40,7 +40,7 @@ Wherever you host your application, the same basics apply:
 
 ## Hosting on a dedicated / virtual private server (VPS)
 
-Typically, a Jeasx application requires less than 50 MB of RAM and a single (v)CPU. Therefore the smallest server should get you started. Running Jeasx on a server involves installing Node.js, building the application with `npm run build` and starting it with `NODE_ENV=production npm start` (see [environment variables](/configuration#environment-variables)).
+Typically, a Jeasx application requires less than 50 MB of RAM and a single (v)CPU. Therefore the smallest server should get you started. Running Jeasx on a server involves installing Node.js, setting `NODE_ENV=production`, building the application with `npm run build` and starting it with `npm start` (see [environment variables](/configuration#environment-variables)).
 
 In order to minimize the CPU footprint of a Jeasx application, it is highly recommended that TLS termination is offloaded to a reverse proxy, such as [Caddy](https://caddyserver.com).
 

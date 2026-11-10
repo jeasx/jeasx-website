@@ -18,6 +18,7 @@ import Lead from "./components/Lead";
             {label: "Static site generator",link: "#static-site-generator"},
             {label: "Browsersync",link: "#browsersync"},
             {label: "Debugger",link: "#debugger"},
+            {label: "TypeScript",link: "#typescript"},
             {label: "Testing",link: "#testing"},
       ]}/>
   }
@@ -100,13 +101,22 @@ Certainly! As Jeasx supports all [esbuild plugins](https://github.com/esbuild/co
 
 ## Can I use Jeasx as a Static Site Generator (SSG)?
 
-Yes, of course. Jeasx is a server side rendering framework at its heart, but it can be easily used to export a static site. In order to do so, simply run your application with `npm start` and then execute
+Yes, of course. Jeasx is a server side rendering framework at its heart, but it can be easily used to export a static site. In order to do so, build your application and start it in production mode. Set `NODE_ENV=production` for both steps, as the build reads `jeasx.config.js` and your `.env` files, too:
+
+```bash
+export NODE_ENV=production
+npm run build
+npm start
+```
+
+Then execute the following commands in a second terminal to export your site to a `www`-directory, which can be easily served via a simple file-server:
 
 ```bash
 wget --mirror --page-requisites --no-host-directories --directory-prefix=www http://localhost:3000 http://localhost:3000/404
+cp -a public/* www
 ```
 
-to export your site to a `www`-directory, which can be easily served via a simple file-server.
+`wget` only saves pages and files which are linked from your pages, so the contents of `public` (e.g. `robots.txt` or a `sitemap.xml`) are copied afterwards. The 404 page is requested directly, so it is exported with status `200` (see [404 routes](/routes#404-routes)).
 
 Have a look at the [Dockerfile](https://github.com/jeasx/jeasx-website/blob/main/Dockerfile) of this
 website to see how things can be wired up for serving a static export with [Caddy](https://caddyserver.com) as file-server.
@@ -135,6 +145,57 @@ export default {
   }),
 };
 ```
+
+<a id="typescript"></a>
+
+## Can I use TypeScript?
+
+Yes. esbuild compiles TypeScript out of the box, so you can write routes, components and browser code as `.ts` or `.tsx` files (e.g. `src/[index].tsx` or `src/browser/index.ts`) without any configuration.
+
+Your `tsconfig.json` only has to extend the configuration shipped with Jeasx, which sets up JSX with `jsx-async-runtime`:
+
+```json
+{
+  "extends": "jeasx/tsconfig.json"
+}
+```
+
+To get types for the request and reply props, define them once in `src/types.d.ts`. Importing `jeasx/serverless` adds the types for `request.path`, `request.route` and `reply.file`, which Jeasx adds to Fastify:
+
+```ts
+// src/types.d.ts
+import type { FastifyReply, FastifyRequest } from "fastify";
+import "jeasx/serverless";
+
+type RouteProps = {
+  request: FastifyRequest;
+  reply: FastifyReply;
+};
+
+type ThisContext = RouteProps & {
+  // Add your own context properties here
+};
+```
+
+Then use these types in your routes and components. Components which read the [context](/jsx#context) declare the type of `this` as first parameter:
+
+```tsx
+// src/[hello].tsx
+import type { RouteProps, ThisContext } from "./types";
+
+export default function ({ request }: RouteProps) {
+  const { name = "World" } = request.query as { name?: string };
+  return <Greeting name={name} />;
+}
+
+function Greeting(this: ThisContext, { name }: { name: string }) {
+  return <h1 title={this.request.path}>Hello {name}</h1>;
+}
+```
+
+If you prefer plain JavaScript, you get the same type hints in your editor with JSDoc comments, e.g. `/** @param {import("./types").RouteProps} props */` or `/** @this {import("./types").ThisContext} */`.
+
+**Please note:** esbuild only removes types, it doesn't check them. Install `typescript` and run `npx tsc --noEmit` (e.g. in your CI) to find type errors. `jeasx.config.js` isn't compiled by esbuild, so it can't be written in TypeScript unless you compile it yourself (see [configuration](/configuration#jeasx-config)).
 
 <a id="testing"></a>
 

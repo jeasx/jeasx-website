@@ -111,10 +111,13 @@ export default {
       request.log.error(error);
       const status = error.statusCode ?? 500;
       reply.status(status).type("text/html; charset=utf-8");
-      return await jsxToString(<ErrorPage status={status} />);
+      // Provide a context, so components like your layout can read `this.request`.
+      return await jsxToString.call({ request, reply }, <ErrorPage status={status} />);
     }),
 };
 ```
+
+The error handler runs outside of the route, so the context of the request (`this`) isn't available here. Pass a new context with `jsxToString.call()`, otherwise components which read e.g. `this.request.path` throw inside your error handler.
 
 <a id="status-codes"></a>
 
@@ -172,7 +175,7 @@ The example uses `this.request` for logging, so it expects a guard which puts th
 
 ## Logging
 
-Use `request.log` to log errors. It's the [Pino](https://getpino.io) logger of Fastify and adds the request id to every entry, so you can find all log entries of a failing request. Configure the log level via `FASTIFY_SERVER_OPTIONS` (see [Configuration](/configuration)):
+Use `request.log` to log errors. It's the [Pino](https://getpino.io) logger of Fastify and adds the request id to every entry, so you can find all log entries of a failing request. Logging is turned off by default, so enable the logger and set its level via `FASTIFY_SERVER_OPTIONS` (see [Configuration](/configuration#fastify-server-options)). Otherwise, your error handler logs nothing:
 
 ```js
 // jeasx.config.js

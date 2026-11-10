@@ -99,7 +99,7 @@ export default {
 Without your own handler, Fastify answers with a JSON error. `jeasx.config.js` is not compiled by esbuild by default, so it can't contain JSX. If you want JSX in your config, write it as `jeasx.config.jsx` and compile it with your own npm script:
 
 ```sh
-esbuild jeasx.config.jsx --outfile=jeasx.config.js --platform=node --format=esm --jsx=automatic --jsx-import-source=jsx-async-runtime
+esbuild jeasx.config.jsx --bundle --packages=external --outfile=jeasx.config.js --platform=node --format=esm --jsx=automatic --jsx-import-source=jsx-async-runtime
 ```
 
 **Errors while streaming:** the error handler only runs for errors thrown

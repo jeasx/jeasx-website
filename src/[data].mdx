@@ -114,7 +114,35 @@ If you need all values at once, `Promise.all` works as usual: `const [user, orde
 
 ## Streaming
 
-Pages are streamed to the browser while they render. Everything above a slow component is sent right away, so the browser can already load your CSS and show the header while data is still loading. Put slow parts as late in the page as possible.
+Pages are streamed to the browser while they render. Everything above a slow component is sent right away, so the browser can already load your CSS and show the header while data is still loading. You don't have to do anything to turn this on: every JSX response is streamed.
+
+### How a page is streamed
+
+Jeasx renders your JSX in order, from top to bottom, with `jsxToStream` from [jsx-async-runtime](https://github.com/jeasx/jsx-async-runtime):
+
+- Whenever rendering has to wait (for an async component, a promise or the next item of an async iterable), the markup rendered so far is sent to the browser as a chunk.
+- Large pages are sent in chunks of about 16 KB, even if nothing is async, so the complete page never has to be held in memory.
+- Rendering pauses while a slow client catches up, and stops when the client disconnects.
+
+As async components run one after another, a slow component delays everything below it. So put slow parts as late in the page as possible, and start slow requests early to load them in parallel (see [parallel loading](#parallel)):
+
+```jsx
+export default function ({ request }) {
+  // Start the slow request right away, so it runs while the page renders.
+  const reviews = loadReviews(request.query.id);
+
+  return (
+    <Layout title="Product">
+      {/* Sent to the browser immediately */}
+      <ProductHeader id={request.query.id} />
+      {/* Sent as soon as the reviews have arrived */}
+      <Reviews reviews={reviews} />
+    </Layout>
+  );
+}
+```
+
+### Streaming lists
 
 Async generators let you stream long lists item by item, e.g. rows from a paginated API or a database cursor:
 
@@ -133,6 +161,34 @@ export default function () {
   );
 }
 ```
+
+If the client disconnects, the generator is stopped like a `for await` loop on `break`, so its `finally` block runs and can close the cursor. A `ReadableStream` (e.g. a `fetch()` body) can be rendered as a child the same way. Its text is escaped like any other string.
+
+### Status codes and headers come first
+
+The status code and headers are sent with the first chunk. Set them in your guards or route before you return JSX, and decide about redirects or a `404` there, too (see [handling missing data](#not-found)). Calling `reply.status()` or `reply.header()` in a nested component has no effect once streaming has started.
+
+### What turns streaming off
+
+Some features need the complete markup at once. They still work, but the affected part of the page is sent as a single chunk:
+
+- A `this.jsxToString` override renders everything below it to a string (see [transforming JSX](/jsx#transforming)). In a root guard, it affects the whole page.
+- A `this.responseHandler` which reads the stream into a string, e.g. to format or minify the HTML (see [FAQ](/faq#response-handler)).
+- An [error boundary](/errors#streaming) renders its children to a string, so it can show a fallback instead.
+
+### Streaming other content
+
+Routes can also return a `ReadableStream`, a Node.js stream or a `Response` (e.g. from `fetch()`), which is sent as is. A `Response` brings its own status and headers. For streams, set a content type with `reply.type()`, otherwise they're sent as `text/html`. This is useful for proxying an API, large exports or [Server-Sent Events](https://expo.jeasx.dev/sse).
+
+### Proxies and compression
+
+Streaming only helps if nothing between the server and the browser buffers the response. Some reverse proxies wait for the complete response by default (e.g. nginx, which you can tell via `proxy_buffering off` or an `X-Accel-Buffering: no` header). Compression can also hold back small chunks until enough data has piled up. Check in the network tab of your browser that the first bytes of a slow page arrive early.
+
+<Highlight title="See it in action">
+
+The Expo shows [streaming HTML](https://expo.jeasx.dev/streaming), [out-of-order streaming](https://expo.jeasx.dev/out-of-order) and [Server-Sent Events](https://expo.jeasx.dev/sse).
+
+</Highlight>
 
 <a id="databases"></a>
 
