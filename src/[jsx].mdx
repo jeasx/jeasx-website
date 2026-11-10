@@ -41,7 +41,7 @@ Jeasx uses a syntax similar to React, but there are some important differences. 
 - The `class` and `style` attributes must be <strong>strings</strong>. Objects and arrays are not converted to class lists or CSS, but rendered as JSON like any other attribute (see below), so use a helper like [clsx](https://github.com/lukeed/clsx) for conditional classes (e.g. `<h1 class={clsx("center", { active })} style="color: red; margin-top: 1rem">...</h1>`).
 - `children` are passed as written: a single child as is, several children as an array, and no `children` prop at all without children. Normalize with `[children ?? []].flat()` before calling array methods.
 - Iterables (e.g. `Set` or generators), async iterables and `ReadableStream` can be used as children. They are rendered in order as items arrive.
-- Pages are streamed to the browser while they are still rendering, so the browser receives the first bytes while slow parts of the page (e.g. awaited data) are still loading.
+- Pages are [streamed](/streaming) to the browser while they are still rendering, so the browser receives the first bytes while slow parts of the page (e.g. awaited data) are still loading.
 - When using an <strong>object</strong> as value for an attribute, it is translated to a JSON string in the resulting markup (e.g. `data-props={{ key: "value" }}` becomes `data-props="{&quot;key&quot;:&quot;value&quot;}"`).
 
 <a id="escaping"></a>
@@ -138,7 +138,7 @@ export default function ({ request, reply }) {
 }
 ```
 
-**Please note:** an override renders everything below it to a string, so the affected part of the page is sent as one chunk instead of being streamed. An override set in a root guard (like above) turns off streaming for the whole page, so only use overrides where you really need them.
+**Please note:** an override renders everything below it to a string, so the affected part of the page is sent as one chunk instead of being streamed. An override set in a root guard (like above) turns off [streaming](/streaming#off) for the whole page, so only use overrides where you really need them.
 
 <Highlight title="Learn more">
   For all the advanced features provided by the `jsx-async-runtime`, have a look at the [example

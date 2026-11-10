@@ -7,9 +7,9 @@ import Next from "./components/Next";
 import IconWarning from "./icons/IconWarning.svg";
 
 <Layout
-  title="Error handling"
+  title="Errors & Logging"
   description="How to handle errors and show user friendly error pages with Jeasx"
-  category="Error handling"
+  category="Errors & Logging"
   headline="Handling errors gracefully"
   next={<Next link="/browser" label="How to handle browser assets?" />}
   aside={
@@ -147,29 +147,7 @@ For expected cases like a missing page or a failed login, it's often simpler to 
 
 Pages are streamed to the browser while they render. The error handler only runs for errors thrown before the first chunk is sent. Once streaming has started, an error thrown by an async component cuts the page off.
 
-So load data that can fail and that decides about the status code in the route, before returning JSX (see [Data & Async](/data#not-found)). For optional parts like a widget calling an unreliable API, wrap the component in an error boundary which renders it to a string first and shows a fallback if it fails:
-
-```jsx
-// src/components/ErrorBoundary.jsx
-import { html, jsxToString } from "jsx-async-runtime";
-
-export default async function ErrorBoundary({ fallback, children }) {
-  try {
-    return html(await jsxToString.call(this, children));
-  } catch (error) {
-    this.request.log.error(error);
-    return fallback;
-  }
-}
-```
-
-```jsx
-<ErrorBoundary fallback={<p>The weather is currently unavailable.</p>}>
-  <Weather city="Hamburg" />
-</ErrorBoundary>
-```
-
-The example uses `this.request` for logging, so it expects a guard which puts the request into the [context](/jsx#context), e.g. `this.request = request` in `src/[...guard].js`. As the boundary renders its children to a string first, they aren't streamed, so use it only where you need it.
+So load data that can fail and that decides about the status code in the route, before returning JSX (see [Data & Async](/data#not-found)). For optional parts like a widget calling an unreliable API, use an error boundary which shows a fallback instead. See [errors while streaming](/streaming#errors) for an example.
 
 <a id="logging"></a>
 
