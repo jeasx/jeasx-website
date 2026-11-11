@@ -41,7 +41,7 @@ Jeasx uses a syntax similar to React, but there are some important differences. 
 - The `class` and `style` attributes must be <strong>strings</strong>. Objects and arrays are not converted to class lists or CSS, but rendered as JSON like any other attribute (see below), so use a helper like [clsx](https://github.com/lukeed/clsx) for conditional classes (e.g. `<h1 class={clsx("center", { active })} style="color: red; margin-top: 1rem">...</h1>`).
 - `children` are passed as written: a single child as is, several children as an array, and no `children` prop at all without children. Normalize with `[children ?? []].flat()` before calling array methods.
 - Iterables (e.g. `Set` or generators), async iterables and `ReadableStream` can be used as children. They are rendered in order as items arrive.
-- Pages are [streamed](/streaming) to the browser while they are still rendering, so the browser receives the first bytes while slow parts of the page (e.g. awaited data) are still loading.
+- Pages are [streamed](/async#streaming) to the browser while they are still rendering, so the browser receives the first bytes while slow parts of the page (e.g. awaited data) are still loading.
 - When using an <strong>object</strong> as value for an attribute, it is translated to a JSON string in the resulting markup (e.g. `data-props={{ key: "value" }}` becomes `data-props="{&quot;key&quot;:&quot;value&quot;}"`).
 
 <a id="escaping"></a>
@@ -138,7 +138,7 @@ export default function ({ request, reply }) {
 }
 ```
 
-**Please note:** an override renders everything below it to a string, so the affected part of the page is sent as one chunk instead of being streamed. An override set in a root guard (like above) turns off [streaming](/streaming#off) for the whole page, so only use overrides where you really need them.
+**Please note:** an override renders everything below it to a string, so the affected part of the page is sent as one chunk instead of being streamed. An override set in a root guard (like above) turns off [streaming](/async#off) for the whole page, so only use overrides where you really need them. For cache busting of your own assets, a build id is simpler and keeps streaming intact (see [cache busting](/browser#cache-busting)).
 
 <Highlight title="Learn more">
   For all the advanced features provided by the `jsx-async-runtime`, have a look at the [example
@@ -158,11 +158,12 @@ export default function ({ request, reply }) {
 }
 ```
 
-A common pattern is to put the request into the context in your root guard (`src/[...guard].js`), so every component can read e.g. `this.request.path` or log via `this.request.log`:
+A common pattern is to put the request and reply into the context in your root guard (`src/[...guard].js`), so every component can read e.g. `this.request.path` or log via `this.request.log`:
 
 ```js
-export default function ({ request }) {
+export default function ({ request, reply }) {
   this.request = request;
+  this.reply = reply;
 }
 ```
 
@@ -220,7 +221,7 @@ You can put anything into the context. A few names have a special meaning for Je
 
 <a id="mdx"></a>
 
-## MDX - Markdown for the component era
+## MDX: Markdown for the component era
 
 [MDX](https://mdxjs.com) allows you to use JSX directly within your markdown content. This means you can import JSX components and seamlessly embed them in your text. This makes writing long-form content with dynamic components much more enjoyable and efficient. Markdown often feels more natural to write than HTML or JSX, especially for common elements like emphasis or headings.
 
@@ -251,7 +252,7 @@ export default {
 
 Then simply create a route with the `.mdx` extension and begin writing markdown. You can import and use existing JSX components right inside your markdown content. Conversely, it's also possible to import MDX components into JSX files.
 
-**Please note:** To access props in MDX, you have to use `props` as explicit namespace (e.g.
+**Please note:** to access props in MDX, you have to use `props` as explicit namespace (e.g.
 `props.request.path`).
 
 ```markdown

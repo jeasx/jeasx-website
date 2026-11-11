@@ -139,7 +139,31 @@ For expected cases like a missing page or a failed login, it's often simpler to 
 
 ## Errors while streaming
 
-The error handler only runs for errors thrown before the first chunk is sent. Load data that can fail in the route, before returning JSX, and wrap optional parts (e.g. a widget calling an unreliable API) in an error boundary that shows a fallback. See [errors while streaming](/streaming#errors) for details and an example.
+The error handler only runs for errors thrown before the first chunk is sent. Once a page is [streaming](/async#streaming), an error thrown by an async component cuts the page off. So load data that can fail and that decides about the status code in the route, before returning JSX (see [missing data](/async#not-found)).
+
+For optional parts like a widget calling an unreliable API, wrap the component in an error boundary which renders it to a string first and shows a fallback if it fails:
+
+```jsx
+// src/components/ErrorBoundary.jsx
+import { html, jsxToString } from "jsx-async-runtime";
+
+export default async function ErrorBoundary({ fallback, children }) {
+  try {
+    return html(await jsxToString.call(this, children));
+  } catch (error) {
+    this.request.log.error(error);
+    return fallback;
+  }
+}
+```
+
+```jsx
+<ErrorBoundary fallback={<p>The weather is currently unavailable.</p>}>
+  <Weather city="Hamburg" />
+</ErrorBoundary>
+```
+
+The example uses `this.request` for logging, so it expects a guard which puts the request into the [context](/jsx#context), e.g. `this.request = request` and `this.reply = reply` in `src/[...guard].js`. As the boundary renders its children to a string first, they aren't streamed, so use it only where you need it.
 
 <a id="logging"></a>
 

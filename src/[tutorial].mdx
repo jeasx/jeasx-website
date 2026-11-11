@@ -398,9 +398,9 @@ Click on a book on the home page to see the result. Two essential features are a
 
 **Return nothing to pass the request on.** If a book doesn't exist (e.g. `/books/99`), the route returns `undefined`. Jeasx then tries the next matching route, which ends at the 404 page you'll create in the next step.
 
-**Async components and streaming.** `BookDetails` is an async component which fetches data from Open Library. You don't need any hooks or loaders. Just use it like any other component. Jeasx [streams](/streaming) the page to the browser while it renders, so the header and title arrive immediately, while the details follow as soon as the API answers.
+**Async components and streaming.** `BookDetails` is an async component which fetches data from Open Library. You don't need any hooks or loaders. Just use it like any other component. Jeasx [streams](/async#streaming) the page to the browser while it renders, so the header and title arrive immediately, while the details follow as soon as the API answers.
 
-Because the page has already been sent in part, an error in `BookDetails` can't turn into a nice error page anymore. That's why the component catches its own errors and shows a fallback. Learn more about this in [Streaming & Buffering](/streaming#errors).
+Because the page has already been sent in part, an error in `BookDetails` can't turn into a nice error page anymore. That's why the component catches its own errors and shows a fallback. Learn more about this in [Errors & Logging](/errors#streaming).
 
 <a id="not-found"></a>
 
