@@ -48,34 +48,34 @@ The only rule for named routes is to enclose the base filename within brackets. 
     </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>src/[index].jsx</td>
-    <td>/</td>
-  </tr>
-  <tr>
-    <td>src/a/b/[you-name-it].jsx</td>
-    <td>/a/b/you-name-it</td>
-  </tr>
-  <tr>
-    <td>src/company/[index].tsx</td>
-    <td>/company</td>
-  </tr>
-  <tr>
-    <td>src/images/[logo.svg].js</td>
-    <td>/images/logo.svg</td>
-  </tr>
-  <tr>
-    <td>src/api/posts/[update.json].ts</td>
-    <td>/api/posts/update.json</td>
-  </tr>
-  <tr>
-    <td>src/api/[health].json</td>
-    <td>/api/health</td>
-  </tr>
-  <tr>
-    <td>src/api/posts/utils/format.ts</td>
-    <td>This file is not exposed as endpoint.</td>
-  </tr>
+    <tr>
+      <td>src/[index].jsx</td>
+      <td>/</td>
+    </tr>
+    <tr>
+      <td>src/a/b/[you-name-it].jsx</td>
+      <td>/a/b/you-name-it</td>
+    </tr>
+    <tr>
+      <td>src/company/[index].tsx</td>
+      <td>/company</td>
+    </tr>
+    <tr>
+      <td>src/images/[logo.svg].js</td>
+      <td>/images/logo.svg</td>
+    </tr>
+    <tr>
+      <td>src/api/posts/[update.json].ts</td>
+      <td>/api/posts/update.json</td>
+    </tr>
+    <tr>
+      <td>src/api/[health].json</td>
+      <td>/api/health</td>
+    </tr>
+    <tr>
+      <td>src/api/posts/utils/format.ts</td>
+      <td>This file is not exposed as endpoint.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -119,10 +119,10 @@ Dynamic routes are wildcards designed to capture all requests for the current fo
     </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>src/products/[...path].jsx</td>
-    <td>/products/1, /products/category/2, /products/**/*</td>
-  </tr>
+    <tr>
+      <td>src/products/[...path].jsx</td>
+      <td>/products/1, /products/category/2, /products/**/*</td>
+    </tr>
   </tbody>
 </table>
 
@@ -169,14 +169,14 @@ A `[404]` route answers all requests that no other route has answered. Like dyna
     </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>src/blog/[404].jsx</td>
-    <td>Unknown URLs below /blog, e.g. /blog/unknown</td>
-  </tr>
-  <tr>
-    <td>src/[404].jsx</td>
-    <td>All other unknown URLs</td>
-  </tr>
+    <tr>
+      <td>src/blog/[404].jsx</td>
+      <td>Unknown URLs below /blog, e.g. /blog/unknown</td>
+    </tr>
+    <tr>
+      <td>src/[404].jsx</td>
+      <td>All other unknown URLs</td>
+    </tr>
   </tbody>
 </table>
 
@@ -196,13 +196,13 @@ Guards enable you to intercept requests and are inherited from the root to the c
     </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>src/blog/[...guard].jsx</td>
-    <td>
-      The code of the guard is executed before everything in the current folder or below: static
-      files, named, index, dynamic and 404 routes.
-    </td>
-  </tr>
+    <tr>
+      <td>src/blog/[...guard].jsx</td>
+      <td>
+        The code of the guard is executed before everything in the current folder or below: static
+        files, named, index, dynamic and 404 routes.
+      </td>
+    </tr>
   </tbody>
 </table>
 
@@ -265,14 +265,12 @@ So a static file wins over a named route with the same path, and `src/a/b/[c].js
   title="What is the difference between request.url, request.path and request.route?"
   icon={html(IconAttention)}
 >
-The vanilla Fastify request object exposes the current url (e.g. `/json/api/request.json?foo=bar`) via `request.url`.
+The vanilla Fastify request object exposes the current URL (e.g. `/path/to/route?foo=bar`) via `request.url`.
 
 Jeasx adds two additional attributes to the Fastify request object to improve the developer experience:
 
-- `request.path` gives you the URL-decoded path without any query parameters (e.g. `/json/api/request.json`). Backslashes become slashes and repeated slashes are collapsed, so don't decode it again with `decodeURIComponent`. Use `request.url` if you need the raw path.
-- `request.route` provides the path to the current endpoint handler (e.g. `/json/[...path]`)
-
-Have a look at the [JSON example](https://expo.jeasx.dev/json/api/request.json?foo=bar) to see `request.url, request.path, request.route` at work.
+- `request.path` gives you the URL-decoded path without any query parameters (e.g. `/path/to/route`). Backslashes become slashes and repeated slashes are collapsed, so don't decode it again with `decodeURIComponent`. Use `request.url` if you need the raw path.
+- `request.route` provides the path to the current endpoint handler (e.g. `/path/to/[route]`)
 
 </Highlight>
 </Layout>
