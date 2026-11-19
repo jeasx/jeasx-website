@@ -1,3 +1,10 @@
-export default function Features({ children }) {
-  return <div class="features not-prose">{children}</div>;
+export default function Features({ children, columns = 3 }) {
+  return (
+    <div
+      class="features not-prose"
+      style={`--feature-columns: ${columns}`}
+    >
+      {children}
+    </div>
+  );
 }
