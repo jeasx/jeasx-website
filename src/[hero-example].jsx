@@ -1,17 +1,17 @@
 export default function ({ request }) {
+  const repo = request.query.repo ?? "jeasx/jeasx";
   return (
-    <main class="quote">
-      <h1>Quote of the day</h1>
-      <Quote id={Number(request.query.id)} />
-    </main>
+    <html lang="en">
+      <body class="html-first">
+        <h1>JSX === JavaScript with tags</h1>
+        <Stars repo={repo} />
+      </body>
+    </html>
   );
 }
 
-async function Quote({ id }) {
-  const { quote, author } = await (await fetch(`https://dummyjson.com/quotes/${id}`)).json();
-  return (
-    <blockquote>
-      {quote} <cite>— {author}</cite>
-    </blockquote>
-  );
+async function Stars({ repo }) {
+  const res = await fetch(`https://api.github.com/repos/${repo}`);
+  const { stargazers_count } = await res.json();
+  return <p>{stargazers_count} ⭐ and counting</p>;
 }

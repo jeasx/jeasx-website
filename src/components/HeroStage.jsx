@@ -29,7 +29,7 @@ export default function HeroStage() {
             <div class="hero-stage">{html(IconHeroStage)}</div>
             <div class="hero-tabs">
               <div class="hero-tab">
-                <div class="hero-tab-label">[quote].jsx</div>
+                <div class="hero-tab-label">[stars].jsx</div>
               </div>
             </div>
             <div class="hero-window">
