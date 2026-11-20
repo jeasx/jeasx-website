@@ -37,7 +37,78 @@
   --color-heading: var(--color-white);
   --color-muted: var(--color-slate-400);
   --color-accent: var(--color-sky-400);
+  --color-overlay: oklch(10% 0.02 265 / 0.6);
+  --color-sidebar: oklch(14% 0.022 265 / 0.6);
+  --color-glass: oklch(100% 0 0 / 0.04);
+  --color-glass-shadow: oklch(0% 0 0 / 0.6);
 
   --tracking-tight: -0.025em;
   --header-height: 4.75rem;
+}
+
+/* Light theme: follows the OS setting. The slate scale and white are flipped
+   so components written against the dark palette work unchanged. */
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+    --color-white: oklch(20.8% 0.042 265.755);
+    --color-slate-50: oklch(20.8% 0.042 265.755);
+    --color-slate-100: oklch(27.9% 0.041 260.031);
+    --color-slate-200: oklch(32% 0.044 257.287);
+    --color-slate-300: oklch(37.2% 0.044 257.287);
+    --color-slate-400: oklch(44.6% 0.043 257.281);
+    --color-slate-500: oklch(55.4% 0.046 257.417);
+    --color-slate-600: oklch(70.4% 0.04 256.788);
+    --color-slate-700: oklch(86.9% 0.022 252.894);
+    --color-slate-800: oklch(92.9% 0.013 255.508);
+    --color-slate-900: oklch(96.8% 0.007 247.896);
+    --color-sky-200: oklch(50% 0.134 242.749);
+    --color-sky-300: oklch(50% 0.134 242.749);
+    --color-sky-400: oklch(58.8% 0.158 241.966);
+    --color-teal-200: oklch(51.1% 0.096 186.391);
+    --color-amber-100: oklch(47.3% 0.137 46.201);
+    --color-amber-400: oklch(55.5% 0.163 48.998);
+    --color-indigo-200: oklch(51.1% 0.262 276.966);
+    --color-blue-300: oklch(54.6% 0.245 262.881);
+
+    --color-bg: oklch(100% 0 0);
+    --color-surface: oklch(98.4% 0.003 247.858);
+    --color-border: oklch(0% 0 0 / 0.1);
+    --color-heading: oklch(20.8% 0.042 265.755);
+    --color-muted: oklch(44.6% 0.043 257.281);
+    --color-accent: oklch(58.8% 0.158 241.966);
+    --color-overlay: oklch(100% 0 0 / 0.7);
+    --color-sidebar: oklch(98.4% 0.003 247.858 / 0.6);
+    --color-glass: oklch(0% 0 0 / 0.03);
+    --color-glass-shadow: oklch(0% 0 0 / 0.15);
+  }
+
+  /* Hero and code blocks stay dark in both themes. */
+  .hero,
+  pre,
+  .copy-code-button {
+    --color-white: #fff;
+    --color-slate-50: oklch(98.4% 0.003 247.858);
+    --color-slate-100: oklch(96.8% 0.007 247.896);
+    --color-slate-200: oklch(92.9% 0.013 255.508);
+    --color-slate-300: oklch(86.9% 0.022 252.894);
+    --color-slate-400: oklch(70.4% 0.04 256.788);
+    --color-slate-500: oklch(55.4% 0.046 257.417);
+    --color-slate-600: oklch(44.6% 0.043 257.281);
+    --color-slate-700: oklch(37.2% 0.044 257.287);
+    --color-slate-800: oklch(27.9% 0.041 260.031);
+    --color-slate-900: oklch(20.8% 0.042 265.755);
+    --color-sky-200: oklch(90.1% 0.058 230.902);
+    --color-sky-300: oklch(82.8% 0.111 230.318);
+    --color-sky-400: oklch(74.6% 0.16 232.661);
+    --color-teal-200: oklch(91% 0.096 180.426);
+    --color-indigo-200: oklch(87% 0.065 274.039);
+    --color-blue-300: oklch(80.9% 0.105 251.813);
+    --color-border: oklch(100% 0 0 / 0.08);
+    --color-heading: #fff;
+    --color-muted: oklch(70.4% 0.04 256.788);
+    --color-accent: oklch(74.6% 0.16 232.661);
+    --prose-pre-code: oklch(92.9% 0.013 255.508);
+    color-scheme: dark;
+  }
 }

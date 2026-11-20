@@ -146,7 +146,7 @@ html:root {
   --pf-text-secondary: var(--color-slate-400);
   --pf-text-muted: var(--color-slate-500);
   --pf-background: var(--color-surface);
-  --pf-border: oklch(100% 0 0 / 0.12);
+  --pf-border: var(--color-border);
   --pf-border-focus: var(--color-accent);
   --pf-border-radius: 0.5rem;
   --pf-hover: oklch(74.6% 0.16 232.661 / 0.1);
@@ -161,7 +161,7 @@ html:root {
     0 20px 50px -12px oklch(0% 0 0 / 0.7);
   --pf-outline-focus: color-mix(in oklab, var(--color-accent) 60%, transparent);
   --pf-outline-offset: 0;
-  --pf-modal-backdrop: oklch(10% 0.02 265 / 0.7);
+  --pf-modal-backdrop: var(--color-overlay);
   --pf-error-bg: oklch(63.7% 0.237 25.331 / 0.1);
   --pf-error-border: oklch(63.7% 0.237 25.331 / 0.3);
   --pf-error-text: oklch(80.8% 0.114 19.571);

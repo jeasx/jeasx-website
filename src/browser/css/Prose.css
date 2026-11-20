@@ -10,7 +10,7 @@
   --prose-quote-borders: var(--color-slate-700);
   --prose-captions: var(--color-slate-400);
   --prose-kbd: var(--color-white);
-  --prose-kbd-shadows: oklch(100% 0 0 / 0.15);
+  --prose-kbd-shadows: var(--color-border);
   --prose-code: var(--color-sky-200);
   --prose-pre-code: var(--color-slate-200);
   --prose-pre-bg: oklch(12% 0.02 265);
