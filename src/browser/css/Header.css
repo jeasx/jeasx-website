@@ -7,9 +7,11 @@
   justify-content: space-between;
   align-items: center;
   z-index: 50;
-  backdrop-filter: blur(12px) saturate(150%);
-  box-shadow: 0 1px 0 var(--color-border);
-  background-color: color-mix(in oklab, var(--color-bg) 75%, transparent);
+  backdrop-filter: blur(16px) saturate(180%);
+  box-shadow:
+    0 1px 0 var(--color-border),
+    0 4px 16px -8px rgb(0 0 0 / 0.15);
+  background-color: color-mix(in oklab, var(--color-bg) 92%, transparent);
   padding: 1.25rem 1rem;
 
   @media (width >= 40rem) {
